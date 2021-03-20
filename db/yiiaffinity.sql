@@ -51,6 +51,4 @@ INSERT INTO roles(rol)
            ,('user');
 
 INSERT INTO usuarios(login, nombre, email, password, rol_id)
-      VALUES ('admin', 'admin', 'admin@admin.com', 'admin', 1);
-INSERT INTO usuarios(login, nombre, email, password)
-      VALUES ('Ana28', 'ana', 'ana@ana.com', 'ana');
+      VALUES ('admin', 'admin', 'admin@admin.com', crypt('admin', gen_salt('bf', 10)), 1);
