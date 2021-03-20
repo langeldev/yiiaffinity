@@ -50,6 +50,16 @@ class Roles extends \yii\db\ActiveRecord
      */
     public function getUsuarios()
     {
-        return $this->hasMany(Usuarios::className(), ['rol_id' => 'id'])->inverseOf('rol');
+        return $this->hasMany(Usuarios::class, ['rol_id' => 'id'])->inverseOf('rol');
+    }
+
+    /**
+    * Lista con todos los roles de usuarios
+    * @return array con roles de usuarios
+    */
+    public static function lista()
+    {
+        return static::find()->select('rol')
+               ->indexBy('id')->column();
     }
 }
