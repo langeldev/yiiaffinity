@@ -15,6 +15,7 @@ use yii\web\IdentityInterface;
  * @property float|null $anyo_nac
  * @property string $email
  * @property string $password
+ * @property string $password_repeat
  * @property string|null $auth_key
  * @property int $rol_id
  * @property string|null $genero
@@ -25,6 +26,9 @@ use yii\web\IdentityInterface;
  */
 class Usuarios extends ActiveRecord implements IdentityInterface
 {
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
+    public $password_repeat;
     /**
      * {@inheritdoc}
      */
@@ -39,17 +43,24 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['login', 'email', 'password'], 'required'],
+            [['login', 'email'], 'required'],
+            [['password', 'password_repeat'], 'required', 'on' => [self::SCENARIO_CREATE]],
+            [['password'], 'compare', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
+            [['password_repeat'], 'safe', 'on' => [self::SCENARIO_UPDATE]],
             [['anyo_nac'], 'number'],
             [['rol_id'], 'default', 'value' => null],
             [['rol_id'], 'integer'],
             [['login', 'nombre', 'email', 'auth_key', 'pais', 'ciudad'], 'string', 'max' => 255],
             [['password'], 'string', 'max' => 80],
             [['genero'], 'string', 'max' => 16],
-            [['email'], 'unique'],
-            [['login'], 'unique'],
+            [['email', 'login'], 'unique'],
             [['rol_id'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::class, 'targetAttribute' => ['rol_id' => 'id']],
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['password']);
     }
 
     /**
@@ -61,15 +72,43 @@ class Usuarios extends ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'login' => 'Login',
             'nombre' => 'Nombre',
-            'anyo_nac' => 'Anyo Nac',
+            'anyo_nac' => 'Año',
             'email' => 'Email',
-            'password' => 'Password',
+            'password' => 'Contraseña',
+            'password_repeat' => 'Repetir Contraseña',
             'auth_key' => 'Auth Key',
             'rol_id' => 'Rol ID',
-            'genero' => 'Genero',
-            'pais' => 'Pais',
+            'genero' => 'Género',
+            'pais' => 'País',
             'ciudad' => 'Ciudad',
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+            
+        if ($insert) {
+            if ($this->scenario === self::SCENARIO_CREATE) {
+                $this->auth_key = Yii::$app->security
+                                    ->generateRandomString();
+                goto salto;
+            }
+        } else {
+            if ($this->scenario === self::SCENARIO_UPDATE) {
+                if ($this->password === '') {
+                    $this->password = $this->getOldAttribute('password');
+                } else {
+                    salto:
+                    $this->password = Yii::$app->security
+                    ->generatePasswordHash($this->password);
+                }
+            }
+        }
+
+        return true;
     }
 
     public static function findIdentity($id)
@@ -88,7 +127,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     }
 
     public function getAuthKey()
-    { 
+    {
     
         return $this->auth_key;
     }
