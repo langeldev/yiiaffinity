@@ -8,7 +8,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [1](https://github.com/rolLangel/yiiaffinity/issues/1) |
 
 | **R2**     | **Código fuente**         |
 | --------------: | :------------------- |
@@ -17,7 +17,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [2](https://github.com/rolLangel/yiiaffinity/issues/2) |
 
 | **R3**     | **Estilo del código**         |
 | --------------: | :------------------- |
@@ -26,7 +26,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [3](https://github.com/rolLangel/yiiaffinity/issues/3) |
 
 | **R4**     | **Tres lanzamientos**         |
 | --------------: | :------------------- |
@@ -35,7 +35,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [4](https://github.com/rolLangel/yiiaffinity/issues/4) |
 
 | **R5**     | **README.md**         |
 | --------------: | :------------------- |
@@ -44,7 +44,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [5](https://github.com/rolLangel/yiiaffinity/issues/5) |
 
 | **R6**     | **Documentación**         |
 | --------------: | :------------------- |
@@ -53,7 +53,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [6](https://github.com/rolLangel/yiiaffinity/issues/6) |
 
 | **R7**     | **Incidencias en GitHub**         |
 | --------------: | :------------------- |
@@ -62,7 +62,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [7](https://github.com/rolLangel/yiiaffinity/issues/7) |
 
 | **R8**     | **Etiquetas e hitos**         |
 | --------------: | :------------------- |
@@ -71,7 +71,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [8](https://github.com/rolLangel/yiiaffinity/issues/8) |
 
 | **R9**     | **Rama master**         |
 | --------------: | :------------------- |
@@ -80,7 +80,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [9](https://github.com/rolLangel/yiiaffinity/issues/9) |
 
 | **R10**     | **Gestión del proyecto**         |
 | --------------: | :------------------- |
@@ -89,7 +89,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [10](https://github.com/rolLangel/yiiaffinity/issues/10) |
 
 | **R11**     | **Final de cada iteración**         |
 | --------------: | :------------------- |
@@ -98,7 +98,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [11](https://github.com/rolLangel/yiiaffinity/issues/11) |
 
 | **R12**     | **Validación de formularios**         |
 | --------------: | :------------------- |
@@ -107,7 +107,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [12](https://github.com/rolLangel/yiiaffinity/issues/12) |
 
 | **R13**     | **Gestión de ventanas**         |
 | --------------: | :------------------- |
@@ -116,7 +116,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [13](https://github.com/rolLangel/yiiaffinity/issues/13) |
 
 | **R14**     | **Manejo de eventos**         |
 | --------------: | :------------------- |
@@ -125,7 +125,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [14](https://github.com/rolLangel/yiiaffinity/issues/14) |
 
 | **R15**     | **DOM**         |
 | --------------: | :------------------- |
@@ -134,7 +134,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [15](https://github.com/rolLangel/yiiaffinity/issues/15) |
 
 | **R16**     | **Almacenamiento en el lado del cliente**         |
 | --------------: | :------------------- |
@@ -143,7 +143,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [16](https://github.com/rolLangel/yiiaffinity/issues/16) |
 
 | **R17**     | **jQuery, jQuery UI**         |
 | --------------: | :------------------- |
@@ -152,7 +152,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [17](https://github.com/rolLangel/yiiaffinity/issues/17) |
 
 | **R18**     | **Plugin no trabajado en clase**         |
 | --------------: | :------------------- |
@@ -161,7 +161,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [18](https://github.com/rolLangel/yiiaffinity/issues/18) |
 
 | **R19**     | **Utilización de AJAX**         |
 | --------------: | :------------------- |
@@ -170,7 +170,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [19](https://github.com/rolLangel/yiiaffinity/issues/19) |
 
 | **R20**     | **ECMAScript2015 (ES6)**         |
 | --------------: | :------------------- |
@@ -179,7 +179,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [20](https://github.com/rolLangel/yiiaffinity/issues/20) |
 
 | **R21**     | **PHP**         |
 | --------------: | :------------------- |
@@ -188,7 +188,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [21](https://github.com/rolLangel/yiiaffinity/issues/21) |
 
 | **R22**     | **Yii2 Framework**         |
 | --------------: | :------------------- |
@@ -197,7 +197,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [22](https://github.com/rolLangel/yiiaffinity/issues/22) |
 
 | **R23**     | **PostgreSQL**         |
 | --------------: | :------------------- |
@@ -206,7 +206,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [23](https://github.com/rolLangel/yiiaffinity/issues/23) |
 
 | **R24**     | **Heroku**         |
 | --------------: | :------------------- |
@@ -215,7 +215,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [24](https://github.com/rolLangel/yiiaffinity/issues/24) |
 
 | **R25**     | **Codeception**         |
 | --------------: | :------------------- |
@@ -224,7 +224,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [25](https://github.com/rolLangel/yiiaffinity/issues/25) |
 
 | **R26**     | **Code Climate**         |
 | --------------: | :------------------- |
@@ -233,7 +233,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [26](https://github.com/rolLangel/yiiaffinity/issues/26) |
 
 | **R27**     | **Aplicación escalable**         |
 | --------------: | :------------------- |
@@ -242,7 +242,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [27](https://github.com/rolLangel/yiiaffinity/issues/27) |
 
 | **R28**     | **Tecnología AJAX**         |
 | --------------: | :------------------- |
@@ -251,7 +251,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [28](https://github.com/rolLangel/yiiaffinity/issues/28) |
 
 | **R29**     | **Etiquetas semánticas de HTML5**         |
 | --------------: | :------------------- |
@@ -260,7 +260,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [29](https://github.com/rolLangel/yiiaffinity/issues/29) |
 
 | **R30**     | **Presentación mediante CSS**         |
 | --------------: | :------------------- |
@@ -269,7 +269,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [30](https://github.com/rolLangel/yiiaffinity/issues/30) |
 
 | **R31**     | **Diseño flexible**         |
 | --------------: | :------------------- |
@@ -278,7 +278,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [31](https://github.com/rolLangel/yiiaffinity/issues/31) |
 
 | **R32**     | **Transiciones, transformaciones, animaciones y contenido multimedia**         |
 | --------------: | :------------------- |
@@ -287,7 +287,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [32](https://github.com/rolLangel/yiiaffinity/issues/32) |
 
 | **R33**     | **Uso de microdatos**         |
 | --------------: | :------------------- |
@@ -296,7 +296,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [33](https://github.com/rolLangel/yiiaffinity/issues/33) |
 
 | **R34**     | **Validación HTML5, CSS3 y accesibilidad**         |
 | --------------: | :------------------- |
@@ -305,7 +305,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [34](https://github.com/rolLangel/yiiaffinity/issues/34) |
 
 | **R35**     | **Diseño para varias resoluciones**         |
 | --------------: | :------------------- |
@@ -314,7 +314,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [35](https://github.com/rolLangel/yiiaffinity/issues/35) |
 
 | **R36**     | **Varios navegadores**         |
 | --------------: | :------------------- |
@@ -323,7 +323,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [36](https://github.com/rolLangel/yiiaffinity/issues/36) |
 
 | **R37**     | **Despliegue en un Host**         |
 | --------------: | :------------------- |
@@ -332,7 +332,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [37](https://github.com/rolLangel/yiiaffinity/issues/37) |
 
 | **R38**     | **Despliegue en un servidor local**         |
 | --------------: | :------------------- |
@@ -341,48 +341,308 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [38](https://github.com/rolLangel/yiiaffinity/issues/38) |
 
+| **R39**     | **Alta de producto**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [39](https://github.com/rolLangel/yiiaffinity/issues/39) |
+
+| **R40**     | **Baja de producto**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [40](https://github.com/rolLangel/yiiaffinity/issues/40) |
+
+| **R41**     | **Consulta de productos**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [41](https://github.com/rolLangel/yiiaffinity/issues/41) |
+
+| **R42**     | **Modificación de producto**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [42](https://github.com/rolLangel/yiiaffinity/issues/42) |
+
+| **R43**     | **Alta de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [43](https://github.com/rolLangel/yiiaffinity/issues/43) |
+
+| **R44**     | **Baja de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [44](https://github.com/rolLangel/yiiaffinity/issues/44) |
+
+| **R45**     | **Consulta de usuarios**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [45](https://github.com/rolLangel/yiiaffinity/issues/45) |
+
+| **R46**     | **Modificación de usuarios**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [46](https://github.com/rolLangel/yiiaffinity/issues/46) |
+
+| **R47**     | **Modificación de datos propios del usuario**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [47](https://github.com/rolLangel/yiiaffinity/issues/47) |
+
+| **R48**     | **Registro de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [48](https://github.com/rolLangel/yiiaffinity/issues/48) |
+
+| **R49**     | **Login de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [49](https://github.com/rolLangel/yiiaffinity/issues/49) |
+
+| **R50**     | **Logout de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [50](https://github.com/rolLangel/yiiaffinity/issues/50) |
+
+| **R51**     | **Votar producto**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [51](https://github.com/rolLangel/yiiaffinity/issues/51) |
+
+| **R52**     | **Añadir producto a una lista**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [52](https://github.com/rolLangel/yiiaffinity/issues/52) |
+
+| **R53**     | **Quitar producto de una lista**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [53](https://github.com/rolLangel/yiiaffinity/issues/53) |
+
+| **R54**     | **Consultar listas**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [54](https://github.com/rolLangel/yiiaffinity/issues/54) |
+
+| **R55**     | **Cambiar producto de posición en una lista**         |
+| --------------: | :------------------- |
+| **Descripción** |              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [55](https://github.com/rolLangel/yiiaffinity/issues/55) |
+
+| **R56**     | **Información de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | Datos que almacenar de los usuarios: - Nombre de usuario - Nombre - Año de nacimiento - Género - Ciudad - País - Email - Contraseña             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [56](https://github.com/rolLangel/yiiaffinity/issues/56) |
+
+| **R57**     | **Información de producto**         |
+| --------------: | :------------------- |
+| **Descripción** | Datos que almacenar de los productos: - Título - Título original - Año - Duración - País - Dirección - Guion - Música - Fotografía - Reparto - Productora - Género - Sinopsis - Premios - Media de votos  Casi todos los elementos anteriores pueden contener más de un valor (por ejemplo: varios géneros, varios directores…).             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [57](https://github.com/rolLangel/yiiaffinity/issues/57) |
+
+| **R58**     | **Valorar producto**         |
+| --------------: | :------------------- |
+| **Descripción** | Cada usuario puede valorar cada producto con una puntuación del 1 al 10 o indicar “No vista” para quitar la puntuación.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [58](https://github.com/rolLangel/yiiaffinity/issues/58) |
+
+| **R59**     | **Valoración media**         |
+| --------------: | :------------------- |
+| **Descripción** | Cada producto tiene una valoración media calculada a partir de las valoraciones individuales de los usuarios. Esa valoración media se muestra en la ficha del producto, incluyendo el número total de votos que tiene.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [59](https://github.com/rolLangel/yiiaffinity/issues/59) |
+
+| **R60**     | **Ver críticas**         |
+| --------------: | :------------------- |
+| **Descripción** | Desde la ficha del producto es posible visualizar las críticas que han hecho los usuarios.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [60](https://github.com/rolLangel/yiiaffinity/issues/60) |
+
+| **R61**     | **Hacer una crítica**         |
+| --------------: | :------------------- |
+| **Descripción** | Cada usuario puede criticar un producto. Sólo puede hacer una crítica para cada producto. Asociada a la crítica, se puede indicar una nota del 1 al 10, independiente de las valoraciones.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [61](https://github.com/rolLangel/yiiaffinity/issues/61) |
+
+| **R62**     | **Eliminar una crítica**         |
+| --------------: | :------------------- |
+| **Descripción** | Cada usuario puede eliminar la crítica que haya hecho de un producto desde la ficha del producto.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [62](https://github.com/rolLangel/yiiaffinity/issues/62) |
+
+| **R63**     | **Buscar producto**         |
+| --------------: | :------------------- |
+| **Descripción** | Buscar un producto mediante una barra de búsqueda en la parte superior de la página.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [63](https://github.com/rolLangel/yiiaffinity/issues/63) |
+
+| **R64**     | **Buscar usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | Buscar un usuario por su nombre o alias.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [64](https://github.com/rolLangel/yiiaffinity/issues/64) |
 
 
 ## Cuadro resumen
 
-| **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** |
-| :------------ | :-----------: | :------: | :-------------: | :---------: |
-| (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | 
-| (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | 
-| (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | 
-| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | 
-| (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | 
-| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | 
-| (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | 
-| (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | 
-| (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | 
-| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | 
-| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | 
-| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | 
-| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | 
-| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | 
-| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | 
-| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | 
-| (**R17**) jQuery, jQuery UI | Mínimo | Técnico | Fácil | v1 | 
-| (**R18**) Plugin no trabajado en clase | Mínimo | Técnico | Fácil | v1 | 
-| (**R19**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | 
-| (**R20**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | 
-| (**R21**) PHP | Mínimo | Técnico | Fácil | v1 | 
-| (**R22**) Yii2 Framework | Mínimo | Técnico | Fácil | v1 | 
-| (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | 
-| (**R24**) Heroku | Mínimo | Técnico | Fácil | v1 | 
-| (**R25**) Codeception | Mínimo | Técnico | Fácil | v1 | 
-| (**R26**) Code Climate | Mínimo | Técnico | Fácil | v1 | 
-| (**R27**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | 
-| (**R28**) Tecnología AJAX | Mínimo | Técnico | Fácil | v1 | 
-| (**R29**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | 
-| (**R30**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | 
-| (**R31**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | 
-| (**R32**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | 
-| (**R33**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 | 
-| (**R34**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | 
-| (**R35**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | 
-| (**R36**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | 
-| (**R37**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 | 
-| (**R38**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | 
+| **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** | **Incidencia** |
+| :------------ | :-----------: | :------: | :-------------: | :---------: | :------------: |
+| (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [1](https://github.com/rolLangel/yiiaffinity/issues/1) |
+| (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [2](https://github.com/rolLangel/yiiaffinity/issues/2) |
+| (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [3](https://github.com/rolLangel/yiiaffinity/issues/3) |
+| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [4](https://github.com/rolLangel/yiiaffinity/issues/4) |
+| (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [5](https://github.com/rolLangel/yiiaffinity/issues/5) |
+| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [6](https://github.com/rolLangel/yiiaffinity/issues/6) |
+| (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [7](https://github.com/rolLangel/yiiaffinity/issues/7) |
+| (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [8](https://github.com/rolLangel/yiiaffinity/issues/8) |
+| (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [9](https://github.com/rolLangel/yiiaffinity/issues/9) |
+| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [10](https://github.com/rolLangel/yiiaffinity/issues/10) |
+| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [11](https://github.com/rolLangel/yiiaffinity/issues/11) |
+| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [12](https://github.com/rolLangel/yiiaffinity/issues/12) |
+| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [13](https://github.com/rolLangel/yiiaffinity/issues/13) |
+| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [14](https://github.com/rolLangel/yiiaffinity/issues/14) |
+| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [15](https://github.com/rolLangel/yiiaffinity/issues/15) |
+| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [16](https://github.com/rolLangel/yiiaffinity/issues/16) |
+| (**R17**) jQuery, jQuery UI | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [17](https://github.com/rolLangel/yiiaffinity/issues/17) |
+| (**R18**) Plugin no trabajado en clase | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [18](https://github.com/rolLangel/yiiaffinity/issues/18) |
+| (**R19**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [19](https://github.com/rolLangel/yiiaffinity/issues/19) |
+| (**R20**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [20](https://github.com/rolLangel/yiiaffinity/issues/20) |
+| (**R21**) PHP | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [21](https://github.com/rolLangel/yiiaffinity/issues/21) |
+| (**R22**) Yii2 Framework | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [22](https://github.com/rolLangel/yiiaffinity/issues/22) |
+| (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [23](https://github.com/rolLangel/yiiaffinity/issues/23) |
+| (**R24**) Heroku | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [24](https://github.com/rolLangel/yiiaffinity/issues/24) |
+| (**R25**) Codeception | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [25](https://github.com/rolLangel/yiiaffinity/issues/25) |
+| (**R26**) Code Climate | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [26](https://github.com/rolLangel/yiiaffinity/issues/26) |
+| (**R27**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [27](https://github.com/rolLangel/yiiaffinity/issues/27) |
+| (**R28**) Tecnología AJAX | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [28](https://github.com/rolLangel/yiiaffinity/issues/28) |
+| (**R29**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [29](https://github.com/rolLangel/yiiaffinity/issues/29) |
+| (**R30**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [30](https://github.com/rolLangel/yiiaffinity/issues/30) |
+| (**R31**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [31](https://github.com/rolLangel/yiiaffinity/issues/31) |
+| (**R32**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [32](https://github.com/rolLangel/yiiaffinity/issues/32) |
+| (**R33**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [33](https://github.com/rolLangel/yiiaffinity/issues/33) |
+| (**R34**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [34](https://github.com/rolLangel/yiiaffinity/issues/34) |
+| (**R35**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [35](https://github.com/rolLangel/yiiaffinity/issues/35) |
+| (**R36**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [36](https://github.com/rolLangel/yiiaffinity/issues/36) |
+| (**R37**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [37](https://github.com/rolLangel/yiiaffinity/issues/37) |
+| (**R38**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [38](https://github.com/rolLangel/yiiaffinity/issues/38) |
+| (**R39**) Alta de producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [39](https://github.com/rolLangel/yiiaffinity/issues/39) |
+| (**R40**) Baja de producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [40](https://github.com/rolLangel/yiiaffinity/issues/40) |
+| (**R41**) Consulta de productos | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [41](https://github.com/rolLangel/yiiaffinity/issues/41) |
+| (**R42**) Modificación de producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [42](https://github.com/rolLangel/yiiaffinity/issues/42) |
+| (**R43**) Alta de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [43](https://github.com/rolLangel/yiiaffinity/issues/43) |
+| (**R44**) Baja de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [44](https://github.com/rolLangel/yiiaffinity/issues/44) |
+| (**R45**) Consulta de usuarios | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [45](https://github.com/rolLangel/yiiaffinity/issues/45) |
+| (**R46**) Modificación de usuarios | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [46](https://github.com/rolLangel/yiiaffinity/issues/46) |
+| (**R47**) Modificación de datos propios del usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [47](https://github.com/rolLangel/yiiaffinity/issues/47) |
+| (**R48**) Registro de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [48](https://github.com/rolLangel/yiiaffinity/issues/48) |
+| (**R49**) Login de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [49](https://github.com/rolLangel/yiiaffinity/issues/49) |
+| (**R50**) Logout de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [50](https://github.com/rolLangel/yiiaffinity/issues/50) |
+| (**R51**) Votar producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [51](https://github.com/rolLangel/yiiaffinity/issues/51) |
+| (**R52**) Añadir producto a una lista | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [52](https://github.com/rolLangel/yiiaffinity/issues/52) |
+| (**R53**) Quitar producto de una lista | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [53](https://github.com/rolLangel/yiiaffinity/issues/53) |
+| (**R54**) Consultar listas | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [54](https://github.com/rolLangel/yiiaffinity/issues/54) |
+| (**R55**) Cambiar producto de posición en una lista | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [55](https://github.com/rolLangel/yiiaffinity/issues/55) |
+| (**R56**) Información de usuario | Importante | Información | Fácil | v1 | | **Incidencia**  | [56](https://github.com/rolLangel/yiiaffinity/issues/56) |
+| (**R57**) Información de producto | Importante | Información | Fácil | v1 | | **Incidencia**  | [57](https://github.com/rolLangel/yiiaffinity/issues/57) |
+| (**R58**) Valorar producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [58](https://github.com/rolLangel/yiiaffinity/issues/58) |
+| (**R59**) Valoración media | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [59](https://github.com/rolLangel/yiiaffinity/issues/59) |
+| (**R60**) Ver críticas | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [60](https://github.com/rolLangel/yiiaffinity/issues/60) |
+| (**R61**) Hacer una crítica | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [61](https://github.com/rolLangel/yiiaffinity/issues/61) |
+| (**R62**) Eliminar una crítica | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [62](https://github.com/rolLangel/yiiaffinity/issues/62) |
+| (**R63**) Buscar producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [63](https://github.com/rolLangel/yiiaffinity/issues/63) |
+| (**R64**) Buscar usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [64](https://github.com/rolLangel/yiiaffinity/issues/64) |
