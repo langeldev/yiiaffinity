@@ -28,6 +28,8 @@ class Usuarios extends ActiveRecord implements IdentityInterface
 {
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
+   
+
     public $password_repeat;
     /**
      * {@inheritdoc}
@@ -48,7 +50,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
             [['password'], 'compare', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['password_repeat'], 'safe', 'on' => [self::SCENARIO_UPDATE]],
             [['anyo_nac'], 'number'],
-            [['rol_id'], 'default', 'value' => null],
+            [['rol_id'], 'default', 'value' => 2],
             [['rol_id'], 'integer'],
             [['login', 'nombre', 'email', 'auth_key', 'pais', 'ciudad'], 'string', 'max' => 255],
             [['password'], 'string', 'max' => 80],
