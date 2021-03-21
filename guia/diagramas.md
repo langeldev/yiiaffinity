@@ -2,8 +2,8 @@
 
 ## Diagramas de clases
 
-Incluir.
+![Diagrama de clases](/images/diagramas/diagramaClases.png)
 
 ## Diagramas de estructura lógica de datos
 
-Incluir.
+![Diagrama de estructura lógica de datos](/images/diagramas/diagramaEstructuraDatos.png)
