@@ -30,7 +30,7 @@ class UsuariosController extends Controller
             ],
             'access' => [
                 '__class' => AccessControl::class,
-                'only' => ['index','create', 'update', 'delete', 'view'],
+                'only' => ['index','create', 'update', 'delete', 'view', 'registro'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -40,6 +40,11 @@ class UsuariosController extends Controller
                             $usuario = Usuarios::findOne(Yii::$app->user->id);
                             return $usuario->rol->rol === 'admin';
                         }
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['registro'],
+                        'roles' => ['?'],
                     ],
                 ],
             ],
@@ -91,6 +96,25 @@ class UsuariosController extends Controller
         return $this->render('create', [
             'model' => $model,
             'roles' => $roles,
+        ]);
+    }
+
+
+      /**
+     * El usuario puede registrarse.
+     *
+     * @return mixed
+     */
+    public function actionRegistro()
+    {
+        $model = new Usuarios(['scenario' => Usuarios::SCENARIO_CREATE]);
+     
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['site/login']);
+        }
+
+        return $this->render('registro', [
+            'model' => $model,
         ]);
     }
 
