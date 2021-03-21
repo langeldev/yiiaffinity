@@ -7,9 +7,9 @@ use yii\data\ActiveDataProvider;
 use app\models\Usuarios;
 
 /**
- * UsuariosSerach represents the model behind the search form of `app\models\Usuarios`.
+ * UsuariosSearch represents the model behind the search form of `app\models\Usuarios`.
  */
-class UsuariosSerach extends Usuarios
+class UsuariosSearch extends Usuarios
 {
     /**
      * {@inheritdoc}

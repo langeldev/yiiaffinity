@@ -4,7 +4,7 @@ use yii\bootstrap4\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\UsuariosSerach */
+/* @var $searchModel app\models\UsuariosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Usuarios';

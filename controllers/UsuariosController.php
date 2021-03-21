@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\models\Roles;
 use Yii;
 use app\models\Usuarios;
-use app\models\UsuariosSerach;
+use app\models\UsuariosSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -52,7 +52,7 @@ class UsuariosController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UsuariosSerach();
+        $searchModel = new UsuariosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
