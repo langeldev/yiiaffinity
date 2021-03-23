@@ -3,8 +3,7 @@
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 
-$this->title = 'Registrarse';
-$this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
+$this->title = 'Editar Perfil';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="usuarios-form">
