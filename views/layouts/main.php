@@ -45,6 +45,8 @@ AppAsset::register($this);
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Usuarios', 'url' => ['/usuarios/index']],
+            Yii::$app->user->isGuest ? '' 
+            :['label' => 'Editar Perfil', 'url' => ['/usuarios/editar-perfil']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -56,7 +58,7 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ) 
         ],
     ]);
     NavBar::end();
