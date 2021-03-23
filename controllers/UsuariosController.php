@@ -30,7 +30,15 @@ class UsuariosController extends Controller
             ],
             'access' => [
                 '__class' => AccessControl::class,
-                'only' => ['index','create', 'update', 'delete', 'view', 'registro'],
+                'only' => [
+                             'index'
+                           , 'create'
+                           , 'update'
+                           , 'delete'
+                           , 'view'
+                           , 'registro'
+                           , 'editar-perfil'
+                        ],
                 'rules' => [
                     [
                         'allow' => true,
@@ -45,6 +53,11 @@ class UsuariosController extends Controller
                         'allow' => true,
                         'actions' => ['registro'],
                         'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['editar-perfil'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -141,6 +154,30 @@ class UsuariosController extends Controller
             'roles' => $roles,
         ]);
     }
+
+    /**
+     * El usuario puede editar su propio perfil.
+     * @return mixed
+     */
+    public function actionEditarPerfil()
+    {
+        $model = $this->findModel(
+            Yii::$app->user->id
+        );
+
+        $model->scenario = Usuarios::SCENARIO_UPDATE;
+        $model->password = '';
+        
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->goHome();
+        }
+
+        return $this->render('editar-perfil', [
+            'model' => $model,
+        ]);
+    }
+
 
     /**
      * Deletes an existing Usuarios model.
