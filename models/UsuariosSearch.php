@@ -52,6 +52,9 @@ class UsuariosSearch extends Usuarios
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 10,
+            ]
         ]);
 
         $dataProvider->sort->attributes['rol.rol'] = [

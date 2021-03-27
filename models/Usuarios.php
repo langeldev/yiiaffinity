@@ -4,7 +4,10 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
+
+use function PHPSTORM_META\map;
 
 /**
  * This is the model class for table "usuarios".
@@ -28,9 +31,10 @@ class Usuarios extends ActiveRecord implements IdentityInterface
 {
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
-   
-
     public $password_repeat;
+    private static $_generos = ['Hombre', 'Mujer','No bibario'];
+   
+    
     /**
      * {@inheritdoc}
      */
@@ -49,7 +53,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
             [['password', 'password_repeat'], 'required', 'on' => [self::SCENARIO_CREATE]],
             [['password'], 'compare', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['password_repeat'], 'safe', 'on' => [self::SCENARIO_UPDATE]],
-            [['anyo_nac'], 'number'],
+            [['anyo_nac'], 'number', 'max' => 9999],
             [['rol_id'], 'default', 'value' => 2],
             [['rol_id'], 'integer'],
             [['login', 'nombre', 'email', 'auth_key', 'pais', 'ciudad'], 'string', 'max' => 255],
@@ -157,5 +161,19 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     public function getRol()
     {
         return $this->hasOne(Roles::class, ['id' => 'rol_id'])->inverseOf('usuarios');
+    }
+
+    /**
+     * Genera un array de clave y valor con los géneros de usuarios
+     * @return array
+     */
+    public static function listaGeneros()
+    {
+        $genero_array = [];
+        foreach (self::$_generos as $genero) {
+            $genero_array[] = ['id' => $genero, 'name' => $genero];
+        }
+      
+        return ArrayHelper::map($genero_array, 'id', 'name');
     }
 }

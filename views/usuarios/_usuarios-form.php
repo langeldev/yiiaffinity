@@ -9,8 +9,6 @@
 <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => true]) ?>
- 
-<?= $form->field($model, 'rol_id')->dropdownList($roles) ?>
 
 <?= $form->field($model, 'genero')->dropdownList($generos) ?>
 

@@ -100,15 +100,15 @@ class UsuariosController extends Controller
     public function actionCreate()
     {
         $model = new Usuarios(['scenario' => Usuarios::SCENARIO_CREATE]);
-        $roles = Roles::lista();
-
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'roles' => $roles,
+            'roles' => Roles::lista(),
+            'generos' => Usuarios::listaGeneros(),
         ]);
     }
 
@@ -128,6 +128,7 @@ class UsuariosController extends Controller
 
         return $this->render('registro', [
             'model' => $model,
+            'generos' => Usuarios::listaGeneros(),
         ]);
     }
 
@@ -143,15 +144,15 @@ class UsuariosController extends Controller
         $model = $this->findModel($id);
         $model->scenario = Usuarios::SCENARIO_UPDATE;
         $model->password = '';
-        $roles = Roles::lista();
-
+       
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'roles' => $roles,
+            'roles' => Roles::lista(),
+            'generos' => Usuarios::listaGeneros(),
         ]);
     }
 
@@ -175,6 +176,7 @@ class UsuariosController extends Controller
 
         return $this->render('editar-perfil', [
             'model' => $model,
+            'generos' => Usuarios::listaGeneros(),
         ]);
     }
 

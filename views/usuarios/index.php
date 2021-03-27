@@ -1,21 +1,19 @@
 <?php
 
 use yii\bootstrap4\Html;
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
-
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\UsuariosSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="usuarios-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Usuarios', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Usuario', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -32,10 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'genero',
             'pais',
             'ciudad',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            ['__class' => ActionColumn::class], 
         ],
+        'options' => [
+            'class' => 'table table-responsive'
+        ]
     ]); ?>
-
 
 </div>
