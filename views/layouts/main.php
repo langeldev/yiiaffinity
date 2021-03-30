@@ -43,7 +43,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Productos', 'url' => ['/productos/index']],
             ['label' => 'Usuarios', 'url' => ['/usuarios/index']],
             Yii::$app->user->isGuest ? '' 
             :['label' => 'Editar Perfil', 'url' => ['/usuarios/editar-perfil']],
