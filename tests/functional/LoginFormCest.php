@@ -25,18 +25,11 @@ class LoginFormCest
 
     }
 
-    // demonstrates `amLoggedInAs` method
-    public function internalLoginById(\FunctionalTester $I)
-    {
-        $I->amLoggedInAs(1);
-        $I->amOnPage('/');
-        $I->see('Logout (vaca.roberto)');
-    }
-
+  
     // demonstrates `amLoggedInAs` method
     public function internalLoginByInstance(\FunctionalTester $I)
     {
-        $I->amLoggedInAs(Usuarios::findOne(['nombre' => 'vaca.roberto']));
+        $I->amLoggedInAs(Usuarios::findOne(['login' => 'vaca.roberto']));
         $I->amOnPage('/');
         $I->see('Logout (vaca.roberto)');
     }
