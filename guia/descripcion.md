@@ -1,24 +1,22 @@
 # Descripción general del proyecto
 
-Explicar.
+Desarrollar un clon de [FilmAffinity](https://www.filmaffinity.com/es/main.html).
 
 ## Funcionalidad principal de la aplicación
 
-Explicar.
+Base de datos de películas, series, documentales y otros productos audiovisuales, consultable a
+través de una interfaz web.
 
 ## Objetivos generales
 
-A diferencia de los casos de uso, los objetivos no tienen principio ni fin.
+1. Gestionar los datos de los productos audiovisuales (películas, series, documentales, etc.).
 
-Por ejemplo:
-
-* Objetivo: "gestionar los alquileres y las devoluciones de las películas".
-* Casos de uso: "alquilar una película", "devolver una película".
+2. Gestionar las cuentas de los usuarios.
 
 ## URL del repositorio
 
-[https://github.com/ricpelo/proyecto](https://github.com/ricpelo/proyecto)
+[https://github.com/rolLangel/yiiaffinity](https://github.com/rolLangel/yiiaffinity)
 
 ## URL de la documentación
 
-[https://ricpelo.github.io/proyecto](https://ricpelo.github.io/proyecto)
+[https://rollangel.github.io/yiiaffinity/](https://rollangel.github.io/yiiaffinity/)
