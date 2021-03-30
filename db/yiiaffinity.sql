@@ -3,6 +3,14 @@
 ------------------------------
 
 --Productos
+DROP TABLE IF EXISTS tipos;
+CREATE TABLE tipos
+(
+     id bigserial PRIMARY KEY
+   , nombre varchar(255) NOT NULL
+);
+
+DROP INDEX IF EXISTS idx_titulo;
 DROP TABLE IF EXISTS productos CASCADE;
 CREATE TABLE productos
 (
@@ -10,10 +18,13 @@ CREATE TABLE productos
     , titulo            varchar(255)    NOT NULL
     , titulo_original   varchar(255)    NOT NULL
     , anyo              numeric(4)      NOT NULL  CONSTRAINT ck__anyo CHECK (anyo >= 0)
-    , duracion          smallint        NOT NULL  CONSTRAINT ck_producto_duracion CHECK (duracion >= 1)
+    , duracion          smallint        NOT NULL  CONSTRAINT ck_producto_duracion CHECK (duracion >= 1)  
+    , tipo_id           bigint          NOT NULL  REFERENCES tipos(id)
     , pais              varchar(255)    NOT NULL
     , sinopsis          text            NOT NULL     
 );
+
+CREATE INDEX idx_titulo on productos(titulo);
 
 DROP TABLE IF EXISTS directores CASCADE;
 CREATE TABLE directores
@@ -125,16 +136,10 @@ DROP TABLE IF EXISTS premios CASCADE;
 CREATE TABLE premios
 (
       id                bigserial       PRIMARY KEY
+    , producto_id       bigint          NOT NULL      REFERENCES productos(id) ON DELETE CASCADE
+    , cantidad          smallint        NOT NULL      CONSTRAINT ck_premios CHECK (cantidad >= 1)
     , nombre            varchar(255)    NOT NULL
 
-);
-
-DROP TABLE IF EXISTS productos_premios CASCADE;
-CREATE TABLE productos_premios
-(
-      producto_id bigint REFERENCES productos(id)
-    , premio_id bigint REFERENCES premios(id)
-    , PRIMARY KEY (producto_id, premio_id)
 );
 
 
@@ -147,6 +152,8 @@ CREATE TABLE roles
     , rol               varchar(16)
 );
 
+DROP INDEX IF EXISTS idx_login;
+DROP INDEX IF EXISTS idx_nombre;
 DROP TABLE IF EXISTS usuarios CASCADE;
 
 CREATE TABLE usuarios
@@ -163,6 +170,9 @@ CREATE TABLE usuarios
     , pais               varchar(255)
     , ciudad             varchar(255)
 );
+
+CREATE INDEX idx_login on usuarios(login);
+CREATE INDEX idx_nombre on usuarios(nombre);
 
 DROP TABLE IF EXISTS valoraciones CASCADE;
 CREATE TABLE valoraciones
@@ -196,14 +206,22 @@ CREATE TABLE listas
 );
 
 DROP TABLE IF EXISTS usuarios_listas CASCADE;
+CREATE TABLE usuarios_listas
+(
+         id bigserial PRIMARY KEY
+      ,  usuario_id bigint REFERENCES usuarios(id) ON DELETE CASCADE
+      ,  lista_id bigint REFERENCES listas(id) ON DELETE CASCADE
 
+);
 
 DROP TABLE IF EXISTS listas_productos CASCADE;
 CREATE TABLE listas_productos
 (
-      lista_id bigint REFERENCES listas(id) ON DELETE CASCADE
+      id                 bigserial     PRIMARY KEY
+    , lista_id bigint REFERENCES usuarios_listas(id) ON DELETE CASCADE
     , producto_id bigint REFERENCES productos(id) ON DELETE CASCADE
-    , PRIMARY KEY (producto_id, lista_id)
+    , posicion bigint
+    , UNIQUE (producto_id, lista_id)
 );
 
 --fixture
@@ -212,4 +230,86 @@ INSERT INTO roles(rol)
            ,('user');
 
 INSERT INTO usuarios(login, nombre, email, password, rol_id)
-      VALUES ('admin', 'admin', 'admin@admin.com', crypt('admin', gen_salt('bf', 10)), 1);
+      VALUES ('admin', 'admin', 'admin@admin.com', crypt('admin', gen_salt('bf', 10)), 1)
+           , ('admin2', 'admin2', 'admin2@admin.com', crypt('admin2', gen_salt('bf', 10)), 1);
+INSERT INTO usuarios(login, nombre, email, password, anyo_nac, genero, pais, ciudad)
+      VALUES ('ana', 'ana', 'ana@ana.com', crypt('ana', gen_salt('bf', 10)), 1990, 'Mujer', 'España', 'Murcia')
+           , ('pepe', 'pepe', 'pepe@pepe.com', crypt('pepe', gen_salt('bf', 10)), 2002, 'Hombre', 'España', 'Madrid')
+           , ('jose', 'jose', 'jose@pepe.com', crypt('jose', gen_salt('bf', 10)), 1985, 'Mujer', 'España', 'Cádiz');
+
+
+INSERT INTO tipos(nombre)
+     VALUES ('Pelicula')
+          , ('Serie')
+          , ('Documental');     
+
+
+INSERT INTO productos(titulo, titulo_original, anyo, duracion, tipo_id,pais, sinopsis)
+     VALUES ('Moolight', 'Moolight', 2016, 111, 1,'Estados Unidos', 'La difícil infancia, adolescencia y madurez de un chico afroamericano que crece en una zona conflictiva de Miami. A medida que pasan los años, el joven se descubre a sí mismo y encuentra el amor en lugares inesperados.');
+
+INSERT INTO directores(nombre)
+     VALUES ('Barry Jenkins');
+
+INSERT INTO productos_directores(producto_id, director_id)
+     VALUES (1,1);
+
+INSERT INTO guionistas(nombre)
+     VALUES ('Barry Jenkins');
+
+INSERT INTO productos_guionistas(producto_id, guion_id)
+     VALUES (1,1);
+
+INSERT INTO musica(nombre)
+     VALUES ('Nicholas Britell');
+
+INSERT INTO productos_musica(producto_id, musica_id)
+     VALUES (1,1);
+
+INSERT INTO fotografia(nombre)
+     VALUES ('James Laxton');
+
+INSERT INTO productos_fotografia(producto_id, fotografia_id)
+     VALUES (1,1);
+
+INSERT INTO interpretes(nombre)
+     VALUES ('Travent Rhodes')
+          , ('Naomie Harries')
+          , ('Mahershala Ali')
+          , ('Ashton Sanders')
+          , ('André Holland')
+          , ('Alex R. Hibbert');
+
+INSERT INTO productos_interpretes(producto_id, interprete_id)
+     VALUES (1,1)
+          , (1,2)
+          , (1,3)
+          , (1,4)
+          , (1,5)
+          , (1,6);
+
+INSERT INTO productoras(nombre)
+     VALUES ('A24')
+          , ('Plan B Entertainment')
+          , ('PASTEL');
+
+INSERT INTO productos_productoras(producto_id, productora_id) 
+     VALUES (1,1)
+          , (1,2)
+          , (1,3);
+
+INSERT INTO generos(nombre)
+     VALUES ('Drama')
+          , ('Drogas')
+          , ('Terror');
+
+INSERT INTO productos_generos(producto_id, genero_id)
+     VALUES (1, 1)
+          , (1, 2);
+
+INSERT INTO premios(producto_id,nombre, cantidad)
+     VALUES (1, 'Oscar', 3)
+          , (1, 'Globos de Oro', 1);
+
+INSERT INTO valoraciones(producto_id, usuario_id, valoracion)
+    VALUES (1, 3, 5)
+         , (1, 4, 7);
