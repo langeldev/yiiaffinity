@@ -3,7 +3,7 @@
 ------------------------------
 
 --Productos
-DROP TABLE IF EXISTS tipos;
+DROP TABLE IF EXISTS tipos CASCADE;
 CREATE TABLE tipos
 (
      id bigserial PRIMARY KEY
@@ -239,7 +239,7 @@ INSERT INTO usuarios(login, nombre, email, password, anyo_nac, genero, pais, ciu
 
 
 INSERT INTO tipos(nombre)
-     VALUES ('Pelicula')
+     VALUES ('Película')
           , ('Serie')
           , ('Documental');     
 
