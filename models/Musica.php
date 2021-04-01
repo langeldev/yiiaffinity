@@ -52,7 +52,7 @@ class Musica extends \yii\db\ActiveRecord
      */
     public function getProductosMusicas()
     {
-        return $this->hasMany(ProductosMusica::className(), ['musica_id' => 'id'])->inverseOf('musica');
+        return $this->hasMany(ProductosMusica::class, ['musica_id' => 'id'])->inverseOf('musica');
     }
 
     /**
@@ -62,6 +62,16 @@ class Musica extends \yii\db\ActiveRecord
      */
     public function getProductos()
     {
-        return $this->hasMany(Productos::className(), ['id' => 'producto_id'])->viaTable('productos_musica', ['musica_id' => 'id']);
+        return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('productos_musica', ['musica_id' => 'id']);
+    }
+
+    /**
+    * Devuelve una lista con los compositores
+    *
+    * @return array
+    */
+    public static function lista()
+    {
+        return static::find()->select('nombre')->indexBy('id')->column();
     }
 }

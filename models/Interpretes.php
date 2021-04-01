@@ -52,7 +52,7 @@ class Interpretes extends \yii\db\ActiveRecord
      */
     public function getProductosInterpretes()
     {
-        return $this->hasMany(ProductosInterpretes::className(), ['interprete_id' => 'id'])->inverseOf('interprete');
+        return $this->hasMany(ProductosInterpretes::class, ['interprete_id' => 'id'])->inverseOf('interprete');
     }
 
     /**
@@ -62,6 +62,16 @@ class Interpretes extends \yii\db\ActiveRecord
      */
     public function getProductos()
     {
-        return $this->hasMany(Productos::className(), ['id' => 'producto_id'])->viaTable('productos_interpretes', ['interprete_id' => 'id']);
+        return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('productos_interpretes', ['interprete_id' => 'id']);
+    }
+
+    /**
+    * Devuelve una lista con los interpretes
+    *
+    * @return array
+    */
+    public static function lista()
+    {
+        return static::find()->select('nombre')->indexBy('id')->column();
     }
 }

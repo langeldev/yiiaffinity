@@ -2,11 +2,26 @@
 
 namespace app\controllers;
 
+use app\models\Directores;
+use app\models\Fotografia;
+use app\models\Generos;
+use app\models\Guionistas;
+use app\models\Interpretes;
+use app\models\Musica;
+use app\models\Productoras;
 use Yii;
 use app\models\Productos;
+use app\models\ProductosDirectores;
+use app\models\ProductosFotografia;
+use app\models\ProductosGeneros;
+use app\models\ProductosGuionistas;
+use app\models\ProductosInterpretes;
+use app\models\ProductosMusica;
+use app\models\ProductosProductoras;
 use app\models\ProductosSearch;
 use app\models\Tipos;
 use app\models\Usuarios;
+use app\models\Valoraciones;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -89,14 +104,44 @@ class ProductosController extends Controller
     {
         $model = new Productos();
         
+        if ($model->load($producto = Yii::$app->request->post())
+         && $model->save()) {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($producto['directores'] !== '') {
+                $this->relDirectores($model->id, $producto['directores']);
+            }
+            if ($producto['guionistas'] !== '') {
+                $this->relGuionistas($model->id, $producto['guionistas']);
+            }
+            if ($producto['musica'] !== '') {
+                $this->relMusica($model->id, $producto['musica']);
+            }
+            if ($producto['fotografia'] !== '') {
+                $this->relFotografia($model->id, $producto['fotografia']);
+            }
+            if ($producto['interpretes'] !== '') {
+                $this->relInterpretes($model->id, $producto['interpretes']);
+            }
+            if ($producto['productoras'] !== '') {
+                $this->relProductoras($model->id, $producto['productoras']);
+            }
+            if ($producto['generos'] !== '') {
+                $this->relGeneros($model->id, $producto['generos']);
+            }
+            
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
             'tipos' => Tipos::lista(),
+            'directores' => Directores::lista(),
+            'guionistas' => Guionistas::lista(),
+            'musica' => Musica::lista(),
+            'fotografia' => Fotografia::lista(),
+            'reparto' => Interpretes::lista(),
+            'productoras' => Productoras::lista(),
+            'generos' => Generos::lista(),
         ]);
     }
 
@@ -111,13 +156,51 @@ class ProductosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($producto = Yii::$app->request->post())
+           && $model->save()) {
+            ProductosDirectores::deleteAll(['producto_id'=> $model->id]);
+            ProductosGuionistas::deleteAll(['producto_id'=> $model->id]);
+            ProductosMusica::deleteAll(['producto_id'=> $model->id]);
+            ProductosFotografia::deleteAll(['producto_id'=> $model->id]);
+            ProductosInterpretes::deleteAll(['producto_id'=> $model->id]);
+            ProductosProductoras::deleteAll(['producto_id'=> $model->id]);
+            ProductosGeneros::deleteAll(['producto_id'=> $model->id]);
+
+            if ($producto['directores'] !== '') {
+                $this->relDirectores($model->id, $producto['directores']);
+            }
+            if ($producto['guionistas'] !== '') {
+                $this->relGuionistas($model->id, $producto['guionistas']);
+            }
+            if ($producto['musica'] !== '') {
+                $this->relMusica($model->id, $producto['musica']);
+            }
+            if ($producto['fotografia'] !== '') {
+                $this->relFotografia($model->id, $producto['fotografia']);
+            }
+            if ($producto['interpretes'] !== '') {
+                $this->relInterpretes($model->id, $producto['interpretes']);
+            }
+            if ($producto['productoras'] !== '') {
+                $this->relProductoras($model->id, $producto['productoras']);
+            }
+            if ($producto['generos'] !== '') {
+                $this->relGeneros($model->id, $producto['generos']);
+            }
+            
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
             'tipos' => Tipos::lista(),
+            'directores' => Directores::lista(),
+            'guionistas' => Guionistas::lista(),
+            'musica' => Musica::lista(),
+            'fotografia' => Fotografia::lista(),
+            'reparto' => Interpretes::lista(),
+            'productoras' => Productoras::lista(),
+            'generos' => Generos::lista(),
         ]);
     }
 
@@ -149,5 +232,83 @@ class ProductosController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    private function relDirectores($id, $valores)
+    {
+        foreach ($valores as $v) { 
+            $relacion = new ProductosDirectores([
+                'producto_id' => $id,
+                'director_id' => $v
+            ]);
+            $relacion->save();
+        }
+       
+    }
+
+    private function relGuionistas($id, $valores)
+    {
+        foreach ($valores as $v) {
+            $relacion = new ProductosGuionistas([
+                'producto_id' => $id,
+                'guion_id' => $v
+            ]);
+            $relacion->save();
+        }
+    }
+
+    private function relMusica($id, $valores)
+    {
+        foreach ($valores as $v) {
+            $relacion = new ProductosMusica([
+                'producto_id' => $id,
+                'musica_id' => $v
+            ]);
+            $relacion->save();
+        }
+    }
+
+    private function relFotografia($id, $valores)
+    {
+        foreach ($valores as $v) {
+            $relacion = new ProductosFotografia([
+                'producto_id' => $id,
+                'fotografia_id' => $v
+            ]);
+            $relacion->save();
+        }
+    }
+
+    private function relInterpretes($id, $valores)
+    {
+        foreach ($valores as $v) {
+            $relacion = new ProductosInterpretes([
+                'producto_id' => $id,
+                'interprete_id' => $v
+            ]);
+            $relacion->save();
+        }
+    }
+
+    private function relProductoras($id, $valores)
+    {
+        foreach ($valores as $v) {
+            $relacion = new ProductosProductoras([
+                'producto_id' => $id,
+                'productora_id' => $v
+            ]);
+            $relacion->save();
+        }
+    }
+
+    private function relGeneros($id, $valores)
+    {
+        foreach ($valores as $v) {
+            $relacion = new ProductosGeneros([
+                'producto_id' => $id,
+                'genero_id' => $v
+            ]);
+            $relacion->save();
+        }
     }
 }

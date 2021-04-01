@@ -56,6 +56,8 @@ class Tipos extends \yii\db\ActiveRecord
 
     /**
      * Devuelve una lista con los tipos de productos
+     *
+     * @return array
      */
     public static function lista()
     {
