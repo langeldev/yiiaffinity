@@ -52,7 +52,7 @@ class Guionistas extends \yii\db\ActiveRecord
      */
     public function getProductosGuionistas()
     {
-        return $this->hasMany(ProductosGuionistas::className(), ['guion_id' => 'id'])->inverseOf('guion');
+        return $this->hasMany(ProductosGuionistas::class, ['guion_id' => 'id'])->inverseOf('guion');
     }
 
     /**
@@ -62,6 +62,16 @@ class Guionistas extends \yii\db\ActiveRecord
      */
     public function getProductos()
     {
-        return $this->hasMany(Productos::className(), ['id' => 'producto_id'])->viaTable('productos_guionistas', ['guion_id' => 'id']);
+        return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('productos_guionistas', ['guion_id' => 'id']);
+    }
+
+    /**
+    * Devuelve una lista con los guionistas
+    *
+    * @return array
+    */
+    public static function lista()
+    {
+        return static::find()->select('nombre')->indexBy('id')->column();
     }
 }

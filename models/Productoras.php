@@ -52,7 +52,7 @@ class Productoras extends \yii\db\ActiveRecord
      */
     public function getProductosProductoras()
     {
-        return $this->hasMany(ProductosProductoras::className(), ['productora_id' => 'id'])->inverseOf('productora');
+        return $this->hasMany(ProductosProductoras::class, ['productora_id' => 'id'])->inverseOf('productora');
     }
 
     /**
@@ -62,6 +62,16 @@ class Productoras extends \yii\db\ActiveRecord
      */
     public function getProductos()
     {
-        return $this->hasMany(Productos::className(), ['id' => 'producto_id'])->viaTable('productos_productoras', ['productora_id' => 'id']);
+        return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('productos_productoras', ['productora_id' => 'id']);
+    }
+
+    /**
+    * Devuelve una lista con las productoras
+    *
+    * @return array
+    */
+    public static function lista()
+    {
+        return static::find()->select('nombre')->indexBy('id')->column();
     }
 }

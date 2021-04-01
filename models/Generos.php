@@ -52,7 +52,7 @@ class Generos extends \yii\db\ActiveRecord
      */
     public function getProductosGeneros()
     {
-        return $this->hasMany(ProductosGeneros::className(), ['genero_id' => 'id'])->inverseOf('genero');
+        return $this->hasMany(ProductosGeneros::class, ['genero_id' => 'id'])->inverseOf('genero');
     }
 
     /**
@@ -62,6 +62,16 @@ class Generos extends \yii\db\ActiveRecord
      */
     public function getProductos()
     {
-        return $this->hasMany(Productos::className(), ['id' => 'producto_id'])->viaTable('productos_generos', ['genero_id' => 'id']);
+        return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('productos_generos', ['genero_id' => 'id']);
+    }
+
+    /**
+    * Devuelve una lista con los generos
+    *
+    * @return array
+    */
+    public static function lista()
+    {
+        return static::find()->select('nombre')->indexBy('id')->column();
     }
 }

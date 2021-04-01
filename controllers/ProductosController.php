@@ -2,6 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Directores;
+use app\models\Fotografia;
+use app\models\Generos;
+use app\models\Guionistas;
+use app\models\Interpretes;
+use app\models\Musica;
+use app\models\Productoras;
 use Yii;
 use app\models\Productos;
 use app\models\ProductosSearch;
@@ -97,6 +104,13 @@ class ProductosController extends Controller
         return $this->render('create', [
             'model' => $model,
             'tipos' => Tipos::lista(),
+            'directores' => Directores::lista(),
+            'guionistas' => Guionistas::lista(),
+            'musica' => Musica::lista(),
+            'fotografia' => Fotografia::lista(),
+            'reparto' => Interpretes::lista(),
+            'productoras' => Productoras::lista(),
+            'generos' => Generos::lista(),
         ]);
     }
 
@@ -118,6 +132,13 @@ class ProductosController extends Controller
         return $this->render('update', [
             'model' => $model,
             'tipos' => Tipos::lista(),
+            'directores' => Directores::lista(),
+            'guionistas' => Guionistas::lista(),
+            'musica' => Musica::lista(),
+            'fotografia' => Fotografia::lista(),
+            'reparto' => Interpretes::lista(),
+            'productoras' => Productoras::lista(),
+            'generos' => Generos::lista(),
         ]);
     }
 

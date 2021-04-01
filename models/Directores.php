@@ -52,7 +52,7 @@ class Directores extends \yii\db\ActiveRecord
      */
     public function getProductosDirectores()
     {
-        return $this->hasMany(ProductosDirectores::className(), ['director_id' => 'id'])->inverseOf('director');
+        return $this->hasMany(ProductosDirectores::class, ['director_id' => 'id'])->inverseOf('director');
     }
 
     /**
@@ -62,6 +62,16 @@ class Directores extends \yii\db\ActiveRecord
      */
     public function getProductos()
     {
-        return $this->hasMany(Productos::className(), ['id' => 'producto_id'])->viaTable('productos_directores', ['director_id' => 'id']);
+        return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('productos_directores', ['director_id' => 'id']);
+    }
+
+    /**
+    * Devuelve una lista con los directores
+    *
+    * @return array
+    */
+    public static function lista()
+    {
+        return static::find()->select('nombre')->indexBy('id')->column();
     }
 }

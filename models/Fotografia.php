@@ -52,7 +52,7 @@ class Fotografia extends \yii\db\ActiveRecord
      */
     public function getProductosFotografias()
     {
-        return $this->hasMany(ProductosFotografia::className(), ['fotografia_id' => 'id'])->inverseOf('fotografia');
+        return $this->hasMany(ProductosFotografia::class, ['fotografia_id' => 'id'])->inverseOf('fotografia');
     }
 
     /**
@@ -62,6 +62,16 @@ class Fotografia extends \yii\db\ActiveRecord
      */
     public function getProductos()
     {
-        return $this->hasMany(Productos::className(), ['id' => 'producto_id'])->viaTable('productos_fotografia', ['fotografia_id' => 'id']);
+        return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('productos_fotografia', ['fotografia_id' => 'id']);
+    }
+
+    /**
+    * Devuelve una lista con los directores de fotografía
+    *
+    * @return array
+    */
+    public static function lista()
+    {
+        return static::find()->select('nombre')->indexBy('id')->column();
     }
 }
