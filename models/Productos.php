@@ -79,6 +79,13 @@ class Productos extends \yii\db\ActiveRecord
             'tipo_id' => 'Tipo',
             'pais' => 'País',
             'sinopsis' => 'Sinopsis',
+            'directors' => 'Dirección',
+            'guions' => 'Guion',
+            'musicas' => 'Música',
+            'fotografia' => 'Fotografía',
+            'interpretes' => 'Reparto',
+            'productoras' => 'Porductora',
+            'generos' => 'Géneros'
         ];
     }
 

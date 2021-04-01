@@ -105,8 +105,7 @@ class ProductosController extends Controller
         $model = new Productos();
         
         if ($model->load($producto = Yii::$app->request->post())
-         && $model->save()) {
-
+        && $model->save()) {
             if ($producto['directores'] !== '') {
                 $this->relDirectores($model->id, $producto['directores']);
             }
@@ -236,14 +235,13 @@ class ProductosController extends Controller
 
     private function relDirectores($id, $valores)
     {
-        foreach ($valores as $v) { 
+        foreach ($valores as $v) {
             $relacion = new ProductosDirectores([
                 'producto_id' => $id,
                 'director_id' => $v
             ]);
             $relacion->save();
         }
-       
     }
 
     private function relGuionistas($id, $valores)

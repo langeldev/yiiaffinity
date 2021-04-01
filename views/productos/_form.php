@@ -4,38 +4,39 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 
 $js = <<<EOT
-    $("#directores").select2({
-        theme: "classic"
-    });
 
+    $('#directores').select2({
+        width:'100%'
+    });
+    
     $("#guionistas").select2({
-        theme: "classic"
+        width:'100%',
     });
-
+    
     $("#musica").select2({
-        theme: "classic"
+        width:'100%',
     });
 
     $("#fotografia").select2({
-        theme: "classic"
+        width:'100%',
     });
-
+    
     $("#interpretes").select2({
-        theme: "classic"
+        width:'100%',
     });
-
+    
     $("#productoras").select2({
-        theme: "classic"
+        width:'100%',
     });
 
     $("#generos").select2({
-        theme: "classic"
+        width:'100%',
     });
 EOT;
 $this->registerJs($js);
 ?>
 
-<div class="productos-form">
+<div class="productos-form p-1">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -53,17 +54,18 @@ $this->registerJs($js);
 
     <?= $form->field($model, 'sinopsis')->textarea(['rows' => 6]) ?>
 
+
     <?= $form->field($model, 'directors')->dropdownList($directores, [
-                    'id' => 'directores',
-                    'name' => 'directores',
-                    'class'=> 'js-example-basic-multiple js-states form-control',
-                    'multiple' => 'multiple',
-                    ]) ?>
+        'id' => 'directores',
+        'name' => 'directores',
+        'multiple' => 'multiple',
+        
+        ])->label('Directores', ['for' => 'directores']) ?>
+
 
     <?= $form->field($model, 'guions')->dropdownList($guionistas, [
                     'id' => 'guionistas',
                     'name' => 'guionistas',
-                    'class'=> 'js-example-basic-multiple js-states form-control',
                     'multiple' => 'multiple',
                     ]) ?>
 
@@ -71,7 +73,6 @@ $this->registerJs($js);
     <?= $form->field($model, 'musicas')->dropdownList($musica, [
                     'id' => 'musica',
                     'name' => 'musica',
-                    'class'=> 'js-example-basic-multiple js-states form-control',
                     'multiple' => 'multiple',
                     ]) ?>
 
@@ -79,14 +80,12 @@ $this->registerJs($js);
     <?= $form->field($model, 'fotografias')->dropdownList($fotografia, [
                     'id' => 'fotografia',
                     'name' => 'fotografia',
-                    'class'=> 'js-example-basic-multiple js-states form-control',
                     'multiple' => 'multiple',
                     ]) ?>
 
     <?= $form->field($model, 'interpretes')->dropdownList($reparto, [
                     'id' => 'interpretes',
                     'name' => 'interpretes',
-                    'class'=> 'js-example-basic-multiple js-states form-control',
                     'multiple' => 'multiple',
                     ]) ?>
 
@@ -94,7 +93,6 @@ $this->registerJs($js);
     <?= $form->field($model, 'productoras')->dropdownList($productoras, [
                     'id' => 'productoras',
                     'name' => 'productoras',
-                    'class'=> 'js-example-basic-multiple js-states form-control',
                     'multiple' => 'multiple',
                     ]) ?>
 
@@ -102,7 +100,6 @@ $this->registerJs($js);
     <?= $form->field($model, 'generos')->dropdownList($generos, [
                     'id' => 'generos',
                     'name' => 'generos',
-                    'class'=> 'js-example-basic-multiple js-states form-control',
                     'multiple' => 'multiple',
                     ]) ?>
 
