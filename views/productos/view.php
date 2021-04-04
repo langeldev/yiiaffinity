@@ -1,6 +1,7 @@
 <?php
 
 use yii\bootstrap4\Html;
+use yii\grid\GridView;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -32,12 +33,58 @@ $this->params['breadcrumbs'][] = $this->title;
             'titulo',
             'titulo_original',
             'anyo',
-            'duracion',
+            [
+                'label' => 'Duración',
+                'value' => Html::encode($model->duracion . ' min')
+         
+            ],
             'tipo.nombre:text:Tipo',
             'pais',
+            [
+                'label' => 'Dirección',
+                'value' => Html::encode(implode(' ', $direccion))
+         
+            ],
+            [
+                'label' => 'Guion',
+                'value' => Html::encode(implode(' ', $guion))
+         
+            ],
+            [
+                'label' => 'Musica',
+                'value' => Html::encode(implode(' ', $musica))
+         
+            ],
+            [
+                'label' => 'Fotografía',
+                'value' => Html::encode(implode(' ', $fotografia))
+         
+            ],
+            [
+                'label' => 'Reparto',
+                'value' => Html::encode(implode(' ', $reparto))
+         
+            ],
+            [
+                'label' => 'Productora',
+                'value' => Html::encode(implode(' ', $productora))
+         
+            ],
+            [
+                'label' => 'Genero',
+                'value' => Html::encode(implode(' ', $generos))
+         
+            ],
             'sinopsis:ntext',
             'media:decimal'
         ],
     ]) ?>
+<?= GridView::widget([
+    'dataProvider' => $premios,
+    'columns' => [
+        'cantidad',
+        'nombre:text:Premio'
+    ]
+]) ?>
 
 </div>

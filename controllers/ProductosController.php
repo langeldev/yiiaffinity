@@ -22,6 +22,7 @@ use app\models\ProductosSearch;
 use app\models\Tipos;
 use app\models\Usuarios;
 use app\models\Valoraciones;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -90,8 +91,28 @@ class ProductosController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $direccion =$this->getRelacion($model->getDirectors());
+        $guion = $this->getRelacion($model->getGuions());
+        $musica = $this->getRelacion($model->getMusicas());
+        $fotogrtafia = $this->getRelacion($model->getFotografias());
+        $reparto = $this->getRelacion($model->getInterpretes());
+        $productora = $this->getRelacion($model->getProductoras());
+        $generos = $this->getRelacion($model->getGeneros());
+
+        $premios = new ActiveDataProvider([
+            'query' => $model->getPremios()
+        ]);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'direccion' => $direccion,
+            'guion' => $guion,
+            'musica' => $musica,
+            'fotografia' => $fotogrtafia,
+            'reparto' => $reparto,
+            'productora' => $productora,
+            'generos' => $generos,
+            'premios' => $premios
         ]);
     }
 
@@ -308,5 +329,10 @@ class ProductosController extends Controller
             ]);
             $relacion->save();
         }
+    }
+
+    private function getRelacion($rel)
+    {
+        return $rel->select('nombre')->column();
     }
 }
