@@ -1,16 +1,43 @@
 <?php
 
+use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
-use yii\grid\GridView;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Productos */
 
 $this->title = $model->titulo;
 $this->params['breadcrumbs'][] = ['label' => 'Productos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+$url = Url::to(['productos/agregar-premio']);
+$producto_id = $model->id;
+
+$js = <<<EOT
+$('#agregar-premio').click(function(ev){
+    ev.preventDefault();
+    let producto_id = $producto_id;
+    let nombre = $('#premios-nombre').val();
+    let cantidad = $('#premios-cantidad').val();
+    $.ajax({
+        type: 'POST',
+        url: '$url',
+        data: {
+            Premios: {
+                producto_id: producto_id,
+                nombre: nombre,
+                cantidad: cantidad
+            }
+        }
+    })
+      .done(function(data){
+        $('#lista-premios').html(data);
+        $('#premios-nombre').val('');
+        $('#premios-cantidad').val('');
+    });
+});   
+EOT;
+$this->registerJs($js);
 ?>
 <div class="productos-view">
 
@@ -42,49 +69,57 @@ $this->params['breadcrumbs'][] = $this->title;
             'pais',
             [
                 'label' => 'Dirección',
-                'value' => Html::encode(implode(' ', $direccion))
+                'value' => Html::encode(implode(', ', $direccion))
          
             ],
             [
                 'label' => 'Guion',
-                'value' => Html::encode(implode(' ', $guion))
+                'value' => Html::encode(implode(', ', $guion))
          
             ],
             [
-                'label' => 'Musica',
-                'value' => Html::encode(implode(' ', $musica))
+                'label' => 'Música',
+                'value' => Html::encode(implode(', ', $musica))
          
             ],
             [
                 'label' => 'Fotografía',
-                'value' => Html::encode(implode(' ', $fotografia))
+                'value' => Html::encode(implode(', ', $fotografia))
          
             ],
             [
                 'label' => 'Reparto',
-                'value' => Html::encode(implode(' ', $reparto))
+                'value' => Html::encode(implode(', ', $reparto))
          
             ],
             [
                 'label' => 'Productora',
-                'value' => Html::encode(implode(' ', $productora))
+                'value' => Html::encode(implode(', ', $productora))
          
             ],
             [
                 'label' => 'Genero',
-                'value' => Html::encode(implode(' ', $generos))
+                'value' => Html::encode(implode(', ', $generos))
          
             ],
             'sinopsis:ntext',
             'media:decimal'
         ],
     ]) ?>
-<?= GridView::widget([
-    'dataProvider' => $premios,
-    'columns' => [
-        'cantidad',
-        'nombre:text:Premio'
-    ]
-]) ?>
+
+<?php $form = ActiveForm::begin() ?>
+
+<?= $form->field($premio, 'nombre')?>
+
+<?= $form->field($premio, 'cantidad')?>
+
+<div class="form-group">
+        <?= Html::submitButton('Añadir', ['id' => 'agregar-premio','class' => 'btn btn-login']) ?>
+</div>
+
+<?php ActiveForm::end() ?>
+<h3>Premios</h3>
+
+<?= $this->render('_lista-premios', ['premios' => $premios]) ?>
 
 </div>
