@@ -8,6 +8,7 @@ use app\models\Generos;
 use app\models\Guionistas;
 use app\models\Interpretes;
 use app\models\Musica;
+use app\models\Premios;
 use app\models\Productoras;
 use Yii;
 use app\models\Productos;
@@ -43,6 +44,8 @@ class ProductosController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                    'eliminar-premio' => ['POST'],
+                    'agregar-premio' => ['POST'],
                 ],
             ],'access' => [
                 '__class' => AccessControl::class,
@@ -99,9 +102,9 @@ class ProductosController extends Controller
         $reparto = $this->getRelacion($model->getInterpretes());
         $productora = $this->getRelacion($model->getProductoras());
         $generos = $this->getRelacion($model->getGeneros());
-
+        $premio = new Premios(['producto_id' => $id]);   
         $premios = new ActiveDataProvider([
-            'query' => $model->getPremios()
+            'query' => $model->getPremios(),  
         ]);
         return $this->render('view', [
             'model' => $model,
@@ -112,10 +115,53 @@ class ProductosController extends Controller
             'reparto' => $reparto,
             'productora' => $productora,
             'generos' => $generos,
-            'premios' => $premios
-        ]);
+            'premios' => $premios,
+            'premio' => $premio
+            ]);
     }
 
+    /**
+     * Elimina los premios
+     * @return mixed
+     */
+    public function actionEliminarPremio()
+    {
+        if (Yii::$app->request->isAjax) {
+            $premio  = Premios::findOne(
+                Yii::$app->request->post('id')
+            );
+            $model = $this->findModel($premio->producto_id);
+            $premio->delete();
+            $premios =    $premios = new ActiveDataProvider([
+              'query' => $model->getPremios(),
+            ]);
+          return $this->renderAjax('_lista-premios', ['premios' => $premios]);
+        }
+    }
+
+    /**
+    * Agrega los premios
+    * @return mixed
+    */
+    public function actionAgregarPremio()
+    {
+        if (Yii::$app->request->isAjax) {
+            $datos = Yii::$app->request->post('Premios');
+            $premio = new Premios([
+                'producto_id' => $datos['producto_id'],
+                'nombre' => $datos['nombre'],
+                'cantidad' => $datos['cantidad']
+                ]);
+            $premio->save();
+            $model = $this->findModel($premio->producto_id);
+            $premios = $premios = new ActiveDataProvider([
+               'query' => $model->getPremios(),
+            ]);
+            return $this->renderAjax('_lista-premios', ['premios' => $premios]); 
+        }
+    }
+
+     
     /**
      * Creates a new Productos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
