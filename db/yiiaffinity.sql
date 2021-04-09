@@ -36,8 +36,8 @@ CREATE TABLE directores
 DROP TABLE IF EXISTS productos_directores CASCADE;
 CREATE TABLE productos_directores
 (
-      producto_id bigint REFERENCES productos(id)
-    , director_id bigint REFERENCES directores(id)
+      producto_id bigint REFERENCES productos(id) ON DELETE CASCADE
+    , director_id bigint REFERENCES directores(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, director_id)
 );
 
@@ -51,8 +51,8 @@ CREATE TABLE guionistas
 DROP TABLE IF EXISTS productos_guionistas CASCADE;
 CREATE TABLE productos_guionistas
 (
-      producto_id bigint REFERENCES productos(id)
-    , guion_id bigint REFERENCES guionistas(id)
+      producto_id bigint REFERENCES productos(id) ON DELETE CASCADE
+    , guion_id bigint REFERENCES guionistas(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, guion_id)
 );
 
@@ -66,8 +66,8 @@ CREATE TABLE musica
 DROP TABLE IF EXISTS productos_musica CASCADE;
 CREATE TABLE productos_musica
 (
-      producto_id bigint REFERENCES productos(id)
-    , musica_id bigint REFERENCES musica(id)
+      producto_id bigint REFERENCES productos(id) ON DELETE CASCADE
+    , musica_id bigint REFERENCES musica(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, musica_id)
 );
 
@@ -81,8 +81,8 @@ CREATE TABLE fotografia
 DROP TABLE IF EXISTS productos_fotografia CASCADE;
 CREATE TABLE productos_fotografia
 (
-      producto_id bigint REFERENCES productos(id)
-    , fotografia_id bigint REFERENCES fotografia(id)
+      producto_id bigint REFERENCES productos(id) ON DELETE CASCADE
+    , fotografia_id bigint REFERENCES fotografia(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, fotografia_id)
 );
 
@@ -96,8 +96,8 @@ CREATE TABLE interpretes
 DROP TABLE IF EXISTS productos_interpretes CASCADE;
 CREATE TABLE productos_interpretes
 (
-      producto_id bigint REFERENCES productos(id)
-    , interprete_id bigint REFERENCES interpretes(id)
+      producto_id bigint REFERENCES productos(id) ON DELETE CASCADE
+    , interprete_id bigint REFERENCES interpretes(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, interprete_id)
 );
 
@@ -111,8 +111,8 @@ CREATE TABLE productoras
 DROP TABLE IF EXISTS productos_productoras CASCADE;
 CREATE TABLE productos_productoras
 (
-      producto_id bigint REFERENCES productos(id)
-    , productora_id bigint REFERENCES productoras(id)
+      producto_id bigint REFERENCES productos(id) ON DELETE CASCADE
+    , productora_id bigint REFERENCES productoras(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, productora_id)
 );
 
@@ -127,8 +127,8 @@ CREATE TABLE generos
 DROP TABLE IF EXISTS productos_generos CASCADE;
 CREATE TABLE productos_generos
 (
-      producto_id bigint REFERENCES productos(id)
-    , genero_id bigint REFERENCES generos(id)
+      producto_id bigint REFERENCES productos(id) ON DELETE CASCADE
+    , genero_id bigint REFERENCES generos(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, genero_id)
 );
 
@@ -139,7 +139,6 @@ CREATE TABLE premios
     , producto_id       bigint          NOT NULL      REFERENCES productos(id) ON DELETE CASCADE
     , cantidad          smallint        NOT NULL      CONSTRAINT ck_premios CHECK (cantidad >= 1)
     , nombre            varchar(255)    NOT NULL
-
 );
 
 
