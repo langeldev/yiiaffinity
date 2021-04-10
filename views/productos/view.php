@@ -39,14 +39,14 @@ $('#agregar-premio').click(function(ev){
 EOT;
 $this->registerJs($js);
 ?>
-<div class="productos-view">
+<div class="fondo p-2">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-principal']) ?>
         <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+            'class' => 'btn btn-eliminar',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
@@ -114,7 +114,7 @@ $this->registerJs($js);
 <?= $form->field($premio, 'cantidad')?>
 
 <div class="form-group">
-        <?= Html::submitButton('Añadir', ['id' => 'agregar-premio','class' => 'btn btn-login']) ?>
+        <?= Html::submitButton('Añadir', ['id' => 'agregar-premio','class' => 'btn btn-principal']) ?>
 </div>
 
 <?php ActiveForm::end() ?>

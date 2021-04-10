@@ -9,7 +9,7 @@ $this->title = 'Modificar Usuario: ' . $model->login;
 $this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['usuarios/index']];
 $this->params['breadcrumbs'][] = 'Modificar';
 ?>
-<div class="usuarios-update">
+<div class="fondo p-2">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = 'Modificar';
     ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Modificar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Modificar', ['class' => 'btn btn-principal']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 

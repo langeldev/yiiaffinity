@@ -3,10 +3,11 @@
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 
+
 $this->title = 'Editar Perfil';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="usuarios-form">
+<div class="fondo p-2">
 
 <?php $form = ActiveForm::begin(); ?>
 
@@ -17,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 <div class="form-group">
-    <?= Html::submitButton('Modificar', ['class' => 'btn btn-success']) ?>
+    <?= Html::submitButton('Modificar', ['class' => 'btn btn-principal']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

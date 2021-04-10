@@ -9,7 +9,7 @@ $this->title = 'Dar de alta un producto';
 $this->params['breadcrumbs'][] = ['label' => 'Productos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="productos-create">
+<div class="fondo p-2">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

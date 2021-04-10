@@ -10,7 +10,7 @@
 
 <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => true]) ?>
 
-<?= $form->field($model, 'genero')->dropdownList($generos) ?>
+<?= $form->field($model, 'genero')->dropdownList($generos, ['prompt' => 'Seleccione']) ?>
 
 <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
 

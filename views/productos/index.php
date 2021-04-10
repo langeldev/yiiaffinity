@@ -10,12 +10,12 @@ use yii\grid\GridView;
 $this->title = 'Productos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="productos-index">
+<div class="fondo p-2">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Crear Producto', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Producto', ['create'], ['class' => 'btn btn-principal']) ?>
     </p>
 
     <?= GridView::widget([

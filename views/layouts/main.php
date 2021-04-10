@@ -26,27 +26,33 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="wrap mt-5">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('@web/img/logo.png', ['class' => 'd-inline-block aling-top logo', 'alt' => 'YIIAFFINITY']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-dark bg-dark navbar-expand-md fixed-top',
+            'class' => 'navbar-light bg-warning navbar-expand-md fixed-top',
         ],
+   
         'collapseOptions' => [
             'class' => 'justify-content-end',
         ],
     ]);
+ 
+    echo '<div class="justify-content-md-center">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Título">
+            </form>
+        </div>';
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Productos', 'url' => ['/productos/index']],
             ['label' => 'Usuarios', 'url' => ['/usuarios/index']],
             Yii::$app->user->isGuest ? '' 
-            :['label' => 'Editar Perfil', 'url' => ['/usuarios/editar-perfil']],
+            :['label' => 'Editar Perfil', 'options' => ['class' => 'd-md-none'],'url' => ['/usuarios/editar-perfil']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -54,7 +60,7 @@ AppAsset::register($this);
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->login . ')',
-                    ['class' => 'btn btn-dark nav-link logout']
+                    ['class' => 'btn btn-warning nav-link logout']
                 )
                 . Html::endForm()
                 . '</li>'
@@ -75,7 +81,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="float-left">&copy; YiiAffinity <?= date('Y') ?></p>
 
         <p class="float-right"><?= Yii::powered() ?></p>
     </div>

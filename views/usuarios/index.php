@@ -8,12 +8,12 @@ $this->title = 'Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="usuarios-index">
+<div class="fondo p-2">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Crear Usuario', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Usuario', ['create'], ['class' => 'btn btn-principal']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

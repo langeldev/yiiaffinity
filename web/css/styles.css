@@ -1,9 +1,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
 
+body{
+    background-color: #0f49b9;
+    background-image: linear-gradient(40deg, #0f49b9, #38c0e7);
+    background-image: -moz-linear-gradient(40deg, #0f49b9, #38c0e7);;
+    background-image: -o-linear-gradient(40deg, #0f49b9, #38c0e7);
+    background-image: -webkit-linear-gradient(40deg, #0f49b9, #38c0e7);
+    background-attachment: fixed;
+}
+
 /*Login*/
 
 .site-login{
+    background: url('../img/carteles.jpg') 100%;
+    min-height: 600px;
     box-shadow: -5px 1px 22px #0f49b9;
 }
 
@@ -48,7 +59,7 @@
     color: #777;
 }
 
-.btn-login{
+.btn-principal{
     background-color: rgb(241, 189, 19);
     border-radius: 0;
     color: black;
@@ -58,15 +69,26 @@
     font-family: 'Oswald', sans-serif;
 }
 
-.btn-login:hover{
+.btn-principal:hover{
     background-color: rgb(139, 77, 5);
     color: white;
 }
 
-.site-login{
-    background: url('../img/carteles.jpg') 100%;
-    min-height: 600px;
+.btn-eliminar{
+    background-color: rgb(241, 19, 19);
+    border-radius: 0;
+    color: rgb(224, 195, 195);
+    transition: background-color, color;
+    transition-duration: 300ms;
+    transition-timing-function: linear;
+    font-family: 'Oswald', sans-serif;
 }
+
+.btn-eliminar:hover{
+    background-color: rgb(110, 3, 3);
+    color: white;
+}
+
 
 .formulario{
     background: white;
@@ -74,4 +96,50 @@
 
 .imagen-login{
     background: rgba(0,0,0,0.7);
+}
+
+
+.fondo{
+    background: white;
+    box-shadow: -5px 1px 22px #0f49b9;
+    
+}
+
+.nav-lateral{
+    background-color: #c9cdce;
+    border-right: 1px solid #0f49b9;
+}
+
+.nav-lateral ul{
+    margin-top: 30px;
+}
+
+.nav-lateral li{
+    list-style: none;
+    padding-left: 0;
+}
+
+.body-content h2{
+    margin-top: 20px;
+}
+
+.cartel{
+    height: 300px;
+    width: 100%;
+    background-color: #ccc;
+}
+
+.titulo{
+    height: 100px;
+    overflow-y: hidden;
+    text-decoration: none;
+}
+
+.logo{
+    height: 60px;
+    margin: 0;
+    padding: 2px;
+}
+.navbar {
+    font-family: 'Oswald', sans-serif;
 }

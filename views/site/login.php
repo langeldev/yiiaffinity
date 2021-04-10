@@ -8,27 +8,13 @@
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
-$css = "
-body{
-    background-color: #0f49b9;
-    background-image: linear-gradient(40deg, #0f49b9, #38c0e7);
-    background-image: -moz-linear-gradient(40deg, #0f49b9, #38c0e7);;
-    background-image: -o-linear-gradient(40deg, #0f49b9, #38c0e7);
-    background-image: -webkit-linear-gradient(40deg, #0f49b9, #38c0e7);
-    background-attachment: fixed;
-}
-
-";
-
-
-$this->registerCss($css);
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
 
-<div class="site-login m-5 row rounded">
+<div class="site-login m-md-5 mx-0 row rounded">
     <div class="col-12 col-md-6 formulario ">
 
         <h1 class="text-center my-4"><?= Html::encode($this->title) ?></h1>
@@ -49,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="form-group">
             <div class="text-center">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-login col-12 col-lg-4 mt-3', 'name' => 'login-button']) ?>
-                <?= Html::a('Registrarse', ['usuarios/registro'], ['class' => 'btn btn-login col-12 col-lg-4 mt-3']) ?>
+                <?= Html::submitButton('Login', ['class' => 'btn btn-principal col-12 col-lg-4 mt-3', 'name' => 'login-button']) ?>
+                <?= Html::a('Registrarse', ['usuarios/registro'], ['class' => 'btn btn-principal col-12 col-lg-4 mt-3']) ?>
             </div>
 
         </div>

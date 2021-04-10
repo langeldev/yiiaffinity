@@ -7,7 +7,7 @@ $this->title = 'Dar de alta';
 $this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Crear';
 ?>
-<div class="usuarios-create">
+<div class="fondo p-2">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = 'Crear';
     ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Dar de alta', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Dar de alta', ['class' => 'btn btn-principal']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 

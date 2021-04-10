@@ -176,4 +176,14 @@ class Usuarios extends ActiveRecord implements IdentityInterface
       
         return ArrayHelper::map($genero_array, 'id', 'name');
     }
+    
+    /**
+     * Comprueba si el usuario logueado es Administrador
+     * @return bool
+     */
+    public function getSoyAdmin()
+    {
+        $usuario = Usuarios::findOne(Yii::$app->user->id);
+        return $usuario->rol->rol === 'admin';
+    }
 }

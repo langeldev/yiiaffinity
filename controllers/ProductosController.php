@@ -62,8 +62,7 @@ class ProductosController extends Controller
                         'actions' =>  ['index','create', 'update', 'delete', 'view'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            $usuario = Usuarios::findOne(Yii::$app->user->id);
-                            return $usuario->rol->rol === 'admin';
+                            return Yii::$app->user->identity->soyAdmin;
                         }
                     ],
                 ],

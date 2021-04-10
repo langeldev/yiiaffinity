@@ -12,7 +12,7 @@
  
 <?= $form->field($model, 'rol_id')->dropdownList($roles) ?>
 
-<?= $form->field($model, 'genero')->dropdownList($generos) ?>
+<?= $form->field($model, 'genero')->dropdownList($generos, ['prompt' => 'Seleccione']) ?>
 
 <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
 

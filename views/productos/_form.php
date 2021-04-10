@@ -36,7 +36,7 @@ EOT;
 $this->registerJs($js);
 ?>
 
-<div class="productos-form p-1">
+<div class="productos-form p-2">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -48,7 +48,7 @@ $this->registerJs($js);
 
     <?= $form->field($model, 'duracion')->textInput() ?>
 
-    <?= $form->field($model, 'tipo_id')->dropdownList($tipos) ?>
+    <?= $form->field($model, 'tipo_id')->dropdownList($tipos, ['prompt' => 'Seleccione']) ?>
 
     <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
 
@@ -104,7 +104,7 @@ $this->registerJs($js);
                     ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-principal']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

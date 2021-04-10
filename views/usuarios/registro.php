@@ -7,7 +7,7 @@ $this->title = 'Registrarse';
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="usuarios-form">
+<div class="fondo p-2">
 
 <?php $form = ActiveForm::begin(); ?>
 
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <div class="form-group">
-    <?= Html::submitButton('Registrarse', ['class' => 'btn btn-success']) ?>
+    <?= Html::submitButton('Registrarse', ['class' => 'btn btn-principal']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>
