@@ -105,6 +105,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <dt>Tu crítica</dt>
             <dd>
                 <?php if ($critica !== null): ?>
+                    <?= Html::a('Eliminar', ['criticas/delete', 'id' => $critica->id], [
+                        'class' => 'btn btn-eliminar',
+                                'data' => [
+                                'confirm' => '¿Estás seguro de que quiere borrar la crítica?',
+                                'method' => 'post',
+                                ],
+                    ]) ?>
                     <h5><?= $critica->titulo?></h5> 
                     <h6><?=$critica->valoracion?></h6>
                         
