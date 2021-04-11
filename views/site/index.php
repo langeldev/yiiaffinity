@@ -28,7 +28,7 @@ $this->title = 'YiiAffinity';
                                 <img class="card-img-top cartel" src="#" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title titulo">
-                                        <?= Html::a($producto->titulo, ['productos/view', 'id' => $producto->id]) ?>
+                                        <?= Html::a($producto->titulo, ['productos/ficha', 'id' => $producto->id]) ?>
                                     </h5>
                                 </div>
                             </div>
