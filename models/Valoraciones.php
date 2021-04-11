@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "valoraciones".
@@ -71,18 +70,5 @@ class Valoraciones extends \yii\db\ActiveRecord
     public function getUsuario()
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('valoraciones');
-    }
-
-    /**
-     * Devuelve un array de clave y valor con los puntos para valorar
-     * @return array
-     */
-    public static function listaPuntos()
-    {
-        $puntos = [];
-        for ($i = 1; $i <=10; $i++) {
-            $puntos[] = ['id' => $i, 'name' => $i];
-        }
-        return ArrayHelper::map($puntos, 'id', 'name');;
     }
 }

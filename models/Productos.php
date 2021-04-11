@@ -344,42 +344,4 @@ class Productos extends \yii\db\ActiveRecord
             1
         );
     }
-
-
-    /**
-     * Suma las valoraciones de las críticas deĺ producto
-     *
-     * @return int $number
-     */
-    private function sumaCriticas()
-    {
-        return Criticas::find()->where(['producto_id' => $this->id])->sum('valoracion');
-    }
-
-    /**
-     * Cuenta la cantidad de criticas que tiene un producto
-     *
-     * @return int $number
-     */
-    public function criticasTotales()
-    {
-        return Criticas::find()->where(['producto_id' => $this->id])->count();
-    }
-
-    /**
-     * Hace la media de las valoraciones de las criticas
-     *
-     * @return float $number
-     */
-    public function getMediaCriticas()
-    {
-        return number_format(
-            ($this->criticasTotales() !== 0
-            ? $this->sumaCriticas() / $this->criticasTotales()
-            : 0
-            ),
-            1
-        );
-    }
-
 }
