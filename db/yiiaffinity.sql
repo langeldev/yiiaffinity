@@ -189,10 +189,10 @@ CREATE TABLE criticas
       id          bigserial     PRIMARY KEY
     , producto_id bigint        NOT NULL REFERENCES productos(id) ON DELETE CASCADE 
     , usuario_id  bigint        NOT NULL REFERENCES usuarios(id)  ON DELETE CASCADE
-    , valoracion  numeric(2)        
+    , valoracion  numeric(2)    NOT NULL
     , titulo      varchar(255)  NOT NULL
     , critica     text          NOT NULL
-    , created_at  timestamp(0)  DEFAULT CURRENT_TIMESTAMP
+    , created_at  timestamp(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
     , UNIQUE (producto_id, usuario_id)
 );
 
