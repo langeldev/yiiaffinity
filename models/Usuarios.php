@@ -26,6 +26,8 @@ use function PHPSTORM_META\map;
  * @property string|null $ciudad
  *
  * @property Roles $rol
+ * @property Criticas[] $criticas
+ * @property Productos[] $productos
  */
 class Usuarios extends ActiveRecord implements IdentityInterface
 {
@@ -163,6 +165,25 @@ class Usuarios extends ActiveRecord implements IdentityInterface
         return $this->hasOne(Roles::class, ['id' => 'rol_id'])->inverseOf('usuarios');
     }
 
+     /**
+     * Gets query for [[Criticas]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCriticas()
+    {
+        return $this->hasMany(Criticas::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+
+    /**
+     * Gets query for [[Productos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProductos()
+    {
+        return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('criticas', ['usuario_id' => 'id']);
+    }
     /**
      * Genera un array de clave y valor con los géneros de usuarios
      * @return array

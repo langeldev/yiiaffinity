@@ -4,7 +4,6 @@ use yii\bootstrap4\Html;
 use yii\widgets\DetailView;
 
 $this->title = $model->titulo;
-$this->params['breadcrumbs'][] = ['label' => 'Productos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
@@ -103,9 +102,27 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endforeach?>    
                 </div>
             </dd>
+            <dt>Tu crítica</dt>
+            <dd>
+                <?php if ($critica !== null): ?>
+                    <h5><?= $critica->titulo?></h5> 
+                    <h6><?=$critica->valoracion?></h6>
+                        
+                    <?= $critica->critica?>
+                <?php else: ?>
+                    <div id="tu-critica">
+                        <p>Escribe tu opinión sobre <?=Html::encode($model->titulo)?></p>
+                        <?= Html::a('Añade tu critica', ['criticas/create', 'id' => $model->id]) ?>
+                    </div>
+                <?php endif ?>
+        
+            </dd>
         </dl>
 
 
+        <p>
+            
+        </p>
 </section>
 
 <aside class="col-4 ">
