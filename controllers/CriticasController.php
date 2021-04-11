@@ -114,9 +114,10 @@ class CriticasController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $critica = $this->findModel($id);
+        $producto = $critica->producto_id;
+        $critica->delete();
+        return $this->redirect(['productos/ficha', 'id' => $producto]);
     }
 
     /**
