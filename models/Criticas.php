@@ -34,16 +34,16 @@ class Criticas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['producto_id', 'usuario_id', 'titulo', 'critica'], 'required'],
+            [['producto_id', 'usuario_id', 'titulo', 'critica', 'valoracion'], 'required'],
             [['producto_id', 'usuario_id'], 'default', 'value' => null],
             [['producto_id', 'usuario_id'], 'integer'],
             [['valoracion'], 'number'],
             [['critica'], 'string'],
-            [['created_at'], 'safe'],
+            [['created_at'], 'date', 'format' =>'php:Y-m-d H:i:s'],
             [['titulo'], 'string', 'max' => 255],
             [['producto_id', 'usuario_id'], 'unique', 'targetAttribute' => ['producto_id', 'usuario_id']],
-            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::className(), 'targetAttribute' => ['producto_id' => 'id']],
-            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
+            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::class, 'targetAttribute' => ['producto_id' => 'id']],
+            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
         ];
     }
 
@@ -70,7 +70,7 @@ class Criticas extends \yii\db\ActiveRecord
      */
     public function getProducto()
     {
-        return $this->hasOne(Productos::className(), ['id' => 'producto_id'])->inverseOf('criticas');
+        return $this->hasOne(Productos::class, ['id' => 'producto_id'])->inverseOf('criticas');
     }
 
     /**
@@ -80,6 +80,6 @@ class Criticas extends \yii\db\ActiveRecord
      */
     public function getUsuario()
     {
-        return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('criticas');
+        return $this->hasOne(Usuarios::class, ['id' => 'usuario_id'])->inverseOf('criticas');
     }
 }

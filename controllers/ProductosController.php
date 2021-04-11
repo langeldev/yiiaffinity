@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Criticas;
 use app\models\Directores;
 use app\models\Fotografia;
 use app\models\Generos;
@@ -123,8 +124,10 @@ class ProductosController extends Controller
     public function actionFicha($id)
     {
         $model = $this->findModel($id);
+        $critica = Criticas::findOne(['usuario_id' => Yii::$app->user->id]);
         return $this->render('ficha', [
            'model' => $model,
+           'critica' => $critica,
         ]);
     }
     /**
