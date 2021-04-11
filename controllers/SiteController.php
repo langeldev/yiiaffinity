@@ -65,8 +65,7 @@ class SiteController extends Controller
         $productos = Productos::find()->all();
         return $this->render('index', [
             'productos' => $productos,
-        ]
-    );
+        ]);
     }
 
     /**

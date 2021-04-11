@@ -101,9 +101,9 @@ class ProductosController extends Controller
         $reparto = $this->getRelacion($model->getInterpretes());
         $productora = $this->getRelacion($model->getProductoras());
         $generos = $this->getRelacion($model->getGeneros());
-        $premio = new Premios(['producto_id' => $id]);   
+        $premio = new Premios(['producto_id' => $id]);
         $premios = new ActiveDataProvider([
-            'query' => $model->getPremios(),  
+            'query' => $model->getPremios(),
         ]);
         return $this->render('view', [
             'model' => $model,
@@ -119,6 +119,14 @@ class ProductosController extends Controller
             ]);
     }
 
+
+    public function actionFicha($id)
+    {
+        $model = $this->findModel($id);
+        return $this->render('ficha', [
+           'model' => $model,
+        ]);
+    }
     /**
      * Elimina los premios
      * @return mixed
@@ -134,7 +142,7 @@ class ProductosController extends Controller
             $premios =    $premios = new ActiveDataProvider([
               'query' => $model->getPremios(),
             ]);
-          return $this->renderAjax('_lista-premios', ['premios' => $premios]);
+            return $this->renderAjax('_lista-premios', ['premios' => $premios]);
         }
     }
 
@@ -156,7 +164,7 @@ class ProductosController extends Controller
             $premios = $premios = new ActiveDataProvider([
                'query' => $model->getPremios(),
             ]);
-            return $this->renderAjax('_lista-premios', ['premios' => $premios]); 
+            return $this->renderAjax('_lista-premios', ['premios' => $premios]);
         }
     }
 
