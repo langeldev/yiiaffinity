@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "productos_interpretes".
  *
  * @property int $producto_id
- * @property int $interprete_id
+ * @property int $persona_id
  *
- * @property Interpretes $interprete
+ * @property Personas $persona
  * @property Productos $producto
  */
 class ProductosInterpretes extends \yii\db\ActiveRecord
@@ -29,12 +29,12 @@ class ProductosInterpretes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['producto_id', 'interprete_id'], 'required'],
-            [['producto_id', 'interprete_id'], 'default', 'value' => null],
-            [['producto_id', 'interprete_id'], 'integer'],
-            [['producto_id', 'interprete_id'], 'unique', 'targetAttribute' => ['producto_id', 'interprete_id']],
-            [['interprete_id'], 'exist', 'skipOnError' => true, 'targetClass' => Interpretes::className(), 'targetAttribute' => ['interprete_id' => 'id']],
-            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::className(), 'targetAttribute' => ['producto_id' => 'id']],
+            [['producto_id', 'persona_id'], 'required'],
+            [['producto_id', 'persona_id'], 'default', 'value' => null],
+            [['producto_id', 'persona_id'], 'integer'],
+            [['producto_id', 'persona_id'], 'unique', 'targetAttribute' => ['producto_id', 'persona_id']],
+            [['persona_id'], 'exist', 'skipOnError' => true, 'targetClass' => Personas::class, 'targetAttribute' => ['persona_id' => 'id']],
+            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::class, 'targetAttribute' => ['producto_id' => 'id']],
         ];
     }
 
@@ -45,18 +45,18 @@ class ProductosInterpretes extends \yii\db\ActiveRecord
     {
         return [
             'producto_id' => 'Producto ID',
-            'interprete_id' => 'Interprete ID',
+            'persona_id' => 'Persona ID',
         ];
     }
 
     /**
-     * Gets query for [[Interprete]].
+     * Gets query for [[Persona]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getInterprete()
+    public function getPersona()
     {
-        return $this->hasOne(Interpretes::className(), ['id' => 'interprete_id'])->inverseOf('productosInterpretes');
+        return $this->hasOne(Personas::class, ['id' => 'persona_id'])->inverseOf('productosInterpretes');
     }
 
     /**
@@ -66,6 +66,6 @@ class ProductosInterpretes extends \yii\db\ActiveRecord
      */
     public function getProducto()
     {
-        return $this->hasOne(Productos::className(), ['id' => 'producto_id'])->inverseOf('productosInterpretes');
+        return $this->hasOne(Productos::class, ['id' => 'producto_id'])->inverseOf('productosInterpretes');
     }
 }

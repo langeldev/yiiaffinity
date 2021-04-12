@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "productos_guionistas".
  *
  * @property int $producto_id
- * @property int $guion_id
+ * @property int $persona_id
  *
- * @property Guionistas $guion
+ * @property Personas $persona
  * @property Productos $producto
  */
 class ProductosGuionistas extends \yii\db\ActiveRecord
@@ -29,12 +29,12 @@ class ProductosGuionistas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['producto_id', 'guion_id'], 'required'],
-            [['producto_id', 'guion_id'], 'default', 'value' => null],
-            [['producto_id', 'guion_id'], 'integer'],
-            [['producto_id', 'guion_id'], 'unique', 'targetAttribute' => ['producto_id', 'guion_id']],
-            [['guion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Guionistas::className(), 'targetAttribute' => ['guion_id' => 'id']],
-            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::className(), 'targetAttribute' => ['producto_id' => 'id']],
+            [['producto_id', 'persona_id'], 'required'],
+            [['producto_id', 'persona_id'], 'default', 'value' => null],
+            [['producto_id', 'persona_id'], 'integer'],
+            [['producto_id', 'persona_id'], 'unique', 'targetAttribute' => ['producto_id', 'persona_id']],
+            [['persona_id'], 'exist', 'skipOnError' => true, 'targetClass' => Personas::class, 'targetAttribute' => ['persona_id' => 'id']],
+            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::class, 'targetAttribute' => ['producto_id' => 'id']],
         ];
     }
 
@@ -45,18 +45,18 @@ class ProductosGuionistas extends \yii\db\ActiveRecord
     {
         return [
             'producto_id' => 'Producto ID',
-            'guion_id' => 'Guion ID',
+            'persona_id' => 'Persona ID',
         ];
     }
 
     /**
-     * Gets query for [[Guion]].
+     * Gets query for [[Persona]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getGuion()
+    public function getPersona()
     {
-        return $this->hasOne(Guionistas::className(), ['id' => 'guion_id'])->inverseOf('productosGuionistas');
+        return $this->hasOne(Personas::class, ['id' => 'persona_id'])->inverseOf('productosGuionistas');
     }
 
     /**
@@ -66,6 +66,6 @@ class ProductosGuionistas extends \yii\db\ActiveRecord
      */
     public function getProducto()
     {
-        return $this->hasOne(Productos::className(), ['id' => 'producto_id'])->inverseOf('productosGuionistas');
+        return $this->hasOne(Productos::class, ['id' => 'producto_id'])->inverseOf('productosGuionistas');
     }
 }

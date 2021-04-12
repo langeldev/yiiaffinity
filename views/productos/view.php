@@ -48,7 +48,7 @@ $this->registerJs($js);
         <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-eliminar',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Estás seguro de que quiere borrar este producto?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -98,7 +98,7 @@ $this->registerJs($js);
          
             ],
             [
-                'label' => 'Genero',
+                'label' => 'Géneros',
                 'value' => Html::encode(implode(', ', $generos))
          
             ],

@@ -23,17 +23,17 @@ use Yii;
  * @property Premios[] $premios
  * @property Tipos $tipo
  * @property ProductosDirectores[] $productosDirectores
- * @property Directores[] $directors
+ * @property Personas[] $directores
  * @property ProductosFotografia[] $productosFotografias
- * @property Fotografia[] $fotografias
+ * @property Personas[] $fotografia
  * @property ProductosGeneros[] $productosGeneros
  * @property Generos[] $generos
  * @property ProductosGuionistas[] $productosGuionistas
- * @property Guionistas[] $guions
+ * @property Personas[] $guion
  * @property ProductosInterpretes[] $productosInterpretes
- * @property Interpretes[] $interpretes
+ * @property Personas[] $interpretes
  * @property ProductosMusica[] $productosMusicas
- * @property Musica[] $musicas
+ * @property Personas[] $musica
  * @property ProductosProductoras[] $productosProductoras
  * @property Productoras[] $productoras
  * @property Valoraciones[] $valoraciones
@@ -79,9 +79,9 @@ class Productos extends \yii\db\ActiveRecord
             'tipo_id' => 'Tipo',
             'pais' => 'País',
             'sinopsis' => 'Sinopsis',
-            'directors' => 'Dirección',
-            'guions' => 'Guion',
-            'musicas' => 'Música',
+            'directores' => 'Dirección',
+            'guion' => 'Guion',
+            'musica' => 'Música',
             'fotografia' => 'Fotografía',
             'interpretes' => 'Reparto',
             'productoras' => 'Porductora',
@@ -160,13 +160,13 @@ class Productos extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Directors]].
+     * Gets query for [[Directores]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getDirectors()
+    public function getDirectores()
     {
-        return $this->hasMany(Directores::class, ['id' => 'director_id'])->viaTable('productos_directores', ['producto_id' => 'id']);
+        return $this->hasMany(Personas::class, ['id' => 'persona_id'])->viaTable('productos_directores', ['producto_id' => 'id']);
     }
 
     /**
@@ -180,13 +180,13 @@ class Productos extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Fotografias]].
+     * Gets query for [[Fotografia]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getFotografias()
+    public function getFotografia()
     {
-        return $this->hasMany(Fotografia::class, ['id' => 'fotografia_id'])->viaTable('productos_fotografia', ['producto_id' => 'id']);
+        return $this->hasMany(Personas::class, ['id' => 'persona_id'])->viaTable('productos_fotografia', ['producto_id' => 'id']);
     }
 
     /**
@@ -220,13 +220,13 @@ class Productos extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Guions]].
+     * Gets query for [[Guion]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getGuions()
+    public function getGuion()
     {
-        return $this->hasMany(Guionistas::class, ['id' => 'guion_id'])->viaTable('productos_guionistas', ['producto_id' => 'id']);
+        return $this->hasMany(Personas::class, ['id' => 'persona_id'])->viaTable('productos_guionistas', ['producto_id' => 'id']);
     }
 
     /**
@@ -246,7 +246,7 @@ class Productos extends \yii\db\ActiveRecord
      */
     public function getInterpretes()
     {
-        return $this->hasMany(Interpretes::class, ['id' => 'interprete_id'])->viaTable('productos_interpretes', ['producto_id' => 'id']);
+        return $this->hasMany(Personas::class, ['id' => 'persona_id'])->viaTable('productos_interpretes', ['producto_id' => 'id']);
     }
 
     /**
@@ -260,13 +260,13 @@ class Productos extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Musicas]].
+     * Gets query for [[Musica]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getMusicas()
+    public function getMusica()
     {
-        return $this->hasMany(Musica::class, ['id' => 'musica_id'])->viaTable('productos_musica', ['producto_id' => 'id']);
+        return $this->hasMany(Personas::class, ['id' => 'persona_id'])->viaTable('productos_musica', ['producto_id' => 'id']);
     }
 
     /**
@@ -309,7 +309,7 @@ class Productos extends \yii\db\ActiveRecord
         return $this->hasMany(Usuarios::class, ['id' => 'usuario_id'])->viaTable('valoraciones', ['producto_id' => 'id']);
     }
 
-    /**
+      /**
      * Suma las valoraciones del producto
      *
      * @return int $number
@@ -344,7 +344,6 @@ class Productos extends \yii\db\ActiveRecord
             1
         );
     }
-
 
     /**
      * Suma las valoraciones de las críticas deĺ producto
@@ -381,5 +380,4 @@ class Productos extends \yii\db\ActiveRecord
             1
         );
     }
-
 }

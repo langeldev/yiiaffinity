@@ -55,7 +55,7 @@ $this->registerJs($js);
     <?= $form->field($model, 'sinopsis')->textarea(['rows' => 6]) ?>
 
 
-    <?= $form->field($model, 'directors')->dropdownList($directores, [
+    <?= $form->field($model, 'directores')->dropdownList($personas, [
         'id' => 'directores',
         'name' => 'directores',
         'multiple' => 'multiple',
@@ -63,27 +63,27 @@ $this->registerJs($js);
         ])->label('Directores', ['for' => 'directores']) ?>
 
 
-    <?= $form->field($model, 'guions')->dropdownList($guionistas, [
+    <?= $form->field($model, 'guion')->dropdownList($personas, [
                     'id' => 'guionistas',
                     'name' => 'guionistas',
                     'multiple' => 'multiple',
                     ]) ?>
 
 
-    <?= $form->field($model, 'musicas')->dropdownList($musica, [
+    <?= $form->field($model, 'musica')->dropdownList($personas, [
                     'id' => 'musica',
                     'name' => 'musica',
                     'multiple' => 'multiple',
                     ]) ?>
 
 
-    <?= $form->field($model, 'fotografias')->dropdownList($fotografia, [
+    <?= $form->field($model, 'fotografia')->dropdownList($personas, [
                     'id' => 'fotografia',
                     'name' => 'fotografia',
                     'multiple' => 'multiple',
                     ]) ?>
 
-    <?= $form->field($model, 'interpretes')->dropdownList($reparto, [
+    <?= $form->field($model, 'interpretes')->dropdownList($personas, [
                     'id' => 'interpretes',
                     'name' => 'interpretes',
                     'multiple' => 'multiple',

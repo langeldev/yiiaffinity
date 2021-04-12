@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "productos_musica".
  *
  * @property int $producto_id
- * @property int $musica_id
+ * @property int $persona_id
  *
- * @property Musica $musica
+ * @property Personas $persona
  * @property Productos $producto
  */
 class ProductosMusica extends \yii\db\ActiveRecord
@@ -29,11 +29,11 @@ class ProductosMusica extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['producto_id', 'musica_id'], 'required'],
-            [['producto_id', 'musica_id'], 'default', 'value' => null],
-            [['producto_id', 'musica_id'], 'integer'],
-            [['producto_id', 'musica_id'], 'unique', 'targetAttribute' => ['producto_id', 'musica_id']],
-            [['musica_id'], 'exist', 'skipOnError' => true, 'targetClass' => Musica::className(), 'targetAttribute' => ['musica_id' => 'id']],
+            [['producto_id', 'persona_id'], 'required'],
+            [['producto_id', 'persona_id'], 'default', 'value' => null],
+            [['producto_id', 'persona_id'], 'integer'],
+            [['producto_id', 'persona_id'], 'unique', 'targetAttribute' => ['producto_id', 'persona_id']],
+            [['persona_id'], 'exist', 'skipOnError' => true, 'targetClass' => Personas::className(), 'targetAttribute' => ['persona_id' => 'id']],
             [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::className(), 'targetAttribute' => ['producto_id' => 'id']],
         ];
     }
@@ -45,18 +45,18 @@ class ProductosMusica extends \yii\db\ActiveRecord
     {
         return [
             'producto_id' => 'Producto ID',
-            'musica_id' => 'Musica ID',
+            'persona_id' => 'Persona ID',
         ];
     }
 
     /**
-     * Gets query for [[Musica]].
+     * Gets query for [[Persona]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getMusica()
+    public function getPersona()
     {
-        return $this->hasOne(Musica::class, ['id' => 'musica_id'])->inverseOf('productosMusicas');
+        return $this->hasOne(Personas::className(), ['id' => 'persona_id'])->inverseOf('productosMusicas');
     }
 
     /**
@@ -66,6 +66,6 @@ class ProductosMusica extends \yii\db\ActiveRecord
      */
     public function getProducto()
     {
-        return $this->hasOne(Productos::class, ['id' => 'producto_id'])->inverseOf('productosMusicas');
+        return $this->hasOne(Productos::className(), ['id' => 'producto_id'])->inverseOf('productosMusicas');
     }
 }

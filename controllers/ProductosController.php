@@ -3,12 +3,8 @@
 namespace app\controllers;
 
 use app\models\Criticas;
-use app\models\Directores;
-use app\models\Fotografia;
 use app\models\Generos;
-use app\models\Guionistas;
-use app\models\Interpretes;
-use app\models\Musica;
+use app\models\Personas;
 use app\models\Premios;
 use app\models\Productoras;
 use Yii;
@@ -22,8 +18,6 @@ use app\models\ProductosMusica;
 use app\models\ProductosProductoras;
 use app\models\ProductosSearch;
 use app\models\Tipos;
-use app\models\Usuarios;
-use app\models\Valoraciones;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -95,10 +89,10 @@ class ProductosController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        $direccion =$this->getRelacion($model->getDirectors());
-        $guion = $this->getRelacion($model->getGuions());
-        $musica = $this->getRelacion($model->getMusicas());
-        $fotogrtafia = $this->getRelacion($model->getFotografias());
+        $direccion =$this->getRelacion($model->getDirectores());
+        $guion = $this->getRelacion($model->getGuion());
+        $musica = $this->getRelacion($model->getMusica());
+        $fotogrtafia = $this->getRelacion($model->getFotografia());
         $reparto = $this->getRelacion($model->getInterpretes());
         $productora = $this->getRelacion($model->getProductoras());
         $generos = $this->getRelacion($model->getGeneros());
@@ -106,6 +100,8 @@ class ProductosController extends Controller
         $premios = new ActiveDataProvider([
             'query' => $model->getPremios(),
         ]);
+
+    
         return $this->render('view', [
             'model' => $model,
             'direccion' => $direccion,
@@ -211,11 +207,7 @@ class ProductosController extends Controller
         return $this->render('create', [
             'model' => $model,
             'tipos' => Tipos::lista(),
-            'directores' => Directores::lista(),
-            'guionistas' => Guionistas::lista(),
-            'musica' => Musica::lista(),
-            'fotografia' => Fotografia::lista(),
-            'reparto' => Interpretes::lista(),
+            'personas' => Personas::lista(),
             'productoras' => Productoras::lista(),
             'generos' => Generos::lista(),
         ]);
@@ -270,11 +262,7 @@ class ProductosController extends Controller
         return $this->render('update', [
             'model' => $model,
             'tipos' => Tipos::lista(),
-            'directores' => Directores::lista(),
-            'guionistas' => Guionistas::lista(),
-            'musica' => Musica::lista(),
-            'fotografia' => Fotografia::lista(),
-            'reparto' => Interpretes::lista(),
+            'personas' => Personas::lista(),
             'productoras' => Productoras::lista(),
             'generos' => Generos::lista(),
         ]);
@@ -315,7 +303,7 @@ class ProductosController extends Controller
         foreach ($valores as $v) {
             $relacion = new ProductosDirectores([
                 'producto_id' => $id,
-                'director_id' => $v
+                'persona_id' => $v
             ]);
             $relacion->save();
         }
@@ -326,7 +314,7 @@ class ProductosController extends Controller
         foreach ($valores as $v) {
             $relacion = new ProductosGuionistas([
                 'producto_id' => $id,
-                'guion_id' => $v
+                'persona_id' => $v
             ]);
             $relacion->save();
         }
@@ -337,7 +325,7 @@ class ProductosController extends Controller
         foreach ($valores as $v) {
             $relacion = new ProductosMusica([
                 'producto_id' => $id,
-                'musica_id' => $v
+                'persona_id' => $v
             ]);
             $relacion->save();
         }
@@ -348,7 +336,7 @@ class ProductosController extends Controller
         foreach ($valores as $v) {
             $relacion = new ProductosFotografia([
                 'producto_id' => $id,
-                'fotografia_id' => $v
+                'persona_id' => $v
             ]);
             $relacion->save();
         }
@@ -359,7 +347,7 @@ class ProductosController extends Controller
         foreach ($valores as $v) {
             $relacion = new ProductosInterpretes([
                 'producto_id' => $id,
-                'interprete_id' => $v
+                'persona_id' => $v
             ]);
             $relacion->save();
         }
