@@ -120,10 +120,21 @@ class ProductosController extends Controller
     public function actionFicha($id)
     {
         $model = $this->findModel($id);
-        $critica = Criticas::findOne(['usuario_id' => Yii::$app->user->id]);
+        $miCritica = Criticas::findOne([
+            'usuario_id' => Yii::$app->user->id,
+            'producto_id' => $model->id]);
+        $criticas = Criticas::find()->where([
+            'producto_id' => $model->id
+            ])->andFilterWhere([
+                'not in', 'usuario_id', Yii::$app->user->id
+            ])->orderBy([
+                'created_at' => \SORT_DESC
+            ])->limit(3)
+            ->all();
         return $this->render('ficha', [
            'model' => $model,
-           'critica' => $critica,
+           'miCritica' => $miCritica,
+           'criticas' => $criticas,
         ]);
     }
     /**

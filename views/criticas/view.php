@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Criticas */
 
 $this->title = $model->titulo;
-$this->params['breadcrumbs'][] = ['label' => 'Criticas' , 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->producto->titulo , 'url' => ['productos/ficha', 'id' => $model->producto_id]];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-   
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

@@ -128,20 +128,33 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </dd>
             <?php endif ?>
+            <?php if ($criticas) :?>
+            <dt>Críticas</dt>
+            <dd>
+                <?php foreach ($criticas as $critica): ?>
+                <h5><?= Html::a(Html::encode($critica->titulo), ['criticas/view', 'id' => $critica->id]) ?></h5>
+                    <p>
+                        <?= Html::encode($critica->critica) ?>
+                    </p>
+                    <i><?= Html::encode($critica->usuario->login)?></i>
+                    
+                <?php endforeach?>
+            </dd>
+            <?php endif ?>
             <dt>Tu crítica</dt>
             <dd>
-                <?php if ($critica !== null): ?>
-                    <?= Html::a('Eliminar', ['criticas/delete', 'id' => $critica->id], [
+                <?php if ($miCritica !== null): ?>
+                    <?= Html::a('Eliminar', ['criticas/delete', 'id' => $miCritica->id], [
                         'class' => 'btn btn-eliminar',
                                 'data' => [
                                 'confirm' => '¿Estás seguro de que quiere borrar la crítica?',
                                 'method' => 'post',
                                 ],
                     ]) ?>
-                    <h5><?= $critica->titulo?></h5> 
-                    <h6><?=$critica->valoracion?></h6>
+                    <h5><?= $miCritica->titulo?></h5> 
+                    <h6><?=$miCritica->valoracion?></h6>
                         
-                    <?= $critica->critica?>
+                    <?= $miCritica->critica?>
                 <?php else: ?>
                     <div id="tu-critica">
                         <p>Escribe tu opinión sobre <?=Html::encode($model->titulo)?></p>
