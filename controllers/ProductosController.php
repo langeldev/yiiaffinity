@@ -41,6 +41,7 @@ class ProductosController extends Controller
                     'delete' => ['POST'],
                     'eliminar-premio' => ['POST'],
                     'agregar-premio' => ['POST'],
+
                 ],
             ],'access' => [
                 '__class' => AccessControl::class,
@@ -78,6 +79,18 @@ class ProductosController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionSearch($search)
+    {
+        if (Yii::$app->request->isAjax) {
+            $search = Yii::$app->request->get('search');
+          
+            $productos = Productos::find()->where(['ilike', 'titulo', $search])->all();
+            return $this->asJson(['productos' => $productos]);
+        } else {
+
+        }
     }
 
     /**

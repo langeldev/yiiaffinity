@@ -9,8 +9,37 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
+
+$urlSearch = Url::to(['productos/search']);
+
+$js = <<<EOT
+    $('#search').keyup(function(ev){
+        let search = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '$urlSearch',
+            data: {
+                search: search,
+            }
+        }).done(function(data){
+            
+            $('#lista').empty()
+            if(data.productos && search != '') {
+                for (producto of data.productos){
+                    console.log(producto)
+                    let a =  $('<a>').attr('href', 'index.php?r=productos/ficha&id=' + producto.id);
+                    let li = a.append($('<li>').text(producto.titulo));
+                    $('#lista').append(li);
+                }
+            }
+        });
+    });
+EOT;
+
+$this->registerJs($js);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -40,11 +69,12 @@ AppAsset::register($this);
         ],
     ]);
  
-    echo '<div class="justify-content-md-center">
+    echo '<div id="formSearch" class="justify-content-md-center">
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Título">
-            </form>
-        </div>';
+                <input id="search" class="form-control mr-sm-2" type="search" placeholder="Título">
+                </form>
+                <ul id="lista"><ul>
+                </div>';
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],

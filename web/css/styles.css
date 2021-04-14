@@ -143,3 +143,10 @@ body{
 .navbar {
     font-family: 'Oswald', sans-serif;
 }
+
+
+#lista{
+    position: absolute;
+    background-color: white;
+    list-style: none;
+}
