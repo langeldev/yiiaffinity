@@ -18,6 +18,7 @@ use app\models\ProductosMusica;
 use app\models\ProductosProductoras;
 use app\models\ProductosSearch;
 use app\models\Tipos;
+use app\models\Valoraciones;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -144,10 +145,15 @@ class ProductosController extends Controller
                 'created_at' => \SORT_DESC
             ])->limit(3)
             ->all();
+
+        $miValoracion = $this->obtenerValoracion($id);
+       
         return $this->render('ficha', [
            'model' => $model,
            'miCritica' => $miCritica,
            'criticas' => $criticas,
+           'miValoracion' => $miValoracion,
+           'lista' => Valoraciones::listaPuntos()
         ]);
     }
     /**
@@ -402,5 +408,15 @@ class ProductosController extends Controller
     private function getRelacion($rel)
     {
         return $rel->select('nombre')->column();
+    }
+
+    private function obtenerValoracion($producto_id)
+    {
+        $valoracion = Valoraciones::findOne([
+            'producto_id' => $producto_id,
+            'usuario_id' => Yii::$app->user->id,
+        ]);
+
+        return $valoracion !== null ? $valoracion : new Valoraciones();
     }
 }

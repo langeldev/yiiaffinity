@@ -1,16 +1,51 @@
 <?php
 
 use yii\bootstrap4\Html;
-use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 $this->title = $model->titulo;
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
+$urlAgregarValoracion = Url::to(['valoraciones/agregar']);
+$urlNoVista = Url::to(['valoraciones/no-vista']);
+
+$js = <<<EOT
+
+$('#valoraciones-valoracion').on('change',function(ev){
+    let valoracion = $(this).val();
+    let producto = $model->id;
+    
+    if (valoracion != '') {
+        $.ajax({
+            type: 'POST',
+            url: '$urlAgregarValoracion',
+            data: {
+                producto_id: producto,
+                valoracion: valoracion
+            }
+        }).done(function(data){
+            $('#media').text(data.media);
+            $('#total').text(data.total);
+        });
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: '$urlNoVista',
+            data: {
+                producto_id: producto
+            }
+        }).done(function(data){
+            $('#media').text(data.media);
+            $('#total').text(data.total);
+        });
+    }
+});
+EOT;
+$this->registerJs($js);
 ?>
 <div class="fondo p-2">
     <div class="row">
-
     <h1 class="col-8"><?= Html::encode($this->title) ?></h1>
     <section class="col-8"> 
   
@@ -175,10 +210,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         
         <div class="media col-6">
-            <h4><?= Html::encode($model->media)?></h4>
+            <h4 id="media"><?= Html::encode($model->media)?></h4>
         </div>
         <div class="total col-6">
-            <h4><?= Html::encode($model->votosTotales() . ' votos')?></h4>
+            <h4 id="total"><?= Html::encode($model->votosTotales() . ' votos')?></h4>
+        </div>
+    </div>
+    <div class="row">
+       
+        <div class="col-6">
+            <?php if (!Yii::$app->user->isGuest): ?>
+                Tu voto
+                <?= $this->render('/valoraciones/_form', [
+                    'miValoracion' => $miValoracion,
+                    'lista' => $lista
+                ])?>
+            <?php else: ?>
+                <?= Html::a('Votar',  ['/site/login'], ['class' => 'border p-2']) ?>
+            <?php endif ?>
         </div>
     </div>
 </aside>
