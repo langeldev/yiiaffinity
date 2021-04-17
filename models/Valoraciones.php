@@ -60,7 +60,7 @@ class Valoraciones extends \yii\db\ActiveRecord
      */
     public function getProducto()
     {
-        return $this->hasOne(Productos::className(), ['id' => 'producto_id'])->inverseOf('valoraciones');
+        return $this->hasOne(Productos::class, ['id' => 'producto_id'])->inverseOf('valoraciones');
     }
 
     /**
@@ -70,7 +70,7 @@ class Valoraciones extends \yii\db\ActiveRecord
      */
     public function getUsuario()
     {
-        return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('valoraciones');
+        return $this->hasOne(Usuarios::class, ['id' => 'usuario_id'])->inverseOf('valoraciones');
     }
 
     /**
