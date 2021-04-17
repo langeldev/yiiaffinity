@@ -1,6 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
 
+*{
+    box-sizing: border-box;
+}
 body{
     background-color: #0f49b9;
     background-image: linear-gradient(40deg, #0f49b9, #38c0e7);
@@ -144,9 +147,32 @@ body{
     font-family: 'Oswald', sans-serif;
 }
 
+#contenedor-search{
+    position: relative;
+}
+
+#search{
+    border-radius: 0;
+    box-shadow: none;
+}
 
 #lista{
     position: absolute;
-    background-color: white;
+    top: 36px;
     list-style: none;
+    border: 1px solid #0f48b965;
+    border-top: none;
+    display: none;
+    background-color: white;
+}
+
+#lista a{
+    padding: 0 20px;
+}
+
+@media (max-width: 767px){
+    #lista{
+        left: 15px;
+    }
+    
 }

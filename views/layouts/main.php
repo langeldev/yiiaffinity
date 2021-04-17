@@ -17,7 +17,7 @@ $urlSearch = Url::to(['productos/search']);
 
 $js = <<<EOT
     $('#search').keyup(function(ev){
-        let search = $(this).val();
+        let search = $.trim($(this).val());
         $.ajax({
             type: 'GET',
             url: '$urlSearch',
@@ -26,17 +26,19 @@ $js = <<<EOT
             }
         }).done(function(data){
             
-            $('#lista').empty()
+            $('#lista').empty().hide();
             if(data.productos && search != '') {
                 for (producto of data.productos){
                     console.log(producto)
                     let a =  $('<a>').attr('href', 'index.php?r=productos/ficha&id=' + producto.id);
                     let li = a.append($('<li>').text(producto.titulo));
-                    $('#lista').append(li);
+                    $('#lista').append(li)
                 }
+                $('#lista').show();
             }
         });
     });
+    
 EOT;
 
 $this->registerJs($js);
@@ -69,12 +71,17 @@ $this->registerJs($js);
         ],
     ]);
  
-    echo '<div id="formSearch" class="justify-content-md-center">
-            <form class="form-inline my-2 my-lg-0">
-                <input id="search" class="form-control mr-sm-2" type="search" placeholder="Título">
+    echo '<div id="formSearch" class="justify-content-md-center flex-grow-1 ">
+   
+    <form id="contenedor-search" class="justify-content-center col-12 row p-md-0">
+                <input id="search" class="form-control col-md-6" type="text" placeholder=" Buscar Título">
+                <ul id="lista" class="col-md-6"><ul>
                 </form>
-                <ul id="lista"><ul>
-                </div>';
+             
+        </div>  
+        '
+        
+        ;
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
