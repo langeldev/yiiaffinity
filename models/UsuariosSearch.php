@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Usuarios;
+use yii\data\Pagination;
 
 /**
  * UsuariosSearch represents the model behind the search form of `app\models\Usuarios`.
@@ -83,5 +84,24 @@ class UsuariosSearch extends Usuarios
             ->andFilterWhere(['ilike', 'ciudad', $this->ciudad]);
 
         return $dataProvider;
+    }
+
+    public function searchAmigos($nombre)
+    {
+  
+        $this->load($nombre);
+
+        $query = Usuarios::find() ->andFilterWhere(['ilike', 'login', $this->nombre])
+            ->orFilterWhere(['ilike', 'nombre', $this->nombre])
+            ->andWhere(['not in', 'rol_id', 1]);;
+  
+        $pagination = new Pagination([
+            'pageSize' => 6,
+            'totalCount' =>  $query->count()
+        ]);
+        
+        $query->limit($pagination->limit)->offset($pagination->offset);
+
+        return ['query' => $query->all(), 'pagination' => $pagination];
     }
 }

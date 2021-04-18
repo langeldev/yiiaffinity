@@ -170,6 +170,11 @@ body{
     padding: 0 20px;
 }
 
+.amigo-icon{
+    font-size: 3em;
+    color: #0f49b9;
+}
+
 @media (max-width: 767px){
     #lista{
         left: 15px;
