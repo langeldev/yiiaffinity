@@ -25,8 +25,8 @@ $('#valoraciones-valoracion').on('change',function(ev){
                 valoracion: valoracion
             }
         }).done(function(data){
-            $('#media').text(data.media);
-            $('#total').text(data.total);
+            $('#media').text(formateo(data.media));
+            $('#total').text(data.total + " votos");
         });
     } else {
         $.ajax({
@@ -36,10 +36,11 @@ $('#valoraciones-valoracion').on('change',function(ev){
                 producto_id: producto
             }
         }).done(function(data){
-            $('#media').text(data.media);
-            $('#total').text(data.total);
+            $('#media').text(formateo(data.media));
+            $('#total').text(data.total + " votos");
         });
     }
+ 
 });
 EOT;
 $this->registerJs($js);
@@ -210,7 +211,7 @@ $this->registerJs($js);
     <div class="row">
             
         <div class="media col-6">
-            <h4 id="media"><?= Html::encode($model->media)?></h4>
+            <h4 id="media"><?= Html::encode(number_format($model->media, 1, ",", ""))?></h4>
         </div>
         <div class="total col-6">
             <h4 id="total"><?= Html::encode($model->votosTotales() . ' votos')?></h4>
