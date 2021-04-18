@@ -14,6 +14,9 @@ $this->title = 'YiiAffinity';
                 <li>
                     <?= Html::a('Editar Perfil', ['usuarios/editar-perfil']) ?>
                 </li>
+                <li>
+                    <?= Html::a('Amigos', ['usuarios/buscar-amigos']) ?>
+                </li>
             </ul> 
         <?php endif ?>
         </aside>

@@ -6,6 +6,7 @@ use app\models\Roles;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -130,6 +131,23 @@ class UsuariosController extends Controller
             'generos' => Usuarios::listaGeneros(),
         ]);
     }
+
+    /**
+     * El usuario puede registrarse.
+     *
+     * @return mixed
+     */
+    public function actionBuscarAmigos()
+    {
+        $searchModel = new UsuariosSearch();
+        $amigos = $searchModel->searchAmigos(Yii::$app->request->queryParams);
+
+        return $this->render('buscar-amigos', [
+            'amigos' => $amigos,
+            'model' => $searchModel
+        ]);
+    }
+
 
     /**
      * Updates an existing Usuarios model.

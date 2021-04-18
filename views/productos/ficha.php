@@ -208,7 +208,7 @@ $this->registerJs($js);
 
 <aside class="col-4 ">
     <div class="row">
-        
+            
         <div class="media col-6">
             <h4 id="media"><?= Html::encode($model->media)?></h4>
         </div>
