@@ -176,6 +176,16 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     }
 
     /**
+    * Gets query for [[Valoraciones]].
+    *
+    * @return \yii\db\ActiveQuery
+    */
+    public function getValoraciones()
+    {
+        return $this->hasMany(Valoraciones::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+    
+    /**
      * Gets query for [[Productos]].
      *
      * @return \yii\db\ActiveQuery

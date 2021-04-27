@@ -174,10 +174,228 @@ body{
     font-size: 3em;
     color: #0f49b9;
 }
+/**********************/
+/*  Ficha Producto   */
+/********************/
+
+.nav-ficha{
+    border-bottom: 3px solid #0f49b9;
+    margin: 20px 0;
+    list-style: none;
+    padding: 0;
+    min-height: 44px;
+    
+}
+.nav-ficha li{
+    display: inline;
+}
+
+.nav-ficha li a{
+    display: block;
+    color: #333;
+    float: left;
+    padding: 10px 10px 10px 5px;
+    font-weight: bold;
+    transition: background-color 300ms linear,
+    color 300ms linear;
+}
+
+.nav-ficha li:hover a{
+    text-decoration: none;
+    background-color:#0f49b9;
+    color: #ffc107;
+}
+
+.ficha-selected{
+    background-color:#0f49b9;
+    color: white !important;
+}
+
+.pagination .active a{
+    background-color: #0f49b9 !important;
+}
+
+
+.puntos-criticas{
+    display: inline-block;
+    text-align: center;
+    
+}
+
+.puntos-criticas .media{
+    font-size: 3em;
+    width: 100%;
+    font-weight: bold;
+    color: white;
+    padding: 5px;
+    background-color: #0f49b9;
+}
+
+#media{
+    text-align: center;
+    
+}
+
+.puntos-criticas #total{
+    border: 1px solid #0f49b9;
+    color: #0f49b9;
+    font-size: 0.9em;
+}
+
+.izquierda{
+    color: #777;
+    font-weight: 700;
+}
+
+.criticas-container{
+    background-color: #ddd;
+    padding: 5px 20px;
+}
+
+.critica-container{
+    background-color: white;
+    margin: 15px 0;
+}
+
+.cabecera-critica{
+    border-bottom: 3px solid #ffc107;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.localidad{
+    font-style: italic;
+}
+
+.datos-usuarios-criticas i{
+    float: left;
+    font-size: 3em;
+    padding: 10px;
+    background-color: #ffc107;
+    border-radius: 600px;
+    box-shadow:  1px 3px 3px 0px #aa8004;
+    margin-right: 10px;
+    color: white;
+}
+
+.titulo-critica a{
+    color: #0f49b9;
+    display: block;
+    font-size: 2em ;
+    padding-top: 30px;
+}
+
+.valor-critica{
+    padding: 10px;
+    border: 1px solid #0f49b9;
+    color: #0f49b9;
+    font-size: 1.2em;
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+
+.fecha{
+    color: #777;
+    font-size: 0.8em;
+}
+
+
+.critica{
+    white-space: pre-line;
+    line-height: 1.6;
+    border-bottom:1.6px dashed #777;
+    padding-bottom: 40px;
+    
+}
+
+
+
+/*********************/
+/*     Ficha        */
+/*******************/
+
+.valoraciones{
+    background-color: #ccc;
+    margin-top: 16px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.valoraciones .media{
+    text-align: center;
+    color: white;
+    background-color: #0f49b9;
+}
+
+.valoraciones .total{
+    text-align: center;
+    background-color: white;
+    color: #0f49b9;
+    border: 1px solid #0f49b9;
+}
+
+.valoraciones #total{
+    padding: 5px;
+}
+
+.valoraciones #media{
+    padding: 5px;
+    align-self: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.valoracion-accion{
+    background-color: #ccc;
+    margin-top: 16px;
+    padding: 10px;
+}
+
+.valoracion-form{
+    border-radius: 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.btn-votar{
+    background-color:#0f49b9;
+    border-radius: 0;
+    color: white;
+    transition: background-color, color;
+    transition-duration: 300ms;
+    transition-timing-function: linear;
+    font-family: 'Oswald', sans-serif;
+   
+}
+.btn-votar:hover{
+    background-color:#031946;
+    color: rgb(121, 121, 121);
+}
 
 @media (max-width: 767px){
     #lista{
         left: 15px;
     }
+    
+}
+
+@media (max-width: 500px){
+   
+    .nav-ficha li{
+        display: block;
+       float: none;
+       clear: both;
+    }
+
+    .nav-ficha li a{
+        width: 100%;
+        border-bottom: 3px solid #0f49b9;
+    }
+    
     
 }

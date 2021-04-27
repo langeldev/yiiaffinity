@@ -7,6 +7,7 @@ use app\models\Criticas;
 use app\models\CriticasSearch;
 use app\models\Productos;
 use app\models\Valoraciones;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -71,6 +72,32 @@ class CriticasController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+
+    /**
+    * Devuelve todas las criticas de un  al producto
+    * @param integer $id
+    * @return mixed
+    * @throws NotFoundHttpException si no encuentra el producto
+    */
+    public function actionVerCriticas($id)
+    {
+        $producto = $this->findProducto($id);
+        $criticas = Criticas::find()
+            ->where(['producto_id' => $id])
+            ->orderBy(['created_at' => \SORT_DESC]);
+        $pagination = new Pagination([
+            'pageSize' => 3,
+            'totalCount' =>  $criticas->count()
+        ]);
+        
+        $criticas->limit($pagination->limit)->offset($pagination->offset);
+        return $this->render('ver-criticas', [
+            'producto' => $producto,
+            'criticas' => $criticas->all(),
+            'pagination' => $pagination, 
+        ]);
+    }
+
 
     /**
      * Creates a new Criticas model.
@@ -151,4 +178,5 @@ class CriticasController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }
