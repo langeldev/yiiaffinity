@@ -475,3 +475,9 @@ INSERT INTO valoraciones(producto_id, usuario_id, valoracion)
          , (2, 5, 9)
          , (2, 6, 3)
          , (3, 3, 10);
+
+INSERT INTO listas(titulo)
+     VALUES ('Mis películas favoritas')
+          , ('Mis series favoritas')
+          , ('Películas sobrevaloradas')
+          , ('Mis films de terror preferidos');
