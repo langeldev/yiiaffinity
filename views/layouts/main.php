@@ -115,7 +115,7 @@ $this->registerJs($js);
                 <?= $content ?>   
     </div>
 </div>
-
+<?= Html::button('', ['class' => 'fas fa-chevron-up', 'id' => 'al-cielo'])?>
 <footer class="footer">
     <div class="container">
         <p class="float-left">&copy; YiiAffinity <?= date('Y') ?></p>

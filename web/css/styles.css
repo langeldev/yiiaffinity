@@ -4,6 +4,7 @@
 *{
     box-sizing: border-box;
 }
+
 body{
     background-color: #0f49b9;
     background-image: linear-gradient(40deg, #0f49b9, #38c0e7);
@@ -11,6 +12,18 @@ body{
     background-image: -o-linear-gradient(40deg, #0f49b9, #38c0e7);
     background-image: -webkit-linear-gradient(40deg, #0f49b9, #38c0e7);
     background-attachment: fixed;
+}
+
+#al-cielo{
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    background-color: #0f49b9;
+    color: white;
+    width: 4em;
+    height: 4em;
+    display: none;
+    border: 0;
 }
 
 /*Login*/
@@ -376,6 +389,7 @@ body{
     background-color:#031946;
     color: rgb(121, 121, 121);
 }
+
 
 @media (max-width: 767px){
     #lista{
