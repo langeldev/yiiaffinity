@@ -6,7 +6,6 @@ use app\models\Roles;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
-use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

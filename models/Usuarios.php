@@ -53,7 +53,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
         return [
             [['login', 'email'], 'required'],
             [['password', 'password_repeat'], 'required', 'on' => [self::SCENARIO_CREATE]],
-            [['password'], 'compare', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
+            [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['password_repeat'], 'safe', 'on' => [self::SCENARIO_UPDATE]],
             [['anyo_nac'], 'number', 'max' => 9999],
             [['rol_id'], 'default', 'value' => 2],
@@ -68,7 +68,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['password']);
+        return array_merge(parent::attributes(), ['password_repeat']);
     }
 
     /**
@@ -85,7 +85,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
             'password' => 'Contraseña',
             'password_repeat' => 'Repetir Contraseña',
             'auth_key' => 'Auth Key',
-            'rol_id' => 'Rol ID',
+            'rol_id' => 'Rol',
             'genero' => 'Género',
             'pais' => 'País',
             'ciudad' => 'Ciudad',

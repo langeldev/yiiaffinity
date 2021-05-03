@@ -83,6 +83,6 @@ class Valoraciones extends \yii\db\ActiveRecord
         for ($i = 1; $i <=10; $i++) {
             $puntos[] = ['id' => $i, 'name' => $i];
         }
-        return ArrayHelper::map($puntos, 'id', 'name');;
+        return ArrayHelper::map($puntos, 'id', 'name');
     }
 }

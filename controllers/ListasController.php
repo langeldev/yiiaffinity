@@ -43,5 +43,4 @@ class ListasController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
- 
 }

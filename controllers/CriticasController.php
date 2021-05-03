@@ -94,7 +94,7 @@ class CriticasController extends Controller
         return $this->render('ver-criticas', [
             'producto' => $producto,
             'criticas' => $criticas->all(),
-            'pagination' => $pagination, 
+            'pagination' => $pagination,
         ]);
     }
 
@@ -117,8 +117,10 @@ class CriticasController extends Controller
             'usuario_id' => $model->usuario_id]);
         
         if ($criticado !== null) {
-            Yii::$app->session->setFlash('warning', 
-                'Ya hiciste una critica sobre '. $producto->titulo);
+            Yii::$app->session->setFlash(
+                'warning',
+                'Ya hiciste una critica sobre ' . $producto->titulo
+            );
             return $this->redirect(['productos/ficha', 'id' => $producto->id]);
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -178,5 +180,4 @@ class CriticasController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

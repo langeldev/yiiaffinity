@@ -146,7 +146,8 @@ body{
 }
 
 .titulo{
-    height: 100px;
+    text-align: center;
+    height: 50px;
     overflow-y: hidden;
     text-decoration: none;
 }
@@ -280,6 +281,7 @@ body{
 
 .localidad{
     font-style: italic;
+    font-size: 0.8em;
 }
 
 .datos-usuarios-criticas i{
@@ -293,10 +295,14 @@ body{
     color: white;
 }
 
+.usuario-critica{
+    font-size: 1.5em;
+}
+
 .titulo-critica a{
     color: #0f49b9;
     display: block;
-    font-size: 2em ;
+    font-size: 1.5em ;
     padding-top: 30px;
 }
 
@@ -388,28 +394,4 @@ body{
 .btn-votar:hover{
     background-color:#031946;
     color: rgb(121, 121, 121);
-}
-
-
-@media (max-width: 767px){
-    #lista{
-        left: 15px;
-    }
-    
-}
-
-@media (max-width: 500px){
-   
-    .nav-ficha li{
-        display: block;
-       float: none;
-       clear: both;
-    }
-
-    .nav-ficha li a{
-        width: 100%;
-        border-bottom: 3px solid #0f49b9;
-    }
-    
-    
 }

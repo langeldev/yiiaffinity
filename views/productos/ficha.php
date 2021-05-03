@@ -180,7 +180,7 @@ $this->registerJs($js);
 
                         <div class="criticas-container">
                             <?php if ($miCritica !== null) : ?>
-                                <article class="p-5 critica-container">
+                                <article class="p-2 p-md-5 critica-container">
                                     <header class="cabecera-critica">
                                         <div class="datos-usuarios-criticas col-11">
                                             <i class="fa fa-user"></i>
@@ -229,7 +229,6 @@ $this->registerJs($js);
                     </dd>
                 </dl>
 
-
             </section>
 
             <aside class="col-12 col-md-3 mb-3">
@@ -237,7 +236,7 @@ $this->registerJs($js);
                     <img class="img-fluid" src="#" alt="">
                 </div>
                 <div class="d-flex flex-md-column">
-                    <div class="valoraciones col-5 col-md-12">
+                    <div class="valoraciones col-6 col-md-12">
                         <div class="media">
                             <h5 id="media"><?= Html::encode(number_format($model->media, 1, ",", "")) ?></h5>
                         </div>

@@ -23,10 +23,11 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/select2.min.css',
         'css/styles.css',
+        'css/media-query.css',
     ];
     public $js = [
         'js/select2.min.js',
-        'js/main.js'
+        'js/app.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

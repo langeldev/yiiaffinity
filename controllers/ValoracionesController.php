@@ -47,7 +47,7 @@ class ValoracionesController extends Controller
 
     /**
      * Valorara un producto si este ya tiene valortacion por el mismo usuario la modificará
-     * 
+     *
      */
     public function actionAgregar()
     {
@@ -59,7 +59,7 @@ class ValoracionesController extends Controller
             $valoracion->save();
             $producto = $this->findProducto($producto_id);
             return $this->asJson([
-                'media' => $producto->media, 
+                'media' => $producto->media,
                 'total' => $producto->votosTotales(),
                 ]);
         }
@@ -77,11 +77,10 @@ class ValoracionesController extends Controller
             $valoracion->delete();
             $producto = $this->findProducto($producto_id);
             return $this->asJson([
-                'media' => $producto->media, 
+                'media' => $producto->media,
                 'total' => $producto->votosTotales(),
                 ]);
         }
-
     }
 
     /**
@@ -99,7 +98,7 @@ class ValoracionesController extends Controller
             return $model;
         } else {
             $model = new Valoraciones(['producto_id' => $producto_id, 'usuario_id' => $usuario_id]);
-           return $model;
+            return $model;
         }
     }
 
@@ -118,5 +117,4 @@ class ValoracionesController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

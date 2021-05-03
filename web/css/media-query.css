@@ -1,0 +1,92 @@
+@media (max-width: 771px){
+    #al-cielo{
+
+        bottom: 0.5em;
+        right: 0.5em;
+        width: 2.5em;
+        height: 2.5em;
+    }
+    #lista{
+        left: 15px;
+    }
+
+    .criticas-container{
+        padding: 5px 10px;
+    }
+    
+    .critica-container{
+        margin: 10px 0;
+        padding: 5px;
+       
+    }
+    
+    .cabecera-critica{
+        border-bottom: 2px solid #ffc107;
+        padding: 12px 7px;
+    }
+
+    .datos-usuarios-criticas{
+        padding: 0;
+    }
+
+    .datos-usuarios-criticas i{
+        font-size: 1.7em;
+        padding: 5px;
+        margin-right: 5px;
+    }
+    
+    .usuario-critica{
+        font-size: 1.2em;
+    }
+
+    .localidad{
+        font-size: 0.7em;
+    }
+    
+    
+    .titulo-critica a{
+        font-size: 1em ;
+        padding-top: 10px;
+    }
+    
+    .valor-critica{
+        padding: 7px;
+        font-size: 1em;
+        border-radius: 5px;
+    }
+
+    .fecha{
+       
+        font-size: 0.6em;
+    }
+    .critica{
+        white-space: pre-line;
+        line-height: 1.4;
+        padding-bottom: 40px;
+        font-size: 0.7em;
+    }
+
+
+}
+
+@media (max-width: 500px){
+   
+    .nav-ficha li{
+        display: block;
+       float: none;
+       clear: both;
+    }
+
+    .nav-ficha li a{
+        width: 100%;
+        border-bottom: 3px solid #0f49b9;
+    }
+
+    .valor-critica{
+        padding: 5px;
+        font-size: 0.8em;
+        border-radius: 5px;
+        margin-right: 6px;
+    }
+
+}

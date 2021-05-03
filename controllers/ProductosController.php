@@ -89,8 +89,6 @@ class ProductosController extends Controller
           
             $productos = Productos::find()->where(['ilike', 'titulo', $search])->all();
             return $this->asJson(['productos' => $productos]);
-        } else {
-
         }
     }
 

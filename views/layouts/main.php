@@ -75,12 +75,11 @@ $this->registerJs($js);
    
     <form id="contenedor-search" class="justify-content-center col-12 row p-md-0">
                 <input id="search" class="form-control col-md-6" type="text" placeholder=" Buscar Título">
-                <ul id="lista" class="col-md-6"><ul>
+                <ul id="lista" class="col-md-6"></ul>
                 </form>
              
         </div>  
         '
-        
         ;
 
     echo Nav::widget([
@@ -118,9 +117,9 @@ $this->registerJs($js);
 <?= Html::button('', ['class' => 'fas fa-chevron-up', 'id' => 'al-cielo'])?>
 <footer class="footer">
     <div class="container">
-        <p class="float-left">&copy; YiiAffinity <?= date('Y') ?></p>
+        <p class="text-center float-md-left">&copy; YiiAffinity <?= date('Y') ?></p>
 
-        <p class="float-right"><?= Yii::powered() ?></p>
+        <p class="text-center float-md-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 

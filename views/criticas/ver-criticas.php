@@ -97,11 +97,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'pagination' => $pagination
         ]) ?>
     </div>
-    <section class="criticas-container col-12">
-
+    
+    <div class="col-12">
+        <section class="criticas-container">
+            
         <?php if ($criticas) : ?>
             <?php foreach ($criticas as $critica) : ?>
-                <article class="p-5 critica-container">
+                <article class="p-3 p-md-5 critica-container">
                     <header class="cabecera-critica">
                         <div class="datos-usuarios-criticas col-11">
                             <i class="fa fa-user"></i>
@@ -110,12 +112,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?php
                                 if ($critica->usuario->ciudad || $critica->usuario->pais) {
                                     echo $critica->usuario->ciudad
-                                        ? Html::encode($critica->usuario->ciudad)
+                                    ? Html::encode($critica->usuario->ciudad)
                                         : '';
-                                    echo $critica->usuario->pais
+                                        echo $critica->usuario->pais
                                         ? ' (' . Html::encode($critica->usuario->pais) . ')'
                                         : '';
-                                }
+                                    }
                                 ?>
                             </span>
 
@@ -133,7 +135,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php if (!Yii::$app->user->isGuest) : ?>
                         <?php if ($critica->usuario_id === Yii::$app->user->id) : ?>
                             <div>
-
+                                
                                 <?= Html::a('Eliminar', ['criticas/delete', 'id' => $critica->id], [
                                     'class' => 'btn btn-eliminar',
                                     'data' => [
@@ -142,21 +144,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ],
                                 ]) ?>
                             </div>
-                        <?php endif ?> <?php endif ?>
+                            <?php endif ?> <?php endif ?>
                 </article>
-
-            <?php endforeach ?>
-
+                
+                <?php endforeach ?>
+                
         <?php else : ?>
             <article class="p-5 critica-container text-center">
                 <h2>No hay críticas de <i class="izquierda"><?= Html::encode($producto->titulo) ?></i></h2>
             </article>
-        <?php endif ?>
+            <?php endif ?>
 
-    </section>
-    <div class="my-4 row col-12 justify-content-center">
+        </section>
+    </div>
+        <div class="my-4 row col-12 justify-content-center">
         <?= LinkPager::widget([
             'pagination' => $pagination
-        ]) ?>
+            ]) ?>
     </div>
 </div>
