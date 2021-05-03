@@ -577,6 +577,105 @@
 | **Entrega**     | v1             |
 | **Incidencia**  | [64](https://github.com/rolLangel/yiiaffinity/issues/64) |
 
+| **R65**     | **Modificar crítica**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario podrá editar sus propias criticas              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [86](https://github.com/rolLangel/yiiaffinity/issues/86) |
+
+| **R66**     | **Ver perfil de usuarios**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrá acceder al perfil de un usuario             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [87](https://github.com/rolLangel/yiiaffinity/issues/87) |
+
+| **R67**     | **Ver las criticas de un usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | En el perfil de usuario se verán las críticas que hizo a cada producto             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [88](https://github.com/rolLangel/yiiaffinity/issues/88) |
+
+| **R68**     | **Ver las valoraciones de un usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | En el perfil de usuario se verán las valoraciones que hizo a cada producto             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [89](https://github.com/rolLangel/yiiaffinity/issues/89) |
+
+| **R69**     | **Ver listas listas de usuario **         |
+| --------------: | :------------------- |
+| **Descripción** | En el perfil de usuario se verán las listas del usuario             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [90](https://github.com/rolLangel/yiiaffinity/issues/90) |
+
+| **R70**     | **Seguir a un usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario podrá seguir a otro usuario             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [91](https://github.com/rolLangel/yiiaffinity/issues/91) |
+
+| **R71**     | **Dejar de seguir**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario podrá dejar de seguir a otro usuario              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [92](https://github.com/rolLangel/yiiaffinity/issues/92) |
+
+| **R72**     | **Agregar una lista a “mis listas”**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario podrá elegir las listas que quieran tener en su listas             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [93](https://github.com/rolLangel/yiiaffinity/issues/93) |
+
+| **R73**     | **Borrar una listas de “mis listas”**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario podrá eliminar la lista de sus listas              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [94](https://github.com/rolLangel/yiiaffinity/issues/94) |
+
+| **R74**     | **Recuperación de contraseña**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario podrá recuperar su contraseña por correo electrónico             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [95](https://github.com/rolLangel/yiiaffinity/issues/95) |
+
+| **R75**     | **Cerrar cuenta de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario podrá eliminar su cuenta en una opción que aparecerá en su perfil              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [96](https://github.com/rolLangel/yiiaffinity/issues/96) |
+
 
 ## Cuadro resumen
 
@@ -646,3 +745,14 @@
 | (**R62**) Eliminar una crítica | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [62](https://github.com/rolLangel/yiiaffinity/issues/62) |
 | (**R63**) Buscar producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [63](https://github.com/rolLangel/yiiaffinity/issues/63) |
 | (**R64**) Buscar usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [64](https://github.com/rolLangel/yiiaffinity/issues/64) |
+| (**R65**) Modificar crítica | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [86](https://github.com/rolLangel/yiiaffinity/issues/86) |
+| (**R66**) Ver perfil de usuarios | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [87](https://github.com/rolLangel/yiiaffinity/issues/87) |
+| (**R67**) Ver las criticas de un usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [88](https://github.com/rolLangel/yiiaffinity/issues/88) |
+| (**R68**) Ver las valoraciones de un usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [89](https://github.com/rolLangel/yiiaffinity/issues/89) |
+| (**R69**) Ver listas listas de usuario  | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [90](https://github.com/rolLangel/yiiaffinity/issues/90) |
+| (**R70**) Seguir a un usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [91](https://github.com/rolLangel/yiiaffinity/issues/91) |
+| (**R71**) Dejar de seguir | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [92](https://github.com/rolLangel/yiiaffinity/issues/92) |
+| (**R72**) Agregar una lista a “mis listas” | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [93](https://github.com/rolLangel/yiiaffinity/issues/93) |
+| (**R73**) Borrar una listas de “mis listas” | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [94](https://github.com/rolLangel/yiiaffinity/issues/94) |
+| (**R74**) Recuperación de contraseña | Importante | Funcional | Media | v2 | | **Incidencia**  | [95](https://github.com/rolLangel/yiiaffinity/issues/95) |
+| (**R75**) Cerrar cuenta de usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [96](https://github.com/rolLangel/yiiaffinity/issues/96) |
