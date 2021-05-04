@@ -34,8 +34,9 @@ class UsuariosListas extends \yii\db\ActiveRecord
         return [
             [['usuario_id', 'lista_id'], 'default', 'value' => null],
             [['usuario_id', 'lista_id'], 'integer'],
-            [['lista_id'], 'exist', 'skipOnError' => true, 'targetClass' => Listas::className(), 'targetAttribute' => ['lista_id' => 'id']],
-            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
+            [['lista_id'], 'exist', 'skipOnError' => true, 'targetClass' => Listas::class, 'targetAttribute' => ['lista_id' => 'id']],
+            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
+           
         ];
     }
 
@@ -46,8 +47,8 @@ class UsuariosListas extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'usuario_id' => 'Usuario ID',
-            'lista_id' => 'Lista ID',
+            'usuario_id' => 'Usuario',
+            'lista_id' => 'Lista',
         ];
     }
 

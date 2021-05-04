@@ -3,20 +3,16 @@
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\ListasSearch */
-/* @var $form yii\bootstrap4\ActiveForm */
 ?>
 
-<div class="listas-search">
+<div class="usuarios-listas-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['mis-listas'],
         'method' => 'get',
     ]); ?>
 
-
-    <?= $form->field($model, 'titulo')
+    <?= $form->field($model, 'lista.titulo')
         ->textInput(['placeholder' => 'Busqueda por título'])
         ->label(false) ?>
 

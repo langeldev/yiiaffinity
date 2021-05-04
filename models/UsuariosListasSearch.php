@@ -4,13 +4,13 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Listas;
+use app\models\UsuariosListas;
 use Yii;
 
 /**
- * ListasSearch represents the model behind the search form of `app\models\Listas`.
+ * UsuariosListasSerach represents the model behind the search form of `app\models\UsuariosListas`.
  */
-class ListasSearch extends Listas
+class UsuariosListasSearch extends UsuariosListas
 {
     /**
      * {@inheritdoc}
@@ -18,9 +18,14 @@ class ListasSearch extends Listas
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['titulo'], 'safe'],
+            [['id', 'usuario_id', 'lista_id'], 'integer'],
+            [['lista.titulo'], 'safe'],
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['lista.titulo']);
     }
 
     /**
@@ -41,13 +46,17 @@ class ListasSearch extends Listas
      */
     public function search($params)
     {
-        $query = Listas::find();
+        $query = UsuariosListas::find()->joinWith('lista l');
 
         // add conditions that should always apply here
-
+       
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+            'query' => $query->where(['usuarios_listas.usuario_id' => Yii::$app->user->id]),
         ]);
+        $dataProvider->sort->attributes['lista.titulo'] = [
+            'asc' => ['l.titulo' => SORT_ASC],
+            'desc' => ['l.titulo' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -60,10 +69,11 @@ class ListasSearch extends Listas
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'usuario_id' => $this->usuario_id,
+            'lista_id' => $this->lista_id,
         ]);
 
-        $query->andFilterWhere(['ilike', 'titulo', $this->titulo]);
-
+        $query->andFilterWhere(['ilike', 'l.titulo', $this->getAttribute('lista.titulo')]);
         return $dataProvider;
     }
 }
