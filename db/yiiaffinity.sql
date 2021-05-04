@@ -26,7 +26,6 @@ CREATE TABLE productos
 
 CREATE INDEX idx_titulo on productos(titulo);
 
-
 DROP TABLE IF EXISTS personas CASCADE;
 CREATE TABLE personas
 (
@@ -34,7 +33,6 @@ CREATE TABLE personas
     , nombre            varchar(255)    NOT NULL
 );
 
-DROP TABLE IF EXISTS directores CASCADE;
 
 DROP TABLE IF EXISTS productos_directores CASCADE;
 CREATE TABLE productos_directores
@@ -44,9 +42,6 @@ CREATE TABLE productos_directores
     , PRIMARY KEY (producto_id, persona_id)
 );
 
-DROP TABLE IF EXISTS guionistas CASCADE;
-
-
 DROP TABLE IF EXISTS productos_guionistas CASCADE;
 CREATE TABLE productos_guionistas
 (
@@ -54,8 +49,6 @@ CREATE TABLE productos_guionistas
     , persona_id bigint REFERENCES personas(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, persona_id)
 );
-
-DROP TABLE IF EXISTS musica CASCADE;
 
 DROP TABLE IF EXISTS productos_musica CASCADE;
 CREATE TABLE productos_musica
@@ -74,9 +67,6 @@ CREATE TABLE productos_fotografia
     , persona_id bigint REFERENCES personas(id) ON DELETE CASCADE
     , PRIMARY KEY (producto_id, persona_id)
 );
-
-DROP TABLE IF EXISTS interpretes CASCADE;
-
 
 DROP TABLE IF EXISTS productos_interpretes CASCADE;
 CREATE TABLE productos_interpretes
@@ -168,7 +158,6 @@ CREATE TABLE valoraciones
 );
 
 DROP TABLE IF EXISTS criticas CASCADE;
-
 CREATE TABLE criticas
 (
       id          bigserial     PRIMARY KEY
@@ -195,6 +184,7 @@ CREATE TABLE usuarios_listas
          id bigserial PRIMARY KEY
       ,  usuario_id bigint REFERENCES usuarios(id) ON DELETE CASCADE
       ,  lista_id bigint REFERENCES listas(id) ON DELETE CASCADE
+      , UNIQUE (usuario_id, lista_id)
 
 );
 

@@ -40,7 +40,7 @@ class Listas extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'titulo' => 'Titulo',
+            'titulo' => 'Título',
         ];
     }
 
@@ -52,5 +52,15 @@ class Listas extends \yii\db\ActiveRecord
     public function getUsuariosListas()
     {
         return $this->hasMany(UsuariosListas::class, ['lista_id' => 'id'])->inverseOf('lista');
+    }
+
+      /**
+     * Gets query for [[Usuarios].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsuarios()
+    {
+        return $this->hasMany(Usuarios::class, ['id' => 'usuario_id'])->via('usuariosListas');
     }
 }

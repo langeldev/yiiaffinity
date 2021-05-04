@@ -3,10 +3,10 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Listas;
+
 use app\models\ListasSearch;
+use app\models\UsuariosListas;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
@@ -35,12 +35,21 @@ class ListasController extends Controller
      */
     public function actionIndex()
     {
+        
         $searchModel = new ListasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        $datos = [
+            'searhModel' => $searchModel,
+            'dataProvider' => $dataProvider];
+        if (!Yii::$app->user->isGuest) {
+            $datos += [
+                'listas' => UsuariosListas::find()
+                ->select('lista_id')
+                ->where([
+                    'usuario_id' => Yii::$app->user->id])
+                    ->column()
+                ];
+        }
+        return $this->render('index', ['datos' => $datos]);
     }
 }
