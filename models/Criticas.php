@@ -54,12 +54,12 @@ class Criticas extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'producto_id' => 'Producto ID',
-            'usuario_id' => 'Usuario ID',
-            'valoracion' => 'Valoracion',
-            'titulo' => 'Titulo',
-            'critica' => 'Critica',
-            'created_at' => 'Created At',
+            'producto_id' => 'Producto',
+            'usuario_id' => 'Usuario',
+            'valoracion' => 'Valoración',
+            'titulo' => 'Título',
+            'critica' => 'Crítica',
+            'created_at' => 'Fecha',
         ];
     }
 

@@ -135,7 +135,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php if (!Yii::$app->user->isGuest) : ?>
                         <?php if ($critica->usuario_id === Yii::$app->user->id) : ?>
                             <div>
-                                
                                 <?= Html::a('Eliminar', ['criticas/delete', 'id' => $critica->id], [
                                     'class' => 'btn btn-eliminar',
                                     'data' => [
@@ -143,8 +142,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'method' => 'post',
                                     ],
                                 ]) ?>
+                                <?= Html::a('Modificar', ['criticas/update', 'id' => $critica->producto_id], [
+                                            'class' => 'btn btn-votar',
+                                            'data' => [
+                                                'method' => 'post',
+                                            ],
+                                ]) ?>
                             </div>
-                            <?php endif ?> <?php endif ?>
+                        <?php endif ?> 
+                    <?php endif ?>
                 </article>
                 
                 <?php endforeach ?>
