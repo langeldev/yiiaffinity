@@ -32,11 +32,11 @@ class CriticasController extends Controller
             ],
             'access' => [
                 '__class' => AccessControl::class,
-                'only' => ['create', 'delete'],
+                'only' => ['create', 'delete', 'update'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' =>  ['create', 'delete'],
+                        'actions' =>  ['create', 'delete', 'update'],
                         'roles' => ['@'],
                         
                     ],
@@ -100,29 +100,18 @@ class CriticasController extends Controller
 
 
     /**
-     * Creates a new Criticas model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Modifica las criticas a un producto
+     *
      * @param integer $id
      * @return mixed
      */
     public function actionCreate($id)
     {
-        $model = new Criticas();
         $producto = $this->findProducto($id);
+        $model = new Criticas();
         $model->producto_id = $producto->id;
         $model->usuario_id = Yii::$app->user->id;
 
-        $criticado = Criticas::findOne([
-            'producto_id' => $model->producto_id,
-            'usuario_id' => $model->usuario_id]);
-        
-        if ($criticado !== null) {
-            Yii::$app->session->setFlash(
-                'warning',
-                'Ya hiciste una critica sobre ' . $producto->titulo
-            );
-            return $this->redirect(['productos/ficha', 'id' => $producto->id]);
-        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -133,6 +122,38 @@ class CriticasController extends Controller
             'puntosValoracion' => Valoraciones::listaPuntos(),
         ]);
     }
+
+      /**
+     * Updates an existing Criticas model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdate($id)
+    {
+        $producto = $this->findProducto($id);
+        $model = Criticas::findOne([
+                'producto_id' => $id,
+                'usuario_id' => Yii::$app->user->id
+            ]);
+
+        if ($model === null) {
+            Yii::$app->session->setFlash('warning', 'No has incluido ninguna critica sobre este título');
+            return $this->redirect(['/productos/ficha', 'id' => $id]);
+        }
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+            'producto' => $producto,
+            'puntosValoracion' => Valoraciones::listaPuntos(),
+        ]);
+    }
+
 
     /**
      * Deletes an existing Criticas model.

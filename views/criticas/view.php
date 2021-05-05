@@ -14,7 +14,24 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="criticas-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <?php if (!Yii::$app->user->isGuest) : ?>
+                        <?php if ($model->usuario_id === Yii::$app->user->id) : ?>
+                            <div>
+                                <?= Html::a('Eliminar', ['criticas/delete', 'id' => $model->id], [
+                                    'class' => 'btn btn-eliminar',
+                                    'data' => [
+                                        'confirm' => '¿Estás seguro de que quiere borrar la crítica?',
+                                        'method' => 'post',
+                                    ],
+                                ]) ?>
+                                <?= Html::a('Modificar', ['criticas/update', 'id' => $model->producto_id], [
+                                            'class' => 'btn btn-votar',
+                                            'data' => [
+                                                'method' => 'post',
+                                            ],
+                                ]) ?>
+                            </div>
+                            <?php endif ?> <?php endif ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

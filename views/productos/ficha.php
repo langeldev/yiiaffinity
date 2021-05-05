@@ -218,6 +218,13 @@ $this->registerJs($js);
                                                 'method' => 'post',
                                             ],
                                         ]) ?>
+
+                                    <?= Html::a('Modificar', ['criticas/update', 'id' => $model->id], [
+                                            'class' => 'btn btn-votar',
+                                            'data' => [
+                                                'method' => 'post',
+                                            ],
+                                        ]) ?>
                                     </div>
                                 </article>
                             <?php else : ?>
