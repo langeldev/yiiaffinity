@@ -9,11 +9,10 @@ $this->title = 'Modificar Usuario: ' . $model->login;
 $this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['usuarios/index']];
 $this->params['breadcrumbs'][] = 'Modificar';
 ?>
-<div class="fondo p-2">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="usuarios-form">
+<div class="fondo p-md-2">
+    <div class="col-12 col-md-8 m-auto py-3">
+        <h1 class="h1"><?= Html::encode($this->title) ?></h1>
+        <section class="usuarios-form my-5">
 
     <?php $form = ActiveForm::begin(); ?>
     
@@ -24,11 +23,12 @@ $this->params['breadcrumbs'][] = 'Modificar';
         'form' => $form,
     ]) ?>
 
-    <div class="form-group">
+    <div class="form-group text-right py-3">
         <?= Html::submitButton('Modificar', ['class' => 'btn btn-principal']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 
+    </section>
     </div>
-    
+
 </div>

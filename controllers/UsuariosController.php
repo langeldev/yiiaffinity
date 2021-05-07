@@ -128,6 +128,7 @@ class UsuariosController extends Controller
         return $this->render('registro', [
             'model' => $model,
             'generos' => Usuarios::listaGeneros(),
+            'roles' => Roles::lista(),
         ]);
     }
 
@@ -193,6 +194,7 @@ class UsuariosController extends Controller
         return $this->render('editar-perfil', [
             'model' => $model,
             'generos' => Usuarios::listaGeneros(),
+            'roles' => Roles::lista(),
         ]);
     }
 

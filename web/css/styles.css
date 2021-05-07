@@ -395,3 +395,38 @@ body{
     background-color:#031946;
     color: rgb(121, 121, 121);
 }
+
+.form-style{
+    border: none;
+    border-bottom: 1px solid #777;
+    border-radius: 0;
+    padding-left: 10px;
+    transition: border-bottom 300ms linear;
+}
+
+.form-style[aria-invalid="true"]{
+    border-bottom: 3px solid red;
+    box-shadow: none;
+}
+
+.form-style:focus{
+    box-shadow: none;
+    border-bottom: 4px solid rgb(241, 189, 19);
+}
+.usuarios-form{
+    padding: 20px;
+    border:1px solid #EEE;
+    box-shadow: 1px 1px 3px #555;
+    background-color: white;
+}
+
+.usuarios-form label{
+    font-weight: bolder;
+   color: #777;
+}
+
+.h1{
+    border-bottom: 3px solid #0f49b9;
+    padding: 15px 0;
+    font-family: 'Oswald', sans-serif;
+}

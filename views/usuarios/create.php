@@ -7,11 +7,10 @@ $this->title = 'Dar de alta';
 $this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Crear';
 ?>
-<div class="fondo p-2">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="usuarios-form">
+<div class="fondo p-md-2">
+    <div class="col-12 col-md-8 m-auto py-3">
+        <h1 class="h1"><?= Html::encode($this->title) ?></h1>
+        <section class="usuarios-form my-3">
 
     <?php $form = ActiveForm::begin(); ?>
     
@@ -22,11 +21,12 @@ $this->params['breadcrumbs'][] = 'Crear';
         'form' => $form,
     ]) ?>
 
-    <div class="form-group">
+    <div class="form-group text-right py-3">
         <?= Html::submitButton('Dar de alta', ['class' => 'btn btn-principal']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 
+    </section>
     </div>
 
 </div>
