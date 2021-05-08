@@ -6,10 +6,12 @@ use app\models\Roles;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
+use yii\bootstrap4\Html;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 
 /**
  * UsuariosController implements the CRUD actions for Usuarios model.
@@ -198,6 +200,69 @@ class UsuariosController extends Controller
         ]);
     }
 
+    /**
+     * Envia un correo electrónico para recueprar la contraseña
+     */
+    public function actionPassRecovery()
+    {
+        $model = new Usuarios(['scenario' => Usuarios::SCENARIO_UPDATE]);
+
+        if (Yii::$app->request->isPost) {
+            $email = Yii::$app->request->post('Usuarios')['email'];
+            $usuario = $model->userPorEmail($email);
+            if ($usuario !== null) {
+                $subject = 'Restablecimiento de contraseña';
+                $usuario->recover = Yii::$app->security->generateRandomString();
+                $usuario->save();
+                $url = Html::a(
+                    'Recuperar contraseña',
+                    Url::to(
+                        [
+                            'usuarios/pass-reset',
+                            'id' => $usuario->id,
+                            't' => $usuario->recover
+                        ],
+                        true
+                    )
+                );
+                $body = "<h3>Hola $usuario->login,</h3>
+                <p>Si desea restablecer su contaseña, haga click en el siguiente enlace, si no has solicitado el restablecimiento, ignora este mensaje.</p>
+                <p>$url</p>";
+
+                $this->enviarEmail($email, $subject, $body);
+                Yii::$app->session->setFlash('info', 'Email enviado');
+            } else {
+                Yii::$app->session->setFlash('error', 'Ha ocurrido un error');
+            }
+        }
+
+        return $this->render('pass-recovery', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Cambia las contraseñas
+     * @param integer $id
+     * @param string $t
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionPassReset($id, $t)
+    {
+        $model = $this->findModel($id);
+        if ($model->id == $id && $model->recover === $t) {
+            $model->scenario = Usuarios::SCENARIO_UPDATE;
+            $model->password = '';
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['site/login']);
+            }
+            return $this->render('pass-reset', [
+                'model' => $model,
+            ]);
+        } else {
+            throw new NotFoundHttpException('Credenciales no válidas.');
+        }
+    }
 
     /**
      * Deletes an existing Usuarios model.
@@ -226,6 +291,23 @@ class UsuariosController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('La página no existe.');
+    }
+
+    /**
+     * Envia un email a la direccion escrtita por el usuario
+     *
+     * @param string $email
+     * @param string $subject
+     * @param string $body
+     */
+    public function enviarEmail($email, $subject, $body)
+    {
+        return Yii::$app->mailer->compose()
+            ->setFrom(Yii::$app->params['smtpUsername'])
+            ->setTo($email)
+            ->setSubject($subject)
+            ->setHtmlBody($body)
+            ->send();
     }
 }

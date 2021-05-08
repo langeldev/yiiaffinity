@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Contraseña'])->label(false) ?>
                 <i class="fas fa-lock"></i>
             </div>
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                <?= $form->field($model, 'rememberMe')->checkbox()->label('Recuérdame') ?>
 
         <div class="form-group">
             <div class="text-center">
@@ -41,6 +41,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
         <?php ActiveForm::end(); ?>
+        <p class="text-center py-3">
+            <?= Html::a('¿Has olvidado la contraseña?', ['usuarios/pass-recovery'])?>
+        </p>
     </div>
 
     <div class="col-12 col-md-6 imagen-login">

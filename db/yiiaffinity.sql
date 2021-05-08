@@ -143,6 +143,7 @@ CREATE TABLE usuarios
     , genero             varchar(16)
     , pais               varchar(255)
     , ciudad             varchar(255)
+    , recover            varchar(255)
 );
 
 CREATE INDEX idx_login on usuarios(login);
