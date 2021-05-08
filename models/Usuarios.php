@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Codeception\Command\SelfUpdate;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
@@ -24,6 +25,7 @@ use function PHPSTORM_META\map;
  * @property string|null $genero
  * @property string|null $pais
  * @property string|null $ciudad
+ * @property null|string $recover
  *
  * @property Roles $rol
  * @property Criticas[] $criticas
@@ -54,7 +56,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
             [['login', 'email'], 'required'],
             [['password', 'password_repeat'], 'required', 'on' => [self::SCENARIO_CREATE]],
             [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
-            [['password_repeat'], 'safe', 'on' => [self::SCENARIO_UPDATE]],
+            [['password_repeat', 'recover'], 'safe', 'on' => [self::SCENARIO_UPDATE]],
             [['anyo_nac'], 'number', 'max' => 9999],
             [['rol_id'], 'default', 'value' => 2],
             [['rol_id'], 'integer'],
@@ -112,6 +114,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
                     salto:
                     $this->password = Yii::$app->security
                     ->generatePasswordHash($this->password);
+                    $this->recover = '';
                 }
             }
         }
@@ -204,6 +207,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('criticas', ['usuario_id' => 'id']);
     }
+    
     /**
      * Genera un array de clave y valor con los géneros de usuarios
      * @return array
@@ -226,5 +230,15 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     {
         $usuario = Usuarios::findOne(Yii::$app->user->id);
         return $usuario->rol->rol === 'admin';
+    }
+
+    /**
+    * Comprueba si el email existe
+    * @return Usuario|null
+    */
+    public function userPorEmail($email)
+    {
+        $user = Usuarios::find()->where(['email' => $email])->one();
+        return $user;
     }
 }
