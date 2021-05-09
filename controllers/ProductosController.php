@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Criticas;
 use app\models\Generos;
+use app\models\ListasProductos;
 use app\models\Personas;
 use app\models\Premios;
 use app\models\Productoras;
@@ -18,6 +19,7 @@ use app\models\ProductosMusica;
 use app\models\ProductosProductoras;
 use app\models\ProductosSearch;
 use app\models\Tipos;
+use app\models\UsuariosListas;
 use app\models\Valoraciones;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -145,13 +147,16 @@ class ProductosController extends Controller
             ->all();
 
         $miValoracion = $this->obtenerValoracion($id);
-       
+        $misListas = UsuariosListas::misListas($model->id);
+        $productoLista = new ListasProductos(['producto_id' => $id]);
         return $this->render('ficha', [
            'model' => $model,
            'miCritica' => $miCritica,
            'criticas' => $criticas,
            'miValoracion' => $miValoracion,
-           'lista' => Valoraciones::listaPuntos()
+           'lista' => Valoraciones::listaPuntos(),
+           'productoLista' => $productoLista,
+           'misListas' => $misListas,
         ]);
     }
     /**

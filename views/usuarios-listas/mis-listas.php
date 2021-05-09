@@ -22,7 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            'lista.titulo',
+            [
+                'label' => 'Listas',
+                'value' => function ($model){
+                    return Html::a(Html::encode($model->lista->titulo), ['usuarios-listas/view', 'id' => $model->id]);
+                },
+                'format' => 'html'
+    
+              ],
+   
             [
                 '__class' => ActionColumn::class,
                 'header' => '',
