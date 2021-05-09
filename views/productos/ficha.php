@@ -242,7 +242,7 @@ $this->registerJs($js);
                 <div class="p-0 text-center">
                     <img class="img-fluid" src="#" alt="">
                 </div>
-                <div class="d-flex flex-md-column">
+                <div class="d-flex flex-md-column flex-wrap">
                     <div class="valoraciones col-6 col-md-12">
                         <div class="media">
                             <h5 id="media"><?= Html::encode(number_format($model->media, 1, ",", "")) ?></h5>
@@ -264,6 +264,21 @@ $this->registerJs($js);
                             ]) ?>
                         <?php else : ?>
                             <?= Html::a('Votar',  ['/site/login'], ['class' => 'btn btn-votar w-100 p-2']) ?>
+                        <?php endif ?>
+                    </div>
+
+                    <div class="valoracion-accion col-6 col-md-12 text-center mr-auto">
+                        <?php if (!Yii::$app->user->isGuest) : ?>
+                            <h5>
+                                Añadir a lista
+                            </h5>
+                            <?= $this->render('/listas-productos/_form', [
+                                'productoLista' => $productoLista,
+                                'misListas' => $misListas,
+                                'producto' => $model->id,
+                            ]) ?>
+                        <?php else : ?>
+                            <?= Html::a('Añadir a listas',  ['/site/login'], ['class' => 'btn btn-votar w-100 p-2']) ?>
                         <?php endif ?>
                     </div>
                 </div>

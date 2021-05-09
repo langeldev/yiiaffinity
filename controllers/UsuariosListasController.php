@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\ListasProductos;
 use app\models\ListasSearch;
 
 use Yii;
 use app\models\UsuariosListas;
 use app\models\UsuariosListasSearch;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -105,8 +107,12 @@ class UsuariosListasController extends Controller
      */
     public function actionView($id)
     {
+        $model =  $this->findModel($id);
+        $listaProducto = ListasProductos::find()->where(['lista_id' => $id])->all();
+      
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'listaProducto' => $listaProducto,
         ]);
     }
 
@@ -171,7 +177,8 @@ class UsuariosListasController extends Controller
                 'listas' => UsuariosListas::find()
                 ->select('lista_id')
                 ->where([
-                    'usuario_id' => Yii::$app->user->id])
+                    'usuario_id' => Yii::$app->user->id
+                ])
                     ->column()
                 ];
         return $datos;

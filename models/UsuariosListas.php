@@ -91,4 +91,22 @@ class UsuariosListas extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::class, ['id' => 'usuario_id'])->inverseOf('usuariosListas');
     }
+
+    /**
+     * Devuelve las listas que tiene el usuario logueado que no contengan ese producto
+     * @param int $producto
+     * @return array $lista
+     */
+    public static function misListas($producto)
+    {
+        $productoLista = Productos::findOne($producto);
+        $listas = Listas::find()
+            ->select('titulo')
+            ->joinWith('usuariosListas ul')
+            ->where(['ul.usuario_id' => Yii::$app->user->id])
+            ->andWhere(['not in', 'ul.id', $productoLista->getListasProductos()->select('lista_id')])
+            ->indexBy('ul.id')
+            ->column();
+        return $listas;
+    }
 }

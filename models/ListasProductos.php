@@ -34,8 +34,8 @@ class ListasProductos extends \yii\db\ActiveRecord
             [['lista_id', 'producto_id', 'posicion'], 'default', 'value' => null],
             [['lista_id', 'producto_id', 'posicion'], 'integer'],
             [['producto_id', 'lista_id'], 'unique', 'targetAttribute' => ['producto_id', 'lista_id']],
-            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::className(), 'targetAttribute' => ['producto_id' => 'id']],
-            [['lista_id'], 'exist', 'skipOnError' => true, 'targetClass' => UsuariosListas::className(), 'targetAttribute' => ['lista_id' => 'id']],
+            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::class, 'targetAttribute' => ['producto_id' => 'id']],
+            [['lista_id'], 'exist', 'skipOnError' => true, 'targetClass' => UsuariosListas::class, 'targetAttribute' => ['lista_id' => 'id']],
         ];
     }
 
@@ -59,7 +59,7 @@ class ListasProductos extends \yii\db\ActiveRecord
      */
     public function getProducto()
     {
-        return $this->hasOne(Productos::className(), ['id' => 'producto_id'])->inverseOf('listasProductos');
+        return $this->hasOne(Productos::class, ['id' => 'producto_id'])->inverseOf('listasProductos');
     }
 
     /**
@@ -69,6 +69,6 @@ class ListasProductos extends \yii\db\ActiveRecord
      */
     public function getLista()
     {
-        return $this->hasOne(UsuariosListas::className(), ['id' => 'lista_id'])->inverseOf('listasProductos');
+        return $this->hasOne(UsuariosListas::class, ['id' => 'lista_id'])->inverseOf('listasProductos');
     }
 }

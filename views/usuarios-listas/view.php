@@ -1,38 +1,29 @@
 <?php
 
 use yii\bootstrap4\Html;
-use yii\widgets\DetailView;
+use yii\grid\GridView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\UsuariosListas */
 
 $this->title = $model->lista->titulo;
-$this->params['breadcrumbs'][] = ['label' => 'Listas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Listas', 'url' => ['/usuarios-listas/mis-listas']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="usuarios-listas-view">
+<div class="fondo p-2">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'usuario_id',
-            'lista_id',
-        ],
-    ]) ?>
-
+    <div id="lista-productos">
+    <ul>
+    <?php foreach ($listaProducto as $lista): ?>
+      <li>
+      <div>
+        <h3>
+                  <?= Html::a(Html::encode($lista->producto->titulo), ['/productos/ficha', 'id' => $lista->producto->id])?>
+        </h3>
+      </div>
+      </li>
+    <?php endforeach ?>
+    </ul>
+    </div>
 </div>
