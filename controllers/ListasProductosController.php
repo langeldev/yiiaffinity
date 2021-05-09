@@ -61,6 +61,22 @@ class ListasProductosController extends Controller
             }
         }
     }
+
+    /**
+    * Elimina los productos de una lista
+    *
+    * @param integer $id
+    * @return mixed
+    * @throws NotFoundHttpException if the model cannot be found
+    */
+    public function actionDelete($id)
+    {
+        $producto = $this->findModel($id);
+        $lista = $producto->lista_id;
+        $producto->delete();
+
+        return $this->redirect(['/usuarios-listas/view', 'id' => $lista]);
+    }
     /**
      * Finds the ListasProductos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
