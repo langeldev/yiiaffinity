@@ -613,7 +613,7 @@
 | **Entrega**     | v2             |
 | **Incidencia**  | [89](https://github.com/rolLangel/yiiaffinity/issues/89) |
 
-| **R69**     | **Ver listas listas de usuario **         |
+| **R69**     | **Ver listas de usuario **         |
 | --------------: | :------------------- |
 | **Descripción** | En el perfil de usuario se verán las listas del usuario             |
 | **Prioridad**   | Importante           |
@@ -675,6 +675,51 @@
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
 | **Incidencia**  | [96](https://github.com/rolLangel/yiiaffinity/issues/96) |
+
+| **R76**     | **Almacenamiento de los carteles de los productos en servicio externo**         |
+| --------------: | :------------------- |
+| **Descripción** | El administrador podrá subir imágenes de los carteles de los productos en la nube de AWS S3             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [102](https://github.com/rolLangel/yiiaffinity/issues/102) |
+
+| **R77**     | **Eliminar Cartel del servicio externo**         |
+| --------------: | :------------------- |
+| **Descripción** | El administrador borrara del servicio en la nube los carteles asociados a un producto cuando los productos sean eliminados              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [103](https://github.com/rolLangel/yiiaffinity/issues/103) |
+
+| **R78**     | **Alta de lista**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [104](https://github.com/rolLangel/yiiaffinity/issues/104) |
+
+| **R79**     | **Modificar lista**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [105](https://github.com/rolLangel/yiiaffinity/issues/105) |
+
+| **R80**     | **Baja de lista**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [106](https://github.com/rolLangel/yiiaffinity/issues/106) |
 
 
 ## Cuadro resumen
@@ -749,10 +794,15 @@
 | (**R66**) Ver perfil de usuarios | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [87](https://github.com/rolLangel/yiiaffinity/issues/87) |
 | (**R67**) Ver las criticas de un usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [88](https://github.com/rolLangel/yiiaffinity/issues/88) |
 | (**R68**) Ver las valoraciones de un usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [89](https://github.com/rolLangel/yiiaffinity/issues/89) |
-| (**R69**) Ver listas listas de usuario  | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [90](https://github.com/rolLangel/yiiaffinity/issues/90) |
+| (**R69**) Ver listas de usuario  | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [90](https://github.com/rolLangel/yiiaffinity/issues/90) |
 | (**R70**) Seguir a un usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [91](https://github.com/rolLangel/yiiaffinity/issues/91) |
 | (**R71**) Dejar de seguir | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [92](https://github.com/rolLangel/yiiaffinity/issues/92) |
 | (**R72**) Agregar una lista a “mis listas” | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [93](https://github.com/rolLangel/yiiaffinity/issues/93) |
 | (**R73**) Borrar una listas de “mis listas” | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [94](https://github.com/rolLangel/yiiaffinity/issues/94) |
 | (**R74**) Recuperación de contraseña | Importante | Funcional | Media | v2 | | **Incidencia**  | [95](https://github.com/rolLangel/yiiaffinity/issues/95) |
 | (**R75**) Cerrar cuenta de usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [96](https://github.com/rolLangel/yiiaffinity/issues/96) |
+| (**R76**) Almacenamiento de los carteles de los productos en servicio externo | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [102](https://github.com/rolLangel/yiiaffinity/issues/102) |
+| (**R77**) Eliminar Cartel del servicio externo | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [103](https://github.com/rolLangel/yiiaffinity/issues/103) |
+| (**R78**) Alta de lista | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [104](https://github.com/rolLangel/yiiaffinity/issues/104) |
+| (**R79**) Modificar lista | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [105](https://github.com/rolLangel/yiiaffinity/issues/105) |
+| (**R80**) Baja de lista | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [106](https://github.com/rolLangel/yiiaffinity/issues/106) |
