@@ -40,6 +40,8 @@ $this->registerJs($js);
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'cartel')->fileInput() ?>
+
     <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'titulo_original')->textInput(['maxlength' => true]) ?>

@@ -240,7 +240,7 @@ $this->registerJs($js);
 
             <aside class="col-12 col-md-3 mb-3">
                 <div class="p-0 text-center">
-                    <img class="img-fluid" src="#" alt="">
+                <?= Html::img($model->getImagen(), ['class' => 'img-fluid'])?>
                 </div>
                 <div class="d-flex flex-md-column flex-wrap">
                     <div class="valoraciones col-6 col-md-12">

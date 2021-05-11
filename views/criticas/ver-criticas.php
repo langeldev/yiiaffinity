@@ -20,14 +20,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::a('Ficha', ['/productos/ficha', 'id' => $producto->id]) ?>
             </li>
             <li>
-
                 <?= Html::a('Críticas [' . count($producto->criticas) . ']', '', ['class' => 'ficha-selected']) ?>
             </li>
         </ul>
 
         <div class="row py-3">
             <div class="offset-2 offset-md-0 col-8 col-md-2 mb-4">
-                <img class="img-fluid" src="#" alt="">
+                <?= Html::img($producto->getImagen(), ['class' => 'img-fluid cartel'])?>
             </div>
             <dl class="col-10 col-md-8">
                 <div class="row">

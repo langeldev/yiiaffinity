@@ -77,6 +77,7 @@ class ListasProductosController extends Controller
 
         return $this->redirect(['/usuarios-listas/view', 'id' => $lista]);
     }
+    
     /**
      * Finds the ListasProductos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
