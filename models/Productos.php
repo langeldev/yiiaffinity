@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\components\Utilidad;
+use yii\imagine\Image;
 use Yii;
 
 /**
@@ -15,6 +17,7 @@ use Yii;
  * @property int $tipo_id
  * @property string $pais
  * @property string $sinopsis
+ * @property string $imagen
  *
  * @property Criticas[] $criticas
  * @property Usuarios[] $usuarios
@@ -41,6 +44,7 @@ use Yii;
  */
 class Productos extends \yii\db\ActiveRecord
 {
+    public $cartel;
     /**
      * {@inheritdoc}
      */
@@ -59,9 +63,10 @@ class Productos extends \yii\db\ActiveRecord
             [['anyo'], 'number'],
             [['duracion', 'tipo_id'], 'default', 'value' => null],
             [['duracion', 'tipo_id'], 'integer'],
-            [['sinopsis'], 'string'],
+            [['sinopsis', 'imagen'], 'string'],
             [['titulo', 'titulo_original', 'pais'], 'string', 'max' => 255],
             [['tipo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::class, 'targetAttribute' => ['tipo_id' => 'id']],
+            [['cartel'], 'image', 'extensions' => 'png, jpg, jpeg']
         ];
     }
 
@@ -85,7 +90,8 @@ class Productos extends \yii\db\ActiveRecord
             'fotografia' => 'Fotografía',
             'interpretes' => 'Reparto',
             'productoras' => 'Porductora',
-            'generos' => 'Géneros'
+            'generos' => 'Géneros',
+            'imagen' => 'Cartel'
         ];
     }
 
@@ -379,5 +385,44 @@ class Productos extends \yii\db\ActiveRecord
             ),
             1
         );
+    }
+
+    /**
+    * Carga las imagenes del formulario y las prepara para subir a AWS
+    */
+    public function upload()
+    {
+        if ($this->cartel !== null) {
+            $titulo = \str_replace(' ', '', $this->titulo) . '_' . $this->anyo;
+            $rutaCartel = Yii::getAlias('@uploads/' . $titulo . '.' . $this->cartel->extension);
+            $this->cartel->saveAs($rutaCartel);
+
+            Image::resize($rutaCartel, 260, 327)->save();
+
+            $this->imagen =  Utilidad::subirCartelS3($this->cartel, $titulo, $rutaCartel);
+            $this->cartel = null;
+        }
+    }
+
+    /**
+    * Devuelve la url donde está alojado el cartel
+    *
+    * @return string $imagen
+    */
+    public function getImagen()
+    {
+        $imagen = $this->imagen ?? 'default.jpg';
+        return Utilidad::getCartel($imagen);
+    }
+
+    /**
+    * Elimina el cartel si ya existía previamente
+    *
+    */
+    public function borrarCartel()
+    {
+        if ($this->imagen !== null) {
+            Utilidad::borrarEnS3($this->imagen);
+        }
     }
 }

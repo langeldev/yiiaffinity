@@ -26,6 +26,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductosController implements the CRUD actions for Productos model.
@@ -210,31 +211,34 @@ class ProductosController extends Controller
     {
         $model = new Productos();
         
-        if ($model->load($producto = Yii::$app->request->post())
-        && $model->save()) {
-            if ($producto['directores'] !== '') {
-                $this->relDirectores($model->id, $producto['directores']);
+        if ($model->load($producto = Yii::$app->request->post())) {
+            $model->cartel = UploadedFile::getInstance($model, 'cartel');
+            $model->upload();
+
+            if ($model->save()) {
+                if ($producto['directores'] !== '') {
+                    $this->relDirectores($model->id, $producto['directores']);
+                }
+                if ($producto['guionistas'] !== '') {
+                    $this->relGuionistas($model->id, $producto['guionistas']);
+                }
+                if ($producto['musica'] !== '') {
+                    $this->relMusica($model->id, $producto['musica']);
+                }
+                if ($producto['fotografia'] !== '') {
+                    $this->relFotografia($model->id, $producto['fotografia']);
+                }
+                if ($producto['interpretes'] !== '') {
+                    $this->relInterpretes($model->id, $producto['interpretes']);
+                }
+                if ($producto['productoras'] !== '') {
+                    $this->relProductoras($model->id, $producto['productoras']);
+                }
+                if ($producto['generos'] !== '') {
+                    $this->relGeneros($model->id, $producto['generos']);
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
             }
-            if ($producto['guionistas'] !== '') {
-                $this->relGuionistas($model->id, $producto['guionistas']);
-            }
-            if ($producto['musica'] !== '') {
-                $this->relMusica($model->id, $producto['musica']);
-            }
-            if ($producto['fotografia'] !== '') {
-                $this->relFotografia($model->id, $producto['fotografia']);
-            }
-            if ($producto['interpretes'] !== '') {
-                $this->relInterpretes($model->id, $producto['interpretes']);
-            }
-            if ($producto['productoras'] !== '') {
-                $this->relProductoras($model->id, $producto['productoras']);
-            }
-            if ($producto['generos'] !== '') {
-                $this->relGeneros($model->id, $producto['generos']);
-            }
-            
-            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -257,39 +261,47 @@ class ProductosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load($producto = Yii::$app->request->post())
-           && $model->save()) {
-            ProductosDirectores::deleteAll(['producto_id'=> $model->id]);
-            ProductosGuionistas::deleteAll(['producto_id'=> $model->id]);
-            ProductosMusica::deleteAll(['producto_id'=> $model->id]);
-            ProductosFotografia::deleteAll(['producto_id'=> $model->id]);
-            ProductosInterpretes::deleteAll(['producto_id'=> $model->id]);
-            ProductosProductoras::deleteAll(['producto_id'=> $model->id]);
-            ProductosGeneros::deleteAll(['producto_id'=> $model->id]);
+       
+        if ($model->load($producto = Yii::$app->request->post())) {
+            if ($model->cartel !== null) {
+                $model->borrarCartel();
+                $model->cartel = UploadedFile::getInstance($model, 'cartel');
+                $model->upload();
+            }
 
-            if ($producto['directores'] !== '') {
-                $this->relDirectores($model->id, $producto['directores']);
+            if ($model->save()) {
+                ProductosDirectores::deleteAll(['producto_id'=> $model->id]);
+                ProductosGuionistas::deleteAll(['producto_id'=> $model->id]);
+                ProductosMusica::deleteAll(['producto_id'=> $model->id]);
+                ProductosFotografia::deleteAll(['producto_id'=> $model->id]);
+                ProductosInterpretes::deleteAll(['producto_id'=> $model->id]);
+                ProductosProductoras::deleteAll(['producto_id'=> $model->id]);
+                ProductosGeneros::deleteAll(['producto_id'=> $model->id]);
+
+                if ($producto['directores'] !== '') {
+                    $this->relDirectores($model->id, $producto['directores']);
+                }
+                if ($producto['guionistas'] !== '') {
+                    $this->relGuionistas($model->id, $producto['guionistas']);
+                }
+                if ($producto['musica'] !== '') {
+                    $this->relMusica($model->id, $producto['musica']);
+                }
+                if ($producto['fotografia'] !== '') {
+                    $this->relFotografia($model->id, $producto['fotografia']);
+                }
+                if ($producto['interpretes'] !== '') {
+                    $this->relInterpretes($model->id, $producto['interpretes']);
+                }
+                if ($producto['productoras'] !== '') {
+                    $this->relProductoras($model->id, $producto['productoras']);
+                }
+                if ($producto['generos'] !== '') {
+                    $this->relGeneros($model->id, $producto['generos']);
+                }
+                
+                return $this->redirect(['view', 'id' => $model->id]);
             }
-            if ($producto['guionistas'] !== '') {
-                $this->relGuionistas($model->id, $producto['guionistas']);
-            }
-            if ($producto['musica'] !== '') {
-                $this->relMusica($model->id, $producto['musica']);
-            }
-            if ($producto['fotografia'] !== '') {
-                $this->relFotografia($model->id, $producto['fotografia']);
-            }
-            if ($producto['interpretes'] !== '') {
-                $this->relInterpretes($model->id, $producto['interpretes']);
-            }
-            if ($producto['productoras'] !== '') {
-                $this->relProductoras($model->id, $producto['productoras']);
-            }
-            if ($producto['generos'] !== '') {
-                $this->relGeneros($model->id, $producto['generos']);
-            }
-            
-            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -310,7 +322,9 @@ class ProductosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->borrarCartel();
+        $model->delete();
 
         return $this->redirect(['index']);
     }

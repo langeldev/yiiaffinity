@@ -57,6 +57,12 @@ $this->registerJs($js);
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            [
+                'label' => 'Cartel',
+                'value' => Html::img($model->getImagen(), ['class' => 'img-fluid']),
+                'format' => 'html'
+         
+            ],
             'titulo',
             'titulo_original',
             'anyo',

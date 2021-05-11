@@ -21,7 +21,8 @@ CREATE TABLE productos
     , duracion          smallint        NOT NULL  CONSTRAINT ck_producto_duracion CHECK (duracion >= 1)  
     , tipo_id           bigint          NOT NULL  REFERENCES tipos(id)
     , pais              varchar(255)    NOT NULL
-    , sinopsis          text            NOT NULL     
+    , sinopsis          text            NOT NULL
+    , imagen           text
 );
 
 CREATE INDEX idx_titulo on productos(titulo);
