@@ -6,7 +6,8 @@ var imgDefault = 'default.jpg';
  * @param {string} x
  * @returns string x,x
  */
-function formateo(x) {
+function formateo(x)
+{
     return Number.parseFloat(x).toFixed(1).replace('.', ',');
 }
 
@@ -33,10 +34,11 @@ $(document).ready(function () {
 });
 
 /**
- * Construlle la seccion de recomendaciones 
+ * Construlle la seccion de recomendaciones
  */
 
-function pedirRecomendacion(userId, url) {
+function pedirRecomendacion(userId, url)
+{
     $.ajax({
         type: 'GET',
         url: url,
@@ -51,10 +53,11 @@ function pedirRecomendacion(userId, url) {
 
 /**
  * Construye una barra de recomendaciones con imagenes para el usuario logueado
- * @param {object} data 
- * @param {number} userId 
+ * @param {object} data
+ * @param {number} userId
  */
-function construirRecomendacion(data, userId){
+function construirRecomendacion(data, userId)
+{
     $('.fondo').append($(`<section id="recomendar" class="p-4 mb-4">
         <h4>Porque te gustó <b>${getCookie('titulo' + userId)}<b></h4>
         </section>`).hide());
@@ -73,7 +76,8 @@ function construirRecomendacion(data, userId){
 /**
  * Muestra es el modal de las cookies
  */
-function comprobarCookie() {
+function comprobarCookie()
+{
     if (!localStorage.getItem('cookie')) {
         if (!sessionStorage.getItem('cookie-rechazada')) {
             $('#modal').modal({
@@ -87,38 +91,42 @@ function comprobarCookie() {
 /**
  * Almacena que se aceptan las cookies
  */
-function aceptarCookie() {
+function aceptarCookie()
+{
     localStorage.setItem('cookie', true);
 }
 
 /**
  * Almacena furante la sesión
  */
-function rechazarCookie() {
+function rechazarCookie()
+{
     sessionStorage.setItem('cookie-rechazada', true);
 }
 
 /**
  * Guarda en las cookies durante 2 días untitulo y el id de su genero principal
- * @param {object} recomendacion 
+ * @param {object} recomendacion
  * @param {numero} usuario
  */
-function almacenarProducto(recomendacion, userId) {
+function almacenarProducto(recomendacion, userId)
+{
     if (getCookie('genero' + userId) == "" && recomendacion.genero !== -1) {
         for (const key in recomendacion) {
-           let nombre = key + userId;
-           setCookie(nombre, recomendacion[key], 2);
+            let nombre = key + userId;
+            setCookie(nombre, recomendacion[key], 2);
         }
     }
 }
 
 /**
  * Almacena las cookies  en el navegador
- * @param {any} cname 
- * @param {any} cvalue 
- * @param {any} exdays 
+ * @param {any} cname
+ * @param {any} cvalue
+ * @param {any} exdays
  */
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cname, cvalue, exdays)
+{
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
@@ -127,10 +135,11 @@ function setCookie(cname, cvalue, exdays) {
 
 /**
  * Devuelve la cookie
- * @param {any} cname 
+ * @param {any} cname
  * @returns string
  */
-function getCookie(cname) {
+function getCookie(cname)
+{
     var name = cname + "=";
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {

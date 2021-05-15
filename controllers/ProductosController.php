@@ -331,19 +331,23 @@ class ProductosController extends Controller
         return $this->redirect(['index']);
     }
 
-
-
+    /**
+    * Recomienda al usuario peliculas aleatorias por su género
+    * que no sea la que ya le gustó
+    * @param number $producto_id
+    * @param number $genero_id
+    */
     public function actionRecomendar($producto_id, $genero_id)
     {
         $recomendacion = YII::$app->db
-                        ->createCommand("select  * 
+                        ->createCommand('select  * 
                                            from productos p
                                       left join productos_generos pg 
                                              on p.id = pg.producto_id
                                           where pg.genero_id = :pg_id 
                                             and pg.producto_id != :p_id
                                        order by random() 
-                                          limit 3")
+                                          limit 3')
                         ->bindValues([
                             ':pg_id' => $genero_id,
                             ':p_id' => $producto_id
