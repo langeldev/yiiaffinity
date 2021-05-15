@@ -3,26 +3,13 @@
 /* @var $this yii\web\View */
 
 use yii\bootstrap4\Html;
-use yii\helpers\Url;
 
 $this->title = 'YiiAffinity';
-$userId = Yii::$app->user->id ?? -1;
-$urlRecomendacion =  Url::to(['/productos/recomendar']);
-$js = <<<EOT
-$(document).ready(function() {
-    let userId = $userId;
-        if (getCookie('genero' + userId) !== ""){
-            pedirRecomendacion(userId, '$urlRecomendacion');
-        }
-    })
-EOT;
 
-$this->registerJs($js);
 ?>
 <div class="fondo">
     <div class="col-12 row p-0 m-0">
        
-
         <section class="body-content col-12 my-0">
 
             <h2 class="text-center text-md-left ml-md-4 h2">Cartelera</h2>
