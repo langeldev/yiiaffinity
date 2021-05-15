@@ -3,7 +3,6 @@
 /* @var $this yii\web\View */
 
 use yii\bootstrap4\Html;
-use yii\helpers\Url;
 
 $this->title = 'YiiAffinity';
 $userId = Yii::$app->user->id ?? -1;
@@ -18,18 +17,18 @@ $(document).ready(function() {
 EOT;
 
 $this->registerJs($js);
+
 ?>
 <div class="fondo">
     <div class="col-12 row p-0 m-0">
-       
 
-        <section class="body-content col-12 my-0">
+        <section class="body-content col-12 col-md-10 my-0">
 
             <h2 class="text-center text-md-left ml-md-4 h2">Cartelera</h2>
             <div class="card-deck col-12 m-auto">
                 <div class="row align-center">
                     <?php foreach ($productos as $producto) : ?>
-                        <div class="col-6 col-lg-3 my-4">
+                        <div class="col-6 col-lg-4 my-4">
                             <div class="card">
                             <?= Html::img($producto->getImagen(), ['class' => 'card-img-top cartel'])?>
                                 
