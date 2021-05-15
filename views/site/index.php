@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\bootstrap4\Html;
+use yii\helpers\Url;
 
 $this->title = 'YiiAffinity';
 $userId = Yii::$app->user->id ?? -1;
