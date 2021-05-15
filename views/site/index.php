@@ -5,24 +5,23 @@
 use yii\bootstrap4\Html;
 
 $this->title = 'YiiAffinity';
+$userId = Yii::$app->user->id ?? -1;
+$urlRecomendacion =  Url::to(['/productos/recomendar']);
+$js = <<<EOT
+$(document).ready(function() {
+    let userId = $userId;
+    if (getCookie('genero' + userId) !== ""){
+        pedirRecomendacion(userId, '$urlRecomendacion');
+    }
+});
+EOT;
+
+$this->registerJs($js);
+
 ?>
 <div class="fondo">
     <div class="col-12 row p-0 m-0">
-        <aside class="d-none d-md-block col-md-2 nav-lateral p-0">
-            <?php if (!Yii::$app->user->isGuest) : ?>
-                <ul class="pl-3">
-                    <li>
-                        <?= Html::a('Editar Perfil', ['usuarios/editar-perfil']) ?>
-                    </li>
-                    <li>
-                        <?= Html::a('Amigos', ['usuarios/buscar-amigos']) ?>
-                    </li>
-                    <li>
-                        <?= Html::a('Listas', ['usuarios-listas/mis-listas']) ?>
-                    </li>
-                </ul>
-            <?php endif ?>
-        </aside>
+
         <section class="body-content col-12 col-md-10 my-0">
 
             <h2 class="text-center text-md-left ml-md-4 h2">Cartelera</h2>
