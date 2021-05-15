@@ -22,7 +22,6 @@ use app\models\Tipos;
 use app\models\UsuariosListas;
 use app\models\Valoraciones;
 use yii\data\ActiveDataProvider;
-use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -46,7 +45,6 @@ class ProductosController extends Controller
                     'delete' => ['POST'],
                     'eliminar-premio' => ['POST'],
                     'agregar-premio' => ['POST'],
-                    'recomendar' => ['GET'],
 
                 ],
             ],'access' => [
@@ -330,33 +328,6 @@ class ProductosController extends Controller
 
         return $this->redirect(['index']);
     }
-
-    /**
-    * Recomienda al usuario peliculas aleatorias por su género
-    * que no sea la que ya le gustó
-    * @param number $producto_id
-    * @param number $genero_id
-    */
-    public function actionRecomendar($producto_id, $genero_id)
-    {
-        $recomendacion = YII::$app->db
-                        ->createCommand('select  * 
-                                           from productos p
-                                      left join productos_generos pg 
-                                             on p.id = pg.producto_id
-                                          where pg.genero_id = :pg_id 
-                                            and pg.producto_id != :p_id
-                                       order by random() 
-                                          limit 3')
-                        ->bindValues([
-                            ':pg_id' => $genero_id,
-                            ':p_id' => $producto_id
-                        ])
-                        ->queryAll();
-       
-        return $this->asJson(['recomendacion' => $recomendacion]);
-    }
-
 
     /**
      * Finds the Productos model based on its primary key value.
