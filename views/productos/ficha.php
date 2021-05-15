@@ -9,14 +9,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $urlAgregarValoracion = Url::to(['valoraciones/agregar']);
 $urlNoVista = Url::to(['valoraciones/no-vista']);
-
+$genero = $model->generos[0]->id ?? -1;
+$user_id = !Yii::$app->user->isGuest ?Yii::$app->user->id: '';
 $js = <<<EOT
 
 $('#valoraciones-valoracion').on('change',function(ev){
     let valoracion = $(this).val();
     let producto = $model->id;
-    
     if (valoracion != '') {
+        if (localStorage.getItem('cookie') && valoracion >= 5) {
+            let recomendacion = {
+                producto: $model->id,
+                titulo: '$model->titulo',
+                genero: $genero
+            }
+       
+            almacenarProducto(recomendacion, '$user_id');
+        }
         $.ajax({
             type: 'POST',
             url: '$urlAgregarValoracion',
