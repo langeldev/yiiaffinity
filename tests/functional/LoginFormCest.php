@@ -31,7 +31,7 @@ class LoginFormCest
     {
         $I->amLoggedInAs(Usuarios::findOne(['login' => 'vaca.roberto']));
         $I->amOnPage('/');
-        $I->see('Logout (vaca.roberto)');
+        $I->see('vaca.roberto');
     }
 
     public function loginWithEmptyCredentials(\FunctionalTester $I)
@@ -58,7 +58,7 @@ class LoginFormCest
             'LoginForm[username]' => 'vaca.roberto',
             'LoginForm[password]' => 'vaca.roberto',
         ]);
-        $I->see('Logout (vaca.roberto)');
+        $I->see('vaca.roberto');
         $I->dontSeeElement('form#login-form');              
     }
 }

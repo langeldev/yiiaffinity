@@ -16,7 +16,6 @@ AppAsset::register($this);
 $urlSearch = Url::to(['productos/search']);
 
 $js = <<<EOT
- comprobarCookie();
     $('#search').keyup(function(ev){
         let search = $.trim($(this).val());
         $.ajax({
@@ -84,22 +83,36 @@ $this->registerJs($js);
         </div>  
         ';
 
+        $items = [];
+
+        if (!Yii::$app->user->isGuest){
+            $items += [
+                [
+                    'label' => 'Gestión',
+                    'items' => [
+                        ['label' => 'Productos', 'url' => ['/productos/index']],
+                        ['label' => 'Usuarios', 'url' => ['/usuarios/index']],
+                    ],
+                    'visible' => Yii::$app->user->identity->soyAdmin,
+                ],
+                [
+                    'label' => Yii::$app->user->identity->login ,
+                    'items' =>[
+                        ['label' => 'Perfil', 'url' => ['/usuarios/editar-perfil']],
+                        ['label' => 'Mis listas', 'url' => ['/usuarios-listas/mis-listas']],
+                        ['label' => 'Amigos', 'url' => ['/usuarios/buscar-amigos']],
+                        ['label' => 'Cerrar sesión', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'POST']],
+                        ],
+                ],
+            ];
+  
+        } else {
+            $items += [['label' => 'Login', 'url' => ['/site/login']]];
+        }
+        
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],
-            'items' => [
-                ['label' => 'Productos', 'url' => ['/productos/index']],
-                ['label' => 'Usuarios', 'url' => ['/usuarios/index']],
-                Yii::$app->user->isGuest ? ''
-                    : ['label' => 'Editar Perfil', 'options' => ['class' => 'd-md-none'], 'url' => ['/usuarios/editar-perfil']],
-                Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) : ('<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'], 'post')
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->login . ')',
-                        ['class' => 'btn btn-warning nav-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>')
-            ],
+             'items' => $items
         ]);
         NavBar::end();
         ?>

@@ -6,6 +6,10 @@
         width: 2.5em;
         height: 2.5em;
     }
+    .dropdown-menu{
+        margin-top: -10px;
+    }
+    
     #lista{
         left: 15px;
     }

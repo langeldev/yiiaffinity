@@ -168,10 +168,24 @@ body{
     border-top: none;
     display: none;
     background-color: white;
+    z-index: 20;
 }
 
 #lista a{
     padding: 0 20px;
+}
+
+.dropdown-menu{
+    margin-top: 22px;
+    border-radius: 0;
+    background-color: #ffc107;
+    border: none;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a.active{
+    background-color: #1252bd;
+    color: #EEE;
 }
 
 .amigo-icon{
