@@ -22,7 +22,6 @@ use app\models\Tipos;
 use app\models\UsuariosListas;
 use app\models\Valoraciones;
 use yii\data\ActiveDataProvider;
-use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

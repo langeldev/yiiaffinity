@@ -9,10 +9,12 @@ $this->title = 'YiiAffinity';
 $userId = Yii::$app->user->id ?? -1;
 $urlRecomendacion =  Url::to(['/productos/recomendar']);
 $js = <<<EOT
-let userId = $userId;
+$(document).ready(function() {
+    let userId = $userId;
     if (getCookie('genero' + userId) !== ""){
         pedirRecomendacion(userId, '$urlRecomendacion');
     }
+});
 EOT;
 
 $this->registerJs($js);
