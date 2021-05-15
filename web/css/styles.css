@@ -26,6 +26,10 @@ body{
     border: 0;
 }
 
+.modal-header{
+    display: none;
+}
+
 /*Login*/
 
 .site-login{
@@ -114,25 +118,34 @@ body{
     background: rgba(0,0,0,0.7);
 }
 
-
 .fondo{
     background: white;
     box-shadow: -5px 1px 22px #0f49b9;
     
 }
 
-.nav-lateral{
-    background-color: #c9cdce;
-    border-right: 1px solid #0f49b9;
+#recomendar{
+    display: flex;
+    border-top: 3px dashed #031946;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 300px;
 }
 
-.nav-lateral ul{
-    margin-top: 30px;
+#recomendar h4{
+    width: 100%;
+    align-self: flex-start;
 }
 
-.nav-lateral li{
-    list-style: none;
-    padding-left: 0;
+#recomendar  div{
+width: 33.3%;
+height: 180px;
+}
+
+#recomendar div img{
+    height: 100%;
 }
 
 .body-content h2{
