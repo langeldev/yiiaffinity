@@ -98,7 +98,7 @@ $this->registerJs($js);
                 [
                     'label' => Yii::$app->user->identity->login ,
                     'items' =>[
-                        ['label' => 'Perfil', 'url' => ['/usuarios/editar-perfil']],
+                        ['label' => 'Perfil', 'url' => ['/valoraciones/usuarios', 'id' => Yii::$app->user->id]],
                         ['label' => 'Mis listas', 'url' => ['/usuarios-listas/mis-listas']],
                         ['label' => 'Amigos', 'url' => ['/usuarios/buscar-amigos']],
                         ['label' => 'Cerrar sesión', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'POST']],

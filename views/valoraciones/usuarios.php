@@ -10,6 +10,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fondo p-2">
 
+<section class="perfil-usuario">
+    <?= $this->render('/usuarios/_perfil', [
+        'usuario' => $usuario
+    ])?>
+</section>
     <section class="p-3">
     <?php if ($valoraciones) : ?>
         <?php foreach ($valoraciones as $valoracion) : ?>

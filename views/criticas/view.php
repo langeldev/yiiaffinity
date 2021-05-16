@@ -11,7 +11,12 @@ $this->params['breadcrumbs'][] = ['label' => $model->producto->titulo , 'url' =>
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="criticas-view">
+<div class="fondo p-2">
+<section class="perfil-usuario">
+    <?= $this->render('/usuarios/_perfil', [
+        'usuario' => $model->usuario
+    ])?>
+</section>
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php if (!Yii::$app->user->isGuest) : ?>
