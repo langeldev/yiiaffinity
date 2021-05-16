@@ -25,5 +25,41 @@ $(document).ready(function () {
         }
     });
 
-
 });
+
+/**
+ * Hace la petcion para cambiar la posicion y cambia
+ * la posicion entre los dos objetos
+ * @param {object} posicion1
+ * @param {object} posicion2
+ * @param {string} url
+ */
+function cambairPoscion(posicion1, posicion2, url)
+{
+    console.log(typeof posicion1);
+    let subirKey = posicion1.attr('id');
+    let bajarKey = posicion2.attr('id');
+
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {
+            sube_id: subirKey,
+            baja_id: bajarKey,
+        }
+    }).done(function (data) {
+        posicion2.insertAfter(posicion1);
+        inhabilitar();
+    });
+}
+
+/**
+ * inhabilita los botones al llegar a su limite
+ */
+function inhabilitar()
+{
+    $('.subir').attr('disabled', false);
+    $('.bajar').attr('disabled', false);
+    $('.subir').first().attr('disabled', true);
+    $('.bajar').last().attr('disabled', true);
+}
