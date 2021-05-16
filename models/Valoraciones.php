@@ -11,6 +11,7 @@ use yii\helpers\ArrayHelper;
  * @property int $producto_id
  * @property int $usuario_id
  * @property float|null $valoracion
+ * @property string|null $created_at
  *
  * @property Productos $producto
  * @property Usuarios $usuario
@@ -35,9 +36,10 @@ class Valoraciones extends \yii\db\ActiveRecord
             [['producto_id', 'usuario_id'], 'default', 'value' => null],
             [['producto_id', 'usuario_id'], 'integer'],
             [['valoracion'], 'number'],
+            [['created_at'], 'date', 'format' =>'php:Y-m-d H:i:s'],
             [['producto_id', 'usuario_id'], 'unique', 'targetAttribute' => ['producto_id', 'usuario_id']],
-            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::className(), 'targetAttribute' => ['producto_id' => 'id']],
-            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
+            [['producto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::class, 'targetAttribute' => ['producto_id' => 'id']],
+            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
         ];
     }
 
