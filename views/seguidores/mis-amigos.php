@@ -4,15 +4,14 @@ use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\LinkPager;
 
-$this->title = 'Buscar Amigos';
-$this->params['breadcrumbs'][] = ['label' => 'Mis amigos' , 'url' => ['/seguidores/mis-amigos']];
+$this->title = 'Mis Amigos';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="fondo p-2">
 
    <?php $form = ActiveForm::begin([
-      'action' => ['buscar-amigos'],
+      'action' => ['mis-amigos'],
       'method' => 'get',
    ]); ?>
 
@@ -22,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="form-group">
       <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
    </div>
-
+   <?= Html::a('Buscar Amigos', ['/usuarios/buscar-amigos'])?>
    <?php ActiveForm::end(); ?>
   
       <div class="row p-2 justify-content-center">
@@ -50,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                ]) ?>
             </div>
          <?php else : ?>
-            <h3>No se encontraron resultados</h3>
+            <h3>No tienes amigos <i class="far fa-sad-tear"></i></h3>
          <?php endif ?>
       </div>
 </div>

@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Usuarios;
+use Yii;
 use yii\data\Pagination;
 
 /**
@@ -91,9 +92,32 @@ class UsuariosSearch extends Usuarios
   
         $this->load($nombre);
 
-        $query = Usuarios::find() ->andFilterWhere(['ilike', 'login', $this->nombre])
+        $query = Usuarios::find()->joinWith('seguidores se')
+        ->andFilterWhere(['ilike', 'login', $this->nombre])
             ->orFilterWhere(['ilike', 'nombre', $this->nombre])
-            ->andWhere(['not in', 'rol_id', 1]);
+            ->andWhere(['not in', 'rol_id', 1])
+            ->andFilterWhere(['not in','usuarios.id', Yii::$app->user->id]);
+        $pagination = new Pagination([
+            'pageSize' => 6,
+            'totalCount' =>  $query->count()
+        ]);
+        
+        $query->limit($pagination->limit)->offset($pagination->offset);
+
+        return ['query' => $query->all(), 'pagination' => $pagination];
+    }
+
+    public function searchMisAmigos($nombre)
+    {
+  
+        $this->load($nombre);
+
+        $query = Usuarios::find()->joinWith('seguidores se')
+        ->andFilterWhere(['ilike', 'login', $this->nombre])
+            ->orFilterWhere(['ilike', 'nombre', $this->nombre])
+            ->andWhere(['not in', 'rol_id', 1])
+            ->andFilterWhere(['not in','usuarios.id', Yii::$app->user->id])
+            ->andFilterWhere(['seguidor_id' => Yii::$app->user->id]);
   
         $pagination = new Pagination([
             'pageSize' => 6,

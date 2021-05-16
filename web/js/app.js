@@ -36,7 +36,6 @@ $(document).ready(function () {
  */
 function cambairPoscion(posicion1, posicion2, url)
 {
-    console.log(typeof posicion1);
     let subirKey = posicion1.attr('id');
     let bajarKey = posicion2.attr('id');
 

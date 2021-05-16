@@ -100,7 +100,7 @@ $this->registerJs($js);
                     'items' =>[
                         ['label' => 'Perfil', 'url' => ['/valoraciones/usuarios', 'id' => Yii::$app->user->id]],
                         ['label' => 'Mis listas', 'url' => ['/usuarios-listas/mis-listas']],
-                        ['label' => 'Amigos', 'url' => ['/usuarios/buscar-amigos']],
+                        ['label' => 'Amigos', 'url' => ['/seguidores/mis-amigos']],
                         ['label' => 'Cerrar sesión', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'POST']],
                         ],
                 ],

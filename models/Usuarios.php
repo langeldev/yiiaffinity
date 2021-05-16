@@ -221,6 +221,16 @@ class Usuarios extends ActiveRecord implements IdentityInterface
       
         return ArrayHelper::map($genero_array, 'id', 'name');
     }
+
+    /**
+     * Gets query for [[Seguidor]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSeguidores()
+    {
+        return $this->hasMany(Seguidores::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
     
     /**
      * Comprueba si el usuario logueado es Administrador
@@ -240,5 +250,15 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     {
         $user = Usuarios::find()->where(['email' => $email])->one();
         return $user;
+    }
+
+    public function getSeguido()
+    {
+        return Seguidores::find()
+            ->where([
+                'usuario_id' => $this->id,
+                'seguidor_id' => Yii::$app->user->id
+                ])
+                ->exists();
     }
 }
