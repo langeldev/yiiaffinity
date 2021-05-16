@@ -52,6 +52,20 @@ class ListasProductos extends \yii\db\ActiveRecord
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+        
+        if ($insert) {
+            $this->posicion = self::find()->where([
+                'lista_id' => $this->lista_id,
+            ])->max('posicion') + 1;
+        }
+        return true;
+    }
+
     /**
      * Gets query for [[Producto]].
      *

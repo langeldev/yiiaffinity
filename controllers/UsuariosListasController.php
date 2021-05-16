@@ -8,7 +8,6 @@ use app\models\ListasSearch;
 use Yii;
 use app\models\UsuariosListas;
 use app\models\UsuariosListasSearch;
-use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -108,8 +107,7 @@ class UsuariosListasController extends Controller
     public function actionView($id)
     {
         $model =  $this->findModel($id);
-        $listaProducto = ListasProductos::find()->where(['lista_id' => $id])->all();
-      
+        $listaProducto = ListasProductos::find()->where(['lista_id' => $id])->orderBy(['posicion' => \SORT_ASC])->all();
         return $this->render('view', [
             'model' => $model,
             'listaProducto' => $listaProducto,

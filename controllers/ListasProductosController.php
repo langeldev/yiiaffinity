@@ -77,6 +77,31 @@ class ListasProductosController extends Controller
 
         return $this->redirect(['/usuarios-listas/view', 'id' => $lista]);
     }
+
+
+    /**
+     * Cambia el posicionamiento de los producto dentro de una lista
+     */
+    public function actionCambiarPosicion()
+    {
+        if (Yii::$app->request->isAjax) {
+            $sube = ListasProductos::findOne(
+                Yii::$app->request->post('sube_id')
+            );
+
+            $baja = ListasProductos::findOne(
+                Yii::$app->request->post('baja_id')
+            );
+            
+            $aux = $sube->posicion;
+            $sube->posicion = $baja->posicion;
+            $baja->posicion = $aux;
+            var_dump($sube->save());
+            var_dump($baja->save());
+            die();
+        }
+    }
+
     
     /**
      * Finds the ListasProductos model based on its primary key value.
