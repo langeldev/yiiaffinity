@@ -150,6 +150,16 @@ CREATE TABLE usuarios
 CREATE INDEX idx_login on usuarios(login);
 CREATE INDEX idx_nombre on usuarios(nombre);
 
+
+DROP TABLE IF EXISTS seguidores CASCADE;
+CREATE TABLE seguidores
+(
+       id           bigserial PRIMARY KEY
+     , usuario_id   bigint    NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+     , seguidor_id   bigint    NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+     , UNIQUE (usuario_id, seguidor_id)
+);
+
 DROP TABLE IF EXISTS valoraciones CASCADE;
 CREATE TABLE valoraciones
 (
