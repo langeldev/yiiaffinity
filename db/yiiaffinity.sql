@@ -156,6 +156,7 @@ CREATE TABLE valoraciones
         producto_id   bigint    REFERENCES productos(id) ON DELETE CASCADE
       , usuario_id    bigint    REFERENCES usuarios(id)  ON DELETE CASCADE
       , valoracion    numeric(2)
+      , created_at  timestamp(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
       , PRIMARY KEY (producto_id, usuario_id)
 );
 
