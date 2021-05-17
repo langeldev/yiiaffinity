@@ -5,26 +5,19 @@ use yii\bootstrap4\Html;
 use yii\helpers\Url;
 
 $urlSeguir = Url::to(['/seguidores/seguir']);
-
+$urlNoSeguir = Url::to(['/seguidores/borrar']);
 
 $seguidor = !Yii::$app->user->isGuest ? Yii::$app->user->id : null ;
 
 $js = <<<EOT
+var usuario = $usuario->id;
+var seguidor =  $seguidor;
     $('#seguir').click(function (ev) {
-        ev.preventDefault();
-        let usuario = $usuario->id;
-        let seguidor =  $seguidor;
-        $.ajax({    
-            type: 'POST',
-            url: '$urlSeguir',
-            data: {
-                usuario_id: usuario,
-                seguidor_id: seguidor
-            }
-        }).done(function(data){
-            $('.perfil-usuario').html(data);
-        })
-        return false;
+        controlSeguir(usuario, seguidor, '$urlSeguir');
+    });
+
+    $('#no-seguir').click(function (ev) {
+        controlSeguir(usuario, seguidor, '$urlNoSeguir');
     });
 EOT;
 $this->registerJs($js);
@@ -37,6 +30,8 @@ $this->registerJs($js);
             <?php else:?>
                 <?php if(!$usuario->seguido): ?>
                     <?= Html::button('Añadir a amigos', ['class' => 'btn btn-votar', 'id' => 'seguir']) ?>
+                <?php else: ?>
+                    <?= Html::button('Eliminar de amigos', ['class' => 'btn btn-votar', 'id' => 'no-seguir']) ?>
                 <?php endif ?>
             <?php endif ?>
         <?php endif ?>
