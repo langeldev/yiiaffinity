@@ -66,15 +66,32 @@ class SeguidoresController extends Controller
     }
 
     /**
+    * Elimina la amistad
+    *
+    * @return mixed
+    */
+    public function actionBorrar()
+    {
+        if (Yii::$app->request->isAjax) {
+            $usuario_id = Yii::$app->request->post('usuario_id');
+            $seguidor = Yii::$app->request->post('seguidor_id');
+            $usuario = Usuarios::findOne($usuario_id);
+            $this->findModel($usuario_id, $seguidor)->delete();
+            return $this->renderAjax('/usuarios/_perfil', ['usuario' => $usuario]);
+        }
+    }
+
+    /**
      * Finds the Seguidores model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param integer $usuario_id
+     * @param integer $seguidor_id
      * @return Seguidores the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($usuario_id, $seguidor_id)
     {
-        if (($model = Seguidores::findOne($id)) !== null) {
+        if (($model = Seguidores::findOne(['usuario_id' => $usuario_id, 'seguidor_id' => $seguidor_id])) !== null) {
             return $model;
         }
 

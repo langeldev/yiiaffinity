@@ -62,3 +62,17 @@ function inhabilitar()
     $('.subir').first().attr('disabled', true);
     $('.bajar').last().attr('disabled', true);
 }
+
+function controlSeguir(usuario, seguidor, url)
+{
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {
+            usuario_id: usuario,
+            seguidor_id: seguidor
+        }
+    }).done(function (data) {
+        $('.perfil-usuario').html(data);
+    })
+}
