@@ -6,6 +6,7 @@ use Yii;
 use app\models\Criticas;
 use app\models\CriticasSearch;
 use app\models\Productos;
+use app\models\Usuarios;
 use app\models\Valoraciones;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -154,6 +155,26 @@ class CriticasController extends Controller
         ]);
     }
 
+    public function actionUsuarios($id)
+    {
+        $usuario = $this->findUsuario($id);
+        $criticas = Criticas::find()
+        ->where(['usuario_id' => $usuario->id])
+        ->orderBy(['created_at' => \SORT_DESC]);
+        $pagination = new Pagination([
+            'pageSize' => 6,
+            'totalCount' =>  $criticas->count()
+        ]);
+        
+        $criticas->limit($pagination->limit)->offset($pagination->offset);
+       
+        return $this->render('usuarios', [
+                    'usuario' => $usuario,
+                    'criticas' => $criticas->all(),
+                    'pagination' => $pagination,
+        ]);
+    }
+
 
     /**
      * Deletes an existing Criticas model.
@@ -200,5 +221,21 @@ class CriticasController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Finds the Usuarios model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Usuarios the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findUsuario($id)
+    {
+        if (($model = Usuarios::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('La página no existe.');
     }
 }

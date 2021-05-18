@@ -275,13 +275,72 @@ body{
     margin: 15px 0;
 }
 
-.cabecera-critica{
+.cabecera-critica,
+.cabecera-critica-prod{
     border-bottom: 3px solid #ffc107;
     padding: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+.cabecera-critica-prod{
+    height: 200px;
+}
+
+.cabecera-critica-usu{
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cabecera-critica-pro .valor-critica{
+    display: block;
+    align-self: center;
+}
+
+.img-critica{
+    height: 100%;
+    height: 100%;
+}
+
+
+.img-critica img{
+    height: 100%;
+}
+
+
+.anyo-prod{
+    font-size: 0.8em;
+}
+
+
+.critica-prod a{
+    color:black; 
+    font-size: 100%;
+    margin-left: -5px;
+}
+
+.cabecera-critica-prod .media{
+font-size: 1em;
+background-color: #0f49b9;
+color:white;
+padding: 5px;
+font-weight: bold;
+margin: 10px;
+}
+
+
+.cabecera-critica-prod .total{
+    font-size: 1em;
+    color: #0f49b9;
+    padding: 5px;
+    font-weight: 300;
+    margin: 10px 5px;
+}
+    
 
 .localidad{
     font-style: italic;
