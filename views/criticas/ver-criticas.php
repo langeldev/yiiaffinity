@@ -3,6 +3,7 @@
 use yii\bootstrap4\Html;
 use yii\bootstrap4\LinkPager;
 
+
 $this->title = $producto->titulo;
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -106,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <header class="cabecera-critica">
                         <div class="datos-usuarios-criticas col-11">
                             <i class="fa fa-user"></i>
-                            <h4 class="usuario-critica"><?= Html::encode($critica->usuario->login) ?></h4>
+                            <h4 class="usuario-critica"><?= Html::a(Html::encode($critica->usuario->login), ['/criticas/usuarios/', 'id' => $critica->usuario_id]) ?></h4>
                             <span class="localidad">
                                 <?php
                                 if ($critica->usuario->ciudad || $critica->usuario->pais) {

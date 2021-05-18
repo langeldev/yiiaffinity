@@ -207,6 +207,16 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(Productos::class, ['id' => 'producto_id'])->viaTable('criticas', ['usuario_id' => 'id']);
     }
+
+    /**
+     * Gets query for [[Valoraciones]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsuario()
+    {
+        return $this->hasMany(Valoraciones::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
     
     /**
      * Genera un array de clave y valor con los géneros de usuarios
