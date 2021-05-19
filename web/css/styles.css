@@ -361,12 +361,13 @@ margin: 10px;
 .usuario-critica{
     font-size: 1.5em;
 }
-
-.titulo-critica a{
-    color: #0f49b9;
+.titulo-critica{
     display: block;
     font-size: 1.5em ;
     padding-top: 30px;
+}
+.titulo-critica a{
+    color: #0f49b9;
 }
 
 .valor-critica{
