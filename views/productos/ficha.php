@@ -46,13 +46,12 @@ $this->registerJs($js);
 ?>
 <div class="fondo p-2">
     <div class="col-12">
-        <h1 class="text-center text-md-left h1 border-0"><?= Html::encode($this->title) ?></h1>
+        <h1 id="titulo" class="text-center text-md-left h1 border-0" itemprop="name"><?= Html::encode($this->title) ?></h1>
         <ul class="nav-ficha col-12">
             <li>
                 <?= Html::a('Ficha', '', ['class' => 'ficha-selected']) ?>
             </li>
             <li>
-
                 <?= Html::a('Críticas [' . count($model->criticas) . ']', ['/criticas/ver-criticas', 'id' => $model->id]) ?>
             </li>
 
@@ -60,12 +59,12 @@ $this->registerJs($js);
 
         <div class="row py-3 d-flex flex-column-reverse flex-md-row">
             <section class="col-12 col-md-9 ">
-                <dl class="row">
+                <dl class="row" itemscope itemtype="https://schema.org/Movie" itemref="titulo cartel">
                     <dt class="izquierda col-3 text-right">Título original</dt>
                     <dd class="derecha col-9"><?= Html::encode($model->titulo_original) ?></dd>
                     <dt class="izquierda col-3 text-right">Año</dt>
-                    <dd class="derecha col-9"><?= Html::encode($model->anyo) ?></dd>
-                    <dt class="izquierda col-3 text-right">Duración</dt>
+                    <dd class="derecha col-9" itemprop="dateCreated"><?= Html::encode($model->anyo) ?></dd>
+                    <dt class="izquierda col-3 text-right" itemprop="duration">Duración</dt>
                     <dd class="derecha col-9"><?= Html::encode($model->duracion . ' min') ?></dd>
                     <dt class="izquierda col-3 text-right">País</dt>
                     <dd class="derecha col-9"><?= Html::encode($model->pais) ?></dd>
@@ -74,7 +73,7 @@ $this->registerJs($js);
                         <dd class="derecha col-9">
                             <div>
                                 <?php foreach ($model->directores as $key => $director) : ?>
-                                    <?= "<span>" . Html::encode($director->nombre) .
+                                    <?= '<span itemprop="director">'. Html::encode($director->nombre) .
                                         ($key + 1 < count($model->directores) ? "</span>," : "</span>")
                                     ?>
                                 <?php endforeach ?>
@@ -149,7 +148,7 @@ $this->registerJs($js);
                         <dd class="derecha col-9">
                             <div>
                                 <?php foreach ($model->generos as $key => $genero) : ?>
-                                    <?= "<span>" . Html::encode($genero->nombre) .
+                                    <?= '<span itemprop="genre">' . Html::encode($genero->nombre) .
                                         ($key + 1 < count($model->generos) ? "</span>," : "</span>")
                                     ?>
                                 <?php endforeach ?>
@@ -239,7 +238,7 @@ $this->registerJs($js);
 
             <aside class="col-12 col-md-3 mb-3">
                 <div class="p-0 text-center">
-                <?= Html::img($model->getImagen(), ['class' => 'img-fluid'])?>
+                <?= Html::img($model->getImagen(), ['class' => 'img-fluid', 'id' => 'cartel', 'itemprop' => 'image'])?>
                 </div>
                 <div class="d-flex flex-md-column flex-wrap">
                     <div class="valoraciones col-6 col-md-12">
