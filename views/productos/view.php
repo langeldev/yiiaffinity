@@ -41,7 +41,7 @@ $this->registerJs($js);
 ?>
 <div class="fondo p-2">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="text-center text-md-left h1"><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-principal']) ?>
@@ -63,7 +63,6 @@ $this->registerJs($js);
                 'format' => 'html'
          
             ],
-            'titulo',
             'titulo_original',
             'anyo',
             [

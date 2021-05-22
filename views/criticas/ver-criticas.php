@@ -13,9 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="fondo p-2">
 
 
-    <h1 class="col-12 pt-3"><?= Html::encode($this->title) ?></h1>
-
+    
     <section class="col-12">
+        <h1 class="text-center text-md-left h1 border-0"><?= Html::encode($this->title) ?></h1>
         <ul class="nav-ficha col-12">
             <li>
                 <?= Html::a('Ficha', ['/productos/ficha', 'id' => $producto->id]) ?>
@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h3 id="media"><?= Html::encode(number_format($producto->mediaCriticas, 1, ",", "")) ?></h3>
                     </div>
                     <div class="total">
-                        <h4 id="total"><?= Html::encode($producto->criticasTotales()) ?> <br>votos</h4>
+                        <h4 id="total"><?= Html::encode($producto->criticasTotales) ?> <br>votos</h4>
                     </div>
                 </div>
             <div class="derecha col-12 col-md-10">
@@ -143,7 +143,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ],
                                 ]) ?>
                                 <?= Html::a('Modificar', ['criticas/update', 'id' => $critica->producto_id], [
-                                            'class' => 'btn btn-votar',
+                                            'class' => 'btn btn-azul',
                                             'data' => [
                                                 'method' => 'post',
                                             ],

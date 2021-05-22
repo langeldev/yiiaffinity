@@ -49,21 +49,20 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?=  Html::encode(number_format($critica->producto->mediaCriticas, 1, ",", "")) ?>
                                 </span>
                                 <span class="total">
-                                    <?= Html::encode($critica->producto->criticasTotales()) ?> <i class="fa fa-user"></i>
+                                    <?= Html::encode($critica->producto->criticasTotales) ?> <i class="fa fa-user"></i>
                                 </span>
                             </p>
                         </div>
                     </header>
 
                     <div class="cabecera-critica-usu py-2">
-                        
-                        <h5 class="titulo-critica col-11 p-0"><?= Html::a(Html::encode($critica->titulo), ['/criticas/view', 'id' => $critica->id]) ?></h5>
+                        <div class="col-10 p-0">
+                            <h5 class="titulo-critica p-0"><?= Html::a(Html::encode($critica->titulo), ['/criticas/view', 'id' => $critica->id]) ?></h5>
+                            <h6 class="fecha p-0"><?= Yii::$app->formatter->asDate($critica->created_at, 'long') ?></h6>
+                        </div>
                         <div class="valor-critica">
                                 <?= Html::encode($critica->valoracion) ?>
-                        </div>
-                        <h6 class="fecha col-11 p-0"><?= Yii::$app->formatter->asDate($critica->created_at, 'long') ?></h6>
-                
-                       
+                        </div>       
                     </div>
                     <p class="critica "> 
                         <?= Html::encode($critica->critica) ?>
@@ -79,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ],
                                     ]) ?>
                                 <?= Html::a('Modificar', ['criticas/update', 'id' => $critica->producto_id], [
-                                            'class' => 'btn btn-votar',
+                                            'class' => 'btn btn-azul',
                                             'data' => [
                                                 'method' => 'post',
                                             ],

@@ -7,12 +7,12 @@ use yii\bootstrap4\Html;
 $this->title = 'YiiAffinity';
 
 ?>
-<div class="fondo">
-    <div class="col-12 row p-0 m-0">
+<div class="fondo p-2">
+    <div class="row p-0 m-0">
        
         <section class="body-content col-12 my-0">
 
-            <h2 class="text-center text-md-left ml-md-4 h2">Cartelera</h2>
+            <h1 class="text-center text-md-left h1">Cartelera</h1>
             <div class="card-deck col-12 m-auto">
                 <div class="row align-center">
                     <?php foreach ($productos as $producto) : ?>

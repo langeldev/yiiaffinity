@@ -5,21 +5,23 @@ use yii\bootstrap4\ActiveForm;
 
 ?>
 
-<div class="usuarios-listas-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['mis-listas'],
-        'method' => 'get',
+<?php $form = ActiveForm::begin([
+    'action' => ['mis-listas'],
+    'method' => 'get',
     ]); ?>
+    <div class="usuarios-listas-search my-5 row col-12 ml-auto ">
 
+<div class="col">
     <?= $form->field($model, 'lista.titulo')
-        ->textInput(['placeholder' => 'Busqueda por título'])
+        ->textInput([
+            'placeholder' => 'Busqueda por título',
+            'class' => 'form-control form-style'
+            ])
         ->label(false) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+</div>
+<?= Html::submitButton('<span class="fas fa-search"></span>', ['class' => 'btn btn-azul']) ?>
 
 </div>
+    <?php ActiveForm::end(); ?>

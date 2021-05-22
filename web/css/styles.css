@@ -121,6 +121,7 @@ body{
 .fondo{
     background: white;
     box-shadow: -5px 1px 22px #0f49b9;
+    min-height: 800px;
     
 }
 
@@ -318,18 +319,18 @@ body{
 
 
 .critica-prod a{
-    color:black; 
+    color:black;
     font-size: 100%;
     margin-left: -5px;
 }
 
 .cabecera-critica-prod .media{
-font-size: 1em;
-background-color: #0f49b9;
-color:white;
-padding: 5px;
-font-weight: bold;
-margin: 10px;
+    font-size: 1em;
+    background-color: #0f49b9;
+    color:white;
+    padding: 5px;
+    font-weight: bold;
+    margin: 10px;
 }
 
 
@@ -445,7 +446,7 @@ margin: 10px;
     margin: 0 auto;
 }
 
-.btn-votar{
+.btn-azul{
     background-color:#0f49b9;
     border-radius: 0;
     color: white;
@@ -455,7 +456,7 @@ margin: 10px;
     font-family: 'Oswald', sans-serif;
    
 }
-.btn-votar:hover{
+.btn-azul:hover{
     background-color:#031946;
     color: rgb(121, 121, 121);
 }
@@ -493,4 +494,11 @@ margin: 10px;
     border-bottom: 3px solid #0f49b9;
     padding: 15px 0;
     font-family: 'Oswald', sans-serif;
+}
+
+/*search*/
+.field-usuariossearch-nombre,
+.field-listassearch-titulo,
+.field-usuarioslistassearch-lista-titulo{
+    margin-bottom: 0;
 }

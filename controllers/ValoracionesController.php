@@ -38,6 +38,10 @@ class ValoracionesController extends Controller
                         'allow' => true,
                         'actions' =>  ['agregar', 'no-vista', 'usuarios'],
                         'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' =>  ['usuarios'],
                     ]
                 ]
             ]
@@ -57,12 +61,11 @@ class ValoracionesController extends Controller
             $producto_id = Yii::$app->request->post('producto_id');
             $valoracion = $this->findModel($producto_id, Yii::$app->user->id);
             $valoracion->valoracion = Yii::$app->request->post('valoracion');
-            Yii::debug($valoracion);
             $valoracion->save();
             $producto = $this->findProducto($producto_id);
             return $this->asJson([
                 'media' => $producto->media,
-                'total' => $producto->votosTotales(),
+                'total' => $producto->votosTotales,
                 ]);
         }
     }
@@ -75,12 +78,11 @@ class ValoracionesController extends Controller
         if (Yii::$app->request->isAjax) {
             $producto_id = Yii::$app->request->post('producto_id');
             $valoracion = $this->findModel($producto_id, Yii::$app->user->id);
-            Yii::debug($valoracion);
             $valoracion->delete();
             $producto = $this->findProducto($producto_id);
             return $this->asJson([
                 'media' => $producto->media,
-                'total' => $producto->votosTotales(),
+                'total' => $producto->votosTotales,
                 ]);
         }
     }

@@ -11,31 +11,34 @@ $this->title = 'Productos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fondo p-2">
+    <div class="col-12">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        
+        <h1 class="text-center text-md-left h1"><?= Html::encode($this->title) ?></h1>
+        
+        <p>
+            <?= Html::a('Crear Producto', ['create'], ['class' => 'btn btn-principal']) ?>
+        </p>
+        
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
+                'tipo.nombre:text:Tipo',
+                'titulo',
+                'titulo_original',
+                'anyo',
+                'duracion',
+                'pais',
+                'sinopsis:ntext',
+                'media:decimal',
+                ['class' => 'yii\grid\ActionColumn'],
+            ],
+            'options' => [
+                'class' => 'table table-responsive'
+                ]
+                ]); ?>
 
-    <p>
-        <?= Html::a('Crear Producto', ['create'], ['class' => 'btn btn-principal']) ?>
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'tipo.nombre:text:Tipo',
-            'titulo',
-            'titulo_original',
-            'anyo',
-            'duracion',
-            'pais',
-            'sinopsis:ntext',
-            'media:decimal',
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-        'options' => [
-            'class' => 'table table-responsive'
-        ]
-    ]); ?>
-
+</div>
 
 </div>

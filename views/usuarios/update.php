@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = 'Modificar';
 ?>
 <div class="fondo p-md-2">
     <div class="col-12 col-md-8 m-auto py-3">
-        <h1 class="h1"><?= Html::encode($this->title) ?></h1>
+        <h1 class="text-center text-md-left h1"><?= Html::encode($this->title) ?></h1>
         <section class="usuarios-form my-5">
 
     <?php $form = ActiveForm::begin(); ?>

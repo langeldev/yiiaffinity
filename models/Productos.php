@@ -330,7 +330,7 @@ class Productos extends \yii\db\ActiveRecord
      *
      * @return int $number
      */
-    public function votosTotales()
+    public function getVotosTotales()
     {
         return Valoraciones::find()->where(['producto_id' => $this->id])->count();
     }
@@ -343,8 +343,8 @@ class Productos extends \yii\db\ActiveRecord
     public function getMedia()
     {
         return number_format(
-            ($this->votosTotales() !== 0
-            ? $this->suma() / $this->votosTotales()
+            ($this->votosTotales !== 0
+            ? $this->suma() / $this->votosTotales
             : 0
             ),
             1
@@ -366,7 +366,7 @@ class Productos extends \yii\db\ActiveRecord
      *
      * @return int $number
      */
-    public function criticasTotales()
+    public function getCriticasTotales()
     {
         return Criticas::find()->where(['producto_id' => $this->id])->count();
     }
@@ -379,8 +379,8 @@ class Productos extends \yii\db\ActiveRecord
     public function getMediaCriticas()
     {
         return number_format(
-            ($this->criticasTotales() !== 0
-            ? $this->sumaCriticas() / $this->criticasTotales()
+            ($this->criticasTotales !== 0
+            ? $this->sumaCriticas() / $this->criticasTotales
             : 0
             ),
             1

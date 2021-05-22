@@ -4,6 +4,9 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\LinkPager;
 
 $this->title = $usuario->login;;
+if (!Yii::$app->user->isGuest){
+    $this->params['breadcrumbs'][] = ['label' => 'Mis amigos' , 'url' => ['/seguidores/mis-amigos']];
+}
 $this->params['breadcrumbs'][] = ['label' => 'Buscar amigos', 'url' => ['usuarios/buscar-amigos']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

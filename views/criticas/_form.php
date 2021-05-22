@@ -12,9 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fondo p-2">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="text-center text-md-left h1"><?= Html::encode($this->title) ?></h1>
     <p><?= Html::encode($producto->mediaCriticas) ?></p>
-    <p><?= Html::encode($producto->criticasTotales()) ?> <i class="fa fa-user"></i></p>
+    <p><?= Html::encode($producto->criticasTotales) ?> <i class="fa fa-user"></i></p>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'valoracion')->dropdownList($puntosValoracion, ['prompt' => '-'])

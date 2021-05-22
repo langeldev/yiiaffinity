@@ -45,8 +45,8 @@ EOT;
 $this->registerJs($js);
 ?>
 <div class="fondo p-2">
-    <h1 class="col-12 pt-3"><?= Html::encode($this->title) ?></h1>
     <div class="col-12">
+        <h1 class="text-center text-md-left h1 border-0"><?= Html::encode($this->title) ?></h1>
         <ul class="nav-ficha col-12">
             <li>
                 <?= Html::a('Ficha', '', ['class' => 'ficha-selected']) ?>
@@ -219,7 +219,7 @@ $this->registerJs($js);
                                         ]) ?>
 
                                     <?= Html::a('Modificar', ['criticas/update', 'id' => $model->id], [
-                                            'class' => 'btn btn-votar',
+                                            'class' => 'btn btn-azul',
                                             'data' => [
                                                 'method' => 'post',
                                             ],
@@ -247,7 +247,7 @@ $this->registerJs($js);
                             <h5 id="media"><?= Html::encode(number_format($model->media, 1, ",", "")) ?></h5>
                         </div>
                         <div class="total">
-                            <h5 id="total"><?= Html::encode($model->votosTotales()) . ' </br>votos' ?></h5>
+                            <h5 id="total"><?= Html::encode($model->votosTotales) . ' </br>votos' ?></h5>
                         </div>
 
                     </div>
@@ -262,7 +262,9 @@ $this->registerJs($js);
                                 'lista' => $lista
                             ]) ?>
                         <?php else : ?>
-                            <?= Html::a('Votar',  ['/site/login'], ['class' => 'btn btn-votar w-100 p-2']) ?>
+                            <h5 class="d-flex h-100 aling-items-center">
+                                <?= Html::a('Votar',  ['/site/login'], ['class' => 'btn btn-azul w-100 p-2 align-self-center']) ?>
+                            </h5>
                         <?php endif ?>
                     </div>
 
@@ -277,7 +279,7 @@ $this->registerJs($js);
                                 'producto' => $model->id,
                             ]) ?>
                         <?php else : ?>
-                            <?= Html::a('Añadir a listas',  ['/site/login'], ['class' => 'btn btn-votar w-100 p-2']) ?>
+                            <?= Html::a('Añadir a listas',  ['/site/login'], ['class' => 'btn btn-azul w-100 p-2']) ?>
                         <?php endif ?>
                     </div>
                 </div>

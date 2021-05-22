@@ -8,22 +8,21 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\bootstrap4\ActiveForm */
 ?>
 
-<div class="listas-search">
-
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
+    <div class="listas-search my-5 row col-12 ml-auto">
 
-
-    <?= $form->field($model, 'titulo')
-        ->textInput(['placeholder' => 'Busqueda por título'])
-        ->label(false) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+        <div class="col">
+            <?= $form->field($model, 'titulo')
+                ->textInput([
+                    'placeholder' => 'Busqueda por título',
+                    'class' => 'form-style form-control'
+                ])
+                ->label(false) ?>
+        </div>
+        <?= Html::submitButton('<span class="fas fa-search"></span>', ['class' => 'btn btn-azul']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
-</div>

@@ -7,11 +7,12 @@ use yii\helpers\Url;
 $urlSeguir = Url::to(['/seguidores/seguir']);
 $urlNoSeguir = Url::to(['/seguidores/borrar']);
 
-$seguidor = !Yii::$app->user->isGuest ? Yii::$app->user->id : null ;
+$seguidor = !Yii::$app->user->isGuest ? Yii::$app->user->id : -1;
 
 $js = <<<EOT
 var usuario = $usuario->id;
 var seguidor =  $seguidor;
+if (seguidor != -1){
     $('#seguir').click(function (ev) {
         controlSeguir(usuario, seguidor, '$urlSeguir');
     });
@@ -19,6 +20,7 @@ var seguidor =  $seguidor;
     $('#no-seguir').click(function (ev) {
         controlSeguir(usuario, seguidor, '$urlNoSeguir');
     });
+}
 EOT;
 $this->registerJs($js);
 ?>
@@ -29,9 +31,9 @@ $this->registerJs($js);
                 <?= Html::a('Editar datos', ['/usuarios/editar-perfil'],['class' => 'btn btn-principal']) ?>
             <?php else:?>
                 <?php if(!$usuario->seguido): ?>
-                    <?= Html::button('Añadir a amigos', ['class' => 'btn btn-votar', 'id' => 'seguir']) ?>
+                    <?= Html::button('Añadir a amigos', ['class' => 'btn btn-azul', 'id' => 'seguir']) ?>
                 <?php else: ?>
-                    <?= Html::button('Eliminar de amigos', ['class' => 'btn btn-votar', 'id' => 'no-seguir']) ?>
+                    <?= Html::button('Eliminar de amigos', ['class' => 'btn btn-azul', 'id' => 'no-seguir']) ?>
                 <?php endif ?>
             <?php endif ?>
         <?php endif ?>

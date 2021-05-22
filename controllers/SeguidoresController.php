@@ -7,6 +7,7 @@ use app\models\Seguidores;
 use app\models\SeguidoresSearch;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -28,6 +29,17 @@ class SeguidoresController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                '__class' => AccessControl::class,
+                'only' => ['*'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' =>  ['mis-amigos', 'seguir', 'borrar'],
+                        'roles' => ['@'],
+                    ],
+                ]
+            ]
         ];
     }
 

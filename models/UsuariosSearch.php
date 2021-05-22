@@ -92,7 +92,7 @@ class UsuariosSearch extends Usuarios
   
         $this->load($nombre);
 
-        $query = Usuarios::find()->joinWith('seguidores se')
+        $query = Usuarios::find()
         ->andFilterWhere(['ilike', 'login', $this->nombre])
             ->orFilterWhere(['ilike', 'nombre', $this->nombre])
             ->andWhere(['not in', 'rol_id', 1])
