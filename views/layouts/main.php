@@ -28,6 +28,8 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
     $this->registerJs($cookies);
 }
 
+
+
 $js = <<<EOT
     $('#search').keyup(function(ev){
         let search = $.trim($(this).val());
@@ -55,8 +57,6 @@ $js = <<<EOT
 EOT;
 
 $this->registerJs($js);
-
-
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -155,7 +155,6 @@ $this->registerJs($js);
 </html>
 <?php $this->endPage() ?>
 
-
 <div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content p-2">
@@ -172,3 +171,5 @@ $this->registerJs($js);
     </div>
   </div>
 </div>
+
+
