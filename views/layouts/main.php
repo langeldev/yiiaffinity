@@ -14,6 +14,21 @@ use yii\helpers\Url;
 AppAsset::register($this);
 
 $urlSearch = Url::to(['productos/search']);
+$urlAceptarCookie = Url::to(['/site/aceptar-cookies']);
+
+
+$cookies =  <<<EOT
+$('.modal').modal({
+    backdrop: 'static'
+})
+    $('.modal').modal().show();
+EOT;
+
+if (!isset($_COOKIE['aceptar_cookies'])) {
+    $this->registerJs($cookies);
+}
+
+
 
 $js = <<<EOT
     $('#search').keyup(function(ev){
@@ -139,3 +154,22 @@ $this->registerJs($js);
 
 </html>
 <?php $this->endPage() ?>
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content p-2">
+      <div class="modal-header">
+        <h5 class="modal-title">Política de cookies</h5>
+      </div>
+      <div class="modal-body">
+      <p>Usamos cookies para mejorar la experiencia de usuario. Acepta si estas de acuerdo.</p>
+      </div>
+      <div class="modal-footer">
+      <a href="<?=$urlAceptarCookie?>" class="btn btn-azul">Aceptar</a>
+      <button onclick="ventana()" class="btn btn-azul bg-secondary">Rechazar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
