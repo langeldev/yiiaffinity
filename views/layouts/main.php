@@ -21,7 +21,7 @@ $cookies =  <<<EOT
 $('.modal').modal({
     backdrop: 'static'
 })
-    $('#modal').modal().show();
+    $('.modal').modal().show();
 EOT;
 
 if (!isset($_COOKIE['aceptar_cookies'])) {
