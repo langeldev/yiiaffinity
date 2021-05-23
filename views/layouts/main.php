@@ -101,7 +101,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
 
         $items = [];
 
-        if (!Yii::$app->user->isGuest){
+        if (!Yii::$app->user->isGuest) {
             $items += [
                 [
                     'label' => 'Gestión',
@@ -112,23 +112,22 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
                     'visible' => Yii::$app->user->identity->soyAdmin,
                 ],
                 [
-                    'label' => Yii::$app->user->identity->login ,
-                    'items' =>[
+                    'label' => Yii::$app->user->identity->login,
+                    'items' => [
                         ['label' => 'Perfil', 'url' => ['/valoraciones/usuarios', 'id' => Yii::$app->user->id]],
                         ['label' => 'Mis listas', 'url' => ['/usuarios-listas/mis-listas']],
                         ['label' => 'Amigos', 'url' => ['/seguidores/mis-amigos']],
                         ['label' => 'Cerrar sesión', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'POST']],
-                        ],
+                    ],
                 ],
             ];
-  
         } else {
             $items += [['label' => 'Login', 'url' => ['/site/login']]];
         }
-        
+
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],
-             'items' => $items
+            'items' => $items
         ]);
         NavBar::end();
         ?>
@@ -149,26 +148,25 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
             <p class="text-center float-md-right"><?= Yii::powered() ?></p>
         </div>
     </footer>
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class=" modal-dialog" role="document">
+            <div class="modal-content p-2">
+                <div class="modal-header">
+                    <h5 class="modal-title">Política de cookies</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Usamos cookies para mejorar la experiencia de usuario. Acepta si estas de acuerdo.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="<?= $urlAceptarCookie ?>" class="btn btn-azul">Aceptar</a>
+                    <button onclick="ventana()" class="btn btn-azul bg-secondary">Rechazar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php $this->endBody() ?>
 </body>
 
 </html>
 <?php $this->endPage() ?>
-
-<div class="modal" tabindex="-1" role="dialog" style="display:none;">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content p-2">
-      <div class="modal-header">
-        <h5 class="modal-title">Política de cookies</h5>
-      </div>
-      <div class="modal-body">
-      <p>Usamos cookies para mejorar la experiencia de usuario. Acepta si estas de acuerdo.</p>
-      </div>
-      <div class="modal-footer">
-      <a href="<?=$urlAceptarCookie?>" class="btn btn-azul">Aceptar</a>
-      <button onclick="ventana()" class="btn btn-azul bg-secondary">Rechazar</button>
-      </div>
-    </div>
-  </div>
-</div>
