@@ -9,11 +9,25 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\bootstrap\Modal;
 use yii\helpers\Url;
 
 AppAsset::register($this);
 
 $urlSearch = Url::to(['productos/search']);
+$urlAceptarCookie = Url::to(['/site/aceptar-cookies']);
+
+
+$cookies =  <<<EOT
+$('#modal').modal({
+    backdrop: 'static'
+})
+    $('#modal').modal().show();
+EOT;
+
+if (!isset($_COOKIE['aceptar_cookies'])) {
+    $this->registerJs($cookies);
+}
 
 $js = <<<EOT
     $('#search').keyup(function(ev){
@@ -42,6 +56,8 @@ $js = <<<EOT
 EOT;
 
 $this->registerJs($js);
+
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -139,3 +155,15 @@ $this->registerJs($js);
 
 </html>
 <?php $this->endPage() ?>
+
+<?php Modal::begin([
+    'id' => 'modal',
+    'size' => 'modal-xs',
+]); ?>
+<article class="col-12 p-2">
+    <h3 class="py-2">Politica de cookies</h3>
+    <p>Usamos cookies para mejorar la experiencia de usuario. Acepta si estas de acuerdo.</p>
+    <a href="<?=$urlAceptarCookie?>" class="btn btn-azul">Aceptar</a>
+    <button onclick="ventana()" class="btn btn-azul bg-secondary">Rechazar</button>
+</article>
+<?php Modal::end() ?>
