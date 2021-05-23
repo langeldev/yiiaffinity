@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         
         <h1 class="text-center text-md-left h1"><?= Html::encode($this->title) ?></h1>
         
-        <p>
+        <p class="text-right my-3">
             <?= Html::a('Crear Producto', ['create'], ['class' => 'btn btn-principal']) ?>
         </p>
         
@@ -24,6 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => [
+                [
+                    'label' => 'Cartel',
+                    'value' => function($model, $key){
+                        return Html::img($model->getImagen(), ['class' => 'img-fluid']);
+                    },
+                    'format' => 'html',
+                ],
                 'tipo.nombre:text:Tipo',
                 'titulo',
                 'titulo_original',
@@ -31,13 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'duracion',
                 'pais',
                 'sinopsis:ntext',
-                'media:decimal',
                 ['class' => 'yii\grid\ActionColumn'],
             ],
             'options' => [
                 'class' => 'table table-responsive'
                 ]
-                ]); ?>
+            ]); ?>
 
 </div>
 

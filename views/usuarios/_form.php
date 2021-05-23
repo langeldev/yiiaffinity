@@ -12,19 +12,17 @@
 
 
 <div class="d-flex row">
-
-    
-<div class="col-6">            
-<?= $form->field($model, 'genero')->dropdownList($generos, ['prompt' => 'Seleccione', 'class' => 'form-control  col-12 form-style']) ?>
-</div>            
-<?php if (!Yii::$app->user->isGuest) : ?>
+    <div class="col-6">
+        <?= $form->field($model, 'genero')->dropdownList($generos, ['prompt' => 'Seleccione', 'class' => 'form-control  col-12 form-style']) ?>
+    </div>
+    <?php if (!Yii::$app->user->isGuest) : ?>
         <?php if (Yii::$app->user->identity->soyAdmin) : ?>
             <div class="col-6">
                 <?= $form->field($model, 'rol_id')->dropdownList($roles, ['class' => 'form-control  col-12 form-style']) ?>
             </div>
-            <?php endif ?>
-            <?php endif ?>
-        </div>
+        <?php endif ?>
+    <?php endif ?>
+</div>
 
 
 <?= $form->field($model, 'pais')->textInput(['maxlength' => true, 'class' => 'form-control form-style']) ?>

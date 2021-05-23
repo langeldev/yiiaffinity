@@ -475,16 +475,18 @@ body{
     box-shadow: none;
     border-bottom: 4px solid rgb(241, 189, 19);
 }
-.usuarios-form{
+.usuarios-form,
+.productos-form {
     padding: 20px;
     border:1px solid #EEE;
     box-shadow: 1px 1px 3px #555;
     background-color: white;
 }
 
-.usuarios-form label{
+.usuarios-form label,
+.productos-form label{
     font-weight: bolder;
-   color: #777;
+    color: #777;
 }
 
 .h1{

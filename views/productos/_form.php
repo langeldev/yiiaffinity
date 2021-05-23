@@ -36,79 +36,83 @@ EOT;
 $this->registerJs($js);
 ?>
 
-<div class="productos-form p-2">
+<div class="productos-form py-5 my-4">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <?= $form->field($model, 'cartel')->fileInput() ?>
 
-    <?= $form->field($model, 'cartel')->fileInput() ?>
+            <?= $form->field($model, 'titulo')->textInput(['maxlength' => true, 'class' => 'form-control form-style']) ?>
 
-    <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'titulo_original')->textInput(['maxlength' => true, 'class' => 'form-control form-style']) ?>
 
-    <?= $form->field($model, 'titulo_original')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'anyo')->textInput(['class' => 'form-control form-style']) ?>
 
-    <?= $form->field($model, 'anyo')->textInput() ?>
+            <?= $form->field($model, 'duracion')->textInput(['class' => 'form-control form-style']) ?>
 
-    <?= $form->field($model, 'duracion')->textInput() ?>
+            <?= $form->field($model, 'tipo_id')->dropdownList($tipos, ['prompt' => 'Seleccione', 'class' => 'form-control form-style']) ?>
 
-    <?= $form->field($model, 'tipo_id')->dropdownList($tipos, ['prompt' => 'Seleccione']) ?>
+            <?= $form->field($model, 'pais')->textInput(['maxlength' => true, 'class' => 'form-control form-style']) ?>
 
-    <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'sinopsis')->textarea(['rows' => 6, 'class' => 'form-control form-style']) ?>
+        </div>
 
-    <?= $form->field($model, 'sinopsis')->textarea(['rows' => 6]) ?>
+        <div class="col-12 col-md-6">
+            <?= $form->field($model, 'directores')->dropdownList($personas, [
+                'id' => 'directores',
+                'name' => 'directores',
+                'multiple' => 'multiple',
 
-
-    <?= $form->field($model, 'directores')->dropdownList($personas, [
-        'id' => 'directores',
-        'name' => 'directores',
-        'multiple' => 'multiple',
-        
-        ])->label('Directores', ['for' => 'directores']) ?>
-
-
-    <?= $form->field($model, 'guion')->dropdownList($personas, [
-                    'id' => 'guionistas',
-                    'name' => 'guionistas',
-                    'multiple' => 'multiple',
-                    ]) ?>
+            ])->label('Directores', ['for' => 'directores']) ?>
 
 
-    <?= $form->field($model, 'musica')->dropdownList($personas, [
-                    'id' => 'musica',
-                    'name' => 'musica',
-                    'multiple' => 'multiple',
-                    ]) ?>
+            <?= $form->field($model, 'guion')->dropdownList($personas, [
+                'class' => 'form-control form-style',
+                'id' => 'guionistas',
+                'name' => 'guionistas',
+                'multiple' => 'multiple',
+            ]) ?>
 
 
-    <?= $form->field($model, 'fotografia')->dropdownList($personas, [
-                    'id' => 'fotografia',
-                    'name' => 'fotografia',
-                    'multiple' => 'multiple',
-                    ]) ?>
-
-    <?= $form->field($model, 'interpretes')->dropdownList($personas, [
-                    'id' => 'interpretes',
-                    'name' => 'interpretes',
-                    'multiple' => 'multiple',
-                    ]) ?>
+            <?= $form->field($model, 'musica')->dropdownList($personas, [
+                'id' => 'musica',
+                'name' => 'musica',
+                'multiple' => 'multiple',
+            ]) ?>
 
 
-    <?= $form->field($model, 'productoras')->dropdownList($productoras, [
-                    'id' => 'productoras',
-                    'name' => 'productoras',
-                    'multiple' => 'multiple',
-                    ]) ?>
+            <?= $form->field($model, 'fotografia')->dropdownList($personas, [
+                'id' => 'fotografia',
+                'name' => 'fotografia',
+                'multiple' => 'multiple',
+            ]) ?>
+
+            <?= $form->field($model, 'interpretes')->dropdownList($personas, [
+                'id' => 'interpretes',
+                'name' => 'interpretes',
+                'multiple' => 'multiple',
+            ]) ?>
 
 
-    <?= $form->field($model, 'generos')->dropdownList($generos, [
-                    'id' => 'generos',
-                    'name' => 'generos',
-                    'multiple' => 'multiple',
-                    ]) ?>
+            <?= $form->field($model, 'productoras')->dropdownList($productoras, [
+                'id' => 'productoras',
+                'name' => 'productoras',
+                'multiple' => 'multiple',
+            ]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-principal']) ?>
+
+            <?= $form->field($model, 'generos')->dropdownList($generos, [
+                'id' => 'generos',
+                'name' => 'generos',
+                'multiple' => 'multiple',
+            ]) ?>
+        </div>
+        <div class="col-12 text-right">
+            <?= Html::submitButton('Guardar', ['class' => 'btn btn-principal']) ?>
+        </div>
+
     </div>
-
     <?php ActiveForm::end(); ?>
 
 </div>
