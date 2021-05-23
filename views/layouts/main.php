@@ -17,17 +17,6 @@ $urlSearch = Url::to(['productos/search']);
 $urlAceptarCookie = Url::to(['/site/aceptar-cookies']);
 
 
-$cookies =  <<<EOT
-$('.modal').modal({
-    backdrop: 'static'
-})
-    $('.modal').modal().show();
-EOT;
-
-if (!isset($_COOKIE['aceptar_cookies'])) {
-    $this->registerJs($cookies);
-}
-
 
 
 $js = <<<EOT
@@ -57,6 +46,18 @@ $js = <<<EOT
 EOT;
 
 $this->registerJs($js);
+$cookies =  <<<EOT
+$('.modal').modal({
+    backdrop: 'static'
+})
+    $('.modal').modal().show();
+EOT;
+
+if (!isset($_COOKIE['aceptar_cookies'])) {
+    $this->registerJs($cookies);
+}
+
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -155,7 +156,7 @@ $this->registerJs($js);
 </html>
 <?php $this->endPage() ?>
 
-<div class="modal" tabindex="-1" role="dialog">
+<div class="modal" tabindex="-1" role="dialog" style="display:none;">
   <div class="modal-dialog" role="document">
     <div class="modal-content p-2">
       <div class="modal-header">
@@ -171,5 +172,3 @@ $this->registerJs($js);
     </div>
   </div>
 </div>
-
-
