@@ -76,11 +76,3 @@ function controlSeguir(usuario, seguidor, url)
         $('.perfil-usuario').html(data);
     })
 }
-
-/**
- * redirigir el navegador a una nueva página
- */
-function ventana()
-{
-    window.location = "https://www.google.es";
-}
