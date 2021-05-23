@@ -129,4 +129,14 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    /**
+     * Genera una cookie para la aceptacion de politicas de cookies
+     */
+    public function actionAceptarCookies()
+    {
+        \setcookie('aceptar_cookies', '1', time() + 3600 * 24 * 365, '/');
+        return $this->goBack();
+    }
+
 }
