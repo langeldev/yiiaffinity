@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="row py-3">
             <div class="offset-2 offset-md-0 col-8 col-md-2 mb-4">
-                <?= Html::img($producto->getImagen(), ['class' => 'img-fluid cartel']) ?>
+                <?= Html::img($producto->getImagen(), ['class' => 'img-fluid ']) ?>
             </div>
             <dl class="col-10 col-md-8 row">
 

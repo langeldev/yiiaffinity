@@ -18,7 +18,7 @@ $this->title = 'YiiAffinity';
                     <?php foreach ($productos as $producto) : ?>
                         <div class="col-6 col-lg-3 my-4">
                             <div class="card">
-                            <?= Html::img($producto->getImagen(), ['class' => 'card-img-top cartel'])?>
+                            <?= Html::img($producto->getImagen(), ['class' => 'card-img-top'])?>
                                 
                                 <div class="card-body">
                                     <h5 class="card-title titulo">

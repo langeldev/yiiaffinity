@@ -54,11 +54,10 @@ $this->registerJs($js);
             <li>
                 <?= Html::a('Críticas [' . count($model->criticas) . ']', ['/criticas/ver-criticas', 'id' => $model->id]) ?>
             </li>
-
         </ul>
-
         <div class="row py-3 d-flex flex-column-reverse flex-md-row">
-            <section class="col-12 col-md-9 row" itemscope itemtype="https://schema.org/Movie" itemref="titulo cartel">
+            <section class="col-12 col-md-9">
+                <dl class="row" itemscope itemtype="https://schema.org/Movie" itemref="titulo cartel">
                     <dt class="izquierda col-3 text-right">Título original</dt>
                     <dd class="derecha col-9"><?= Html::encode($model->titulo_original) ?></dd>
                     <dt class="izquierda col-3 text-right">Año</dt>
@@ -71,7 +70,7 @@ $this->registerJs($js);
                         <dt class="izquierda col-3 text-right">Dirección</dt>
                         <dd class="derecha col-9">
                             <?php foreach ($model->directores as $key => $director) : ?>
-                                <?= '<span itemprop="director">'. Html::encode($director->nombre) .
+                                <?= '<span itemprop="director">' . Html::encode($director->nombre) .
                                     ($key + 1 < count($model->directores) ? "</span>," : "</span>")
                                 ?>
                             <?php endforeach ?>
@@ -144,11 +143,11 @@ $this->registerJs($js);
                     <?php if (count($model->premios) > 0) : ?>
                         <dt class="izquierda col-3 text-right">Premios</dt>
                         <dd class="derecha col-9">
-                                <?php foreach ($model->premios as $premio) : ?>
-                                    <div>
-                                        <?= Html::encode("(" . $premio->cantidad . ") " . $premio->nombre) ?>
-                                    </div>
-                                <?php endforeach ?>
+                            <?php foreach ($model->premios as $premio) : ?>
+                                <div>
+                                    <?= Html::encode("(" . $premio->cantidad . ") " . $premio->nombre) ?>
+                                </div>
+                            <?php endforeach ?>
                         </dd>
                     <?php endif ?>
                     <dt class="izquierda col-3 text-right">Tu crítica</dt>
@@ -195,7 +194,7 @@ $this->registerJs($js);
                                             ],
                                         ]) ?>
 
-                                    <?= Html::a('Modificar', ['criticas/update', 'id' => $model->id], [
+                                        <?= Html::a('Modificar', ['criticas/update', 'id' => $model->id], [
                                             'class' => 'btn btn-azul',
                                             'data' => [
                                                 'method' => 'post',
@@ -209,6 +208,7 @@ $this->registerJs($js);
                                     <?= Html::a('Añade tu critica', ['criticas/create', 'id' => $model->id]) ?>
                                 </div>
                             <?php endif ?>
+                        </div>
                     </dd>
                 </dl>
 
@@ -216,7 +216,7 @@ $this->registerJs($js);
 
             <aside class="col-12 col-md-3 mb-3">
                 <div class="p-0 text-center">
-                <?= Html::img($model->getImagen(), ['class' => 'img-fluid', 'id' => 'cartel', 'itemprop' => 'image'])?>
+                    <?= Html::img($model->getImagen(), ['class' => 'img-fluid', 'id' => 'cartel', 'itemprop' => 'image']) ?>
                 </div>
                 <div class="d-flex flex-md-column flex-wrap">
                     <div class="valoraciones col-6 col-md-12">
