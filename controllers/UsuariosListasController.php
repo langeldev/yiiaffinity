@@ -4,10 +4,11 @@ namespace app\controllers;
 
 use app\models\ListasProductos;
 use app\models\ListasSearch;
-
+use app\models\Usuarios;
 use Yii;
 use app\models\UsuariosListas;
 use app\models\UsuariosListasSearch;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -48,20 +49,39 @@ class UsuariosListasController extends Controller
 
 
     /**
-    * El usuario puede ver las listas que tiene
-    * @return mixed
-    */
+     * El usuario puede ver las listas que tiene
+     * @return mixed
+     */
     public function actionMisListas()
     {
         $searchModel = new UsuariosListasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
- 
+
         return $this->render('mis-listas', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-/**
+
+    public function actionUsuarios($id)
+    {
+        $usuario = $this->findUsuario($id);
+        $listas = new ActiveDataProvider(
+            [
+                'query' => UsuariosListas::find()->where(['usuario_id' => $usuario->id]),
+                'pagination' => [
+                    'pageSize' => 10
+                ]
+            ]
+        );
+
+        return $this->render('usuarios', [
+            'usuario' => $usuario,
+            'listas' => $listas,
+        ]);
+    }
+
+    /**
      * El usuario puede agregar una lista a sus lista
      * @return mixed
      */
@@ -170,15 +190,31 @@ class UsuariosListasController extends Controller
         $searchModel = new ListasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $datos = [
-                'searhModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-                'listas' => UsuariosListas::find()
+            'searhModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'listas' => UsuariosListas::find()
                 ->select('lista_id')
                 ->where([
                     'usuario_id' => Yii::$app->user->id
                 ])
-                    ->column()
-                ];
+                ->column()
+        ];
         return $datos;
+    }
+
+    /**
+     * Finds the Usuarios model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Usuarios the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findUsuario($id)
+    {
+        if (($model = Usuarios::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('La página no existe.');
     }
 }

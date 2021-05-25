@@ -197,6 +197,15 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     {
         return $this->hasOne(UsuariosListas::class, ['usuario_id' => 'id'])->inverseOf('usuario');
     }
+
+    /**
+    * total de las listas que tiene un usuario
+    * @return int
+    */
+    public function getListasTotales()
+    {
+        return $this->getUsuariosListas()->count();
+    }
     
     /**
      * Gets query for [[Productos]].

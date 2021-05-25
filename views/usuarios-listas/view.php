@@ -4,7 +4,12 @@ use yii\bootstrap4\Html;
 use yii\helpers\Url;
 
 $this->title = $model->lista->titulo;
-$this->params['breadcrumbs'][] = ['label' => 'Mis Listas', 'url' => ['/usuarios-listas/mis-listas']];
+if  ($model->usuario_id === Yii::$app->user->id){
+  $this->params['breadcrumbs'][] = ['label' => 'Mis Listas', 'url' => ['/usuarios-listas/mis-listas']];
+} else {
+  $this->params['breadcrumbs'][] = ['label' => 'Listas de ' . Html::encode($model->usuario->login),
+  'url' => ['/usuarios-listas/usuarios', 'id' => $model->usuario_id]];
+}
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
