@@ -4,7 +4,7 @@
 
 <?= $form->field($model, 'anyo_nac')->textInput(['class' => 'form-control form-style']) ?>
 
-<?= $form->field($model, 'email')->textInput(['maxlength' => true, 'class' => 'form-control  form-style']) ?>
+<?= $form->field($model, 'email')->textInput(['maxlength' => true, 'class' => 'form-control  form-style',  'placeholder' => 'example@example.com']) ?>
 
 <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'class' => 'form-control form-style']) ?>
 
