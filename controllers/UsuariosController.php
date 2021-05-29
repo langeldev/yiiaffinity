@@ -6,6 +6,7 @@ use app\models\Roles;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
+use PhpParser\Node\Expr\PostDec;
 use yii\bootstrap4\Html;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -40,6 +41,7 @@ class UsuariosController extends Controller
                            , 'view'
                            , 'registro'
                            , 'editar-perfil'
+                           , 'eliminar-cuenta'
                         ],
                 'rules' => [
                     [
@@ -57,7 +59,7 @@ class UsuariosController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['editar-perfil'],
+                        'actions' => ['editar-perfil', 'eliminar-cuenta'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -276,6 +278,34 @@ class UsuariosController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Permite que el usuario borre su cuenta a traves de un formulario de validacion de contraseña
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEliminarCuenta($id)
+    {
+         
+        $model = $this->findModel($id);
+     
+        if ($model->load($form = Yii::$app->request->post())) {
+            $model->password_repeat = $form['Usuarios']['password_repeat'];
+            if ($model->delete()) {
+                Yii::$app->session->setFlash('info', 'Su cuenta ha sido eliminada correctamente');
+                return $this->goHome();
+            } else {
+                Yii::$app->session->setFlash('error', 'Ha ocurrido un error');
+                return $this->redirect(['valoraciones/usuarios', 'id' => $id]);
+            }
+        }
+
+        return $this->renderAjax('_eliminar-cuenta', [
+            'model' => $model,
+            
+        ]);
     }
 
     /**

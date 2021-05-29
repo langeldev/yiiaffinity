@@ -496,3 +496,9 @@ body{
 .field-usuarioslistassearch-lista-titulo{
     margin-bottom: 0;
 }
+
+.eliminar-label{
+    font-weight: bold;
+    font-style: italic;
+    color: #555;
+}
