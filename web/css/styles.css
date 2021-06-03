@@ -498,7 +498,8 @@ body{
     border-bottom: 4px solid rgb(241, 189, 19);
 }
 .usuarios-form,
-.productos-form {
+.productos-form,
+.listas-form{
     padding: 20px;
     border:1px solid #EEE;
     box-shadow: 1px 1px 3px #555;
@@ -507,7 +508,8 @@ body{
 
 .usuarios-form label,
 .productos-form label,
-.critica-form label{
+.critica-form label,
+.listas-form label{
     font-weight: bolder;
     color: #777;
 }
