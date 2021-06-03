@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'action' => ['buscar-amigos'],
             'method' => 'get',
             ]); ?>
-            <div class="my-5 col-12 row ml-auto pr-0">
+            <div class="my-5 col-12 row ml-auto px-0">
                <div class="col">
                   
                   <?= $form->field($model, 'nombre')->textInput([

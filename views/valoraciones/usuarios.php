@@ -20,25 +20,43 @@ $this->params['breadcrumbs'][] = $this->title;
                 'usuario' => $usuario
             ]) ?>
         </section>
-        <ul class="nav-ficha col-12">
+        <ul class="nav-user col-12">
             <li>
-                <?= Html::a('Valoraciones [' . count($usuario->valoraciones) . ']', '', ['class' => 'ficha-selected']) ?>
+                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . count($usuario->criticas) . ']',  ['/criticas/usuarios', 'id' => $usuario->id]) ?>
             </li>
             <li>
-                <?= Html::a('Críticas [' . count($usuario->criticas) . ']',  ['/criticas/usuarios', 'id' => $usuario->id]) ?>
+                <?= Html::a('<i class="fas fa-star"></i> Valoraciones [' . count($usuario->valoraciones) . ']', '', ['class' => 'user-selected']) ?>
             </li>
             <li>
-                <?= Html::a('Listas [' . $usuario->listasTotales . ']', ['/usuarios-listas/usuarios', 'id' => $usuario->id]) ?>
+                <?= Html::a('<i class="fas fa-list"></i> Listas [' . $usuario->listasTotales . ']', ['/usuarios-listas/usuarios', 'id' => $usuario->id]) ?>
             </li>
         </ul>
-        <section class="p-3">
+        <section class="p-3 valoraciones-container">
             <?php if ($valoraciones) : ?>
                 <?php foreach ($valoraciones as $valoracion) : ?>
-                    <article class="row valoracion-container">
-                        <div class="col-3 img-valoracion">
+                    <article class="row valoracion-container p-3">
+                        <div class="col-3 col-md-2 img-valoracion">
                             <?= Html::img($valoracion->producto->getImagen(), ['class' => 'img-fluid']) ?>
                         </div>
-                        <h2><?= Html::a(Html::encode($valoracion->producto->titulo), ['/productos/ficha', 'id' => $valoracion->producto_id]) ?> <?= $valoracion->valoracion ?></h2>
+                        <div class="col-7 col-md-8 p-2">
+                            <h3 class="titulo-valoracion"><?= Html::a(Html::encode($valoracion->producto->titulo), ['/productos/ficha', 'id' => $valoracion->producto_id]) ?> </h3>
+                           <h4 class="valoracion-anio">(<?= Html::encode($valoracion->producto->anyo) ?>)</h4>
+                            <p class="row voto-media">
+                                <span class="media">
+                                    <?= Html::encode(number_format($valoracion->producto->media, 1, ",", "")) ?>
+                                </span>
+                                <span class="total">
+                                    <?= Html::encode($valoracion->producto->votosTotales) ?> <i class="fa fa-user"></i>
+                                </span>
+                            </p>
+           
+                        
+                        </div>
+                        <div class="col-2 col-md-1 mr-md-1 contenedor-voto">
+                            <h5 class="puntos-valoracion">
+                                <?= $valoracion->valoracion ?>
+                            </h5>
+                        </div>
                     </article>
                 <?php endforeach ?>
             <?php else : ?>

@@ -20,35 +20,35 @@ $this->params['breadcrumbs'][] = $this->title;
                 'usuario' => $usuario
             ]) ?>
         </section>
-        <ul class="nav-ficha col-12 mb-5">
+        <ul class="nav-user col-12 mb-5">
             <li>
-                <?= Html::a('Valoraciones [' . count($usuario->valoraciones) . ']', ['/valoraciones/usuarios', 'id' => $usuario->id]) ?>
+                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . count($usuario->criticas) . ']',  ['/criticas/usuarios', 'id' => $usuario->id]) ?>
             </li>
             <li>
-                <?= Html::a('Críticas [' . count($usuario->criticas) . ']',  ['/criticas/usuarios', 'id' => $usuario->id]) ?>
+                <?= Html::a('<i class="far fa-star"></i> Valoraciones [' . count($usuario->valoraciones) . ']', ['/valoraciones/usuarios', 'id' => $usuario->id]) ?>
             </li>
             <li>
-                <?= Html::a('Listas [' .  $usuario->listasTotales . ']', '', ['class' => 'ficha-selected'])?>
+                <?= Html::a('<i class="fas fa-list"></i> Listas [' .  $usuario->listasTotales . ']', '', ['class' => 'user-selected']) ?>
             </li>
         </ul>
         <section class="py-5 my-5">
-        <?= GridView::widget([
-            'dataProvider' => $listas,
-            'layout' => "{summary}\n{items}\n<div class='d-flex justify-content-center'>{pager}</div>",
-            'columns' => [
-                [
-                    'label' => 'Listas',
-                    'value' => function ($model) {
-                        return Html::a(Html::encode($model->lista->titulo), ['usuarios-listas/view', 'id' => $model->id]);
-                    },
-                    'format' => 'html'
+            <?= GridView::widget([
+                'dataProvider' => $listas,
+                'layout' => "{summary}\n{items}\n<div class='d-flex justify-content-center'>{pager}</div>",
+                'columns' => [
+                    [
+                        'label' => 'Listas',
+                        'value' => function ($model) {
+                            return Html::a(Html::encode($model->lista->titulo), ['usuarios-listas/view', 'id' => $model->id]);
+                        },
+                        'format' => 'html'
 
+                    ],
                 ],
-            ],
-            'options' => [
-                'class' => 'table table-responsive '
-            ]
-        ]); ?>
+                'options' => [
+                    'class' => 'table table-responsive '
+                ]
+            ]); ?>
 
 
         </section>

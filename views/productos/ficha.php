@@ -49,10 +49,10 @@ $this->registerJs($js);
         <h1 id="titulo" class="text-center text-md-left h1 border-0" itemprop="name"><?= Html::encode($this->title) ?></h1>
         <ul class="nav-ficha col-12">
             <li>
-                <?= Html::a('Ficha', '', ['class' => 'ficha-selected']) ?>
+                <?= Html::a('<i class="fas fa-film"></i> Ficha', '', ['class' => 'ficha-selected']) ?>
             </li>
             <li>
-                <?= Html::a('Críticas [' . count($model->criticas) . ']', ['/criticas/ver-criticas', 'id' => $model->id]) ?>
+                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . count($model->criticas) . ']', ['/criticas/ver-criticas', 'id' => $model->id]) ?>
             </li>
         </ul>
         <div class="row py-3 d-flex flex-column-reverse flex-md-row">

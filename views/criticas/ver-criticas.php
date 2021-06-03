@@ -12,21 +12,19 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fondo p-2">
 
-
-
     <section class="col-12">
         <h1 class="text-center text-md-left h1 border-0"><?= Html::encode($this->title) ?></h1>
         <ul class="nav-ficha col-12">
             <li>
-                <?= Html::a('Ficha', ['/productos/ficha', 'id' => $producto->id]) ?>
+                <?= Html::a('<i class="fas fa-film"></i> Ficha', ['/productos/ficha', 'id' => $producto->id]) ?>
             </li>
             <li>
-                <?= Html::a('Críticas [' . count($producto->criticas) . ']', '', ['class' => 'ficha-selected']) ?>
+                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . count($producto->criticas) . ']', '', ['class' => 'ficha-selected']) ?>
             </li>
         </ul>
 
         <div class="row py-3">
-            <div class="offset-2 offset-md-0 col-8 col-md-2 mb-4">
+            <div class="col-12 col-md-2 mb-4 text-center">
                 <?= Html::img($producto->getImagen(), ['class' => 'img-fluid ']) ?>
             </div>
             <dl class="col-10 col-md-8 row">

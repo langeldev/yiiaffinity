@@ -56,8 +56,8 @@ EOT;
 $this->registerJs($js);
 
 ?>
-<div class="row p-2">
-    <div class="col-12 text-right py-3 px-0">
+<div class="row">
+    <div class="col-12 text-right py-3">
         <?php if (!Yii::$app->user->isGuest):  ?>
             <?php if ($usuario->id === Yii::$app->user->id):  ?>
                 <?= Html::a('Editar datos', ['/usuarios/editar-perfil'],['class' => 'btn btn-principal']) ?>

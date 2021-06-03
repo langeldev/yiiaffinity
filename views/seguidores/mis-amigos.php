@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fondo p-2">
    <div class="col-12">
-   <h1 class="text-center text-md-left ml-md-4 h1"><?= Html::encode($this->title) ?></h1>   
+   <h1 class="text-center text-md-left h1"><?= Html::encode($this->title) ?></h1>   
    <div class="my-3 text-right">
          <?= Html::a('Buscar Amigos', ['/usuarios/buscar-amigos'], ['class' => 'btn btn-azul']) ?>
          <?php $form = ActiveForm::begin([

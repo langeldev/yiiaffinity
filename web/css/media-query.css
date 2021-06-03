@@ -76,19 +76,56 @@
         font-size: 0.7em;
     }
 
+    .titulo-valoracion a{
+        font-size: 0.8em;
+        padding: 10px 0;
+    }
+
+    .valoracion-anio,
+    .puntos-valoracion {
+        font-size: 0.8em;
+    }
+
+    .puntos-valoracion{
+        padding: 8px;
+    }
+
+    .valoracion-container span.media,
+    .valoracion-container span.total{
+        font-size: 0.8em;
+    }
+
+    .media-voto-critica{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .media-voto-critica .media{
+        font-size: 1.2em;
+  
+    }
+    
+    .media-voto-critica .total{
+        font-size: 1.2em;
+
+    }
+
+    .titulo-critica-prod{
+        font-size: 1.8em;
+    }
 }
 
 @media (max-width: 500px){
    
-    .nav-ficha li{
-        display: block;
+    .nav-ficha li,
+    .nav-ficha li a{
+       display: block;
        float: none;
        clear: both;
     }
 
     .nav-ficha li a{
         width: 100%;
-        border-bottom: 3px solid #0f49b9;
     }
 
     .valor-critica{
@@ -97,5 +134,11 @@
         border-radius: 5px;
         margin-right: 6px;
     }
+
+    .nav-user{
+        flex-direction: column;
+    }
+
+    
 
 }
