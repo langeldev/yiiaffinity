@@ -2,12 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\Listas;
 use Yii;
 
 use app\models\ListasSearch;
 use app\models\UsuariosListas;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * ListasController implements the CRUD actions for Listas model.
@@ -23,7 +26,21 @@ class ListasController extends Controller
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
-                    'delete' => ['POST'],
+                    'borrar' => ['POST'],
+                ],
+            ],
+            'access' => [
+                '__class' => AccessControl::class,
+                'only' => ['borrar'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' =>  ['borrar'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->soyAdmin;
+                        }
+                    ],
                 ],
             ],
         ];
@@ -35,21 +52,50 @@ class ListasController extends Controller
      */
     public function actionIndex()
     {
-        
+        $datos =  $datos = $this->datosListas();
+        return $this->render('index', ['datos' => $datos]);
+    }
+
+    public function actionBorrar()
+    {
+        if (Yii::$app->request->isAjax) {
+            $id = Yii::$app->request->post('lista_id');
+            $this->findModel($id)->delete();
+            $datos = $this->datosListas();
+            return $this->renderAjax('_listas', ['datos' => $datos]);
+        }
+    }
+
+    private function datosListas()
+    {
         $searchModel = new ListasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $datos = [
             'searhModel' => $searchModel,
-            'dataProvider' => $dataProvider];
-        if (!Yii::$app->user->isGuest) {
-            $datos += [
-                'listas' => UsuariosListas::find()
+            'dataProvider' => $dataProvider,
+            'listas' => UsuariosListas::find()
                 ->select('lista_id')
                 ->where([
-                    'usuario_id' => Yii::$app->user->id])
-                    ->column()
-                ];
+                    'usuario_id' => Yii::$app->user->id
+                ])
+                ->column()
+        ];
+        return $datos;
+    }
+
+    /**
+     * Finds the Usuarios model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Usuarios the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Listas::findOne($id)) !== null) {
+            return $model;
         }
-        return $this->render('index', ['datos' => $datos]);
+
+        throw new NotFoundHttpException('La página no existe.');
     }
 }

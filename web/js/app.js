@@ -84,3 +84,20 @@ function ventana()
 {
     window.location = "https://www.google.es";
 }
+/**
+ * Genera cambios por ajax en las listas
+ * @param {number} id
+ * @param {string} url
+ */
+function controlListas(id, url)
+{
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {
+            lista_id: id
+        }
+    }).done(function (data) {
+        $('#listas').html(data);
+    });
+}
