@@ -31,11 +31,11 @@ class ListasController extends Controller
             ],
             'access' => [
                 '__class' => AccessControl::class,
-                'only' => ['borrar'],
+                'only' => ['borrar', 'create'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' =>  ['borrar'],
+                        'actions' =>  ['borrar', 'create'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->soyAdmin;
@@ -65,6 +65,23 @@ class ListasController extends Controller
             return $this->renderAjax('_listas', ['datos' => $datos]);
         }
     }
+
+    /**
+     * Crea una listas
+     *
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new Listas();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
 
     private function datosListas()
     {
