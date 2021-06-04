@@ -52,14 +52,28 @@ $config = [
         'formatter' => [
             'timeZone' => 'Europe/Madrid',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+               'login' => 'site/login',
+               'producto/view/<id:\d+>' => 'productos/view',
+               'producto/update/<id:\d+>' => 'productos/update',
+               'ficha/<id:\d+>' => 'productos/ficha',
+               'productos' => 'productos/index',
+               'criticas/<id:\d+>' => 'criticas/ver-criticas',
+               'usuarios/view/<id:\d+>' => 'usuarios/view',
+               'usuarios/update/<id:\d+>' => 'usuarios/update',
+               'registrarse' => 'usuarios/registro',
+               'buscar-amigos' => 'usuarios/buscar-amigos',
+               'mis-amigos' => 'seguidores/mis-amigos',
+               'editar-perfil' => 'usuarios/editar-perfil',
+               'usuarios' => 'usuarios/index',
+               'listas' => 'listas/index',
+               'mis-listas' => 'usuarios-listas/mis-listas'
             ],
         ],
-        */
+        
     ],
     'container' => [
         'definitions' => [
