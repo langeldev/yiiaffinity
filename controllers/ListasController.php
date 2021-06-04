@@ -35,7 +35,7 @@ class ListasController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' =>  ['borrar', 'create'],
+                        'actions' =>  ['borrar', 'create', 'update'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->soyAdmin;
@@ -78,6 +78,22 @@ class ListasController extends Controller
             return $this->redirect(['index']);
         }
         return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Modifica una listas
+     *
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+        return $this->render('update', [
             'model' => $model,
         ]);
     }
