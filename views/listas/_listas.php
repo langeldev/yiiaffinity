@@ -39,7 +39,7 @@ $this->registerJs($js);
             'titulo',
             [
                 '__class' => ActionColumn::class,
-                'template' => '{agregar} {quitar} {eliminar}',
+                'template' => '{agregar} {quitar} {modificar} {eliminar}',
                 'header' => '',
                 'buttons' => [
                     'agregar' => function ($url, $model, $key) use ($datos) {
@@ -55,6 +55,17 @@ $this->registerJs($js);
                             'class' => 'btn btn-danger quitar',
                             'data-key' => $key,
                         ]) : false;
+                    },
+                    'modificar' => function ($url, $model, $key) {
+                        if (!Yii::$app->user->isGuest) {
+                            return  Yii::$app->user->identity->soyAdmin ? Html::a('<span class="fas fa-pen-alt"></span>', 
+                            ['/listas/update', 'id' => $key],
+                            [
+                                'class' => 'btn btn-info',
+                                'title' => 'Modificar lista',
+                                ]) : false;
+                            }
+                        return false;
                     },
                     'eliminar' => function ($url, $model, $key) {
                         if (!Yii::$app->user->isGuest) {
