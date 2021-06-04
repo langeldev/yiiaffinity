@@ -34,7 +34,7 @@ $js = <<<EOT
             if(data.productos && search != '') {
                 for (producto of data.productos){
                     console.log(producto)
-                    let a =  $('<a>').attr('href', 'index.php?r=productos/ficha&id=' + producto.id);
+                    let a =  $('<a>').attr('href', '/ficha/' + producto.id);
                     let li = a.append($('<li>').text(producto.titulo));
                     $('#lista').append(li)
                 }
