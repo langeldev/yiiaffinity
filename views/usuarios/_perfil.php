@@ -3,6 +3,7 @@
 
 use yii\bootstrap4\Html;
 use yii\helpers\Url;
+use yii\web\View;
 
 $urlSeguir = Url::to(['/seguidores/seguir']);
 $urlNoSeguir = Url::to(['/seguidores/borrar']);
@@ -15,13 +16,18 @@ var usuario = $usuario->id;
 var seguidor =  $seguidor;
 
 if (seguidor != -1){
-    $('#seguir').click(function (ev) {
-        controlSeguir(usuario, seguidor, '$urlSeguir');
-    });
 
-    $('#no-seguir').click(function (ev) {
+    $('#seguir').click(seguir);
+    
+    $('#no-seguir').click(dejarSeguir);
+
+    function seguir(){
+        controlSeguir(usuario, seguidor, '$urlSeguir');
+    }
+
+    function dejarSeguir(){
         controlSeguir(usuario, seguidor, '$urlNoSeguir');
-    });
+    }
 
     $('#eliminar-cuenta').click(function (ev) {
 
@@ -51,9 +57,10 @@ if (seguidor != -1){
     });
 
 }
+ 
 EOT;
 
-$this->registerJs($js);
+$this->registerJs($js, View::POS_END);
 
 ?>
 <div class="row">

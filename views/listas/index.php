@@ -5,7 +5,6 @@ use yii\bootstrap4\Html;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Url;
-use yii\widgets\Pjax;
 
 /*
 if (data.lista_id == lista_id){

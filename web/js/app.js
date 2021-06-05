@@ -63,6 +63,14 @@ function inhabilitar()
     $('.bajar').last().attr('disabled', true);
 }
 
+
+/**
+ * Controla el seguimiento de los usuarios
+ *
+ * @param {numbre} usuario
+ * @param {number} seguidor
+ * @param {string} url
+ */
 function controlSeguir(usuario, seguidor, url)
 {
     $.ajax({
@@ -73,8 +81,36 @@ function controlSeguir(usuario, seguidor, url)
             seguidor_id: seguidor
         }
     }).done(function (data) {
-        $('.perfil-usuario').html(data);
+        if (data.estado == 'siguiendo') {
+            var conf = {
+                idActual: '#seguir',
+                text: 'Eliminar de amigos',
+                nuevoId: 'no-seguir',
+                accion: dejarSeguir
+            }
+        } else {
+            var conf = {
+                idActual: '#no-seguir',
+                text: 'Añadir a amigos',
+                nuevoId: 'seguir',
+                accion: seguir
+            }
+        }
+        cambiarEstado(conf);
     })
+}
+
+/**
+ * Actualiza un boton
+ * @param {object} conf
+ */
+function cambiarEstado(conf)
+{
+    var boton = $(conf.idActual);
+    boton.off();
+    boton.text(conf.text);
+    boton.attr('id', conf.nuevoId);
+    boton.click(conf.accion);
 }
 
 /**

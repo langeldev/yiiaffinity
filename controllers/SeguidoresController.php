@@ -4,8 +4,6 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Seguidores;
-use app\models\SeguidoresSearch;
-use app\models\Usuarios;
 use app\models\UsuariosSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -69,10 +67,9 @@ class SeguidoresController extends Controller
         if (Yii::$app->request->isAjax) {
             $usuario_id = Yii::$app->request->post('usuario_id');
             $seguidor = Yii::$app->request->post('seguidor_id');
-            $usuario = Usuarios::findOne($usuario_id);
             $model = new Seguidores(['usuario_id' => $usuario_id, 'seguidor_id' => $seguidor]);
             if ($model->save()) {
-                return $this->renderAjax('/usuarios/_perfil', ['usuario' => $usuario]);
+                return $this->asJson(['estado' => 'siguiendo']);
             }
         }
     }
@@ -87,9 +84,10 @@ class SeguidoresController extends Controller
         if (Yii::$app->request->isAjax) {
             $usuario_id = Yii::$app->request->post('usuario_id');
             $seguidor = Yii::$app->request->post('seguidor_id');
-            $usuario = Usuarios::findOne($usuario_id);
-            $this->findModel($usuario_id, $seguidor)->delete();
-            return $this->renderAjax('/usuarios/_perfil', ['usuario' => $usuario]);
+            $model = $this->findModel($usuario_id, $seguidor);
+            if ($model->delete()) {
+                return $this->asJson(['estado' => 'no-siguiendo']);
+            }
         }
     }
 
