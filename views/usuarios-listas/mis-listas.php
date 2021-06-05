@@ -5,7 +5,6 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 
-
 $this->title = 'Mis listas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -48,6 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 [
                                     'class' => 'btn btn-danger',
                                     'data-method' => 'POST',
+                                    'title' => 'Eliminar de mis listas',
                                     'data-confirm' => '¿Desea borrar "' . Html::encode($model->lista->titulo) .
                                         '" de sus listas?'
                                 ]

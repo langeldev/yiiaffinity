@@ -29,6 +29,7 @@ class Listas extends \yii\db\ActiveRecord
     {
         return [
             [['titulo'], 'required'],
+            [['titulo'], 'unique'],
             [['titulo'], 'string', 'max' => 255],
         ];
     }

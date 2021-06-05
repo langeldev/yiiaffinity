@@ -60,9 +60,11 @@ class ListasController extends Controller
     {
         if (Yii::$app->request->isAjax) {
             $id = Yii::$app->request->post('lista_id');
-            $this->findModel($id)->delete();
-            $datos = $this->datosListas();
-            return $this->renderAjax('_listas', ['datos' => $datos]);
+            if ($this->findModel($id)->delete()) {
+                return $this->asJson([
+                    'lista_id' => $id
+                ]);
+            }
         }
     }
 

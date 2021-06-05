@@ -93,10 +93,11 @@ class UsuariosListasController extends Controller
                 'usuario_id' => Yii::$app->user->id,
                 'lista_id' => $lista_id
             ]);
-
+                
             if ($model->save()) {
-                $datos = $this->datosListas();
-                return $this->renderAjax('/listas/_listas', ['datos' => $datos]);
+                return $this->asJson([
+                    'lista_id' => $model->lista_id
+                ]);
             }
         }
     }
@@ -114,8 +115,9 @@ class UsuariosListasController extends Controller
                 'lista_id' => $lista_id
             ]);
             $lista->delete();
-            $datos = $this->datosListas();
-            return $this->renderAjax('/listas/_listas', ['datos' => $datos]);
+            return $this->asJson([
+                'lista_id' => $lista_id
+            ]);
         }
     }
     /**
@@ -185,22 +187,7 @@ class UsuariosListasController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    private function datosListas()
-    {
-        $searchModel = new ListasSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $datos = [
-            'searhModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'listas' => UsuariosListas::find()
-                ->select('lista_id')
-                ->where([
-                    'usuario_id' => Yii::$app->user->id
-                ])
-                ->column()
-        ];
-        return $datos;
-    }
+
 
     /**
      * Finds the Usuarios model based on its primary key value.

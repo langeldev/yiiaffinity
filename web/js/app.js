@@ -84,20 +84,27 @@ function ventana()
 {
     window.location = "https://www.google.es";
 }
+
+
 /**
- * Genera cambios por ajax en las listas
- * @param {number} id
- * @param {string} url
+ * Intercambia el boton para agregar o quitar de las listas de los usuarios
+ *
+ * @param {object} boton
+ * @param {object} conf
  */
-function controlListas(id, url)
+function cambiarBoton(boton, conf)
 {
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data: {
-            lista_id: id
-        }
-    }).done(function (data) {
-        $('#listas').html(data);
+    boton.attr('disabled', true);
+    boton.fadeOut('fast', function () {
+        boton.html(conf.simbolo);
+        boton.removeClass();
+        boton.addClass('btn btn-' + conf.color + ' quitar');
+        boton.attr('title', conf.titulo);
+        boton.fadeIn('fast', function () {
+            boton.off();
+            boton.click(conf.accion);
+            boton.attr('disabled', false);
+        })
+
     });
 }
