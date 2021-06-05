@@ -29,13 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <dl class="col-10 col-md-8 row">
 
-                <dt class="izquierda col-12 col-md-2 text-md-right">Año</dt>
-                <dd class="derecha col-12 col-md-10"><?= Html::encode($producto->anyo) ?></dd>
-                <dt class="izquierda col-12 col-md-2 text-md-right">País</dt>
-                <dd class="derecha col-12 col-md-10"><?= Html::encode($producto->pais) ?></dd>
+                <dt class="izquierda col-12 col-lg-2 text-lg-right pr-0">Año</dt>
+                <dd class="derecha col-12 col-lg-10"><?= Html::encode($producto->anyo) ?></dd>
+                <dt class="izquierda col-12 col-lg-2 text-lg-right pr-0">País</dt>
+                <dd class="derecha col-12 col-lg-10"><?= Html::encode($producto->pais) ?></dd>
                 <?php if (count($producto->directores) > 0) : ?>
-                    <dt class="izquierda col-12 col-md-2 text-md-right">Dirección</dt>
-                    <dd class="derecha col-12 col-md-10">
+                    <dt class="izquierda col-12 col-lg-2 text-lg-right pr-0">Dirección</dt>
+                    <dd class="derecha col-12 col-lg-10">
                         <?php foreach ($producto->directores as $key => $director) : ?>
                             <?= "<span>" . Html::encode($director->nombre) .
                                 ($key + 1 < count($producto->directores) ? "</span>," : "</span>")
@@ -45,8 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php endif ?>
 
                 <?php if (count($producto->interpretes) > 0) : ?>
-                    <dt class="izquierda col-12 col-md-2 text-md-right">Reparto</dt>
-                    <dd class="derecha col-12 col-md-10">
+                    <dt class="izquierda col-12 col-lg-2 text-lg-right pr-0">Reparto</dt>
+                    <dd class="derecha col-12 col-lg-10">
                         <?php foreach ($producto->interpretes as $key => $reparto) : ?>
                             <?= "<span>" . Html::encode($reparto->nombre) .
                                 ($key + 1 < count($producto->interpretes) ? "</span>," : "</span>")
@@ -56,8 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php endif ?>
 
                 <?php if (count($producto->generos) > 0) : ?>
-                    <dt class="izquierda col-12 col-md-2 text-md-right">Género</dt>
-                    <dd class="derecha col-12 col-md-10">
+                    <dt class="izquierda col-12 col-lg-2 text-lg-right pr-0">Género</dt>
+                    <dd class="derecha col-12 col-lg-10">
                         <?php foreach ($producto->generos as $key => $genero) : ?>
                             <?= "<span>" . Html::encode($genero->nombre) .
                                 ($key + 1 < count($producto->generos) ? "</span>," : "</span>")
@@ -76,8 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h3 id="total"><?= Html::encode($producto->criticasTotales) ?> <br>votos</h3>
                 </div>
             </div>
-            <div class="derecha col-12 col-md-10">
-
+            <div class="derecha col-12 col-lg-10">
                 <p>
                     <span class="izquierda">Sinopsis</span>
                     <?= Html::encode($producto->sinopsis) ?>

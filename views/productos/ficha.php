@@ -58,17 +58,17 @@ $this->registerJs($js);
         <div class="row py-3 d-flex flex-column-reverse flex-md-row">
             <section class="col-12 col-md-9">
                 <dl class="row" itemscope itemtype="https://schema.org/Movie" itemref="titulo cartel">
-                    <dt class="izquierda col-3 text-right">Título original</dt>
-                    <dd class="derecha col-9"><?= Html::encode($model->titulo_original) ?></dd>
-                    <dt class="izquierda col-3 text-right">Año</dt>
-                    <dd class="derecha col-9" itemprop="dateCreated"><?= Html::encode($model->anyo) ?></dd>
-                    <dt class="izquierda col-3 text-right" itemprop="duration">Duración</dt>
-                    <dd class="derecha col-9"><?= Html::encode($model->duracion . ' min') ?></dd>
-                    <dt class="izquierda col-3 text-right">País</dt>
-                    <dd class="derecha col-9"><?= Html::encode($model->pais) ?></dd>
+                    <dt class="izquierda col-12 col-sm-3 text-sm-right">Título original</dt>
+                    <dd class="derecha col-12 col-sm-9"><?= Html::encode($model->titulo_original) ?></dd>
+                    <dt class="izquierda col-12 col-sm-3 text-sm-right">Año</dt>
+                    <dd class="derecha col-12 col-sm-9" itemprop="dateCreated"><?= Html::encode($model->anyo) ?></dd>
+                    <dt class="izquierda col-12 col-sm-3 text-sm-right" itemprop="duration">Duración</dt>
+                    <dd class="derecha col-12 col-sm-9"><?= Html::encode($model->duracion . ' min') ?></dd>
+                    <dt class="izquierda col-12 col-sm-3 text-sm-right">País</dt>
+                    <dd class="derecha col-12 col-sm-9"><?= Html::encode($model->pais) ?></dd>
                     <?php if (count($model->directores) > 0) : ?>
-                        <dt class="izquierda col-3 text-right">Dirección</dt>
-                        <dd class="derecha col-9">
+                        <dt class="izquierda col-12 col-sm-3 text-sm-right">Dirección</dt>
+                        <dd class="derecha col-12 col-sm-9">
                             <?php foreach ($model->directores as $key => $director) : ?>
                                 <?= '<span itemprop="director">' . Html::encode($director->nombre) .
                                     ($key + 1 < count($model->directores) ? "</span>," : "</span>")
@@ -77,8 +77,8 @@ $this->registerJs($js);
                         </dd>
                     <?php endif ?>
                     <?php if (count($model->guion) > 0) : ?>
-                        <dt class="izquierda col-3 text-right">Guion</dt>
-                        <dd class="derecha col-9">
+                        <dt class="izquierda col-12 col-sm-3 text-sm-right">Guion</dt>
+                        <dd class="derecha col-12 col-sm-9">
                             <?php foreach ($model->guion as $key => $guion) : ?>
                                 <?= "<span>" . Html::encode($guion->nombre) .
                                     ($key + 1 < count($model->guion) ? "</span>," : "</span>")
@@ -87,8 +87,8 @@ $this->registerJs($js);
                         </dd>
                     <?php endif ?>
                     <?php if (count($model->musica) > 0) : ?>
-                        <dt class="izquierda col-3 text-right">Música</dt>
-                        <dd class="derecha col-9">
+                        <dt class="izquierda col-12 col-sm-3 text-sm-right">Música</dt>
+                        <dd class="derecha col-12 col-sm-9">
                             <?php foreach ($model->musica as $key => $musica) : ?>
                                 <?= "<span>" . Html::encode($musica->nombre) .
                                     ($key + 1 < count($model->musica) ? "</span>," : "</span>")
@@ -97,8 +97,8 @@ $this->registerJs($js);
                         </dd>
                     <?php endif ?>
                     <?php if (count($model->fotografia) > 0) : ?>
-                        <dt class="izquierda col-3 text-right">Fotografía</dt>
-                        <dd class="derecha col-9">
+                        <dt class="izquierda col-12 col-sm-3 text-sm-right">Fotografía</dt>
+                        <dd class="derecha col-12 col-sm-9">
                             <?php foreach ($model->fotografia as $key => $fotografia) : ?>
                                 <?= "<span>" . Html::encode($fotografia->nombre) .
                                     ($key + 1 < count($model->fotografia) ? "</span>," : "</span>")
@@ -107,8 +107,8 @@ $this->registerJs($js);
                         </dd>
                     <?php endif ?>
                     <?php if (count($model->interpretes) > 0) : ?>
-                        <dt class="izquierda col-3 text-right">Reparto</dt>
-                        <dd class="derecha col-9">
+                        <dt class="izquierda col-12 col-sm-3 text-sm-right">Reparto</dt>
+                        <dd class="derecha col-12 col-sm-9">
                             <?php foreach ($model->interpretes as $key => $reparto) : ?>
                                 <?= "<span>" . Html::encode($reparto->nombre) .
                                     ($key + 1 < count($model->interpretes) ? "</span>," : "</span>")
@@ -117,8 +117,8 @@ $this->registerJs($js);
                         </dd>
                     <?php endif ?>
                     <?php if (count($model->productoras) > 0) : ?>
-                        <dt class="izquierda col-3 text-right">Productora</dt>
-                        <dd class="derecha col-9">
+                        <dt class="izquierda col-12 col-sm-3 text-sm-right">Productora</dt>
+                        <dd class="derecha col-12 col-sm-9">
                             <?php foreach ($model->productoras as $key => $productora) : ?>
                                 <?= "<span>" . Html::encode($productora->nombre) .
                                     ($key + 1 < count($model->productoras) ? "</span>," : "</span>")
@@ -127,8 +127,8 @@ $this->registerJs($js);
                         </dd>
                     <?php endif ?>
                     <?php if (count($model->generos) > 0) : ?>
-                        <dt class="izquierda col-3 text-right">Género</dt>
-                        <dd class="derecha col-9">
+                        <dt class="izquierda col-12 col-sm-3 text-sm-right">Género</dt>
+                        <dd class="derecha col-12 col-sm-9">
                             <?php foreach ($model->generos as $key => $genero) : ?>
                                 <?= '<span itemprop="genre">' . Html::encode($genero->nombre) .
                                     ($key + 1 < count($model->generos) ? "</span>," : "</span>")
@@ -136,13 +136,13 @@ $this->registerJs($js);
                             <?php endforeach ?>
                         </dd>
                     <?php endif ?>
-                    <dt class="izquierda col-3 text-right">Sinopsis</dt>
-                    <dd class="derecha col-9">
+                    <dt class="izquierda col-12 col-sm-3 text-sm-right">Sinopsis</dt>
+                    <dd class="derecha col-12 col-sm-9">
                         <?= Html::encode($model->sinopsis) ?>
                     </dd>
                     <?php if (count($model->premios) > 0) : ?>
-                        <dt class="izquierda col-3 text-right">Premios</dt>
-                        <dd class="derecha col-9">
+                        <dt class="izquierda col-12 col-sm-3 text-sm-right">Premios</dt>
+                        <dd class="derecha col-12 col-sm-9">
                             <?php foreach ($model->premios as $premio) : ?>
                                 <div>
                                     <?= Html::encode("(" . $premio->cantidad . ") " . $premio->nombre) ?>
@@ -150,8 +150,8 @@ $this->registerJs($js);
                             <?php endforeach ?>
                         </dd>
                     <?php endif ?>
-                    <dt class="izquierda col-3 text-right">Tu crítica</dt>
-                    <dd class="derecha col-9">
+                    <dt class="izquierda col-12 col-sm-3 text-sm-right">Tu crítica</dt>
+                    <dd class="derecha col-12 col-sm-9">
 
                         <div class="criticas-container">
                             <?php if ($miCritica !== null) : ?>
