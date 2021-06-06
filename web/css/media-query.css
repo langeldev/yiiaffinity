@@ -139,6 +139,22 @@
         flex-direction: column;
     }
 
+    .ficha-selected,
+    .user-selected {
+        animation: desplazamiento 2s forwards;
+    }
     
+    /*****************/
+    /*   Animaciones*/
+    /*****************/
 
+    
+    @keyframes desplazamiento {
+        0%{
+            padding-left: 2%;
+        }
+        100%{
+            padding-left: 5%;
+        }
+    }
 }
