@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="language" content="en" />
         
-<link href="./assets/c20b96fb/css/bootstrap.css" rel="stylesheet">
-<link href="./assets/be3c3f0c/solarized_light.css" rel="stylesheet">
-<link href="./assets/db9d10fa/style.css" rel="stylesheet">
-<script src="./assets/c4ff36ea/jquery.js"></script>
-<script src="./assets/c20b96fb/js/bootstrap.js"></script>
-<script src="./assets/7e7ed349/jssearch.js"></script>    <title>Guía del proyecto</title>
+<link href="./assets/d0be3915/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/ac8990e2/solarized_light.css" rel="stylesheet">
+<link href="./assets/c928bf14/style.css" rel="stylesheet">
+<script src="./assets/d64a9904/jquery.js"></script>
+<script src="./assets/d0be3915/js/bootstrap.js"></script>
+<script src="./assets/6ccb7ca7/jssearch.js"></script>    <title>Guía del proyecto</title>
 </head>
 <body>
 
@@ -52,8 +52,55 @@
         <h1>Instrucciones de instalación y despliegue <span id="instrucciones-de-instalacion-y-despliegue"></span><a href="#instrucciones-de-instalacion-y-despliegue" class="hashlink">&para;</a></h1>
 <div class="toc"><ol><li><a href="#en-local">En local</a></li>
 <li><a href="#en-la-nube">En la nube</a></li></ol></div>
-<h2>En local <span id="en-local"></span><a href="#en-local" class="hashlink">&para;</a></h2><p>Explicar.</p>
-<h2>En la nube <span id="en-la-nube"></span><a href="#en-la-nube" class="hashlink">&para;</a></h2><p>Explicar.</p>
+<h2>En local <span id="en-local"></span><a href="#en-local" class="hashlink">&para;</a></h2><h3>Requisitos <span id="requisitos"></span><a href="#requisitos" class="hashlink">&para;</a></h3><ul>
+<li>PHP 7.3.0</li>
+<li>PostgreSQL</li>
+<li>Extension pgcrypto</li>
+<li>Composer</li>
+<li>Cuenta de gmail</li>
+<li>Cuenta de Amazon S3</li>
+</ul>
+<h3>Instalación <span id="instalacion"></span><a href="#instalacion" class="hashlink">&para;</a></h3><ol>
+<li>Ejecutar los comandos<ul>
+<li><code>$ git clone https://github.com/rolLangel/yiiaffinity.git</code></li>
+<li><code>$ composer install</code></li>
+<li><code>$ db/create.sh</code></li>
+<li><code>$ db/load</code></li>
+</ul>
+</li>
+<li>Rellena las variabes de entorno<ul>
+<li>copia el archivo <em>.env.example</em> y con el nombre por <em>.env</em>:
+  <code>$ sudo cp .env.example .env</code></li>
+</ul>
+</li>
+<li>Añade rellena el archivo .env con las siguientes credenciales  <ul>
+<li><code>SMTP_PASS</code> La clave de el correo de la aplicación.</li>
+<li><code>AWSAccessKeyId</code> KeyId de Amazon S3.</li>
+<li><code>AWSSecretKey</code> SecretKey de Amazon S3.</li>
+</ul>
+</li>
+<li>Ejecutar <code>$ ./yii serve</code> para arrancar el servidor.</li>
+<li>Abrir el navegador e introducir la direccion <code>localhost:8080</code></li>
+</ol>
+<h2>En la nube <span id="en-la-nube"></span><a href="#en-la-nube" class="hashlink">&para;</a></h2><h3>Despliegue en Heroku <span id="despliegue-en-heroku"></span><a href="#despliegue-en-heroku" class="hashlink">&para;</a></h3><p><em>Se requiere Heroku CLI</em></p>
+<ol>
+<li>Ejecutamos el comando <code>$ heroku login</code></li>
+<li>Creamos una nueva aplicación</li>
+<li>Añadimos el addons <strong>Heroku Postgres</strong><ul>
+<li>Introducimos las variables de entorno <ul>
+<li><code>YII_ENV</code> le asignamos <code>prod</code></li>
+<li><code>SMTP_PASS</code> La clave de el correo de la aplicación.</li>
+<li><code>AWSAccessKeyId</code> KeyId de Amazon S3.</li>
+<li><code>AWSSecretKey</code> SecretKey de Amazon S3.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>En el directorio del proyecto conectamos la app de heroku con el comando <code>$ heroku git:remote --app &lt;nombre_app&gt;</code></li>
+<li>Entramos a la base de datos de heroku e instalamos el pgcrypto con el comando <code>$ heroku psql</code> seguido de <code># create extension pgcrypto</code></li>
+<li>Ejecutamos <code>$ heroku psql &lt; db/yiiaffinity.sql</code> para cargar los  datos a la base de datos de heroku.</li>
+<li>La aplicacíón estaría instalada y funcionando.</li>
+</ol>
         <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
     </div>
 </div>
@@ -62,7 +109,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Tue, 30 Mar 2021 17:39:43 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Sun, 06 Jun 2021 15:26:36 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {

@@ -39,7 +39,7 @@ class CriticasController extends Controller
                         'allow' => true,
                         'actions' =>  ['create', 'delete', 'update'],
                         'roles' => ['@'],
-                        
+
                     ],
                 ],
             ],
@@ -75,11 +75,11 @@ class CriticasController extends Controller
     }
 
     /**
-    * Devuelve todas las criticas de un  al producto
-    * @param integer $id
-    * @return mixed
-    * @throws NotFoundHttpException si no encuentra el producto
-    */
+     * Devuelve todas las criticas de un  al producto
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException si no encuentra el producto
+     */
     public function actionVerCriticas($id)
     {
         $producto = $this->findProducto($id);
@@ -90,7 +90,7 @@ class CriticasController extends Controller
             'pageSize' => 3,
             'totalCount' =>  $criticas->count()
         ]);
-        
+
         $criticas->limit($pagination->limit)->offset($pagination->offset);
         return $this->render('ver-criticas', [
             'producto' => $producto,
@@ -101,7 +101,7 @@ class CriticasController extends Controller
 
 
     /**
-     * Modifica las criticas a un producto
+     * Crea una critica para un producto
      *
      * @param integer $id
      * @return mixed
@@ -124,7 +124,7 @@ class CriticasController extends Controller
         ]);
     }
 
-      /**
+    /**
      * Updates an existing Criticas model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -135,15 +135,15 @@ class CriticasController extends Controller
     {
         $producto = $this->findProducto($id);
         $model = Criticas::findOne([
-                'producto_id' => $id,
-                'usuario_id' => Yii::$app->user->id
-            ]);
+            'producto_id' => $id,
+            'usuario_id' => Yii::$app->user->id
+        ]);
 
         if ($model === null) {
             Yii::$app->session->setFlash('warning', 'No has incluido ninguna critica sobre este título');
             return $this->redirect(['/productos/ficha', 'id' => $id]);
         }
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -159,19 +159,19 @@ class CriticasController extends Controller
     {
         $usuario = $this->findUsuario($id);
         $criticas = Criticas::find()
-        ->where(['usuario_id' => $usuario->id])
-        ->orderBy(['created_at' => \SORT_DESC]);
+            ->where(['usuario_id' => $usuario->id])
+            ->orderBy(['created_at' => \SORT_DESC]);
         $pagination = new Pagination([
             'pageSize' => 6,
             'totalCount' =>  $criticas->count()
         ]);
-        
+
         $criticas->limit($pagination->limit)->offset($pagination->offset);
-       
+
         return $this->render('usuarios', [
-                    'usuario' => $usuario,
-                    'criticas' => $criticas->all(),
-                    'pagination' => $pagination,
+            'usuario' => $usuario,
+            'criticas' => $criticas->all(),
+            'pagination' => $pagination,
         ]);
     }
 
