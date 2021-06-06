@@ -7,7 +7,8 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Criticas */
 
 $this->title = $model->titulo;
-$this->params['breadcrumbs'][] = ['label' => $model->producto->titulo, 'url' => ['productos/ficha', 'id' => $model->producto_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->producto->titulo, 'url' => ['/productos/ficha', 'id' => $model->producto_id]];
+$this->params['breadcrumbs'][] = ['label' => 'Critícas de ' . $model->producto->titulo, 'url' => ['/criticas/ver-criticas', 'id' => $model->producto_id]];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -18,6 +19,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 'usuario' => $model->usuario
             ]) ?>
         </section>
+        <ul class="nav-user col-12 mb-5">
+            <li>
+                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . count($model->usuario->criticas) . ']',  ['/criticas/usuarios', 'id' => $model->usuario->id]) ?>
+            </li>
+            <li>
+                <?= Html::a('<i class="far fa-star"></i> Valoraciones [' . count($model->usuario->valoraciones) . ']', ['/valoraciones/usuarios', 'id' => $model->usuario->id]) ?>
+            </li>
+            <li>
+                <?= Html::a('<i class="fas fa-list"></i> Listas [' . $model->usuario->listasTotales . ']', ['/usuarios-listas/usuarios', 'id' => $model->usuario->id]) ?>
+            </li>
+        </ul>
         <section class="criticas-container">
             <article class="p-3 p-md-5 critica-container">
                 <header class="cabecera-critica-prod">

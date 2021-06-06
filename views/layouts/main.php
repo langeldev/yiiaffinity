@@ -108,6 +108,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
                     'items' => [
                         ['label' => 'Productos', 'url' => ['/productos/index']],
                         ['label' => 'Usuarios', 'url' => ['/usuarios/index']],
+                        ['label' => 'Listas', 'url' => ['/listas/index']],
                     ],
                     'visible' => Yii::$app->user->identity->soyAdmin,
                 ],
