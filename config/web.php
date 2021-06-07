@@ -70,7 +70,11 @@ $config = [
                'editar-perfil' => 'usuarios/editar-perfil',
                'usuarios' => 'usuarios/index',
                'listas' => 'listas/index',
-               'mis-listas' => 'usuarios-listas/mis-listas'
+               'mis-listas' => 'usuarios-listas/mis-listas',
+               'ficha/<id:\d+>' => 'productos/ficha',
+               'peliculas' => 'productos/peliculas',
+               'series' => 'productos/series',
+               'documentales' => 'productos/documentales',
             ],
         ],
         

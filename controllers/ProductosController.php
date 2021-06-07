@@ -22,6 +22,7 @@ use app\models\Tipos;
 use app\models\UsuariosListas;
 use app\models\Valoraciones;
 use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -47,19 +48,15 @@ class ProductosController extends Controller
                     'agregar-premio' => ['POST'],
 
                 ],
-            ],'access' => [
+            ], 'access' => [
                 '__class' => AccessControl::class,
                 'only' => [
-                             'index'
-                           , 'create'
-                           , 'update'
-                           , 'delete'
-                           , 'view'
-                        ],
+                    'index', 'create', 'update', 'delete', 'view'
+                ],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' =>  ['index','create', 'update', 'delete', 'view'],
+                        'actions' =>  ['index', 'create', 'update', 'delete', 'view'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->soyAdmin;
@@ -85,14 +82,86 @@ class ProductosController extends Controller
         ]);
     }
 
+    /**
+     * busqueda de productos por título
+     *
+     * @param string $search
+     */
     public function actionSearch($search)
     {
+        $search = trim($search);
+        $productos = Productos::find()
+            ->where(['ilike', 'titulo', $search]);
+
         if (Yii::$app->request->isAjax) {
             $search = Yii::$app->request->get('search');
-          
-            $productos = Productos::find()->where(['ilike', 'titulo', $search])->all();
+
+            $productos = Productos::find()
+                ->where(['ilike', 'titulo', $search])
+                ->limit(6)
+                ->all();
             return $this->asJson(['productos' => $productos]);
         }
+
+        $pagination = new Pagination([
+            'pageSize' => 8,
+            'totalCount' =>  $productos->count()
+        ]);
+
+        $productos->limit($pagination->limit)->offset($pagination->offset);
+
+        return $this->render('search', [
+            'productos' => $productos->all(),
+            'pagination' => $pagination,
+        ]);
+    }
+
+    /**
+     * Crea un indice de los productos tipo Película
+     * @return mixed
+     */
+    public function actionPeliculas()
+    {
+        $datos = $this->productosPorTipo('Película');
+        return $this->render('peliculas', $datos);
+    }
+
+    /**
+     * Crea un indice de los productos tipo Serie
+     * @return mixed
+     */
+    public function actionSeries()
+    {
+        $datos = $this->productosPorTipo('Serie');
+        return $this->render('series', $datos);
+    }
+
+    /**
+     * Crea un indice de los productos tipo Documental
+     * @return mixed
+     */
+    public function actionDocumentales()
+    {
+        $datos = $this->productosPorTipo('Documental');
+        return $this->render('documentales', $datos);
+    }
+
+    /**
+     * Devuelve los datos, la paginació y el search de los productos filtrandolos por su tipo
+     *
+     * @param string $tipo
+     * @return mixed
+     */
+    private function productosPorTipo($tipo)
+    {
+        $searchModel = new ProductosSearch();
+        $datos = $searchModel->searchPorTipo(Yii::$app->request->queryParams, $tipo);
+
+        return [
+            'model' => $searchModel,
+            'productos' => $datos['productos'],
+            'pagination' => $datos['pagination']
+        ];
     }
 
     /**
@@ -104,7 +173,7 @@ class ProductosController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        $direccion =$this->getRelacion($model->getDirectores());
+        $direccion = $this->getRelacion($model->getDirectores());
         $guion = $this->getRelacion($model->getGuion());
         $musica = $this->getRelacion($model->getMusica());
         $fotogrtafia = $this->getRelacion($model->getFotografia());
@@ -116,7 +185,7 @@ class ProductosController extends Controller
             'query' => $model->getPremios(),
         ]);
 
-    
+
         return $this->render('view', [
             'model' => $model,
             'direccion' => $direccion,
@@ -128,7 +197,7 @@ class ProductosController extends Controller
             'generos' => $generos,
             'premios' => $premios,
             'premio' => $premio
-            ]);
+        ]);
     }
 
 
@@ -137,27 +206,28 @@ class ProductosController extends Controller
         $model = $this->findModel($id);
         $miCritica = Criticas::findOne([
             'usuario_id' => Yii::$app->user->id,
-            'producto_id' => $model->id]);
+            'producto_id' => $model->id
+        ]);
         $criticas = Criticas::find()->where([
             'producto_id' => $model->id
-            ])->andFilterWhere([
-                'not in', 'usuario_id', Yii::$app->user->id
-            ])->orderBy([
-                'created_at' => \SORT_DESC
-            ])->limit(3)
+        ])->andFilterWhere([
+            'not in', 'usuario_id', Yii::$app->user->id
+        ])->orderBy([
+            'created_at' => \SORT_DESC
+        ])->limit(3)
             ->all();
 
         $miValoracion = $this->obtenerValoracion($id);
         $misListas = UsuariosListas::misListas($model->id);
         $productoLista = new ListasProductos(['producto_id' => $id]);
         return $this->render('ficha', [
-           'model' => $model,
-           'miCritica' => $miCritica,
-           'criticas' => $criticas,
-           'miValoracion' => $miValoracion,
-           'lista' => Valoraciones::listaPuntos(),
-           'productoLista' => $productoLista,
-           'misListas' => $misListas,
+            'model' => $model,
+            'miCritica' => $miCritica,
+            'criticas' => $criticas,
+            'miValoracion' => $miValoracion,
+            'lista' => Valoraciones::listaPuntos(),
+            'productoLista' => $productoLista,
+            'misListas' => $misListas,
         ]);
     }
     /**
@@ -173,16 +243,16 @@ class ProductosController extends Controller
             $model = $this->findModel($premio->producto_id);
             $premio->delete();
             $premios =    $premios = new ActiveDataProvider([
-              'query' => $model->getPremios(),
+                'query' => $model->getPremios(),
             ]);
             return $this->renderAjax('_lista-premios', ['premios' => $premios]);
         }
     }
 
     /**
-    * Agrega los premios
-    * @return mixed
-    */
+     * Agrega los premios
+     * @return mixed
+     */
     public function actionAgregarPremio()
     {
         if (Yii::$app->request->isAjax) {
@@ -191,17 +261,17 @@ class ProductosController extends Controller
                 'producto_id' => $datos['producto_id'],
                 'nombre' => $datos['nombre'],
                 'cantidad' => $datos['cantidad']
-                ]);
+            ]);
             $premio->save();
             $model = $this->findModel($premio->producto_id);
             $premios = $premios = new ActiveDataProvider([
-               'query' => $model->getPremios(),
+                'query' => $model->getPremios(),
             ]);
             return $this->renderAjax('_lista-premios', ['premios' => $premios]);
         }
     }
 
-     
+
     /**
      * Creates a new Productos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -210,7 +280,7 @@ class ProductosController extends Controller
     public function actionCreate()
     {
         $model = new Productos();
-        
+
         if ($model->load($producto = Yii::$app->request->post())) {
             $model->cartel = UploadedFile::getInstance($model, 'cartel');
             $model->upload();
@@ -261,7 +331,7 @@ class ProductosController extends Controller
     {
         $model = $this->findModel($id);
 
-       
+
         if ($model->load($producto = Yii::$app->request->post())) {
             if ($model->cartel !== null) {
                 $model->borrarCartel();
@@ -270,13 +340,13 @@ class ProductosController extends Controller
             }
 
             if ($model->save()) {
-                ProductosDirectores::deleteAll(['producto_id'=> $model->id]);
-                ProductosGuionistas::deleteAll(['producto_id'=> $model->id]);
-                ProductosMusica::deleteAll(['producto_id'=> $model->id]);
-                ProductosFotografia::deleteAll(['producto_id'=> $model->id]);
-                ProductosInterpretes::deleteAll(['producto_id'=> $model->id]);
-                ProductosProductoras::deleteAll(['producto_id'=> $model->id]);
-                ProductosGeneros::deleteAll(['producto_id'=> $model->id]);
+                ProductosDirectores::deleteAll(['producto_id' => $model->id]);
+                ProductosGuionistas::deleteAll(['producto_id' => $model->id]);
+                ProductosMusica::deleteAll(['producto_id' => $model->id]);
+                ProductosFotografia::deleteAll(['producto_id' => $model->id]);
+                ProductosInterpretes::deleteAll(['producto_id' => $model->id]);
+                ProductosProductoras::deleteAll(['producto_id' => $model->id]);
+                ProductosGeneros::deleteAll(['producto_id' => $model->id]);
 
                 if ($producto['directores'] !== '') {
                     $this->relDirectores($model->id, $producto['directores']);
@@ -299,7 +369,7 @@ class ProductosController extends Controller
                 if ($producto['generos'] !== '') {
                     $this->relGeneros($model->id, $producto['generos']);
                 }
-                
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
@@ -329,7 +399,7 @@ class ProductosController extends Controller
         return $this->redirect(['index']);
     }
 
- 
+
     /**
      * Finds the Productos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

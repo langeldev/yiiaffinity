@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Productos;
+use yii\data\Pagination;
 
 /**
  * ProductosSearch represents the model behind the search form of `app\models\Productos`.
@@ -19,6 +20,7 @@ class ProductosSearch extends Productos
         return [
             [['id', 'duracion', 'tipo_id'], 'integer'],
             [['titulo', 'titulo_original', 'pais', 'sinopsis'], 'safe'],
+            [['titulo'], 'filter', 'filter' => 'trim'],
             [['anyo'], 'number'],
             [['tipo.nombre'], 'string'],
         ];
@@ -82,5 +84,41 @@ class ProductosSearch extends Productos
             ->andFilterWhere(['ilike', 'sinopsis', $this->sinopsis]);
 
         return $dataProvider;
+    }
+
+  /**
+     * Crea las lista de los productos y la paginación necesaria por el tipo del producto
+     *
+     * @param array $params
+     * @param string $tipo
+     * @return mixed
+     */
+    public function searchPorTipo($params, $tipo)
+    {
+        $query = Productos::find()->joinWith('tipo t');
+
+        // add conditions that should always apply here
+
+      
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $query->all();
+        }
+
+        $query->andFilterWhere(['=','t.nombre', $tipo ])
+        ->andFilterWhere(['ilike', 'titulo',$this->titulo]);
+
+
+        $pagination = new Pagination([
+            'pageSize' => 8,
+            'totalCount' =>  $query->count()
+        ]);
+        
+        $query->limit($pagination->limit)->offset($pagination->offset);
+        
+        return ['productos'=> $query->all(), 'pagination' => $pagination];
     }
 }
