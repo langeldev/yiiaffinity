@@ -20,6 +20,7 @@ $urlAceptarCookie = Url::to(['/site/aceptar-cookies']);
 $js = <<<EOT
     $('#search').keyup(function(ev){
         let search = $.trim($(this).val());
+        $('#lista').empty().hide();
         $.ajax({
             type: 'GET',
             url: '$urlSearch',
@@ -29,7 +30,6 @@ $js = <<<EOT
         }).done(function(data){
             
             if(data.productos && search != '') {
-                $('#lista').empty().hide();
                 for ([index, producto] of data.productos.entries()){
                     let a =  $('<a>').attr('href', '/ficha/' + producto.id);
                     let li = a.append($('<li>').text(producto.titulo));
@@ -96,7 +96,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
         <div class="p-0 col-12 col-md-3 col-lg-5 mr-lg-4">
             <div id="formSearch" class="justify-content-md-center flex-grow-1 ">
                 <form id="contenedor-search" class="justify-content-center col-12 row p-0 m-0" action='. $urlSearch .' method="get">
-                    <input id="search" class="form-control col-12" type="search"  name="search" placeholder=" Buscar Título">
+                    <input id="search" class="form-control col-12" type="search"  name="search" placeholder=" Buscar Título" aria-label="Search">
                     <ul id="lista" class="col-12"></ul>
                 </form>       
             </div> 

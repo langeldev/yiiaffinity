@@ -2,10 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
 
 *{
-    word-break: break-word;
+    /*word-break: break-word;*/
     box-sizing: border-box;
 }
-
 
 
 body{
@@ -529,6 +528,9 @@ body{
     font-family: 'Oswald', sans-serif;
 }
 
+.card-body h3.titulo{
+    font-size: 1.25rem;
+}
 .card-body a{
     font-family: 'Oswald', sans-serif;
 }
@@ -661,6 +663,31 @@ body{
 }
 
 
+
+/************/
+/*   tablas */
+/************/
+
+.table > *{
+    word-break: unset;
+    background-color: white !important;
+}
+
+#table-listas td{
+    width: 100%;
+}
+
+
+#table-listas td:first-child a{
+    width: 100%;
+    display: block;
+    padding: 0;
+}
+/*******************/
+/*   Animaciones  */
+/*****************/
+
+
 .ficha-selected .fa-newspaper,
 .ficha-selected .fa-film,
 .user-selected .fa-newspaper,
@@ -672,11 +699,6 @@ body{
     animation: giro 2s;
 }
 
-
-
-/*****************/
-/*   Animaciones*/
-/*****************/
 
 @keyframes agitar {
     0%, 100% {

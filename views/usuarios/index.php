@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
+            'layout' => "{summary}\n{items}\n<div class='d-flex justify-content-center'>{pager}</div>",
             'columns' => [
                 'login',
                 'nombre',
