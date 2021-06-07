@@ -17,8 +17,6 @@ $urlSearch = Url::to(['productos/search']);
 $urlAceptarCookie = Url::to(['/site/aceptar-cookies']);
 
 
-
-
 $js = <<<EOT
     $('#search').keyup(function(ev){
         let search = $.trim($(this).val());
@@ -30,19 +28,24 @@ $js = <<<EOT
             }
         }).done(function(data){
             
-            $('#lista').empty().hide();
             if(data.productos && search != '') {
-                for (producto of data.productos){
-                    console.log(producto)
+                $('#lista').empty().hide();
+                for ([index, producto] of data.productos.entries()){
                     let a =  $('<a>').attr('href', '/ficha/' + producto.id);
                     let li = a.append($('<li>').text(producto.titulo));
-                    $('#lista').append(li)
+                    $('#lista').append(li);
+                    if (index > 3){
+                       a = $('<a>').attr('href', '$urlSearch?search=' + search);
+                       li = a.append($('<li>').text('Ver más'));
+                       $('#lista').append(li);
+                       break;
+                    }
                 }
-                $('#lista').show();
             }
-        });
+                $('#lista').show();
+            });
     });
-    
+
 EOT;
 
 $this->registerJs($js);
@@ -89,17 +92,19 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
             ],
         ]);
 
-        echo '<div id="formSearch" class="justify-content-md-center flex-grow-1 ">
-   
-    <form id="contenedor-search" class="justify-content-center col-12 row p-md-0">
-                <input id="search" class="form-control col-md-6" type="text" placeholder=" Buscar Título">
-                <ul id="lista" class="col-md-6"></ul>
-                </form>
-             
-        </div>  
+        echo '
+        <div class="p-0 col-12 col-md-3 col-lg-5 mr-lg-4">
+            <div id="formSearch" class="justify-content-md-center flex-grow-1 ">
+                <form id="contenedor-search" class="justify-content-center col-12 row p-0 m-0" action='. $urlSearch .' method="get">
+                    <input id="search" class="form-control col-12" type="search"  name="search" placeholder=" Buscar Título">
+                    <ul id="lista" class="col-12"></ul>
+                </form>       
+            </div> 
+        </div>
         ';
 
         $items = [];
+
 
         if (!Yii::$app->user->isGuest) {
             $items += [
@@ -118,6 +123,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
                         ['label' => 'Perfil', 'url' => ['/valoraciones/usuarios', 'id' => Yii::$app->user->id]],
                         ['label' => 'Mis listas', 'url' => ['/usuarios-listas/mis-listas']],
                         ['label' => 'Amigos', 'url' => ['/seguidores/mis-amigos']],
+                        'items' => 
                         ['label' => 'Cerrar sesión', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'POST']],
                     ],
                 ],
@@ -125,6 +131,12 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
         } else {
             $items += [['label' => 'Login', 'url' => ['/site/login']]];
         }
+
+        $items = array_merge([
+            ['label' => 'Películas', 'url' => ['/productos/peliculas']],
+            ['label' => 'Series', 'url' => ['/productos/series']],
+            ['label' => 'Documentales', 'url' => ['/productos/documentales']]
+        ], $items);
 
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],

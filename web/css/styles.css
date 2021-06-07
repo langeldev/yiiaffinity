@@ -172,7 +172,7 @@ body{
 }
 
 .dropdown-menu{
-    margin-top: 22px;
+    margin-top: 0px;
     border-radius: 0;
     background-color: #ffc107;
     border: none;
@@ -537,7 +537,8 @@ body{
 /*search*/
 .field-usuariossearch-nombre,
 .field-listassearch-titulo,
-.field-usuarioslistassearch-lista-titulo{
+.field-usuarioslistassearch-lista-titulo,
+.field-productossearch-titulo{
     margin-bottom: 0;
 }
 

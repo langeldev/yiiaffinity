@@ -16,24 +16,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <h1 class="text-center text-md-left h1"><?= Html::encode($this->title) ?></h1>
       <div class="my-3 text-right">
-      <?= Html::a('Mis Amigos', ['/seguidores/mis-amigos'], ['class' => 'btn btn-azul']) ?>
-      <div class="my-5 col-12 ml-auto">
-         <?php $form = ActiveForm::begin([
-            'action' => ['buscar-amigos'],
-            'method' => 'get',
+         <?= Html::a('Mis Amigos', ['/seguidores/mis-amigos'], ['class' => 'btn btn-azul']) ?>
+         <div class="my-5 col-12 ml-auto">
+            <?php $form = ActiveForm::begin([
+               'action' => ['buscar-amigos'],
+               'method' => 'get',
             ]); ?>
             <div class="my-5 col-12 row ml-auto px-0">
                <div class="col">
-                  
+
                   <?= $form->field($model, 'nombre')->textInput([
                      'placeholder' => 'Buscar por nombre o alias',
                      'class' => 'form-control form-style'
-                     ])->label(false) ?>
+                  ])->label(false) ?>
 
-</div>
-<?= Html::submitButton('<span class="fas fa-search"></span>', ['class' => 'btn btn-azul']) ?>
+               </div>
+               <?= Html::submitButton('<span class="fas fa-search"></span>', ['class' => 'btn btn-azul']) ?>
 
-</div>
+            </div>
             <?php ActiveForm::end(); ?>
          </div>
       </div>
