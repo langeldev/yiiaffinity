@@ -3,10 +3,44 @@
 use yii\bootstrap4\Html;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
+$urlEliminar = Url::to(['/usuarios-listas/delete']);
 
+$js = <<<EOT
+$('.eliminar').click(function (ev) {
+    ev.preventDefault();
+    var el = $(this);
+    var lista_id = el.data('key');
+    var titulo = el.data('titulo');
+    var confirmado = confirm('¿Estás seguro que quiere eliminar "' + titulo + '"?');
+    if (confirmado) {
+    $.ajax({
+        type: 'POST',
+        url: '$urlEliminar',
+        data: {
+            lista_id: lista_id
+        },
+        success: function(data){
+            if (data.titulo == titulo){
+                el.parents('tr').fadeOut('normal', function (event) {
+                    $(this).remove();
+                });
+           }
+        }
+    });
+}
+   return false;
+});
+
+EOT;
+
+$this->registerJs($js);
 $this->title = 'Mis listas';
 $this->params['breadcrumbs'][] = $this->title;
+
+
+
 ?>
 <div class="fondo p-2">
     <div class="col-12">
@@ -38,20 +72,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     'template' => '{delete}',
                     'buttons' => [
                         'delete' => function ($url, $model, $key) {
-                            return Html::a(
-                                '<span class="fas fa-minus"></span>',
-                                [
-                                    'usuarios-listas/delete',
-                                    'id' => $key
-                                ],
-                                [
-                                    'class' => 'btn btn-danger',
-                                    'data-method' => 'POST',
-                                    'title' => 'Eliminar de mis listas',
-                                    'data-confirm' => '¿Desea borrar "' . Html::encode($model->lista->titulo) .
-                                        '" de sus listas?'
-                                ]
-                            );
+                            if (!Yii::$app->user->isGuest) {
+                                if ($model->usuario_id === Yii::$app->user->id) {
+                                    return Html::button('<span class="fas fa-minus"></span>', [
+                                        'class' => 'btn btn-danger eliminar',
+                                        'data-key' => $key,
+                                        'data-method' => 'POST',
+                                        'title' => 'Eliminar de mis listas',
+                                        'data-titulo' => $model->lista->titulo
+                                    ]);
+                                }
+                            }
+                            return false;
                         },
                     ],
                 ],

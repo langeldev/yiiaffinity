@@ -90,7 +90,7 @@ class Productos extends \yii\db\ActiveRecord
             'musica' => 'Música',
             'fotografia' => 'Fotografía',
             'interpretes' => 'Reparto',
-            'productoras' => 'Porductora',
+            'productoras' => 'Productoras',
             'generos' => 'Géneros',
             'imagen' => 'Cartel'
         ];
