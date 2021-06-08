@@ -15,6 +15,7 @@ $('.eliminar').click(function (ev) {
     var titulo = el.data('titulo');
     var confirmado = confirm('¿Estás seguro que quiere eliminar "' + titulo + '"?');
     if (confirmado) {
+    el.attr('disabled', true);
     $.ajax({
         type: 'POST',
         url: '$urlEliminar',

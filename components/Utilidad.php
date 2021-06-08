@@ -3,6 +3,7 @@
 namespace app\components;
 
 use Aws\S3\S3Client;
+use Yii;
 
 class Utilidad
 {
@@ -36,7 +37,7 @@ class Utilidad
     public static function subirCartelS3($archivo, $titulo, $rutaCartel)
     {
         $s3Cliente = static::inicializar();
-        $titulo .= '.' . $archivo->extension;
+        $titulo .=  Yii::$app->security->generateRandomString() . '.' . $archivo->extension;
 
         $s3Cliente->putObject([
             'Bucket' => 'yiiaffinity',
