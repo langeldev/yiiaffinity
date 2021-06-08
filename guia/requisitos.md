@@ -721,6 +721,123 @@
 | **Entrega**     | v3             |
 | **Incidencia**  | [106](https://github.com/rolLangel/yiiaffinity/issues/106) |
 
+| **R81**     | **Alta de persona**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [132](https://github.com/rolLangel/yiiaffinity/issues/132) |
+
+| **R82**     | **Modificación de personas**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [133](https://github.com/rolLangel/yiiaffinity/issues/133) |
+
+| **R83**     | **Consulta de persona**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [134](https://github.com/rolLangel/yiiaffinity/issues/134) |
+
+| **R84**     | **Baja de persona**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [135](https://github.com/rolLangel/yiiaffinity/issues/135) |
+
+| **R85**     | **Alta de productora**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [136](https://github.com/rolLangel/yiiaffinity/issues/136) |
+
+| **R86**     | **Modificación de productora**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [137](https://github.com/rolLangel/yiiaffinity/issues/137) |
+
+| **R87**     | **Consulta de productora**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [138](https://github.com/rolLangel/yiiaffinity/issues/138) |
+
+| **R88**     | **Baja de productora**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [139](https://github.com/rolLangel/yiiaffinity/issues/139) |
+
+| **R89**     | **Alta de género **         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [140](https://github.com/rolLangel/yiiaffinity/issues/140) |
+
+| **R90**     | **Modificación de género **         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [141](https://github.com/rolLangel/yiiaffinity/issues/141) |
+
+| **R91**     | **Consulta de género**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [142](https://github.com/rolLangel/yiiaffinity/issues/142) |
+
+| **R92**     | **Baja de género**         |
+| --------------: | :------------------- |
+| **Descripción** | Tarea administrativa sólo aplicable a los administradores.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [143](https://github.com/rolLangel/yiiaffinity/issues/143) |
+
+| **R93**     | **Uso de API para relleno semi-automático de formulario**         |
+| --------------: | :------------------- |
+| **Descripción** | Uso de la api tmdb para rellenar campos de formulario al poner el título             |
+| **Prioridad**   | Opcional           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [144](https://github.com/rolLangel/yiiaffinity/issues/144) |
+
 
 ## Cuadro resumen
 
@@ -806,3 +923,16 @@
 | (**R78**) Alta de lista | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [104](https://github.com/rolLangel/yiiaffinity/issues/104) |
 | (**R79**) Modificar lista | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [105](https://github.com/rolLangel/yiiaffinity/issues/105) |
 | (**R80**) Baja de lista | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [106](https://github.com/rolLangel/yiiaffinity/issues/106) |
+| (**R81**) Alta de persona | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [132](https://github.com/rolLangel/yiiaffinity/issues/132) |
+| (**R82**) Modificación de personas | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [133](https://github.com/rolLangel/yiiaffinity/issues/133) |
+| (**R83**) Consulta de persona | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [134](https://github.com/rolLangel/yiiaffinity/issues/134) |
+| (**R84**) Baja de persona | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [135](https://github.com/rolLangel/yiiaffinity/issues/135) |
+| (**R85**) Alta de productora | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [136](https://github.com/rolLangel/yiiaffinity/issues/136) |
+| (**R86**) Modificación de productora | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [137](https://github.com/rolLangel/yiiaffinity/issues/137) |
+| (**R87**) Consulta de productora | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [138](https://github.com/rolLangel/yiiaffinity/issues/138) |
+| (**R88**) Baja de productora | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [139](https://github.com/rolLangel/yiiaffinity/issues/139) |
+| (**R89**) Alta de género  | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [140](https://github.com/rolLangel/yiiaffinity/issues/140) |
+| (**R90**) Modificación de género  | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [141](https://github.com/rolLangel/yiiaffinity/issues/141) |
+| (**R91**) Consulta de género | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [142](https://github.com/rolLangel/yiiaffinity/issues/142) |
+| (**R92**) Baja de género | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [143](https://github.com/rolLangel/yiiaffinity/issues/143) |
+| (**R93**) Uso de API para relleno semi-automático de formulario | Opcional | Funcional | Media | v3 | | **Incidencia**  | [144](https://github.com/rolLangel/yiiaffinity/issues/144) |
