@@ -116,6 +116,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
                         ['label' => 'Listas', 'url' => ['/listas/index']],
                         ['label' => 'Personas', 'url' => ['/personas/index']],
                         ['label' => 'Productoras', 'url' => ['/productoras/index']],
+                        ['label' => 'Géneros', 'url' => ['/generos/index']],
                     ],
                     'visible' => Yii::$app->user->identity->soyAdmin,
                 ],
