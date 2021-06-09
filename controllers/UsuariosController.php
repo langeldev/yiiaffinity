@@ -33,19 +33,12 @@ class UsuariosController extends Controller
             'access' => [
                 '__class' => AccessControl::class,
                 'only' => [
-                             'index'
-                           , 'create'
-                           , 'update'
-                           , 'delete'
-                           , 'view'
-                           , 'registro'
-                           , 'editar-perfil'
-                           , 'eliminar-cuenta'
-                        ],
+                    'index', 'create', 'update', 'delete', 'view', 'registro', 'editar-perfil', 'eliminar-cuenta'
+                ],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' =>  ['index','create', 'update', 'delete', 'view'],
+                        'actions' =>  ['index', 'create', 'update', 'delete', 'view'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->soyAdmin;
@@ -102,7 +95,7 @@ class UsuariosController extends Controller
     public function actionCreate()
     {
         $model = new Usuarios(['scenario' => Usuarios::SCENARIO_CREATE]);
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -115,7 +108,7 @@ class UsuariosController extends Controller
     }
 
 
-      /**
+    /**
      * El usuario puede registrarse.
      *
      * @return mixed
@@ -123,7 +116,7 @@ class UsuariosController extends Controller
     public function actionRegistro()
     {
         $model = new Usuarios(['scenario' => Usuarios::SCENARIO_CREATE]);
-     
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['site/login']);
         }
@@ -164,7 +157,7 @@ class UsuariosController extends Controller
         $model = $this->findModel($id);
         $model->scenario = Usuarios::SCENARIO_UPDATE;
         $model->password = '';
-       
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -188,7 +181,7 @@ class UsuariosController extends Controller
 
         $model->scenario = Usuarios::SCENARIO_UPDATE;
         $model->password = '';
-        
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->goHome();
@@ -287,10 +280,10 @@ class UsuariosController extends Controller
      */
     public function actionEliminarCuenta($id)
     {
-         
+
         $model = $this->findModel($id);
         $model->scenario = Usuarios::SCENARIO_ELIMINAR;
-     
+
         if ($model->load($form = Yii::$app->request->post())) {
             $model->password_repeat = $form['Usuarios']['password_repeat'];
             if ($model->delete()) {
@@ -304,7 +297,7 @@ class UsuariosController extends Controller
 
         return $this->renderAjax('_eliminar-cuenta', [
             'model' => $model,
-            
+
         ]);
     }
 

@@ -132,11 +132,11 @@ class Usuarios extends ActiveRecord implements IdentityInterface
         if (!parent::beforeDelete()) {
             return false;
         }
-        if ($this->scenario === self::SCENARIO_ELIMINAR){
+        if ($this->scenario === self::SCENARIO_ELIMINAR) {
             if ($this->password_repeat == '' || !$this->validatePassword($this->password_repeat)) {
                 return false;
             };
-        } 
+        }
             
         return true;
     }

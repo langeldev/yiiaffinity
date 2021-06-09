@@ -111,6 +111,7 @@ function cambiarEstado(conf)
     boton.text(conf.text);
     boton.attr('id', conf.nuevoId);
     boton.click(conf.accion);
+    boton.blur();
 }
 
 /**
@@ -140,6 +141,7 @@ function cambiarBoton(boton, conf)
             boton.off();
             boton.click(conf.accion);
             boton.attr('disabled', false);
+            boton.blur();
         })
 
     });

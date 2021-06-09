@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
 
 *{
-    /*word-break: break-word;*/
+    word-break: break-word;
     box-sizing: border-box;
 }
 
@@ -512,7 +512,7 @@ body{
     box-shadow: 1px 1px 3px #555;
     background-color: white;
 }
-
+.critica-form label,
 .generic-form label{
     font-weight: bolder;
     color: #777;
@@ -667,10 +667,11 @@ body{
 /*   tablas */
 /************/
 
-.table > *{
-    word-break: unset;
-    background-color: white !important;
+.table:not(.detail-view) td,
+.table th{
+    word-break: normal !important;
 }
+
 
 #table-listas td{
     width: 100%;

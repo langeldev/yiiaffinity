@@ -92,7 +92,7 @@ class UsuariosListasController extends Controller
                 'usuario_id' => Yii::$app->user->id,
                 'lista_id' => $lista_id
             ]);
-                
+
             if ($model->save()) {
                 return $this->asJson([
                     'lista_id' => $model->lista_id
@@ -196,13 +196,12 @@ class UsuariosListasController extends Controller
      * @return Usuarios the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findUsuario($id)
+    private function findUsuario($id)
     {
         if (($model = Usuarios::findOne($id)) !== null) {
             return $model;
         }
-
+        
         throw new NotFoundHttpException('La página no existe.');
     }
-
 }

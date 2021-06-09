@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::a('<i class="fas fa-list"></i> Listas [' . $model->usuario->listasTotales . ']', ['/usuarios-listas/usuarios', 'id' => $model->usuario->id]) ?>
             </li>
         </ul>
-        <section class="criticas-container">
+        <section class="criticas-container my-4">
             <article class="p-3 p-md-5 critica-container">
                 <header class="cabecera-critica-prod">
 
