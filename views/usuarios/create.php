@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = 'Crear';
 <div class="fondo p-md-2">
     <div class="col-12 col-md-8 m-auto py-3">
         <h1 class="text-center text-md-left h1"><?= Html::encode($this->title) ?></h1>
-        <section class="usuarios-form my-3">
+        <section class="generic-form my-3">
 
     <?php $form = ActiveForm::begin(); ?>
     

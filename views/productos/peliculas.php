@@ -24,8 +24,10 @@ $confPager = [
             <div class="my-5 col-12 ml-auto">
                 <?php $form = ActiveForm::begin([
                     'action' => ['peliculas'],
-                    'method' => 'get'
+                    'method' => 'get',
+                    'successCssClass' => false
                 ]); ?>
+                
                 <div class="my-5 col-12 row ml-auto px-0">
                     <div class="col">
 

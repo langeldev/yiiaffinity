@@ -10,18 +10,19 @@ use yii\helpers\Html;
 $this->title = $name;
 ?>
 <div class="fondo p-2">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="col-12">
+    <h1 class="text-center text-md-left h1 border-0""><?= Html::encode($this->title) ?></h1>
 
     <div class="alert alert-danger">
         <?= nl2br(Html::encode($message)) ?>
     </div>
 
     <p>
-        The above error occurred while the Web server was processing your request.
+        El error anterior ocurrió mientras el servidor web procesaba su solicitud.
     </p>
     <p>
-        Please contact us if you think this is a server error. Thank you.
+        Comuníquese con nosotros si cree que se trata de un error del servidor. Gracias.
     </p>
 
+    </div>
 </div>

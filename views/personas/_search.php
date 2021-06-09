@@ -18,7 +18,7 @@ use yii\bootstrap4\ActiveForm;
         <div class="col">
             <?= $form->field($model, 'nombre')
                 ->textInput([
-                    'placeholder' => 'Busqueda por título',
+                    'placeholder' => 'Busqueda por nombre',
                     'class' => 'form-style form-control'
                 ])
                 ->label(false) ?>

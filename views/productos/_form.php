@@ -36,7 +36,7 @@ EOT;
 $this->registerJs($js);
 ?>
 
-<div class="productos-form py-5 my-4">
+<div class="generic-form py-5 my-4">
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">

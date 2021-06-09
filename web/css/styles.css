@@ -505,9 +505,7 @@ body{
     box-shadow: none;
     border-bottom: 4px solid rgb(241, 189, 19);
 }
-.usuarios-form,
-.productos-form,
-.listas-form,
+
 .generic-form{
     padding: 20px;
     border:1px solid #EEE;
@@ -515,11 +513,7 @@ body{
     background-color: white;
 }
 
-.usuarios-form label,
-.productos-form label,
-.critica-form label,
-.listas-form label,
-.generic-form{
+.generic-form label{
     font-weight: bolder;
     color: #777;
 }

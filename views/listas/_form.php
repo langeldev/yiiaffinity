@@ -8,7 +8,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\bootstrap4\ActiveForm */
 ?>
 
-<div class="usuarios-form py-5 my-5">
+<div class="generic-form py-5 my-5">
 
     <?php $form = ActiveForm::begin(); ?>
 
