@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::encode($model->critica) ?>
                 </p>
                 <?php if (!Yii::$app->user->isGuest) : ?>
-                    <?php if ($model->usuario_id === Yii::$app->user->id) : ?>
+                    <?php if ($model->usuario_id === Yii::$app->user->id || Yii::$app->user->identity->soyAdmin) : ?>
                         <footer>
                             <?= Html::a('Eliminar', ['criticas/delete', 'id' => $model->id], [
                                 'class' => 'btn btn-eliminar',
