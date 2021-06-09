@@ -289,6 +289,7 @@ class UsuariosController extends Controller
     {
          
         $model = $this->findModel($id);
+        $model->scenario = Usuarios::SCENARIO_ELIMINAR;
      
         if ($model->load($form = Yii::$app->request->post())) {
             $model->password_repeat = $form['Usuarios']['password_repeat'];

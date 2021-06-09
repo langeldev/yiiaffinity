@@ -35,6 +35,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
 {
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
+    const SCENARIO_ELIMINAR = 'eliminar';
     public $password_repeat;
     private static $_generos = ['Hombre', 'Mujer','No bibario'];
    
@@ -57,6 +58,7 @@ class Usuarios extends ActiveRecord implements IdentityInterface
             [['password', 'password_repeat'], 'required', 'on' => [self::SCENARIO_CREATE]],
             [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['password_repeat', 'recover'], 'safe', 'on' => [self::SCENARIO_UPDATE]],
+            [['password_repeat'], 'required', 'on' => [self::SCENARIO_ELIMINAR], 'message' => 'Contraseña no puede ser vacío'],
             [['anyo_nac'], 'match', 'pattern' => '/^[0-9]{4}$/',
                 'message' => 'Debe ser un número de cuatro dígitos.'],
             [['email'], 'match', 'pattern' => '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/',
@@ -130,11 +132,12 @@ class Usuarios extends ActiveRecord implements IdentityInterface
         if (!parent::beforeDelete()) {
             return false;
         }
-         
-        if ($this->password_repeat == '' || !$this->validatePassword($this->password_repeat)) {
-            return false;
-        };
-   
+        if ($this->scenario === self::SCENARIO_ELIMINAR){
+            if ($this->password_repeat == '' || !$this->validatePassword($this->password_repeat)) {
+                return false;
+            };
+        } 
+            
         return true;
     }
 
