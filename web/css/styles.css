@@ -537,7 +537,8 @@ body{
 .field-listassearch-titulo,
 .field-usuarioslistassearch-lista-titulo,
 .field-productossearch-titulo,
-.field-personassearch-nombre{
+.field-personassearch-nombre,
+.field-productorassearch-nombre{
     margin-bottom: 0;
 }
 
