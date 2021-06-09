@@ -507,7 +507,8 @@ body{
 }
 .usuarios-form,
 .productos-form,
-.listas-form{
+.listas-form,
+.generic-form{
     padding: 20px;
     border:1px solid #EEE;
     box-shadow: 1px 1px 3px #555;
@@ -517,7 +518,8 @@ body{
 .usuarios-form label,
 .productos-form label,
 .critica-form label,
-.listas-form label{
+.listas-form label,
+.generic-form{
     font-weight: bolder;
     color: #777;
 }
@@ -540,7 +542,8 @@ body{
 .field-usuariossearch-nombre,
 .field-listassearch-titulo,
 .field-usuarioslistassearch-lista-titulo,
-.field-productossearch-titulo{
+.field-productossearch-titulo,
+.field-personassearch-nombre{
     margin-bottom: 0;
 }
 
