@@ -708,6 +708,7 @@ body{
     height: 200px;
     font-family: 'Oswald', sans-serif;
     background-color: white;
+    position: relative;
 }
 
 .lista-producto h3{
@@ -718,6 +719,19 @@ body{
     max-height: 170px;
     margin: -20px 0;
 }
+
+.agrandar{
+    animation-name: agrandar;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
+.encoger{
+    animation-name: encoger;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
 
 @keyframes agitar {
     0%, 100% {
@@ -738,6 +752,32 @@ body{
     }
     100%{
         transform: rotateZ(360deg);
+    }
+    
+}
+
+@keyframes agrandar {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.09);
+    }
+    100%{
+        transform: scale(1);
+    }
+    
+}
+
+@keyframes encoger {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.91);
+    }
+    100%{
+        transform: scale(1);
     }
     
 }

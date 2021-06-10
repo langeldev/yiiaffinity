@@ -40,8 +40,9 @@ $js = <<<EOT
       var el = $(this);
       var lista_id = el.data('key');
       var titulo = el.data('titulo');
-      var confirmado = confirm('¿Estás seguro que quiere eliminar "' + titulo + ' de esta lista?');
+      var confirmado = confirm('¿Estás seguro que quiere eliminar "' + titulo + '" de esta lista?');
       if (confirmado) {
+      el.siblings().attr('disabled', true);
       el.attr('disabled', true);
       $.ajax({
           type: 'POST',
@@ -51,7 +52,7 @@ $js = <<<EOT
           },
           success: function(data){
               if (data.titulo == titulo){
-                  el.parents('li').slideUp('normal', function (event) {
+                  el.parents('li').slideUp('slow', function (event) {
                       $(this).remove();
                       inhabilitar(); 
                   });

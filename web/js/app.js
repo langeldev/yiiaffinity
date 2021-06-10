@@ -38,7 +38,8 @@ function cambairPoscion(posicion1, posicion2, url)
 {
     let subirKey = posicion1.attr('id');
     let bajarKey = posicion2.attr('id');
-
+    posicion1.find('button').attr('disabled', true)
+    posicion2.find('button').attr('disabled', true)
     $.ajax({
         type: 'POST',
         url: url,
@@ -47,8 +48,21 @@ function cambairPoscion(posicion1, posicion2, url)
             baja_id: bajarKey,
         }
     }).done(function (data) {
-        posicion2.insertAfter(posicion1);
-        inhabilitar();
+        posicion1.addClass('agrandar');
+        posicion2.addClass('encoger');
+        posicion2.animate({top: '210px'}, 1000, function () {
+            $(this).removeClass('encoger')
+        })
+        posicion1.animate({top: '-210px'}, 1000, function () {
+            $(this).css('top', 0).removeClass('agrandar');
+            posicion2.css('top', 0)
+            posicion2.insertAfter(posicion1);
+            $(this).find('.eliminar').attr('disabled', false);
+            posicion2.find('.eliminar').attr('disabled', false);
+            inhabilitar();
+        });
+        
+      
     });
 }
 
