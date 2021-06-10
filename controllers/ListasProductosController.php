@@ -69,13 +69,17 @@ class ListasProductosController extends Controller
     * @return mixed
     * @throws NotFoundHttpException if the model cannot be found
     */
-    public function actionDelete($id)
+    public function actionDelete()
     {
-        $producto = $this->findModel($id);
-        $lista = $producto->lista_id;
-        $producto->delete();
+        if (Yii::$app->request->isAjax) {
+            $id =  Yii::$app->request->post('lista_id');
+            $producto = $this->findModel($id);
+            $lista = $producto->producto->titulo;
+            $producto->delete();
+            return $this->asJson(['titulo' => $lista]);
+        }
 
-        return $this->redirect(['/usuarios-listas/view', 'id' => $lista]);
+       // return $this->redirect(['/usuarios-listas/view', 'id' => $lista]);
     }
 
 
@@ -96,9 +100,8 @@ class ListasProductosController extends Controller
             $aux = $sube->posicion;
             $sube->posicion = $baja->posicion;
             $baja->posicion = $aux;
-            var_dump($sube->save());
-            var_dump($baja->save());
-            die();
+            $sube->save();
+            $baja->save();
         }
     }
 

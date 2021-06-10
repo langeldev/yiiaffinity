@@ -700,6 +700,25 @@ body{
 }
 
 
+.lista-producto{
+    position: relative;
+    padding: 40px 10px;
+    margin: 10px 0px;
+    box-shadow: 2px 3px 5px  #333;
+    height: 200px;
+    font-family: 'Oswald', sans-serif;
+    background-color: white;
+}
+
+.lista-producto h3{
+    font-size: 1.2rem;
+}
+
+.lista-producto .img-lista img{
+    max-height: 170px;
+    margin: -20px 0;
+}
+
 @keyframes agitar {
     0%, 100% {
         transform: rotateZ(0deg);
