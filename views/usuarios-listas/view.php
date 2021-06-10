@@ -89,18 +89,18 @@ $this->registerJs($js);
                   <?php if (!Yii::$app->user->isGuest) : ?>
                     <?php if ($model->usuario_id === Yii::$app->user->id) : ?>
                       <?= Html::button('<i class="fas fa-arrow-up"></i>', [
-                        'class' => 'btn btn-outline-info border-0 rounded-0 subir',
+                        'class' => 'btn btn-outline-info border-0 rounded-0 subir boton',
                         'method' => 'post'
                       ])
                       ?>
                       <?= Html::button('<i class="fas fa-arrow-down"></i>', [
-                        'class' => 'btn btn-outline-info border-0 rounded-0 bajar',
+                        'class' => 'btn btn-outline-info border-0 rounded-0 bajar boton',
                         'data-key' => $lista->id,
                         'method' => 'post'
                       ])
                       ?>
                       <?= Html::button('x', [
-                        'class' => 'btn btn-outline-danger rounded-0 eliminar',
+                        'class' => 'btn btn-outline-danger rounded-0 eliminar boton',
                         'data-key' => $lista->id,
                         'data-method' => 'POST',
                         'title' => 'Eliminar  de esta lista',
