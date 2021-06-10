@@ -6,7 +6,7 @@ use yii\bootstrap4\Html;
     <div class="col-12 align-center m-0 p-0 row">
         <?php if ($productos) : ?>
             <?php foreach ($productos as $producto) : ?>
-                <div class="col-6 col-md-4 col-lg-3 my-4">
+                <div class="col-6 col-lg-3 my-4">
                     <div class="card">
                         <?= Html::img($producto->getImagen(), ['class' => 'card-img-top']) ?>
                         <div class="card-body">

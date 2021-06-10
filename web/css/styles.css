@@ -524,6 +524,12 @@ body{
     font-family: 'Oswald', sans-serif;
 }
 
+.h2{
+    padding: 15px 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+
 .card-body h3.titulo{
     font-size: 1.25rem;
 }
