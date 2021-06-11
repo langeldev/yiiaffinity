@@ -63,8 +63,10 @@ class Productos extends \yii\db\ActiveRecord
     {
         return [
             [['titulo', 'titulo_original', 'anyo', 'duracion', 'tipo_id', 'pais', 'sinopsis'], 'required'],
-            [['anyo'],  'match', 'pattern' => '/^[12][0-9]{3}$/',
-                'message' => 'Debe ser un número de cuatro dígitos'],
+            [
+                ['anyo'],  'match', 'pattern' => '/^[12][0-9]{3}$/',
+                'message' => 'Debe ser un número de cuatro dígitos'
+            ],
             [['duracion', 'tipo_id'], 'default', 'value' => null],
             [['duracion', 'tipo_id'], 'integer'],
             [['duracion'], 'integer', 'min' => 1],
@@ -72,7 +74,7 @@ class Productos extends \yii\db\ActiveRecord
             [['titulo', 'titulo_original', 'pais'], 'string', 'max' => 255],
             [['tipo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::class, 'targetAttribute' => ['tipo_id' => 'id']],
             [['cartel'], 'image', 'extensions' => 'png, jpg, jpeg']
-            
+
         ];
     }
 
@@ -321,7 +323,7 @@ class Productos extends \yii\db\ActiveRecord
         return $this->hasMany(Usuarios::class, ['id' => 'usuario_id'])->viaTable('valoraciones', ['producto_id' => 'id']);
     }
 
-      /**
+    /**
      * Suma las valoraciones del producto
      *
      * @return int $number
@@ -330,7 +332,7 @@ class Productos extends \yii\db\ActiveRecord
     {
         return Valoraciones::find()->where(['producto_id' => $this->id])->sum('valoracion');
     }
-    
+
     /**
      * Cuenta la cantidad de votos que tiene un producto
      *
@@ -350,9 +352,8 @@ class Productos extends \yii\db\ActiveRecord
     {
         return number_format(
             ($this->votosTotales !== 0
-            ? $this->suma() / $this->votosTotales
-            : 0
-            ),
+                ? $this->suma() / $this->votosTotales
+                : 0),
             1
         );
     }
@@ -386,16 +387,15 @@ class Productos extends \yii\db\ActiveRecord
     {
         return number_format(
             ($this->criticasTotales !== 0
-            ? $this->sumaCriticas() / $this->criticasTotales
-            : 0
-            ),
+                ? $this->sumaCriticas() / $this->criticasTotales
+                : 0),
             1
         );
     }
 
     /**
-    * Carga las imagenes del formulario y las prepara para subir a AWS
-    */
+     * Carga las imagenes del formulario y las prepara para subir a AWS
+     */
     public function upload()
     {
         if ($this->cartel !== null) {
@@ -411,10 +411,10 @@ class Productos extends \yii\db\ActiveRecord
     }
 
     /**
-    * Devuelve la url donde está alojado el cartel
-    *
-    * @return string $imagen
-    */
+     * Devuelve la url donde está alojado el cartel
+     *
+     * @return string $imagen
+     */
     public function getImagen()
     {
         $imagen = $this->imagen ?? 'default.jpg';
@@ -422,13 +422,68 @@ class Productos extends \yii\db\ActiveRecord
     }
 
     /**
-    * Elimina el cartel si ya existía previamente
-    *
-    */
+     * Elimina el cartel si ya existía previamente
+     *
+     */
     public function borrarCartel()
     {
         if ($this->imagen !== null) {
             Utilidad::borrarEnS3($this->imagen);
         }
+    }
+
+    /**
+     * Devuelve una lista con los nombres de directores relacionados al producto
+     */
+    public function getListaDirectores()
+    {
+        return $this->getDirectores()->select('nombre')->indexBy('id')->column();
+    }
+
+    /**
+     * Devuelve una lista con los nombres de guionistas relacionados al producto
+     */
+    public function getListaGuion()
+    {
+        return $this->getGuion()->select('nombre')->indexBy('id')->column();
+    }
+    /**
+     * Devuelve una lista con los nombres de compositores relacionados al producto
+     */
+    public function getListaMusica()
+    {
+        return $this->getMusica()->select('nombre')->indexBy('id')->column();
+    }
+
+    /**
+     * Devuelve una lista con los nombres de fotografía relacionados al producto
+     */
+    public function getListaFotografia()
+    {
+        return $this->getFotografia()->select('nombre')->indexBy('id')->column();
+    }
+
+    /**
+     * Devuelve una lista con los nombres de interpretes relacionados al producto
+     */
+    public function getListaInterpretes()
+    {
+        return $this->getInterpretes()->select('nombre')->indexBy('id')->column();
+    }
+
+    /**
+     * Devuelve una lista con los nombres de productoras relacionados al producto
+     */
+    public function getListaProductoras()
+    {
+        return $this->getProductoras()->select('nombre')->indexBy('id')->column();
+    }
+
+    /**
+     * Devuelve una lista con los nombres de generos que tiene producto
+     */
+    public function getListaGeneros()
+    {
+        return $this->getGeneros()->select('nombre')->indexBy('id')->column();
     }
 }

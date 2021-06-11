@@ -314,9 +314,13 @@ class ProductosController extends Controller
         return $this->render('create', [
             'model' => $model,
             'tipos' => Tipos::lista(),
-            'personas' => Personas::lista(),
-            'productoras' => Productoras::lista(),
-            'generos' => Generos::lista(),
+            'directores' => $model->listaDirectores,
+            'guion' => $model->listaGuion,
+            'musica' => $model->listaMusica,
+            'fotografia' => $model->listaFotografia,
+            'reparto' => $model->listaInterpretes,
+            'productoras' => $model->listaProductoras,
+            'generos' => $model->listaGeneros,
         ]);
     }
 
@@ -374,12 +378,17 @@ class ProductosController extends Controller
             }
         }
 
+  
         return $this->render('update', [
             'model' => $model,
             'tipos' => Tipos::lista(),
-            'personas' => Personas::lista(),
-            'productoras' => Productoras::lista(),
-            'generos' => Generos::lista(),
+            'directores' => $model->listaDirectores,
+            'guion' => $model->listaGuion,
+            'musica' => $model->listaMusica,
+            'fotografia' => $model->listaFotografia,
+            'reparto' => $model->listaInterpretes,
+            'productoras' => $model->listaProductoras,
+            'generos' => $model->listaGeneros,
 
 
         ]);

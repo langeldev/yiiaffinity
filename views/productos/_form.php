@@ -2,8 +2,12 @@
 
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\helpers\Url;
 
 $tmdbKey = getenv('TMDBKey');
+$buscarPersona = Url::to(['/personas/buscar-personas']);
+$buscarProductora = Url::to(['/productoras/buscar-productoras']);
+$buscarGenero = Url::to(['/generos/buscar-generos']);
 
 $js = <<<EOT
 
@@ -122,33 +126,88 @@ $('#autorrelleno').change(function (ev) {
         }
     });
 
+
+    function peticionesGenericas(url){
+        return {
+            type: 'GET',
+            url: url,
+            dataType: 'json',
+            delay: 300,
+            data: function (params) {
+                return {
+                    search: params.term
+                }
+            },
+            processResults: function (data) {
+                var entidades = [];
+                console.log(data);
+                $.each(data.results, (index, item) => {
+                        entidades.push({
+                            id: item.id,
+                            text: item.nombre
+                        });
+                });
+                return {results: entidades}
+            }
+        };
+    }
+
     $('#directores').select2({
-        width:'100%'
+        width:'100%',
+        placeholder: 'Seleccione los directores del producto',
+        allowClear: true,
+        ajax: peticionesGenericas('$buscarPersona'),
+        minimumInputLength: 1
     });
     
     $("#guionistas").select2({
         width:'100%',
+        placeholder: 'Seleccione los guionistas del producto',
+        allowClear: true,
+        ajax: peticionesGenericas('$buscarPersona'),
+        minimumInputLength: 1
     });
     
     $("#musica").select2({
         width:'100%',
+        placeholder: 'Seleccione los compositores',
+        allowClear: true,
+        ajax: peticionesGenericas('$buscarPersona'),
+        minimumInputLength: 1
     });
 
     $("#fotografia").select2({
         width:'100%',
+        placeholder: 'Seleccione fotografía del producto',
+        allowClear: true,
+        ajax: peticionesGenericas('$buscarPersona'),
+        minimumInputLength: 1
     });
     
     $("#interpretes").select2({
         width:'100%',
+        placeholder: 'Seleccione el reparto del producto',
+        allowClear: true,
+        ajax: peticionesGenericas('$buscarPersona'),
+        minimumInputLength: 1
     });
     
     $("#productoras").select2({
         width:'100%',
+        placeholder: 'Seleccione las productoras',
+        allowClear: true,
+        ajax: peticionesGenericas('$buscarProductora'),
+        minimumInputLength: 1
     });
 
     $("#generos").select2({
         width:'100%',
+        placeholder: 'Seleccione los géneros',
+        allowClear: true,
+        ajax: peticionesGenericas('$buscarGenero'),
+        minimumInputLength: 2
     });
+
 });
 EOT;
 $this->registerJs($js);
@@ -186,7 +245,7 @@ $this->registerJs($js);
 
         <div class="col-12 col-md-6">
 
-            <?= $form->field($model, 'directores')->dropdownList($personas, [
+            <?= $form->field($model, 'directores')->dropdownList($directores, [
                 'id' => 'directores',
                 'name' => 'directores',
                 'multiple' => 'multiple',
@@ -194,7 +253,7 @@ $this->registerJs($js);
             ])->label('Directores', ['for' => 'directores']) ?>
 
 
-            <?= $form->field($model, 'guion')->dropdownList($personas, [
+            <?= $form->field($model, 'guion')->dropdownList($guion, [
                 'class' => 'form-control form-style',
                 'id' => 'guionistas',
                 'name' => 'guionistas',
@@ -202,20 +261,20 @@ $this->registerJs($js);
             ]) ?>
 
 
-            <?= $form->field($model, 'musica')->dropdownList($personas, [
+            <?= $form->field($model, 'musica')->dropdownList($musica, [
                 'id' => 'musica',
                 'name' => 'musica',
                 'multiple' => 'multiple',
             ]) ?>
 
 
-            <?= $form->field($model, 'fotografia')->dropdownList($personas, [
+            <?= $form->field($model, 'fotografia')->dropdownList($fotografia, [
                 'id' => 'fotografia',
                 'name' => 'fotografia',
                 'multiple' => 'multiple',
             ]) ?>
 
-            <?= $form->field($model, 'interpretes')->dropdownList($personas, [
+            <?= $form->field($model, 'interpretes')->dropdownList($reparto, [
                 'id' => 'interpretes',
                 'name' => 'interpretes',
                 'multiple' => 'multiple',

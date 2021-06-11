@@ -126,6 +126,23 @@ class ProductorasController extends Controller
     }
 
     /**
+     * Devuelve las productoras que coincidan con el parametro
+     *
+     */
+    public function actionBuscarProductoras()
+    {
+        if (Yii::$app->request->isAjax) {
+            $search = Yii::$app->request->get('search');
+
+            $productoras = Productoras::find()
+                ->where(['ilike', 'nombre', $search])
+                ->limit(15)
+                ->all();
+            return $this->asJson(['results' => $productoras]);
+        }
+    }
+
+    /**
      * Finds the Productoras model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

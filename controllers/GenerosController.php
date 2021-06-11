@@ -126,6 +126,23 @@ class GenerosController extends Controller
     }
 
     /**
+     * Devuelve los géneros que coincidan con el parametro
+     *
+     */
+    public function actionBuscarGeneros()
+    {
+        if (Yii::$app->request->isAjax) {
+            $search = Yii::$app->request->get('search');
+
+            $generos = Generos::find()
+                ->where(['ilike', 'nombre', $search])
+                ->limit(15)
+                ->all();
+            return $this->asJson(['results' => $generos]);
+        }
+    }
+
+    /**
      * Finds the Generos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

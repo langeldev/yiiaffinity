@@ -126,6 +126,23 @@ class PersonasController extends Controller
     }
 
     /**
+     * devuelve las persomas que coincidan con el parametro
+     *
+     */
+    public function actionBuscarPersonas()
+    {
+        if (Yii::$app->request->isAjax) {
+            $search = Yii::$app->request->get('search');
+
+            $personas = Personas::find()
+                ->where(['ilike', 'nombre', $search])
+                ->limit(15)
+                ->all();
+            return $this->asJson(['results' => $personas]);
+        }
+    }
+
+    /**
      * Finds the Personas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
