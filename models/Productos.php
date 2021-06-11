@@ -18,6 +18,7 @@ use Yii;
  * @property string $pais
  * @property string $sinopsis
  * @property string $imagen
+ * @property string $autorrelleno
  *
  * @property Criticas[] $criticas
  * @property Usuarios[] $usuarios
@@ -45,6 +46,8 @@ use Yii;
 class Productos extends \yii\db\ActiveRecord
 {
     public $cartel;
+    public $autorrelleno;
+
     /**
      * {@inheritdoc}
      */
@@ -64,10 +67,12 @@ class Productos extends \yii\db\ActiveRecord
                 'message' => 'Debe ser un número de cuatro dígitos'],
             [['duracion', 'tipo_id'], 'default', 'value' => null],
             [['duracion', 'tipo_id'], 'integer'],
+            [['duracion'], 'integer', 'min' => 1],
             [['sinopsis', 'imagen'], 'string'],
             [['titulo', 'titulo_original', 'pais'], 'string', 'max' => 255],
             [['tipo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::class, 'targetAttribute' => ['tipo_id' => 'id']],
             [['cartel'], 'image', 'extensions' => 'png, jpg, jpeg']
+            
         ];
     }
 
