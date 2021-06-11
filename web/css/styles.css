@@ -158,17 +158,32 @@ body{
 #lista{
     position: absolute;
     top: 36px;
+    padding: 0;
     list-style: none;
     border: 1px solid #0f48b965;
     border-top: none;
     display: none;
     background-color: white;
     z-index: 20;
+
 }
 
-#lista a{
-    padding: 0 20px;
+#lista li{
+    padding: 15px;
 }
+
+#lista li:hover{
+    background-color: #0f49b9;
+    color: #ddd;
+}
+
+
+.ver-mas{
+    text-align: right;
+    font-size: 1em;
+    font-style: oblique;
+}
+
 
 .dropdown-menu{
     margin-top: 0px;
@@ -529,6 +544,13 @@ body{
     font-family: 'Oswald', sans-serif;
 }
 
+.icono-buscador{
+    position: absolute;
+    right: 0;
+    padding: 10px 4px;
+    font-size: 1.2em;
+    color: rgba(85, 85, 85, 0.624);
+}
 
 .card-body h3.titulo{
     font-size: 1.25rem;
@@ -681,6 +703,10 @@ body{
 
 #table-listas td{
     width: 100%;
+    border-right: none;
+}
+#table-listas td{
+    width: 100%;
 }
 
 
@@ -689,22 +715,16 @@ body{
     display: block;
     padding: 0;
 }
-/*******************/
-/*   Animaciones  */
-/*****************/
 
-
-.ficha-selected .fa-newspaper,
-.ficha-selected .fa-film,
-.user-selected .fa-newspaper,
-.user-selected .fa-list{
-    animation: agitar 2s ;
+#listas table tbody td:last-child{
+    text-align: right;
 }
 
-.user-selected .fa-star{
-    animation: giro 2s;
+#listas table tbody td:first-child{
+    width: 75%;
+    padding: 20px 10px;
+ 
 }
-
 
 .lista-producto{
     position: relative;
@@ -726,6 +746,23 @@ body{
     margin: -20px 0;
 }
 
+
+/*******************/
+/*   Animaciones  */
+/*****************/
+
+
+.ficha-selected .fa-newspaper,
+.ficha-selected .fa-film,
+.user-selected .fa-newspaper,
+.user-selected .fa-list{
+    animation: agitar 2s ;
+}
+
+.user-selected .fa-star{
+    animation: giro 2s;
+}
+
 .agrandar{
     animation-name: agrandar;
     animation-duration: 1s;
@@ -737,7 +774,6 @@ body{
     animation-duration: 1s;
     animation-timing-function: linear;
 }
-
 
 @keyframes agitar {
     0%, 100% {
@@ -786,4 +822,16 @@ body{
         transform: scale(1);
     }
     
+}
+
+@keyframes encoger {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.91);
+    }
+    100%{
+        transform: scale(1);
+    }
 }

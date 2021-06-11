@@ -128,7 +128,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'agregar' => function ($url, $model, $key) use ($datos) {
                                 $cond = !Yii::$app->user->isGuest && !in_array($key, $datos['listas']);
                                 return  $cond ? Html::button('<span class="fas fa-plus"></span>', [
-                                    'class' => 'btn btn-success agregar',
+                                    'class' => 'btn btn-success agregar boton',
                                     'data-key' => $key,
                                     'title' => 'Agregar a mis listas',
                                 ]) : false;
@@ -136,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'quitar' => function ($url, $model, $key) use ($datos) {
                                 $cond = !Yii::$app->user->isGuest && in_array($key, $datos['listas']);
                                 return  $cond ? Html::button('<span class="fas fa-minus"></span>', [
-                                    'class' => 'btn btn-danger quitar',
+                                    'class' => 'btn btn-danger quitar boton',
                                     'data-key' => $key,
                                     'title' => 'Quitar de mis listas',
                                 ]) : false;
@@ -147,7 +147,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         '<span class="fas fa-pen-alt"></span>',
                                         ['/listas/update', 'id' => $key],
                                         [
-                                            'class' => 'btn btn-info',
+                                            'class' => 'btn btn-info boton',
                                             'title' => 'Modificar lista',
                                         ]
                                     ) : false;
@@ -157,7 +157,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'eliminar' => function ($url, $model, $key) {
                                 if (!Yii::$app->user->isGuest) {
                                     return  Yii::$app->user->identity->soyAdmin ? Html::button('<span class="fas fa-trash"></span>', [
-                                        'class' => 'btn btn-danger eliminar',
+                                        'class' => 'btn btn-danger eliminar boton',
                                         'data-key' => $key,
                                         'data-method' => 'POST',
                                         'title' => 'Eliminar lista',
@@ -169,6 +169,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ],
                 ],
+                'options' => [
+                    'class' => 'table table-responsive',
+                    'id' => 'table-listas'
+                ]
+
             ]); ?>
 
         </div>

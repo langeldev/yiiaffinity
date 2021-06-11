@@ -47,7 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'options' => [
                     'class' => 'table table-responsive ',
-                    'id' => 'table-listas'
                 ]
             ]); ?>
 

@@ -149,7 +149,7 @@ function cambiarBoton(boton, conf)
     boton.fadeOut('fast', function () {
         boton.html(conf.simbolo);
         boton.removeClass();
-        boton.addClass('btn btn-' + conf.color + ' quitar');
+        boton.addClass('btn btn-' + conf.color + ' quitar boton');
         boton.attr('title', conf.titulo);
         boton.fadeIn('fast', function () {
             boton.off();

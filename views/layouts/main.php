@@ -35,7 +35,7 @@ $js = <<<EOT
                     let li = a.append($('<li>').text(producto.titulo));
                     $('#lista').append(li);
                     if (index > 3){
-                       a = $('<a>').attr('href', '$urlSearch?search=' + search);
+                       a = $('<a>').attr('href', '$urlSearch?search=' + search).addClass('ver-mas');
                        li = a.append($('<li>').text('Ver más'));
                        $('#lista').append(li);
                        break;
@@ -97,6 +97,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
             <div id="formSearch" class="justify-content-md-center flex-grow-1 ">
                 <form id="contenedor-search" class="justify-content-center col-12 row p-0 m-0" action='. $urlSearch .' method="get">
                     <input id="search" class="form-control col-12" type="search"  name="search" placeholder="Buscar Título" aria-label="Search">
+                    <span class="fas fa-search icono-buscador pr-sm-1"></span>
                     <ul id="lista" class="col-12"></ul>
                 </form>       
             </div> 
