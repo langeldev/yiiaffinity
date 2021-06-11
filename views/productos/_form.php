@@ -3,7 +3,124 @@
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 
+$tmdbKey = getenv('TMDBKey');
+
 $js = <<<EOT
+
+$(document).ready(function () {
+    
+    //devuelve la url necesaria segun el tipo
+    function obtenerURL(){
+        var tipoProducto = tipo();
+        return 'https://api.themoviedb.org/3/search/' + tipoProducto;  //+ '?api_key=$tmdbKey&query=' + titulo + '&language=es'
+    }
+
+    $('#autorrelleno').select2({
+        width: '100%',
+        placeholder: 'Seleccione tipo película o serie',
+        allowClear: true,
+        ajax: {
+            type: 'GET',
+            url: obtenerURL,
+            dataType: 'json',
+            delay: 300,
+            data: function (params) {
+                return {
+                    api_key: '$tmdbKey',
+                    query: params.term,
+                   language: 'es'
+                }
+            },
+            processResults: function (data, textst, xhr) {
+                var productos = [];
+                var tipoProducto = tipo();
+                $.each(data.results, (index, item) => {
+                    if (tipoProducto == 'movie') {
+                        productos.push({
+                            id: item.id,
+                            text: item.title
+                        });
+                    } else {
+                        productos.push({
+                            id: item.id,
+                            text: item.name
+                        });
+                    }
+                });
+                return {results: productos}
+            }
+        },
+        minimumInputLength: 1
+      
+    });
+
+$('#productos-tipo_id').change(comprobar);
+
+
+function comprobar() {
+    var productoTipo = $('#productos-tipo_id').val();
+    var autorrelleno = $('#autorrelleno');
+    autorrelleno.empty();
+   
+    if (productoTipo == 1 || productoTipo == 2) {
+        autorrelleno.attr('disabled', false);
+       
+    } else {
+        autorrelleno.attr('disabled', true);
+    }
+}
+
+comprobar();
+
+
+// comprueba el tipo de producto para la url
+function tipo() {
+    var tipo =  $('#productos-tipo_id').val();
+    var producto = '';
+    if (tipo == 1) {
+        producto = 'movie';
+    }
+    if (tipo == 2) {
+        producto = 'tv';
+    }
+
+    return producto;
+}
+
+
+//Hace una peticion a la api segun el tipo de producto y rellena el los campos del formulario
+$('#autorrelleno').change(function (ev) {
+    var id = $(this).val();
+    var tipoProducto = tipo();
+    if (id != '') {
+    var url = 'https://api.themoviedb.org/3/' + tipoProducto + '/' + id + '?api_key=$tmdbKey&language=es'
+    $.ajax({
+        type: 'GET',
+             url: url
+            }).done(function (data) {
+               
+                var pelicula = tipoProducto == 'movie';
+                
+                var titulo = pelicula ? data.title : data.name;
+                var original = pelicula ? data.original_title : data.original_name;
+                var fecha = pelicula ? data.release_date : data.first_air_date;
+
+                $('#productos-titulo').val(titulo);
+
+                $('#productos-titulo_original').val(original);
+                $('#productos-anyo').val(new Date(fecha).getFullYear());
+                if (data.episode_run_time > 0 && !pelicula) {
+                    $('#productos-duracion').val(data.episode_run_time[0]);
+                } else {
+                    $('#productos-duracion').val(data.runtime);
+                }
+                if (data.production_countries.length > 0) {
+                    $('#productos-pais').val(data.production_countries[0].name);
+                }
+                $('#productos-sinopsis').val(data.overview);
+            });
+        }
+    });
 
     $('#directores').select2({
         width:'100%'
@@ -32,6 +149,7 @@ $js = <<<EOT
     $("#generos").select2({
         width:'100%',
     });
+});
 EOT;
 $this->registerJs($js);
 ?>
@@ -41,6 +159,15 @@ $this->registerJs($js);
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-12 col-md-6">
+
+            <?= $form->field($model, 'tipo_id')->dropdownList($tipos, ['prompt' => 'Seleccione', 'class' => 'form-control form-style']) ?>
+
+            <?= $form->field($model, 'autorrelleno')->dropdownList([], [
+                'class' => 'form-control form-style',
+                'id' => 'autorrelleno',
+
+            ]) ?>
+
             <?= $form->field($model, 'cartel')->fileInput() ?>
 
             <?= $form->field($model, 'titulo')->textInput(['maxlength' => true, 'class' => 'form-control form-style']) ?>
@@ -51,7 +178,6 @@ $this->registerJs($js);
 
             <?= $form->field($model, 'duracion')->textInput(['class' => 'form-control form-style']) ?>
 
-            <?= $form->field($model, 'tipo_id')->dropdownList($tipos, ['prompt' => 'Seleccione', 'class' => 'form-control form-style']) ?>
 
             <?= $form->field($model, 'pais')->textInput(['maxlength' => true, 'class' => 'form-control form-style']) ?>
 
@@ -59,6 +185,7 @@ $this->registerJs($js);
         </div>
 
         <div class="col-12 col-md-6">
+
             <?= $form->field($model, 'directores')->dropdownList($personas, [
                 'id' => 'directores',
                 'name' => 'directores',
