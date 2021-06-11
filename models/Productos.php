@@ -63,7 +63,7 @@ class Productos extends \yii\db\ActiveRecord
     {
         return [
             [['titulo', 'titulo_original', 'anyo', 'duracion', 'tipo_id', 'pais', 'sinopsis'], 'required'],
-            [['anyo'],  'match', 'pattern' => '/^[0-9]{4}$/',
+            [['anyo'],  'match', 'pattern' => '/^[12][0-9]{3}$/',
                 'message' => 'Debe ser un número de cuatro dígitos'],
             [['duracion', 'tipo_id'], 'default', 'value' => null],
             [['duracion', 'tipo_id'], 'integer'],

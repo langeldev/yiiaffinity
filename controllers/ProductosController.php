@@ -333,9 +333,9 @@ class ProductosController extends Controller
 
 
         if ($model->load($producto = Yii::$app->request->post())) {
+            $model->cartel = UploadedFile::getInstance($model, 'cartel');
             if ($model->cartel !== null) {
                 $model->borrarCartel();
-                $model->cartel = UploadedFile::getInstance($model, 'cartel');
                 $model->upload();
             }
 
@@ -380,6 +380,8 @@ class ProductosController extends Controller
             'personas' => Personas::lista(),
             'productoras' => Productoras::lista(),
             'generos' => Generos::lista(),
+
+
         ]);
     }
 

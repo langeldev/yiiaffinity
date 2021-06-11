@@ -38,7 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'anyo',
                 'duracion',
                 'pais',
-                'sinopsis:ntext',
                 ['class' => 'yii\grid\ActionColumn'],
             ],
             'options' => [
