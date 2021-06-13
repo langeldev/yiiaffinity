@@ -20,17 +20,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 'usuario' => $usuario
             ]) ?>
         </section>
-        <ul class="nav-user col-12">
+        <ul class="nav-user col-12 mb-5">
             <li>
-                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . count($usuario->criticas) . ']',  ['/criticas/usuarios', 'id' => $usuario->id]) ?>
+                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . $usuario->criticasTotalUser . ']',  ['/criticas/usuarios', 'id' => $usuario->id]) ?>
             </li>
             <li>
-                <?= Html::a('<i class="fas fa-star"></i> Valoraciones [' . count($usuario->valoraciones) . ']', '', ['class' => 'user-selected']) ?>
+                <?= Html::a('<i class="fas fa-star"></i> Valoraciones [' . $usuario->valoracionesTotalUser . ']', '', ['class' => 'user-selected']) ?>
             </li>
             <li>
                 <?= Html::a('<i class="fas fa-list"></i> Listas [' . $usuario->listasTotales . ']', ['/usuarios-listas/usuarios', 'id' => $usuario->id]) ?>
             </li>
         </ul>
+        <div class="my-4 row col-12 justify-content-center pt-4">
+            <?= LinkPager::widget([
+                'pagination' => $pagination
+            ]) ?>
+        </div>
         <section class="p-3 valoraciones-container">
             <?php if ($valoraciones) : ?>
                 <?php foreach ($valoraciones as $valoracion) : ?>

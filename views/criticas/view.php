@@ -21,10 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
         </section>
         <ul class="nav-user col-12 mb-5">
             <li>
-                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . count($model->usuario->criticas) . ']',  ['/criticas/usuarios', 'id' => $model->usuario->id]) ?>
+                <?= Html::a('<i class="far fa-newspaper"></i> Críticas [' . $model->usuario->criticasTotalUser . ']',  ['/criticas/usuarios', 'id' => $model->usuario->id]) ?>
             </li>
             <li>
-                <?= Html::a('<i class="far fa-star"></i> Valoraciones [' . count($model->usuario->valoraciones) . ']', ['/valoraciones/usuarios', 'id' => $model->usuario->id]) ?>
+                <?= Html::a('<i class="far fa-star"></i> Valoraciones [' . $model->usuario->valoracionesTotalUser . ']', ['/valoraciones/usuarios', 'id' => $model->usuario->id]) ?>
             </li>
             <li>
                 <?= Html::a('<i class="fas fa-list"></i> Listas [' . $model->usuario->listasTotales . ']', ['/usuarios-listas/usuarios', 'id' => $model->usuario->id]) ?>

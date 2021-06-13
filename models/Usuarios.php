@@ -197,6 +197,16 @@ class Usuarios extends ActiveRecord implements IdentityInterface
         return $this->hasMany(Criticas::class, ['usuario_id' => 'id'])->inverseOf('usuario');
     }
 
+     /**
+     * Obtiene el total de criticas que tiene un usuario.
+     *
+     * @return int
+     */
+    public function getCriticasTotalUser()
+    {
+        return $this->getCriticas()->count();
+    }
+
     /**
     * Gets query for [[Valoraciones]].
     *
@@ -205,6 +215,16 @@ class Usuarios extends ActiveRecord implements IdentityInterface
     public function getValoraciones()
     {
         return $this->hasMany(Valoraciones::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+
+   /**
+     * Obtiene el total de valoraciones que tiene un usuario.
+     *
+     * @return int
+     */
+    public function getValoracionesTotalUser()
+    {
+        return $this->getValoraciones()->count();
     }
 
     /**
