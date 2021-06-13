@@ -58,6 +58,9 @@ class ProductosSearch extends Productos
             'pagination' => [
                 'pageSize' => 10
             ],
+            'sort' => [
+                'defaultOrder' => ['titulo' => \SORT_ASC]
+            ]
         ]);
         $dataProvider->sort->attributes['tipo.nombre'] = [
             'asc' => ['t.nombre' => SORT_ASC],
@@ -109,7 +112,8 @@ class ProductosSearch extends Productos
         }
 
         $query->andFilterWhere(['=','t.nombre', $tipo ])
-        ->andFilterWhere(['ilike', 'titulo',$this->titulo]);
+        ->andFilterWhere(['ilike', 'titulo',$this->titulo])
+        ->orderBy('id DESC');
 
 
         $pagination = new Pagination([

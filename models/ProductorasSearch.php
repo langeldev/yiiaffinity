@@ -46,6 +46,12 @@ class ProductorasSearch extends Productoras
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 20
+            ],
+            'sort' => [
+                'defaultOrder' => ['nombre' => \SORT_ASC]
+            ]
         ]);
 
         $this->load($params);

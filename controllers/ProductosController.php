@@ -91,13 +91,15 @@ class ProductosController extends Controller
     {
         $search = trim($search);
         $productos = Productos::find()
-            ->where(['ilike', 'titulo', $search]);
+            ->where(['ilike', 'titulo', $search])
+            ->orderBy('id DESC');
 
         if (Yii::$app->request->isAjax) {
             $search = Yii::$app->request->get('search');
 
             $productos = Productos::find()
                 ->where(['ilike', 'titulo', $search])
+                ->orderBy('id DESC')
                 ->limit(6)
                 ->all();
             return $this->asJson(['productos' => $productos]);

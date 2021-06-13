@@ -528,7 +528,8 @@ body{
     background-color: white;
 }
 .critica-form label,
-.generic-form label{
+.generic-form label,
+.premios-form label{
     font-weight: bolder;
     color: #777;
 }
@@ -696,7 +697,9 @@ body{
 /************/
 
 .table:not(.detail-view) td,
-.table th{
+.table th,
+table th a,
+table td a{
     word-break: normal !important;
 }
 

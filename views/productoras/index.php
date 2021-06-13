@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php if (!Yii::$app->user->isGuest) : ?>
         <?php endif ?>
-        <div id="listas">
+        <div id="productoras">
 
 
             <?= GridView::widget([

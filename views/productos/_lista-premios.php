@@ -9,6 +9,7 @@ $url = Url::to(['productos/eliminar-premio']);
 
 $js = <<<EOT
 $('.eliminar').click(function(ev){
+  
     var el = $(this);
     var key = el.data('key');
     $.ajax({
@@ -19,7 +20,7 @@ $('.eliminar').click(function(ev){
         }
     })
       .done(function(data){
-        $('#lista-premios').html(data);
+       $('#lista-premios').html(data);
     });
 });   
 EOT;
@@ -28,17 +29,33 @@ $this->registerJs($js);
 <div id="lista-premios">
     <?= GridView::widget([
         'dataProvider' => $premios,
+       
         'columns' => [
-            'cantidad',
-            'nombre:text:Premio',
+            'header' =>[
+                'visible' => false
+            ],
+            [
+                'label' => 'Cantidad',
+                'value' => 'cantidad',
+                'format' => 'html'
+            ],
+            [
+                'label' => 'Nombre',
+                'value' => 'nombre',
+                'format' => 'html'
+            ],
+
             [
                 '__class' => ActionColumn::class,
+                'header' => '',
                 'template' => '{eliminar}',
                 'buttons' => [
                     'eliminar' => function ($url, $model, $key) {
                         return Html::button('X', [
                             'class' => 'btn btn-danger eliminar',
                             'data-key' => $key,
+                            'title' => 'Eliminar premio',
+                            'data-confirm' => '¿Está seguro de que quiere eliminar el premio ' . $model->nombre . '?'
                         ]);
                     }
                 ],

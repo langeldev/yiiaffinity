@@ -17,24 +17,27 @@ $js = <<<EOT
 $('#agregar-premio').click(function(ev){
     ev.preventDefault();
     let producto_id = $producto_id;
-    let nombre = $('#premios-nombre').val();
-    let cantidad = $('#premios-cantidad').val();
-    $.ajax({
-        type: 'POST',
-        url: '$url',
-        data: {
-            Premios: {
-                producto_id: producto_id,
-                nombre: nombre,
-                cantidad: cantidad
+    let cantidad = $.trim($('#premios-cantidad').val());
+    let nombre = $.trim($('#premios-nombre').val());
+
+    if (cantidad != '' && nombre != '') {
+        $.ajax({
+            type: 'POST',
+            url: '$url',
+            data: {
+                Premios: {
+                    producto_id: producto_id,
+                    nombre: nombre,
+                    cantidad: cantidad
+                }
             }
-        }
-    })
-      .done(function(data){
-        $('#lista-premios').html(data);
-        $('#premios-nombre').val('');
-        $('#premios-cantidad').val('');
-    });
+        })
+        .done(function(data){
+            $('#form-premios')[0].reset();
+            $('#lista-premios').html(data);
+        });
+    }
+    return false;
 });   
 EOT;
 $this->registerJs($js);
@@ -113,18 +116,23 @@ $this->registerJs($js);
             ],
         ]) ?>
 
-        <?php $form = ActiveForm::begin() ?>
-
-        <?= $form->field($premio, 'nombre')->textInput(['class' => 'form-control form-style']) ?>
+        <h2 class="text-center text-md-left h2">Premios</h2>
+        <div class="premios-form">
+        <?php $form = ActiveForm::begin([
+            'id' => 'form-premios',
+            ]) ?>
 
         <?= $form->field($premio, 'cantidad')->textInput(['class' => 'form-control form-style'])  ?>
+
+        <?= $form->field($premio, 'nombre')->textInput(['class' => 'form-control form-style']) ?>
 
         <div  class="text-right my-3">
             <?= Html::submitButton('Añadir', ['id' => 'agregar-premio', 'class' => 'btn btn-principal']) ?>
         </div>
 
         <?php ActiveForm::end() ?>
-        <h3>Premios</h3>
+            </div>
+
 
         <?= $this->render('_lista-premios', ['premios' => $premios]) ?>
 

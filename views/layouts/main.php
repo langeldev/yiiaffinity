@@ -31,14 +31,16 @@ $js = <<<EOT
             
             if(data.productos && search != '') {
                 for ([index, producto] of data.productos.entries()){
-                    let a =  $('<a>').attr('href', '/ficha/' + producto.id);
-                    let li = a.append($('<li>').text(producto.titulo));
-                    $('#lista').append(li);
-                    if (index > 3){
-                       a = $('<a>').attr('href', '$urlSearch?search=' + search).addClass('ver-mas');
-                       li = a.append($('<li>').text('Ver más'));
-                       $('#lista').append(li);
-                       break;
+                if (index < 5){
+                        let a =  $('<a>').attr('href', '/ficha/' + producto.id);
+                        let li = a.append($('<li>').text(producto.titulo));
+                        console.log(index > 3)
+                        $('#lista').append(li);
+                    }else {
+                        a = $('<a>').attr('href', '$urlSearch?search=' + search).addClass('ver-mas');
+                        li = a.append($('<li>').text('Ver más'));
+                        $('#lista').append(li);
+                        break;
                     }
                 }
             }
@@ -162,7 +164,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
         <div class="container">
             <p class="text-center float-md-left">&copy; YiiAffinity <?= date('Y') ?></p>
 
-            <p class="text-center float-md-right"><?= Yii::powered() ?></p>
+            <p class="text-center float-md-right">Desarrollado por M. Ángel Rodríguez</p>
         </div>
     </footer>
     <div class="modal" tabindex="-1" role="dialog">
