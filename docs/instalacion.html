@@ -55,10 +55,11 @@
 <h2>En local <span id="en-local"></span><a href="#en-local" class="hashlink">&para;</a></h2><h3>Requisitos <span id="requisitos"></span><a href="#requisitos" class="hashlink">&para;</a></h3><ul>
 <li>PHP 7.3.0</li>
 <li>PostgreSQL</li>
-<li>Extension pgcrypto</li>
+<li>Extensión pgcrypto</li>
 <li>Composer</li>
 <li>Cuenta de gmail</li>
 <li>Cuenta de Amazon S3</li>
+<li>Cuenta de API The Movie Database</li>
 </ul>
 <h3>Instalación <span id="instalacion"></span><a href="#instalacion" class="hashlink">&para;</a></h3><ol>
 <li>Ejecutar los comandos<ul>
@@ -69,7 +70,7 @@
 </ul>
 </li>
 <li>Rellena las variabes de entorno<ul>
-<li>copia el archivo <em>.env.example</em> y con el nombre por <em>.env</em>:
+<li>copia el archivo <em>.env.example</em> y poner el nombre de <em>.env</em>:
   <code>$ sudo cp .env.example .env</code></li>
 </ul>
 </li>
@@ -77,6 +78,7 @@
 <li><code>SMTP_PASS</code> La clave de el correo de la aplicación.</li>
 <li><code>AWSAccessKeyId</code> KeyId de Amazon S3.</li>
 <li><code>AWSSecretKey</code> SecretKey de Amazon S3.</li>
+<li><code>TMDBKey</code> Clave de la API The Movie Database.</li>
 </ul>
 </li>
 <li>Ejecutar <code>$ ./yii serve</code> para arrancar el servidor.</li>
@@ -92,6 +94,7 @@
 <li><code>SMTP_PASS</code> La clave de el correo de la aplicación.</li>
 <li><code>AWSAccessKeyId</code> KeyId de Amazon S3.</li>
 <li><code>AWSSecretKey</code> SecretKey de Amazon S3.</li>
+<li><code>TMDBKey</code> Clave de la API The Movie Database.</li>
 </ul>
 </li>
 </ul>
@@ -109,7 +112,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Sun, 06 Jun 2021 15:26:36 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Tue, 15 Jun 2021 07:45:55 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {
