@@ -140,7 +140,6 @@ $('#autorrelleno').change(function (ev) {
             },
             processResults: function (data) {
                 var entidades = [];
-                console.log(data);
                 $.each(data.results, (index, item) => {
                         entidades.push({
                             id: item.id,

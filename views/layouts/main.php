@@ -34,7 +34,6 @@ $js = <<<EOT
                 if (index < 5){
                         let a =  $('<a>').attr('href', '/ficha/' + producto.id);
                         let li = a.append($('<li>').text(producto.titulo));
-                        console.log(index > 3)
                         $('#lista').append(li);
                     }else {
                         a = $('<a>').attr('href', '$urlSearch?search=' + search).addClass('ver-mas');

@@ -21,6 +21,10 @@
     
     ![validador-css](images/anexos/validador-css.png)
 
+* *Accesibilidad*
+    
+    ![Accesibilidad](images/anexos/aa.png)
+
 * *Prueba del seis*
     1. ¿Qué sitio es este?
 
@@ -32,7 +36,7 @@
 
     3. ¿Cuáles son las principoales secciones del sitio?
     
-        La principal seccion son las fichas y las críticas
+        La principal sección son las fichas y las críticas
 
     4. ¿Que opciones tengo en este nivel?
 
@@ -49,11 +53,11 @@
         *Los anteriores niveles cuentan con un boton de volver al nivel anterior*
     5. ¿Donde estoy en el esquema de las cosas?
 
-        Las migas de pan indican en la parte de la aplicacion en la que está situado el usuario. 
+        Las migas de pan indican en la parte de la aplicación en la que está situado el usuario. 
 
     6. ¿Cómo busco algo?
         
-        La aplicación cuenta en todo momento con un buscador de titulos en la parte superior pero en determinadas secciones támbien cuenta con su propio buscador.   
+        La aplicación cuenta en todo momento con un buscador de títulos en la parte superior pero en determinadas secciones cuentan con su propio buscador.   
 
 
 ### **([R35](https://github.com/rolLangel/yiiaffinity/issues/35)) Varias resoluciones**
@@ -178,9 +182,11 @@
 * **Autenticacion Digest:**
 
     * (uso de alias para acceder a la documentacion)
+
     ![digest](images/anexos/servidor-local/digest.png)
 
     * Prueba
+    
     ![digest-prueba](images/anexos/servidor-local/digest.gif)
 
 <br>
