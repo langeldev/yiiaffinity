@@ -1,32 +1,88 @@
 # Anexos
 
-Documentos específicos vinculados a determinados requisitos funcionales o
-técnicos ("prueba del seis" y similares).
 
-Poner cada uno en un apartado separado, indicando en el título de cada apartado
-el código y la descripción corta del requisito asociado (por ejemplo,
-**(RF24) Prueba del seis**).
-
-
-### ([R25](https://github.com/rolLangel/yiiaffinity/issues/25)) Codeception
+### **([R25](https://github.com/rolLangel/yiiaffinity/issues/25)) Codeception**
 ![Codeception](images/anexos/codeception.png)
 
-### ([R26](https://github.com/rolLangel/yiiaffinity/issues/26)) Code Climate
+### **([R26](https://github.com/rolLangel/yiiaffinity/issues/26)) Code Climate**
 ![Code Climate](images/anexos/codeclimate.png)
 
-### ([R33](https://github.com/rolLangel/yiiaffinity/issues/33)) Microdatos
+### **([R33](https://github.com/rolLangel/yiiaffinity/issues/33)) Microdatos**
 
 ![microdatos](images/anexos/microdatos.png)
 
-### ([R34](https://github.com/rolLangel/yiiaffinity/issues/34)) Validación HTML5, CSS3 y accesibilidad
+### **([R34](https://github.com/rolLangel/yiiaffinity/issues/34)) Validación HTML5, CSS3 y accesibilidad**
    
-* HTML
-![validador-html](images/anexos/validador-html.png)
+* *HTML*
+    
+    ![validador-html](images/anexos/validador-html.png)
 
-* CSS 
-![validador-css](images/anexos/validador-css.png)
+* *CSS*
+    
+    ![validador-css](images/anexos/validador-css.png)
 
-### ([R38](https://github.com/rolLangel/yiiaffinity/issues/38)) Despliegue en un servidor local
+* *Prueba del seis*
+    1. ¿Qué sitio es este?
+
+        Al entrar en la aplicación puede verse en el logotipo y en el pie de página el sitio web en el que se encuentra.
+       
+    2. ¿En qué ṕagina estoy?
+
+        La web cuenta con encabezados que indica donde el usuario está situado, tambien cuenta con la ayudada de la url y las migas de pan.
+
+    3. ¿Cuáles son las principoales secciones del sitio?
+    
+        La principal seccion son las fichas y las críticas
+
+    4. ¿Que opciones tengo en este nivel?
+
+        En cualquier nivel el usuario tiene acceso a su perfil, sus listas y los usuarios que sigue. A parte tiene un buscador en la parte superior para ir a la ficha que quiera.
+
+        El nivel **mis listas** tiene acceso al nivel **lista** donde los usuarios pueden añadir esas listas a sus listas o eliminarlas de sus listas.
+        
+        El nivel **Amigos** tiene acceso al nivel de **buscar amigos** donde puede ver usuarios que puede añadir a sus amigos.
+
+        El nivel **perfil** tiene acceso a sus propias **valoraciones**, sus **criticas** y sus **listas**.
+
+        El nivel **ficha** tiene acceso al nivel de **hacer criticas** y ver **criticas** de un producto determinado. 
+
+        *Los anteriores niveles cuentan con un boton de volver al nivel anterior*
+    5. ¿Donde estoy en el esquema de las cosas?
+
+        Las migas de pan indican en la parte de la aplicacion en la que está situado el usuario. 
+
+    6. ¿Cómo busco algo?
+        
+        La aplicación cuenta en todo momento con un buscador de titulos en la parte superior pero en determinadas secciones támbien cuenta con su propio buscador.   
+
+
+### **([R35](https://github.com/rolLangel/yiiaffinity/issues/35)) Varias resoluciones**
+* *Grande*
+    
+    ![Grande](images/anexos/grande.png)
+
+* *Pequeña*
+    
+    ![Pequeña](images/anexos/pequeña.png)
+
+### **([R36](https://github.com/rolLangel/yiiaffinity/issues/36)) Varios navegadores**
+* Edge
+    
+    ![Edge](images/anexos/edge.png)
+
+* Firefox 
+    
+    ![Firefox](images/anexos/firefox.png)
+
+* Google Chrome
+    
+    ![Google Chrome](images/anexos/googleChrome.png)
+
+* Opera 
+    
+    ![Opera](images/anexos/opera.png)
+
+### **([R38](https://github.com/rolLangel/yiiaffinity/issues/38)) Despliegue en un servidor local**
 
 #### **DHCP**
 
