@@ -98,6 +98,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
         <div class="p-0 col-12 col-md-3 col-lg-5 mr-lg-4">
             <div id="formSearch" class="justify-content-md-center flex-grow-1 ">
                 <form id="contenedor-search" class="justify-content-center col-12 row p-0 m-0" action='. $urlSearch .' method="get">
+                    <label class="d-none" for="search">search</label>
                     <input id="search" class="form-control col-12" type="search"  name="search" placeholder="Buscar Título" aria-label="Search">
                     <span class="fas fa-search icono-buscador pr-sm-1"></span>
                     <ul id="lista" class="col-12"></ul>
@@ -171,7 +172,7 @@ if (!isset($_COOKIE['aceptar_cookies'])) {
         <div class=" modal-dialog" role="document">
             <div class="modal-content p-2">
                 <div class="modal-header">
-                    <h5 class="modal-title">Política de cookies</h5>
+                    <h4 class="modal-title">Política de cookies</h4>
                 </div>
                 <div class="modal-body">
                     <p>Usamos cookies para mejorar la experiencia de usuario. Acepta si estas de acuerdo.</p>
