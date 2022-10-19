@@ -4,4 +4,9 @@ Se trata de una base de datos de películas y series donde los usuarios pueden v
 
 **[WEB](https://yii-affinity.herokuapp.com)**.
 
-**[DOCUMENTACIÓN](https://rollangel.github.io/yiiaffinity/)**.
+**[DOCUMENTACIÓN](https://langeldev.github.io/yiiaffinity/)**.
+
+## Capturas
+![App](/docs/images/manual/inicial.png)
+![App](/docs/images/manual/login.png)
+![App](/docs/images/manual/nav.png)
